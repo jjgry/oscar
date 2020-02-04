@@ -10,13 +10,11 @@ class DBConnection {
   private static final String PASSWORD = "teamoscar";
   private static final String CONNECTION = "jdbc:mysql://10.248.114.7?characterEncoding=utf8";
 
+  Connection con;
+  Statement stmt;
+  ResultSet rs;
 
-  public static void main(String[] args) throws SQLException {
-
-    Connection con = null;
-    Statement stmt = null;
-    ResultSet rs = null;
-
+  public DBConnection() {
     try {
       Class.forName("com.mysql.jdbc.Driver");
     } catch (Exception e) {
@@ -24,13 +22,15 @@ class DBConnection {
     }
 
     try {
+      makeConnection();
+    } catch (SQLException e) {
+      System.err.println(e.getMessage());
+    }
+  }
+
+  private void makeConnection() throws SQLException {
+    try {
       con = DriverManager.getConnection(CONNECTION, USERNAME, PASSWORD);
-      stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-      rs = stmt.executeQuery("SHOW DATABASES");
-
-      rs.last();
-      System.out.println(rs.getString("Database"));
-
     } catch (SQLException e) {
       System.err.println(e.getMessage());
     } finally {
@@ -39,5 +39,12 @@ class DBConnection {
       }
     }
   }
+
+  public ResultSet execute(String command) throws SQLException {
+    stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+    rs = stmt.executeQuery(command);
+    return rs;
+  }
+
 }
 
