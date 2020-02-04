@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql-connector.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oscar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oscar.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/oscar/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/oscar/DBConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConnection.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DBConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+            <state relative-caret-position="308">
+              <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,7 +72,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580820278756" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580821174581" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql-connector.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -133,6 +130,14 @@
       <option name="presentableId" value="Default" />
       <updated>1580817970838</updated>
     </task>
+    <task id="LOCAL-00001" summary="Connecting to DB unsuccessfully">
+      <created>1580820307957</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580820307957</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -149,7 +154,7 @@
       <window_info anchor="bottom" id="DB Execution Console" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32954547" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32954547" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -159,7 +164,7 @@
       <window_info anchor="bottom" id="Floobits" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32954547" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32954547" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -171,6 +176,10 @@
       <window_info anchor="right" id="DB Browser" order="8" weight="0.32986337" />
     </layout>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Connecting to DB unsuccessfully" />
+    <option name="LAST_COMMIT_MESSAGE" value="Connecting to DB unsuccessfully" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="db://66e319c0-02d0-41db-b411-f012c4244db8/consoles/Connection">
       <provider selected="true" editor-type-id="0.CONSOLE">
@@ -181,8 +190,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DBConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+        <state relative-caret-position="308">
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
