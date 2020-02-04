@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysql-connector.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DBInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConnection.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/src/DBConnection.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
-              <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+              <caret line="28" column="8" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -27,7 +26,27 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DBInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="e#52#53#0" expanded="true" />
+                <element signature="e#106#107#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,6 +56,7 @@
       <list>
         <option value="$PROJECT_DIR$/DBConnection.java" />
         <option value="$PROJECT_DIR$/src/DBConnection.java" />
+        <option value="$PROJECT_DIR$/src/DBInterface.java" />
       </list>
     </option>
   </component>
@@ -72,7 +92,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580821174581" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580821831174" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql-connector.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -144,7 +164,7 @@
     <frame x="-6" y="-6" width="1549" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19908914" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19908914" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -154,7 +174,7 @@
       <window_info anchor="bottom" id="DB Execution Console" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32954547" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32954547" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -188,10 +208,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DBInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#52#53#0" expanded="true" />
+            <element signature="e#106#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DBConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
-          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
