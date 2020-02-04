@@ -16,9 +16,10 @@
 
 package oscar;
 
+public const int MAX_QUEUE_LENGTH = 10;
 // A FIFO queue of items of type T
 public class ThreadQueue<T> {
-//TODO:  No upper limit on queue size yet
+
     private static class Link<L> {
         L val;
         Link<L> next;
@@ -32,8 +33,21 @@ public class ThreadQueue<T> {
     private Link<T> first = null;
     private Link<T> last = null;
 
+    private int len = 0;
+
+
+
 ///<summary> Put an object on the end of the queue.<\summary>
     public synchronized void put(T val) {
+        while (len >= MAX_QUEUE_LENGTH){
+            try{
+                this.wait(100);
+            }
+            catch(InterruptedException ie){
+                //ignored exception
+            }
+        }
+
         Link<T> nextLink  = new Link(val);
         if(first==null) {
             first = nextLink;
@@ -52,14 +66,11 @@ public class ThreadQueue<T> {
                 this.wait(100);
             } catch (InterruptedException ie) {
                 // Ignored exception
-
             }
         }
         //we have something to take. remove head of list and return.
         T popVal = first.val;
         first = first.next;
         return popVal;
-
-
     }
 }
