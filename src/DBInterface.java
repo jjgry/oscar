@@ -1,81 +1,95 @@
+import java.sql.ResultSet;
 /**
  * Provides functions for the kernel to call to access and modify the database
  */
 public class DBInterface {
 
-  private DBConnection connection;
+  private DBConnection database;
 
   /**
-   * Initialises the connection to the database
+   * Initialises the database connection object
    */
   public DBInterface (String username, String password) {
-    connection = new DBConnection("jj", "teamoscar");
+    database = new DBConnection("10.248.114.7", "jj", "teamoscar");
   }
 
   /**
-   * Returns a JSON representation of the reminders that are to be sent
+   * @return a representation of the email addresses and appointment information.
    */
-  public void remindersToSendToday() {
+  public Object remindersToSendToday() {
+    String command = "EXAMPLE COMMAND";
+    try {
+      ResultSet rs = database.execute(command);
+    } catch (Exception e) {
+      System.err.println(e.getMessage());
+      // runtime exceptions such as timeout
 
+      // handle exception in some meaningful way, either return an exception to the kernel or try again
+    }
+    // make data into readable form for kernel
+
+    return null;
   }
 
   /**
-   * Returns a JSON representation of the available appointments
-   *
    * @param doctor the doctor we want appointments for
    * @param startDate look for dates after
    * @param endDate look for dates before
+   * @return a representation the available appointments for the patient
    */
-  public void getAppointments(String doctor, String startDate, String endDate) {
-
+  public Object getAppointments(String doctor, String startDate, String endDate) {
+    return null;
   }
 
   /**
-   * Update the DB to confirm the new appintment time
+   * Update the DB to confirm the new appointment time
    *
    * @param appointmentID the appointment to be confirmed
+   * @return true if the update was successful
    */
-  public void confirmNewTime(String appointmentID) {
-
+  public boolean confirmNewTime(String appointmentID) {
+    return false;
   }
 
   /**
-   * Update the DB to reject the new appintment time
+   * Update the DB to reject the new appointment time
    *
    * @param appointmentID the appointment to be rejected
+   * @return true if the update was successful
    */
-  public void rejectNewTime(String appointmentID) {
-
+  public boolean rejectNewTime(String appointmentID) {
+    return false;
   }
 
   /**
-   * After a patient has booked an appointment with the suegery, this is how it is added
+   * After a patient has booked an appointment with the surgery, this is how it is added
    *
    * @param time time of the appointment
    * @param doctor doctor the appointment is with
    * @param patientID patient who's appointment it is
+   * @return true if update was successful
    */
-  public void addNewAppointment(String time, String doctor, String patientID){
-
+  public boolean addNewAppointment(String time, String doctor, String patientID){
+    return false;
   }
 
   /**
-   * Get the patientID associated with the given email address
-   *
    * @param emailID the email address of the patient
+   * @return the patient ID associated with the email address
    */
-  public void getPatientID(String emailID) {
-
+  public String getPatientID(String emailID) {
+    return null;
   }
 
   /**
-   * Not sure what this does?
+   * Allows kernel to confirm a patient has an appointment with the given ID
    *
-   * @param patientID the patient associated with the appointment
-   * @param appointmentID the appointment identifier
+   * @param patientID the identifier used for the patient
+   * @param appointmentID the identifier used for thr appointment
+   * @return true if said patient has the given appointment
    */
-  public void confirmAppointmentExists(String patientID, String appointmentID) {
-
+  public boolean confirmAppointmentExists(String patientID, String appointmentID) {
+    return false;
   }
 
 
