@@ -9,7 +9,7 @@ public class DBInterface {
    * Initialises the connection to the database
    */
   public DBInterface (String username, String password) {
-    connection = new DBConnection("jj", "teamoscar");
+    connection = new DBConnection("test", "jj", "teamoscar");
   }
 
   /**
@@ -77,6 +77,5 @@ public class DBInterface {
   public void confirmAppointmentExists(String patientID, String appointmentID) {
 
   }
-
 
 }
