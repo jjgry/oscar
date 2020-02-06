@@ -1,0 +1,131 @@
+Automated	Hi there,  Sorry I missed you! I’m currently out of the office with limited access to email. If you have a question about billing, please contact our Billing Department at [Email]. If you’d like to a book a service, please schedule your appointment online at [Link] or contact [Support Staff Contact Information] for more information.  I will follow up once I’m back home, but in the meantime, the team will take great care of you in my absence!  Kind regards,  John
+Automated	Hello,   Your email has been received but I am currently away on holiday until the 15th of February. Once I'm back at the office, I'll reply as soon as possible.   Thank you for your understanding!  Best Regards,  John
+Automated	Hi,  Thank you for getting in touch. I'm working on your request—hang tight! I'll get back to you within 8 business hours (Monday - Friday 9 am to 6 pm EST).  Thanks again,  Jamie
+Automated	Hey!  Thank you for your email. Your message is important  to me and I  will respond as soon as possible. Thanks!  Olivia  
+Automated	Hello.  I will be out of the office from 27/01/2020  until 27/03/2020. If you need immediate assistance please contact Mary Simpson.  Respectful Regards, John Smith
+Automated	Hello!  I am on maternity leave until the end of June. If you need immediate assistance please contact James Sun  Respectful Regards, Olivia Jones
+Automated	Dear Whomever It May Concern,   Thank you for your email! I am happy to announce the birth of my son Elijah, but unfortunately for you I will be away from email until the end of February.   Thank you for your understanding!  Oliver Blue
+Automated	Hello,   I will be out of the office starting January 1st  through March 3rd  returning March 4th.  If you need immediate assistance during my absence, please contact Laura Smith at lsmith@yahoo.com. Otherwise I will respond to your emails as soon as possible upon my return.  Kindest Regards, Joana Reeves
+Automated	HI!  I will be away from 27 March  until 1 November. For urgent matters, you can contact Olivia Jones  With Regards, William B.
+Automated	I will be out of the office this week. If you need immediate assistance while I’m away, please email bsmith@yahoo.com Respectfully, James
+Automated	Hello,   I am currently on vacation. I'll be able to respond to your email aftter the 8th of March.   Many Thanks,  Patrick
+Automated	Hello! Thank you for your message. I am currently out of the office, with no email access. I will be returning on 27th March. If you need immediate assistance before then, you may reach me at my mobile  00772345678  Sincerely, Amelia
+Automated	Thanks for the email!. I’m currently out of my office and will be back at the end of the week. I will have very limited or no access to my email. For immediate assistance please contact my secretary.  Kind Regards, Louisa
+Automated	Dear  Madame/Sir,   I don't currenlty have access to email because I am on a digital detox. Please be respectful and wait for me to eturn at the end of the month.   Repsectful Regards,  Kate
+Automated	Lora is currently away from her phone, but your message has been safely receieved. She'll respond by the end of the day.   Thank you,  Lora
+Automated	Dear Emailer,   I am  away from all of my devices. I'll be back on February 20th. I am sorry for the delay of my responses.   Yours,  Sonya
+Automated	Thank you for your email. I'll respond in due time!  BR,  Rebecca
+Automated	Your GP Appointment Reminder has been received. Thank you.   Kind Regards,  Lawrence
+Automated	Greetings, Friends or Esteemed Colleagues,  Due to high workload, I am currently checking and responding to e-mail twice daily at 12: 00 P.M. ET  and 4: 00 P.M. ET.  If you require urgent assistance (please ensure it is urgent) that cannot wait until either 12: 00 P.M. or 4: 00 P.M., please contact me via phone at 555-555-5555.  Thank you for understanding this move to more efficiency and effectiveness. It helps me accomplish more to serve you better.  Sincerely,  Alex
+Automated	Hi All,  Due to other commitments, I’m checking email no more than once a week, often less. If it’s truly urgent (cannot wait a week), please call or email my assistant. If you don’t have her info, thank you for waiting until we get back to the inbox.  All the best to you and yours,  Tim
+Automated	Hi All,  Sadly, due to deadlines, I am unable to read or respond to most email. Please don’t be offended, as this is true even for close friends.  If you genuinely need to reach me urgently (if it can wait a week, it’s not urgent) —  – If you have my cell phone, try and call or text me.  – Otherwise, please email my assistant Mary  For other contacts besides Mary, please go here: aliceswebsite.org  Thanks very much for understanding!  All the best to you and yours,  Alice
+Cancel	Hi,  Sorry I can't come anymore.   Thanks for your help, John Doe
+Cancel	Good afternoon, I think there is a mistake - I didn't book an appointment. Can you cancel it?  Dear,  Sir John
+Cancel	I am not coming
+Cancel	I dont want to have an appointment
+Cancel	Sorry, I don't need an appointment
+Cancel	Dear Whomever It May Concern,   Yes,  I scheduled an apppointment but I am unable to come anymore. I'd like to cancel my appointment.   Best, John
+Cancel	Hello, Thankfully I have no further need of the appointment as my leg is feeling much better and I'm no longer worried.  Thank you anyway, John
+Cancel	Hello, I'm afraid that I will have to cancel this appointment as I am very busy for the foreseeable future.  Many Thanks, John.
+Cancel	Hi,  I want to cancel the appointment.   Thank you, John
+Cancel	Hi, i'd like to cancel my appointment.  I've suddenly felt much better, so i don't need an appointment any more.   Thanks! 
+Cancel	I can't make it. Will call the surgery.
+Cancel	Hi,  I want to cancel the appointment.   Thank you, John
+Cancel	Dear Dr. Jones, I unfortunately cannot make it to that time slot and I also have a full schedule for the next 14 days. We will be in touch after these two weeks. Best regards, Nicu de la Cazanesti
+Cancel	Sorry I can't come to my appointment
+Cancel	I am no longer sick so I don't need my appointment anymore.
+Cancel	Hi doctor,  I am feeling much better so won't need to come in  Thanks, Julia
+Cancel	I don't need this anymore
+Cancel	Hi,  I no longer need my appointment with Dr Jones.  Thanks for your help, John
+Cancel	Hi,  I can't make it.  Have a nice day!
+Cancel	I can't make it.
+Cancel	Hello,  Sorry, I won't come, I have something else overlapping with the appointment.  Thank you, Henry
+Cancel	Good afternoon,  I will need to cancel.  Sorry for the inconvenience!
+Cancel	Unfortunately I will not be there. Have a nice day!
+Cancel	Good morning,  I won't manage to be there.  Best regards
+Cancel	Hello,  I apologize, I have a very busy schedule and I can't make it anymore.  Thanks
+Cancel	Hi, I didn't sync it with my calendar and now I have something else I need to do at that time.  Best regards, Anastasia
+Cancel	I do not need to come anymore, I am feeling way better. Thank you!
+Cancel	To whom this may concern,  Something came up and I will not attend it.  Have a nice day!
+Cancel	I apologize as I won't be able to attend an appointment with Mr. Harley.
+Cancel	Hello,   I apologise on behalf of my husband but he is already in another hospital. Sorry for any disturbances,  Mrs, Anna
+Confirm	I am emailing to confirm that I am able to attend the scheduled appointment,  Many Thanks,  *patient name*
+Confirm	Yes I will be able to come
+Confirm	Hello,  I would like to confirm my appointment with *doctor name* on the *date* at *time*.
+Confirm	Good morning,   Yes, indeed I will be coming.
+Confirm	Yes, sure, i will be there
+Confirm	Yup, I will be coming
+Confirm	Good afternoon,  Thank you for your email. I am planning to come but I might be late.
+Confirm	Yes, I am comming
+Confirm	Confirm  Sent from my smart fridge
+Confirm	Confirm
+Confirm	Hi,  I can definitely make this appointment, thank you. I will see you there. Many Thanks, John
+Confirm	Hello,  I can confirm that I will be able to attend on that date.  Best Wishes, John
+Confirm	weston.metzler@gmail.com 
+Confirm	To whom it may concern,  I am writing to confirm the chosen time slot.  Yours sincerely, John von Neumann
+Confirm	I confirm my appointment.
+Confirm	Dear Sir/Madam, I would like to confirm my appointment on 20th February, 2020 at 03:10PM. Thank you for the reminder! 
+Confirm	Thank you very much! I’ll be there. Tom
+Confirm	Dear Sir or Madam,  I am confirming my appointment.   Best regards,  John
+Confirm	Hello,  I would like to confirm that I will be able to attend the appointment.  Best regards, Bogdan
+Confirm	Hello, Thanks you for your email, I confirm the appointment.  Best regards, Florin Salam.
+Confirm	Yes, I am comming
+Confirm	I can come to this. Thanks for the reminder
+Confirm	Sure, I'll be there
+Confirm	YES
+Confirm	Good afternoon,   I really like your system. Thank you for letting me know.   See you soon,
+Confirm	Dont worry, I am planning to come.  Best wishes,  Doran
+Confirm	Good afternoon,   I am currently on the train from Durham and I assume I will arrive on time.  Get Outlook for IOS
+Confirm	Yah i will come
+Confirm	Of course I will come
+Confirm	I AM COMMING!!!!
+Confirm	I am on my way.
+Confirm	To whom it may concern,  I greatly appreciate your invitation. I would like to inform You that my plans are not changing and I will be coming on Tuesday.  Kind regards,  Sir Andrew
+Confirm	I confirm
+Confirm	CONFIRM
+Confirm	Confirmed
+Confirm	I am planning to come
+Confirm	My son has just left and he is coming 
+Other	Hi,  How much does an appointment cost wiht you?  BR,  John 
+Other	Hello,   Can I speak to dr Smith?  I need his advice.   Best,  Betty
+Other	Dear Assitant,   I need help scheduling an appointment.   Sincerely,  Mathhew
+Other	Hello,   How do I subscibe for the NHS? I need health services. Thank you.  Best Regards, Alice
+Other	My daughter Mary, 3 years old, is sick and needs to see her GP immediately, please respond quickly.  -Jane
+Other	Hello,   Can  please get an appointment with Dr. Smith in those times:   22-02-2019 from 11:00 AM to 12:00 PM 22-02-2019 from 03:00 PM to 04:00 PM 25-02-2019 from 03:00 PM to 04:00 PM  Many Thanks,  Ally
+Other	I need an appointment. 
+Other	Good evening,   I received 8 emails already so can I speak to a human?
+Other	"View online Ryanair logo	  Profile icon Sign in to myRyanair This month’s environmental update.  Why we’re Europe’s most efficient airline.  · Point to point flying avoids excess emissions and noise produced by indirect flights.  · New fuel efficient, quieter aircrafts.  · Single engine taxiing between runway and terminal.  · High-density seating design, with light-weight seats which save fuel by reducing weight.    	 Find out more   Reported 67g CO2 in September We deliver the lowest CO2 per passenger/km in the EU airline industry. We deliver a CO2 per passenger km which is 23% lower than the average of Europe's other 4 big airlines. We aim to reduce this to under 60g by 2030.  Read more Our First Climate partnership The funds are used to support a project which distributes energy efficient cookstoves to households in Uganda. It contributes to climate change mitigation and improves the lives of local families.  Read more    	  Renature Monchique Ryanair is partnering with Renature Monchique, who work to restore land in Monchique, after the largest wildfire in Europe in 2018.  Read more    	 Ryanair logo	 2019 © Ryanair DAC.   |   Terms & Conditions   |   Privacy Policy   |   Contact us   |   Unsubscribe "
+Other	Dear John,  You have an appointment with Dr. Jones on 20th February, 2020 at 03:10 PM.   Please reply to this email stating whether you would like to confirm, cancel or reschedule your appointment. In the case you require a different time, please provide 3 one hour slots over the next 14 days when you are available, in the following format: DD-MM-YYYY, from hh:mm AM/PM to hh:mm AM/PM.  Example: 22-02-2019 from 11:00 AM to 12:00 PM 22-02-2019 from 03:00 PM to 04:00 PM 25-02-2019 from 03:00 PM to 04:00 PM  If you have any questions, use the contact details below to get in touch with us.  Thank you and have a nice day!  **********************************************************************************  This is an automated email assistant system helping you remember and confirm/reschedule/cancel your GP appointment. This email system can’t provide you with medical advice and should not be used in case of an emergency. Please DON’T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please use the following contact information:  Surgery contact number: 077 47 355 787 Address: Trinity St., CB3 1VB
+Other	Dear Student,   As you may be aware we have been trying to send your email regarding the outstanding tax returns with value of 550.44 GBP from the last annual calculation of your fiscal activity.   Reference Code - 74782 07771  Security Number ID - 294/A305 The closing date for the deposit is: 1/4/2020 10:22:37 a.m..  Please Complete the money claim form Complete carefully and ensure that everyt hing in correct so that we can refund you the amount in 4,5 working days. Thanks for your time.    Regards, Athina Mitzali 
+Other	Dear contributor  This is the second attempt to let you know about the possibility of a potential reimbursment for your contributions in a total  amount of £550.44. The compensation form must be filled by the 10th of January. Please take time to fill the form at our  official page here:  http://data.gov.uk/servicehm/hmrcustomers/service/reviewandreclaimcompensations.com/Confirm-Valid-HMRC-Compensations   Any delayed forms will not be taken into consideration.   This e-mail was sent automatically to mmm67@cam.ac.uk, please do not reply.   Sincerely,  The HM Revenue & Customs Tax Team 
+Reschedule	Hi there,  Could I please change the tine of my appointment to sometime in the following:  20-04-2020 from 12:00 PM to 13:00 PM 20-04-2020 from 13:00 PM to 14:00 PM 21-04-2020 from 11:00 AM to 12:00 PM  Thanks for your help
+Reschedule	Hello, thank you for letting me know. But I work until 5 so can I come latter?
+Reschedule	Hello,   Oh dear, I have totally forgotten that I have this appointment. I don't know if I could make it or not as I have another appointment at 06-03-2020 05:00 PM. Can I come 15 minutes after this time?   Kind regards,  Johny
+Reschedule	Good morning,   I apologise but my son Robert won't be able to come. We thought that he could come next week for example on 10-03-2020 16:00.  Kind regards,  John
+Reschedule	Good afternoon,   Sorry, but I would like to reschedule my appointment. Can I come to doctor Newmann on 7/03/2020 7AM?  Kind regards,  T. Johnaton
+Reschedule	Hello,  Could I please reschedule to 22-02-2019 at 11:00 AM to 12:00 Pm?  Thank you, John Doe
+Reschedule	I would like to reschedule the appointment. I am available on 22-02-2019 but only from 11:00-11:20.
+Reschedule	I would like to reschedule the appointment. I am only available next Monday (25-01-2019) from 02:00PM to 03:00 PM.
+Reschedule	Hello,   I would like to reschedule my appointment for 21-02-2020 from 08:30 AM to 08:50 AM if possible.   Thank you. Regards,  Anonymous Name
+Reschedule	Hello,  I will not be able to attend the proposed time. I would like to reschedule for one of the following:  23-02-2020 from 07:00 AM to 08:00 AM 23-02-2020 from 11:00 PM to 12:00 PM 25-02-2020 from 06:00 AM to 07:00 AM  Best regards, Your number 1 fan
+Reschedule	DD@R,  When I see you my heart goes to 160. Please reschedule ASAP. I'm having a heart attack.
+Reschedule	Dear Sir/Madam,  I cannot make these times so would like to reschedule if possible.  Here are the times I can make: 22-02-2020 from 2:00pm to 5:00pm  Thanks, John Knee
+Reschedule	Dear Dr Jones,  I need a different time for my appointment. How about 22-02-2020 from 11:00 AM to 01:00 PM or 23-02-2020 from 12:00 PM to 01:00 PM. If not one of those, maybe 24-02-2020 from 12:00 PM to 13:00 PM?  Thanks for your help, John
+Reschedule	Unfortunately I can't do that time anymore, is there another time I could have instead?
+Reschedule	Hello,  I will need to postpone the appointment, what about  22-07-2019 from 11:00 AM to 12:00 PM 22-07-2019 from 03:00 PM to 04:00 PM 25-07-2019 from 03:00 PM to 04:00 PM?  Sorry for the inconvenience!
+Reschedule	Good morning,   Thank you for your email. I would like to reschedule my appointment to 06-12-2020 on 02:45 PM or 07-12-2020 on 02:45.  Thanks,
+Reschedule	Hi i cant make it. Can I come on tuesday?
+Reschedule	Hello,   Can I please reschedule?   Good dates for me are:  23-02-2019 from 09:00 AM to 10:00 AM 22-02-2019 from 03:30 PM to 04:30 PM 25-02-2019 from 04:30 PM to 05:30 PM  Thanks,  Stacey
+Reschedule	I want to rescedule to a different time like 11 am on 25th of April.
+Reschedule	Hey,   Can I please change my appointment time, I need to tak emy dog to the vet at the current time of the appointment.   Best,  John
+Reschedule	Hello, can I come on 12-01-2018 06:55 PM
+Reschedule	Oh dear, can I just come on 15-04-2021 15?
+Reschedule	Dear Assistant,  I need a new appointment. I would prefer the following time slots:  03-03-2020 from 16:00 to 17:00 04-03-2020 from 09:00 to 10:00 04-03-2020 from 10:00 to 11:00
+Reschedule	Good evening,   I would like to come on Monday, 28th of March, 5PM.
+Reschedule	Good afternoon, can you suggest some other times from 1/5/2005 to 5/5/2005?
+Reschedule	I need a new appointment on either of those dates: 15-02-2020 from 16:00 to 17:00 16-02-2020 from 16:00 to 17:00 17-02-2020 from 16:00 to 17:00
+Reschedule	I would like to change the time of my appointment. How about 24-03-2020 from 12:00 PM to 01:00 PM or 24-03-2020 from 01:00 PM to 02:00 PM or 24-03-2020 from 02:00 PM to 03:00 PM
+Reschedule	Dear Mr. Chatbot,   Me cant go today. Me wnat go on Tuesday
+Reschedule	Hello,   I'd like to change the time of my appointment. These dates suit me: 22-04-2020 from 10:00 AM to 11:00 AM 22-04-2020 from 03:00 PM to 04:00 PM 25-04-2020 from 03:00 PM to 04:00 PM  Looking forward to your response!  BR,  John
+Reschedule	I need to reschedule. 
+Reschedule	Hello,   I am sorry to tell, but I won't be able to come today. Can I come for an appointment on 8/4/2021 4PM?  Best wishes, John Johnaton,   john.johnaton@gmail.com
