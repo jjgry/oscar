@@ -34,27 +34,45 @@ class DBConnection {
   }
 
   /**
-   * Opens a connection to the database and executes an SQL command.
-   *
+   * @return whether a new connection has been created successfully
+   */
+  boolean newConnection() {
+    try {
+      con = DriverManager.getConnection(CONNECTION, USERNAME, PASSWORD);
+    } catch (SQLException e) {
+      System.err.println("Error opening connection: " + e.getMessage());
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * @return whether terminating the connection has been successful
+   */
+  boolean endConnection() {
+    if (con != null) {
+      try {
+        con.close();
+      } catch (SQLException e) {
+        System.err.println("Error closing connection: " + e.getMessage());
+        return false;
+      }
+      return true;
+    }
+    return false;
+  }
+
+  /**
    * @param query an SQL query to be executed on the database
    * @return a ResultSet object containing return table of the SQL query
    */
   ResultSet execute(String query) {
     ResultSet rs = null;
     try {
-      con = DriverManager.getConnection(CONNECTION, USERNAME, PASSWORD);
       Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
       rs =  stmt.executeQuery(query);
     } catch (SQLException e) {
-      System.err.println("Error opening connection: " + e.getMessage());
-    } finally {
-      if (con != null) {
-        try {
-          con.close();
-        } catch (SQLException e) {
-          System.err.println("Error closing connection: " + e.getMessage());
-        }
-      }
+      System.err.println("Error executing query: " + e.getMessage());
     }
     return rs;
   }
