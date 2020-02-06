@@ -9,16 +9,12 @@ import java.util.List;
 public class DBInterface {
 
   private DBConnection database;
-  private String username;
-  private String password;
-  private String ip;
-
 
   /**
    * Initialises the database connection object
    */
-  public DBInterface (String username, String password) {
-    database = new DBConnection("10.248.114.7", "jj", "teamoscar");
+  public DBInterface (String ip, String username, String password) {
+    database = new DBConnection(ip, username, password);
   }
 
   /**
