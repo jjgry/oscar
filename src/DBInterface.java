@@ -1,4 +1,6 @@
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,6 +9,7 @@ import java.util.List;
 public class DBInterface {
 
   private DBConnection database;
+
 
   /**
    * Initialises the database connection object
@@ -18,9 +21,29 @@ public class DBInterface {
   /**
    * @return a representation of the email addresses and appointment information.
    */
-  public Object remindersToSendToday() {
-    String command = "EXAMPLE COMMAND";
-    ResultSet rs = database.execute(command);
+  public List<Appointment> remindersToSendToday() {
+
+    ResultSet rs = database.execute(Queries.GET_APP_TO_REMIND);
+    List<Appointment> appointmentList = new ArrayList<>();
+    try {
+      while (rs.next())
+      {
+        Appointment app = new Appointment();
+        app.setAppID(rs.getInt("app_id"));
+        app.setDatetime(rs.getString("timeslot"));
+        app.setDoctorName(rs.getString("doctor_name"));
+        app.setPatientEmail(rs.getString("patient_email"));
+        app.setPatientName(rs.getString("name"));
+        appointmentList.add(app);
+      }
+      return appointmentList;
+    }
+    catch (SQLException e)
+    {
+      System.out.println("SQLException occured.");
+    }
+
+
     // must deal with runtime exceptions such as timeout somewhere
 
     // make data into readable form for kernel
