@@ -9,6 +9,10 @@ public class Queries {
     public static final String GET_APPS = "SELECT timeslot, doctor_id, location FROM SurgeryAssistant.Timeslots \n" +
             "where (timeslot between \"%1$s\" AND \"%2$s\") AND (doctor_id = %3$s);";
 
-    public static final String REJECT_APP = "";
+    public static final String REJECT_APP = "UPDATE SurgeryAssistant.Timeslots \n" +
+            "SET \n" +
+            "\tavailable = 1\n" +
+            "where timeslot_id = ( SELECT timeslot_id from SurgeryAssistant.Appointments where app_id = %s) ;";
+
 
 }

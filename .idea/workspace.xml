@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/DBInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +29,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
               <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -47,8 +45,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DBInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="72" column="62" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
+            <state relative-caret-position="291">
+              <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#560#561#0" expanded="true" />
@@ -57,8 +55,8 @@
                 <element signature="e#777#778#0" expanded="true" />
                 <element signature="e#2103#2104#0" expanded="true" />
                 <element signature="e#2125#2126#0" expanded="true" />
-                <element signature="e#3799#3800#0" expanded="true" />
-                <element signature="e#4184#4185#0" expanded="true" />
+                <element signature="e#3873#3874#0" expanded="true" />
+                <element signature="e#4258#4259#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/src/Queries.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <caret line="14" column="106" selection-start-line="14" selection-start-column="106" selection-end-line="14" selection-end-column="106" />
             </state>
           </provider>
         </entry>
@@ -136,8 +134,8 @@
         <option value="$PROJECT_DIR$/src/Appointment.java" />
         <option value="$PROJECT_DIR$/src/DBConnectionTrial.java" />
         <option value="$PROJECT_DIR$/src/DBConnection.java" />
-        <option value="$PROJECT_DIR$/src/Queries.java" />
         <option value="$PROJECT_DIR$/src/Timeslot.java" />
+        <option value="$PROJECT_DIR$/src/Queries.java" />
         <option value="$PROJECT_DIR$/src/DBInterface.java" />
       </list>
     </option>
@@ -168,7 +166,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580993385154" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580994294609" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql-connector.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -333,16 +331,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DBConnectionTrial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Kernel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-647">
@@ -371,10 +359,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/getAppointmentsSoon.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DBConnectionTrial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Queries.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <caret line="14" column="106" selection-start-line="14" selection-start-column="106" selection-end-line="14" selection-end-column="106" />
         </state>
       </provider>
     </entry>
@@ -398,17 +400,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getAppointmentsSoon.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DBInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="72" column="62" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
+        <state relative-caret-position="291">
+          <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#560#561#0" expanded="true" />
@@ -417,8 +412,8 @@
             <element signature="e#777#778#0" expanded="true" />
             <element signature="e#2103#2104#0" expanded="true" />
             <element signature="e#2125#2126#0" expanded="true" />
-            <element signature="e#3799#3800#0" expanded="true" />
-            <element signature="e#4184#4185#0" expanded="true" />
+            <element signature="e#3873#3874#0" expanded="true" />
+            <element signature="e#4258#4259#0" expanded="true" />
           </folding>
         </state>
       </provider>

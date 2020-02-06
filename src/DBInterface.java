@@ -98,14 +98,16 @@ public class DBInterface {
   }
 
   /**
-   * Update the DB to reject the new appointment time
+   * Update the DB to reject the appointment time
    *
    * @param appointmentID the appointment to be rejected
    * @return true if the update was successful
    */
-  public boolean rejectNewTime(String appointmentID) {
-    // remove timeslot associated with appointment
-    return false;
+  public boolean rejectTime(int appointmentID) {
+
+      return database.execute(String.format(Queries.REJECT_APP, appointmentID)) != null;
+
+    
   }
 
   /**
