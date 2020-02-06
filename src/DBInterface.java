@@ -1,5 +1,6 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,17 +63,17 @@ public class DBInterface {
    * @param endDatetime look for dates before
    * @return a representation the available appointments for the patient
    */
-  public List<Appointment> getAppointments(int doctorID, String startDatetime, String endDatetime) {
+  public List<Timeslot> getAppointments(int doctorID, String startDatetime, String endDatetime) {
     ResultSet rs = database.execute(String.format(Queries.GET_APPS, startDatetime, endDatetime, doctorID));
-    List<Appointment> appointmentList = new ArrayList<>();
+    List<Timeslot> appointmentList = new ArrayList<>();
     try {
       while (rs.next()) {
-        Appointment app = new Appointment();
-        app.setAppID(rs.getInt("app_id"));
-        app.setDatetime(rs.getString("timeslot"));
-        app.setDoctorName(rs.getString("doctor_name"));
-        app.setPatientEmail(rs.getString("patient_email"));
-        app.setPatientName(rs.getString("name"));
+        Timeslot app = new Timeslot();
+
+        app.setStartTime(rs.getString("timeslot"));
+        app.setDoctorID(rs.getInt("doctor_id"));
+        app.setLocation(rs.getString("location"));
+
         appointmentList.add(app);
       }
       return appointmentList;
