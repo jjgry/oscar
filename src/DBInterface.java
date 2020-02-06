@@ -57,13 +57,13 @@ public class DBInterface {
   }
 
   /**
-   * @param doctor the doctor we want appointments for
+   * @param doctorID the doctor we want appointments for
    * @param startDatetime look for dates after
    * @param endDatetime look for dates before
    * @return a representation the available appointments for the patient
    */
-  public List<Appointment> getAppointments(String doctor, String startDatetime, String endDatetime) {
-    ResultSet rs = database.execute(Queries.GET_APPS);
+  public List<Appointment> getAppointments(int doctorID, String startDatetime, String endDatetime) {
+    ResultSet rs = database.execute(String.format(Queries.GET_APPS, startDatetime, endDatetime, doctorID));
     List<Appointment> appointmentList = new ArrayList<>();
     try {
       while (rs.next()) {
