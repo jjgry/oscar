@@ -76,4 +76,20 @@ class DBConnection {
     return rs;
   }
 
+  /**
+   * @param query an SQL query to be executed on the database
+   * @return whether the query has been successful
+   */
+  boolean executeUpdate(String query) {
+    boolean success = false;
+    try {
+      Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+      success = stmt.execute(query);
+    } catch (SQLException e) {
+      System.err.println("Error executing query: " + e.getMessage());
+      return false;
+    }
+    return !success;
+  }
+
 }

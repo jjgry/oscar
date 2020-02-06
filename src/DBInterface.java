@@ -104,10 +104,7 @@ public class DBInterface {
    * @return true if the update was successful
    */
   public boolean rejectTime(int appointmentID) {
-
-      return database.execute(String.format(Queries.REJECT_APP, appointmentID)) != null;
-
-    
+    return database.executeUpdate(String.format(Queries.REJECT_APP, appointmentID));
   }
 
   /**
