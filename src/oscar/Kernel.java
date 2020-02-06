@@ -28,8 +28,8 @@ public class Kernel {
         //SETUP
         //Initialise the queues for the Receiver -> Kernel and the Kernel -> Sender
 
-        //ThreadQueue<OutgoingMessage> OutQ = new ThreadQueue<OutgoingMessage>();
-        //ThreadQueue<IncomingMessage> InQ = new ThreadQueue<IncomingMessage>();
+        SegmentQueue<OutgoingMessage> OutQ = new SegmentQueue<>();
+        SegmentQueue<IncomingMessage> InQ = new SegmentQueue<>();
 
         // TODO: Establish the Interface to the database.
 
