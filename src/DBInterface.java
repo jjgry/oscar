@@ -70,7 +70,9 @@ public class DBInterface {
       while (rs.next()) {
         Timeslot app = new Timeslot();
 
-        app.setStartTime(rs.getString("timeslot"));
+       String startime = rs.getString("timeslot");
+       startime = startime.substring(0, startime.length()-2);
+       app.setStartTime(startime);
         app.setDoctorID(rs.getInt("doctor_id"));
         app.setLocation(rs.getString("location"));
 
