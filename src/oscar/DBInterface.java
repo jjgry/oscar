@@ -1,3 +1,5 @@
+package oscar;
+
 /**
  * Provides functions for the kernel to call to access and modify the database
  */
