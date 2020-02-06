@@ -36,12 +36,10 @@ public class DBInterface {
    * @return a representation of the email addresses and appointment information.
    */
   public List<Appointment> remindersToSendToday() {
-
     ResultSet rs = database.execute(Queries.GET_APP_TO_REMIND);
     List<Appointment> appointmentList = new ArrayList<>();
     try {
-      while (rs.next())
-      {
+      while (rs.next()) {
         Appointment app = new Appointment();
         app.setAppID(rs.getInt("app_id"));
         app.setDatetime(rs.getString("timeslot"));
@@ -52,26 +50,36 @@ public class DBInterface {
       }
       return appointmentList;
     }
-    catch (SQLException e)
-    {
-      System.out.println("SQLException occured.");
+    catch (SQLException e) {
+      System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
     }
-
-
-    // must deal with runtime exceptions such as timeout somewhere
-
-    // make data into readable form for kernel
-
     return null;
   }
 
   /**
    * @param doctor the doctor we want appointments for
-   * @param startDate look for dates after
-   * @param endDate look for dates before
+   * @param startDatetime look for dates after
+   * @param endDatetime look for dates before
    * @return a representation the available appointments for the patient
    */
-  public List<Appointment> getAppointments(String doctor, String startDate, String endDate) {
+  public List<Appointment> getAppointments(String doctor, String startDatetime, String endDatetime) {
+    ResultSet rs = database.execute(Queries.GET_APPS);
+    List<Appointment> appointmentList = new ArrayList<>();
+    try {
+      while (rs.next()) {
+        Appointment app = new Appointment();
+        app.setAppID(rs.getInt("app_id"));
+        app.setDatetime(rs.getString("timeslot"));
+        app.setDoctorName(rs.getString("doctor_name"));
+        app.setPatientEmail(rs.getString("patient_email"));
+        app.setPatientName(rs.getString("name"));
+        appointmentList.add(app);
+      }
+      return appointmentList;
+    }
+    catch (SQLException e) {
+      System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
+    }
     return null;
   }
 
@@ -82,7 +90,8 @@ public class DBInterface {
    * @return true if the update was successful
    */
   public boolean confirmNewTime(String appointmentID) {
-    return false;
+    // nothing changes in the database so do nothing
+    return true;
   }
 
   /**
@@ -92,6 +101,7 @@ public class DBInterface {
    * @return true if the update was successful
    */
   public boolean rejectNewTime(String appointmentID) {
+    // remove timeslot associated with appointment
     return false;
   }
 

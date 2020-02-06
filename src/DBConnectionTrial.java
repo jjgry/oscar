@@ -12,9 +12,5 @@ class DBConnectionTrial {
     for (Appointment app : apps) {
       System.out.println(app.getPatientEmail());
     }
-
-
   }
-
 }
-

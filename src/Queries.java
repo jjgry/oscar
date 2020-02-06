@@ -6,4 +6,8 @@ public class Queries {
             "LEFT JOIN SurgeryAssistant.Timeslots on SurgeryAssistant.Appointments.timeslot_id=SurgeryAssistant.Timeslots.timeslot_id\n" +
             "WHERE DATE(timeslot)=DATE_ADD(CURDATE(), INTERVAL 1 DAY) OR DATE(timeslot)=DATE_ADD(CURDATE(), INTERVAL 9 DAY);";
 
+    public static final String GET_APPS = "";
+
+    public static final String REJECT_APP = "";
+
 }

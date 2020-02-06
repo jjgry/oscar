@@ -1,5 +1,5 @@
 public class Appointment {
-  int appID;
+  private int appID;
   private String patientEmail;
   private String patientName;
   private String doctorName;

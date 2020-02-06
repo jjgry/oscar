@@ -13,7 +13,6 @@ class DBConnection {
   private String CONNECTION;
   private String USERNAME;
   private String PASSWORD;
-  //  private String IP = "10.248.114.7";
   private Connection con;
 
   /**
