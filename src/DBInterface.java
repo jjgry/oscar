@@ -1,4 +1,6 @@
 import java.sql.ResultSet;
+import java.util.List;
+
 /**
  * Provides functions for the kernel to call to access and modify the database
  */
@@ -18,14 +20,9 @@ public class DBInterface {
    */
   public Object remindersToSendToday() {
     String command = "EXAMPLE COMMAND";
-    try {
-      ResultSet rs = database.execute(command);
-    } catch (Exception e) {
-      System.err.println(e.getMessage());
-      // runtime exceptions such as timeout
+    ResultSet rs = database.execute(command);
+    // must deal with runtime exceptions such as timeout somewhere
 
-      // handle exception in some meaningful way, either return an exception to the kernel or try again
-    }
     // make data into readable form for kernel
 
     return null;
@@ -37,7 +34,7 @@ public class DBInterface {
    * @param endDate look for dates before
    * @return a representation the available appointments for the patient
    */
-  public Object getAppointments(String doctor, String startDate, String endDate) {
+  public List<Appointment> getAppointments(String doctor, String startDate, String endDate) {
     return null;
   }
 
