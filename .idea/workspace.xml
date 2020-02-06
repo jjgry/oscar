@@ -122,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580989353658</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="final commit before branching Kernel">
+      <created>1580989825244</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580989825244</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -131,18 +138,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="final commit before branching Kernel" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="532" y="149" width="912" height="807" key="CommitChangelistDialog2" timestamp="1580989776808">
+    <state x="532" y="149" width="912" height="807" key="CommitChangelistDialog2" timestamp="1580989824989">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="532" y="149" width="912" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1580989776808" />
+    <state x="532" y="149" width="912" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1580989824989" />
     <state x="67" y="27" width="1843" height="1053" key="FileDocumentManager.FileCacheConflict" timestamp="1580989132636">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="67" y="27" width="1843" height="1053" key="FileDocumentManager.FileCacheConflict/67.27.1853.1053@67.27.1853.1053" timestamp="1580989132636" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580989357727">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580989932833">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1580989357727" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1580989932833" />
     <state x="761" y="472" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580989179156">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
