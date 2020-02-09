@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="">
+    <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="adding lib with bins and training data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/training-data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oscar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oscar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/oscar/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/oscar/DBConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DocumentCategorizer.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SurgeryAssistant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SurgeryAssistant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ThreadQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ThreadQueue.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,19 +41,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DocumentCategorizer.txt">
+        <entry file="file://$PROJECT_DIR$/src/EmailFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/EmailFormatter.java">
+        <entry file="file://$PROJECT_DIR$/src/SurgeryAssistant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="150">
+              <caret line="98" column="36" selection-start-line="98" selection-start-column="36" selection-end-line="98" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ThreadQueue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="70" column="21" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Kernel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -61,6 +88,12 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>training</find>
+      <find>training-da</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -72,6 +105,11 @@
         <option value="$PROJECT_DIR$/src/DBInterface.java" />
         <option value="$PROJECT_DIR$/src/DocumentCategorizer.txt" />
         <option value="$PROJECT_DIR$/src/EmailFormatter.java" />
+        <option value="$PROJECT_DIR$/src/ThreadQueue.java" />
+        <option value="$PROJECT_DIR$/data/training-data.txt" />
+        <option value="$PROJECT_DIR$/src/training-data.txt" />
+        <option value="$PROJECT_DIR$/lib/training-data.txt" />
+        <option value="$PROJECT_DIR$/src/SurgeryAssistant.java" />
       </list>
     </option>
   </component>
@@ -97,13 +135,12 @@
             <path>
               <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
               <item name="oscar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
               <item name="oscar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -113,8 +150,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580992594199" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql-connector.jar!/" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581251963797" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -122,6 +159,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\milam\Desktop\IB\GroupProject\oscar\lib" />
       <recent name="C:\Users\jjgray\Documents\compsci\group-project\oscar\src" />
     </key>
   </component>
@@ -137,9 +175,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DBConnection">
+  <component name="RunManager" selected="Application.SurgeryAssistant">
     <configuration name="DBConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DBConnection" />
+      <module name="oscar" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SurgeryAssistant" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SurgeryAssistant" />
       <module name="oscar" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -152,9 +197,11 @@
     <list>
       <item itemvalue="Application.DBConnection" />
       <item itemvalue="JAR Application.mysql-connector.jar" />
+      <item itemvalue="Application.SurgeryAssistant" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SurgeryAssistant" />
         <item itemvalue="Application.DBConnection" />
         <item itemvalue="JAR Application.mysql-connector.jar" />
       </list>
@@ -199,14 +246,22 @@
       <option name="project" value="LOCAL" />
       <updated>1580992506405</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="adding data folder">
+      <created>1580992671789</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1580992671789</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="simpleUML" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20242915" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14898786" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -215,7 +270,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32954547" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3285968" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -225,7 +280,7 @@
       <window_info anchor="bottom" id="Floobits" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32954547" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.3285968" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
       <window_info anchor="right" id="Codota" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -243,7 +298,9 @@
     <MESSAGE value="Connecting to DB unsuccessfully" />
     <MESSAGE value="testing commit for branch classifier" />
     <MESSAGE value="new class email formatter" />
-    <option name="LAST_COMMIT_MESSAGE" value="new class email formatter" />
+    <MESSAGE value="adding data folder" />
+    <MESSAGE value="adding lib with bins and training data" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding lib with bins and training data" />
   </component>
   <component name="editorHistoryManager">
     <entry file="db://66e319c0-02d0-41db-b411-f012c4244db8/consoles/Connection" />
@@ -271,10 +328,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apache-opennlp-1.9.2/bin/brat-annotation-service">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kernel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ThreadQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="70" column="21" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.9.2.jar!/opennlp/tools/util/MarkableFileInputStreamFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/training-data.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="149" column="99" selection-start-line="149" selection-start-column="99" selection-end-line="149" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/EmailFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/training-data.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="102" column="1171" selection-start-line="102" selection-start-column="1171" selection-end-line="102" selection-end-column="1171" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SurgeryAssistant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="98" column="36" selection-start-line="98" selection-start-column="36" selection-end-line="98" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

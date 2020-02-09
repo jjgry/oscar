@@ -61,26 +61,26 @@ public class SurgeryAssistant {
             boolean conversationComplete = false;
 
 
-                // Separate words from each sentence using tokenizer.
-                String[] tokens = tokenizeSentence(userInput);
+            // Separate words from each sentence using tokenizer.
+            String[] tokens = tokenizeSentence(userInput);
 
-                // Tag separated words with POS tags to understand their gramatical structure.
-                String[] posTags = detectPOSTags(tokens);
+            // Tag separated words with POS tags to understand their gramatical structure.
+            String[] posTags = detectPOSTags(tokens);
 
-                // Lemmatize each word so that its easy to categorize.
-                String[] lemmas = lemmatizeTokens(tokens, posTags);
+            // Lemmatize each word so that its easy to categorize.
+            String[] lemmas = lemmatizeTokens(tokens, posTags);
 
-                // Determine BEST category using lemmatized tokens used a mode that we trained
-                // at start.
-                String category = detectCategory(model, lemmas);
+            // Determine BEST category using lemmatized tokens used a mode that we trained
+            // at start.
+            String category = detectCategory(model, lemmas);
 
-                // Get predefined answer from given category & add to answer.
-                answer = answer + " " + questionAnswer.get(category);
+            // Get predefined answer from given category & add to answer.
+            answer = answer + " " + questionAnswer.get(category);
 
-                // If category conversation-complete, we will end chat conversation.
-                if ("conversation-complete".equals(category)) {
-                    conversationComplete = true;
-                }
+            // If category conversation-complete, we will end chat conversation.
+            if ("conversation-complete".equals(category)) {
+                conversationComplete = true;
+            }
 
             // Print answer back to user. If conversation is marked as complete, then end
             // loop & program.
@@ -96,7 +96,7 @@ public class SurgeryAssistant {
     /**
      * Train categorizer model as per the category sample training data we created.
      *
-     * @return
+     * @return trainCategorizerModel
      * @throws FileNotFoundException
      * @throws IOException
      */
@@ -104,7 +104,7 @@ public class SurgeryAssistant {
         // faq-categorizer.txt is a custom training data with categories as per our chat
         // requirements.
         InputStreamFactory inputStreamFactory = new MarkableFileInputStreamFactory(new File(
-                "model" + File.separator + "training-data.txt"));
+            "lib/training-data.txt"));
         ObjectStream<String> lineStream = new PlainTextByLineStream(inputStreamFactory, StandardCharsets.UTF_8);
         ObjectStream<DocumentSample> sampleStream = new DocumentSampleStream(lineStream);
 
@@ -175,7 +175,7 @@ public class SurgeryAssistant {
     private static String[] tokenizeSentence(String sentence) throws FileNotFoundException, IOException {
         // Better to read file once at start of program & store model in instance
         // variable. but keeping here for simplicity in understanding.
-        try (InputStream modelIn = new FileInputStream("model" + File.separator + "en-token.bin")) {
+        try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-token.bin")) {
 
             // Initialize tokenizer tool
             TokenizerME myCategorizer = new TokenizerME(new TokenizerModel(modelIn));
@@ -200,7 +200,7 @@ public class SurgeryAssistant {
     private static String[] detectPOSTags(String[] tokens) throws IOException {
         // Better to read file once at start of program & store model in instance
         // variable. but keeping here for simplicity in understanding.
-        try (InputStream modelIn = new FileInputStream("model" + File.separator + "en-pos-maxent.bin")) {
+        try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-pos-maxent.bin")) {
 
             // Initialize POS tagger tool
             POSTaggerME myCategorizer = new POSTaggerME(new POSModel(modelIn));
@@ -225,10 +225,10 @@ public class SurgeryAssistant {
      * @throws IOException
      */
     private static String[] lemmatizeTokens(String[] tokens, String[] posTags)
-            throws InvalidFormatException, IOException {
+        throws InvalidFormatException, IOException {
         // Better to read file once at start of program & store model in instance
         // variable. but keeping here for simplicity in understanding.
-        try (InputStream modelIn = new FileInputStream("model" + File.separator + "en-lemmatizer.bin")) {
+        try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-lemmatizer.bin")) {
 
             // Tag sentence.
             LemmatizerME myCategorizer = new LemmatizerME(new LemmatizerModel(modelIn));
