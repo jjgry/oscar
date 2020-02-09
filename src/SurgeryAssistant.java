@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -34,17 +33,18 @@ import opennlp.tools.util.TrainingParameters;
 import opennlp.tools.util.model.ModelUtil;
 
 /**
- * Custom chat bot or chat agent for automated chat replies for FAQs. It uses
- * different features of Apache OpenNLP for understanding what user is asking
- * for. NLP is natural language processing.
- *
+ * Ethical surgery assistant for automated email replies. It uses
+ * different features of Apache OpenNLP for understanding whether the
+ * patient is confirming, canceling or rescheduling the appointment
+ * or whether the assistant is dealing with an automated email
+ * (or none of the situations described above).
  */
 public class SurgeryAssistant {
 
     private static Map<String, String> questionAnswer = new HashMap<>();
 
 
-    public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
 
         // Train categorizer model to the training data we created.
         DoccatModel model = trainCategorizerModel();
@@ -55,54 +55,27 @@ public class SurgeryAssistant {
 
             // Get chat input from user.
             System.out.println("##### You:");
-            String userInput = scanner.nextLine();
+            String emailText = scanner.nextLine();
 
             String answer = "";
-            boolean conversationComplete = false;
 
-
-            // Separate words from each sentence using tokenizer.
-            String[] tokens = tokenizeSentence(userInput);
-
-            // Tag separated words with POS tags to understand their gramatical structure.
-            String[] posTags = detectPOSTags(tokens);
-
-            // Lemmatize each word so that its easy to categorize.
-            String[] lemmas = lemmatizeTokens(tokens, posTags);
-
-            // Determine BEST category using lemmatized tokens used a mode that we trained
-            // at start.
-            String category = detectCategory(model, lemmas);
+            String category = assignCategoryToEmail(emailText, model);
 
             // Get predefined answer from given category & add to answer.
             answer = answer + " " + questionAnswer.get(category);
 
-            // If category conversation-complete, we will end chat conversation.
-            if ("conversation-complete".equals(category)) {
-                conversationComplete = true;
-            }
 
             // Print answer back to user. If conversation is marked as complete, then end
             // loop & program.
             System.out.println("##### Assistant: " + answer);
-            if (conversationComplete) {
-                break;
-            }
-
         }
-
     }
 
     /**
      * Train categorizer model as per the category sample training data we created.
-     *
-     * @return trainCategorizerModel
-     * @throws FileNotFoundException
-     * @throws IOException
      */
-    private static DoccatModel trainCategorizerModel() throws FileNotFoundException, IOException {
-        // faq-categorizer.txt is a custom training data with categories as per our chat
-        // requirements.
+    private static DoccatModel trainCategorizerModel() throws IOException {
+        // training-data.txt is a custom training data with categories as per our chat requirements.
         InputStreamFactory inputStreamFactory = new MarkableFileInputStreamFactory(new File(
             "lib/training-data.txt"));
         ObjectStream<String> lineStream = new PlainTextByLineStream(inputStreamFactory, StandardCharsets.UTF_8);
@@ -120,14 +93,28 @@ public class SurgeryAssistant {
     }
 
     /**
-     * Detect category using given token. Use categorizer feature of Apache OpenNLP.
-     *
-     * @param model
-     * @param finalTokens
-     * @return
-     * @throws IOException
+     * Assign to the text of an email one of the categories: CONFIRM, CANCEL, RESCHEDULE, AUTOMATED, OTHER.
      */
-    private static String detectCategory(DoccatModel model, String[] finalTokens) throws IOException {
+    private static String assignCategoryToEmail(String emailText, DoccatModel model) throws IOException {
+        // Separate words from each sentence using tokenizer.
+        String[] tokens = tokenizeSentence(emailText);
+
+        // Tag separated words with POS tags to understand their grammatical structure.
+        String[] posTags = detectPOSTags(tokens);
+
+        // Lemmatize each word so that its easy to categorize.
+        String[] lemmas = lemmatizeTokens(tokens, posTags);
+
+        // Determine BEST category using lemmatized tokens used a mode that we trained at start.
+        String category = detectCategory(model, lemmas);
+
+        return category;
+    }
+
+    /**
+     * Detect category using given token using the categorizer feature of Apache OpenNLP.
+     */
+    private static String detectCategory(DoccatModel model, String[] finalTokens) {
 
         // Initialize document categorizer tool
         DocumentCategorizerME myCategorizer = new DocumentCategorizerME(model);
@@ -138,43 +125,28 @@ public class SurgeryAssistant {
         System.out.println("Category: " + category);
 
         return category;
-
     }
 
     /**
-     * Break data into sentences using sentence detection feature of Apache OpenNLP.
-     *
-     * @param data
-     * @return
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Break data into sentences using the sentence detection feature of Apache OpenNLP.
      */
-    private static String[] breakSentences(String data) throws FileNotFoundException, IOException {
-        // Better to read file once at start of program & store model in instance
-        // variable. but keeping here for simplicity in understanding.
+    private static String[] breakSentences(String data) throws IOException {
         try (InputStream modelIn = new FileInputStream("model" + File.separator + "en-sent.bin")) {
 
             SentenceDetectorME myCategorizer = new SentenceDetectorME(new SentenceModel(modelIn));
 
             String[] sentences = myCategorizer.sentDetect(data);
-            System.out.println("Sentence Detection: " + Arrays.stream(sentences).collect(Collectors.joining(" | ")));
+            System.out.println("Sentence Detection: " + Arrays.stream(sentences).collect(Collectors
+                    .joining(" | ")));
 
             return sentences;
         }
     }
 
     /**
-     * Break sentence into words & punctuation marks using tokenizer feature of
-     * Apache OpenNLP.
-     *
-     * @param sentence
-     * @return
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Break sentence into words & punctuation marks using the tokenizer feature of Apache OpenNLP.
      */
-    private static String[] tokenizeSentence(String sentence) throws FileNotFoundException, IOException {
-        // Better to read file once at start of program & store model in instance
-        // variable. but keeping here for simplicity in understanding.
+    private static String[] tokenizeSentence(String sentence) throws IOException {
         try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-token.bin")) {
 
             // Initialize tokenizer tool
@@ -185,21 +157,13 @@ public class SurgeryAssistant {
             System.out.println("Tokenizer : " + Arrays.stream(tokens).collect(Collectors.joining(" | ")));
 
             return tokens;
-
         }
     }
 
     /**
-     * Find part-of-speech or POS tags of all tokens using POS tagger feature of
-     * Apache OpenNLP.
-     *
-     * @param tokens
-     * @return
-     * @throws IOException
+     * Find part-of-speech tags of all tokens using the POS tagger feature of Apache OpenNLP.
      */
     private static String[] detectPOSTags(String[] tokens) throws IOException {
-        // Better to read file once at start of program & store model in instance
-        // variable. but keeping here for simplicity in understanding.
         try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-pos-maxent.bin")) {
 
             // Initialize POS tagger tool
@@ -210,24 +174,13 @@ public class SurgeryAssistant {
             System.out.println("POS Tags : " + Arrays.stream(posTokens).collect(Collectors.joining(" | ")));
 
             return posTokens;
-
         }
-
     }
 
     /**
-     * Find lemma of tokens using lemmatizer feature of Apache OpenNLP.
-     *
-     * @param tokens
-     * @param posTags
-     * @return
-     * @throws InvalidFormatException
-     * @throws IOException
+     * Find lemma of tokens using the lemmatizer feature of Apache OpenNLP.
      */
-    private static String[] lemmatizeTokens(String[] tokens, String[] posTags)
-        throws InvalidFormatException, IOException {
-        // Better to read file once at start of program & store model in instance
-        // variable. but keeping here for simplicity in understanding.
+    private static String[] lemmatizeTokens(String[] tokens, String[] posTags) throws IOException {
         try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-lemmatizer.bin")) {
 
             // Tag sentence.
@@ -236,7 +189,6 @@ public class SurgeryAssistant {
             System.out.println("Lemmatizer : " + Arrays.stream(lemmaTokens).collect(Collectors.joining(" | ")));
 
             return lemmaTokens;
-
         }
     }
 }

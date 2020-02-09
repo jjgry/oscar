@@ -28,6 +28,11 @@ Automated	I will be back in the office on Monday, 24-02-2020. You are welcome to
 Cancel	Sorry I can't come anymore.  
 Cancel	I think there is a mistake - I didn't book an appointment. Can you cancel it? 
 Cancel	I am not coming
+Cancel  I can't come.
+Cancel  I won't come.
+Cancel  I can't make it.
+Cancel  I won't make it.
+Cancel  I won't be able to come.
 Cancel	I dont want to have an appointment
 Cancel	Sorry, I don't need an appointment
 Cancel	  Yes,  I scheduled an apppointment but I am unable to come anymore. I'd like to cancel my appointment.   
