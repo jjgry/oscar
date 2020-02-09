@@ -63,6 +63,7 @@ Cancel	  I apologise on behalf of my husband but he is already in another hospit
 Cancel	I no longer can attend.
 Cancel	Cancel
 Cancel	No, thank you.
+Confirm Yes I will be there.
 Confirm	I am emailing to confirm that I am able to attend the scheduled appointment,
 Confirm	Yes I will be able to come
 Confirm	 I would like to confirm my appointment with *doctor name* on the *date* at *time*.

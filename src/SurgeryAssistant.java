@@ -79,7 +79,7 @@ public class SurgeryAssistant {
         DoccatFactory factory = new DoccatFactory(new FeatureGenerator[] { new BagOfWordsFeatureGenerator() });
 
         TrainingParameters params = ModelUtil.createDefaultTrainingParameters();
-        params.put(TrainingParameters.ITERATIONS_PARAM, 500);
+        params.put(TrainingParameters.ITERATIONS_PARAM, 1000);
         params.put(TrainingParameters.CUTOFF_PARAM, 0);
 
         // Train a model with classifications from above file.
