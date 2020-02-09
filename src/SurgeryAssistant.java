@@ -33,16 +33,13 @@ import opennlp.tools.util.TrainingParameters;
 import opennlp.tools.util.model.ModelUtil;
 
 /**
- * Ethical surgery assistant for automated email replies. It uses
- * different features of Apache OpenNLP for understanding whether the
- * patient is confirming, canceling or rescheduling the appointment
- * or whether the assistant is dealing with an automated email
- * (or none of the situations described above).
+ * Ethical surgery assistant for automated email replies. It uses different features of Apache OpenNLP
+ * for understanding whether the patient is confirming, canceling or rescheduling the appointment or
+ * whether the assistant is dealing with an automated email(or none of the situations described).
  */
 public class SurgeryAssistant {
 
     private static Map<String, String> questionAnswer = new HashMap<>();
-
 
     public static void main(String[] args) throws IOException {
 
