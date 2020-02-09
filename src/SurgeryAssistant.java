@@ -25,7 +25,6 @@ import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.util.InputStreamFactory;
-import opennlp.tools.util.InvalidFormatException;
 import opennlp.tools.util.MarkableFileInputStreamFactory;
 import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
@@ -60,7 +59,6 @@ public class SurgeryAssistant {
 
             // Get predefined answer from given category & add to answer.
             answer = answer + " " + questionAnswer.get(category);
-
 
             // Print answer back to user. If conversation is marked as complete, then end
             // loop & program.
