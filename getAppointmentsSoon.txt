@@ -1,5 +1,0 @@
-select app_id, name, patient_email, doctor_name, timeslot from SurgeryAssistant.Appointments
-LEFT JOIN SurgeryAssistant.Patients on patient_email=email_id
-LEFT JOIN SurgeryAssistant.Doctors on doctor=doctor_id
-LEFT JOIN SurgeryAssistant.Timeslots on SurgeryAssistant.Appointments.timeslot_id=SurgeryAssistant.Timeslots.timeslot_id
-WHERE DATE(timeslot)=DATE_ADD(CURDATE(), INTERVAL 1 DAY) OR DATE(timeslot)=DATE_ADD(CURDATE(), INTERVAL 9 DAY);
