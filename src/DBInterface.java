@@ -166,6 +166,10 @@ public class DBInterface {
     return false;
   }
 
+  /**
+   * @param appointmentID the appointment ID
+   * @return an Appointment object containing details of the appointment
+   */
   public Appointment getApp(int appointmentID) {
     ResultSet rs = database.execute(String.format(Queries.GET_APP_FROM_ID, appointmentID));
     List<Appointment> appointmentList = new ArrayList<>();
@@ -191,18 +195,36 @@ public class DBInterface {
     return null;
   }
 
+  /**
+   * @param patientEmail the patient's email address
+   * @return the name of the patient
+   */
   public String getPatientName(String patientEmail) {
     ResultSet rs = database.execute(String.format(Queries.GET_NAME, patientEmail));
     String name = null;
     try {
       name = rs.getString("name");
     } catch (SQLException e) {
-      System.out.println("Excaption in reading name from ResultSet: " + e.getMessage());
+      System.out.println("Exception in reading name from ResultSet: " + e.getMessage());
     }
     return name;
   }
 
-  public boolean addLog(String sender, String receiver, String subject, String body) {
+  /**
+   * @param patientEmail the patient's email address
+   * @param messageBody the content of the message
+   * @return whether the log has been added successfully
+   */
+  public boolean addLog(String patientEmail, String messageBody) {
+    return false;
+  }
+
+  /**
+   * Remove logs which are more than 6 months old
+   *
+   * @return whether old logs have been successfully removed
+   */
+  public boolean removeOldLogs() {
     return false;
   }
 
