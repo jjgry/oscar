@@ -84,6 +84,7 @@ public class SurgeryAssistant {
 
         // Train a model with classifications from above file.
         DoccatModel model = DocumentCategorizerME.train("en", sampleStream, params, factory);
+
         return model;
     }
 
@@ -117,6 +118,10 @@ public class SurgeryAssistant {
         // Get best possible category.
         double[] probabilitiesOfOutcomes = myCategorizer.categorize(finalTokens);
         String category = myCategorizer.getBestCategory(probabilitiesOfOutcomes);
+
+        //print probabilities associates with category
+
+
         System.out.println("Category: " + category);
 
         return category;
