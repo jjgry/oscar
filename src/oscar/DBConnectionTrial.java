@@ -1,3 +1,5 @@
+package oscar;
+
 class DBConnectionTrial {
 
   public static void main(String[] args) {

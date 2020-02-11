@@ -1,3 +1,5 @@
+package oscar;
+
 public class Timeslot {
     private int doctorID;
     private String startTime;
