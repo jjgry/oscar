@@ -50,7 +50,7 @@ public class DBInterface {
         app.setDatetime(rs1.getString("timeslot"));
         app.setDoctorName(rs1.getString("doctor_name"));
         app.setPatientEmail(rs1.getString("patient_email"));
-        app.setPatientName(rs1.getString("name"));
+        app.setPatientName(rs1.getString("patient_name"));
         appointmentList.add(app);
       }
       for(Integer i : conv_id)
@@ -66,7 +66,7 @@ public class DBInterface {
         app.setDatetime(rs2.getString("timeslot"));
         app.setDoctorName(rs2.getString("doctor_name"));
         app.setPatientEmail(rs2.getString("patient_email"));
-        app.setPatientName(rs2.getString("name"));
+        app.setPatientName(rs2.getString("patient_name"));
         appointmentList.add(app);
       }
       for(Integer i : conv_id)
@@ -176,7 +176,7 @@ public class DBInterface {
         app.setDatetime(rs.getString("timeslot"));
         app.setDoctorName(rs.getString("doctor_name"));
         app.setPatientEmail(rs.getString("patient_email"));
-        app.setPatientName(rs.getString("name"));
+        app.setPatientName(rs.getString("patient_name"));
         appointmentList.add(app);
       }
       if (appointmentList.size() == 1) {
@@ -191,11 +191,11 @@ public class DBInterface {
     return null;
   }
 
-  public String getPatientName(String patientEmail) {
-    ResultSet rs = database.execute(String.format(Queries.GET_NAME, patientEmail));
+  public String getPatientName(int patientID) {
+    ResultSet rs = database.execute(String.format(Queries.GET_NAME, patientID));
     String name = null;
     try {
-      name = rs.getString("name");
+      name = rs.getString("patient_name");
     } catch (SQLException e) {
       System.out.println("Excaption in reading name from ResultSet: " + e.getMessage());
     }
