@@ -121,6 +121,7 @@ public class DBInterface {
   }
 
   /**
+
    * @param emailID the email address of the patient
    * @return the patient ID associated with the email address
    */
@@ -131,7 +132,6 @@ public class DBInterface {
   /**
    * Allows kernel to confirm a patient has an appointment with the given ID
    *
-   * @param patientID the identifier used for the patient
    * @param appointmentID the identifier used for thr appointment
    * @return true if said patient has the given appointment
    */

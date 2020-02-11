@@ -60,13 +60,13 @@ public class Kernel {
                 LocalDateTime NextNewApptCheck = LocalDateTime.now();
 
                 while (true) {
-                    // TODO: 1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
+//                    // TODO: 1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
 //                    if (LocalDateTime.now().IsAfter(NextNewApptCheck)) {
 //                        NextNewApptCheck = LocalDateTime.now().plusHours(1);
 //
-//
+//                        DB.openConnection();
 //                        List<Appointment> newAppts = DB.remindersToSendToday();
-//
+//                        DB.closeConnection();
 //                        // TODO: 1a. Send any emails that are now shown as required by the database state.
 //
 //                        foreach(Appointment A :newAppts){
@@ -75,68 +75,70 @@ public class Kernel {
 //                        }
 //                    }
 //
-//                    // TODO: 2. Deal with received emails one at a time until the queue is empty:
+//                    // TODO: 2. Deal with received emails one at a time until the queue is empty;
+//
 //                    if (InQ.NumWaiting() > 0) {
-//                        IncomingMessage PatientResponse = InQ.take();
+//                        DB.openConnection();
+//                        while (InQ.NumWaiting() > 0) {
+//                            IncomingMessage PatientResponse = InQ.take();
 //
-//                        // 2a. Is the received email valid? check it's a patient on the database.
-//                        int PatientID = DB.getPatientsID(PatientResponse.getEmail());
-//                        if (PatientID > 0) {//if a valid email....
-//                            // 2b. Fetch information on the history of this conversation, ie last response type, appointment time, doctor name, patient name.
-//                            //TODO: Appointment bookedAppointment = DB.getAppointmentID();
+//                            // 2a. Is the received email valid? check it's a patient on the database.
+//                            int PatientID = DB.getPatientsID(PatientResponse.getEmail());
+//                            if (PatientID > 0) {//if a valid email....
+//                                // 2b. Fetch information on the history of this conversation, ie last response type, appointment time, doctor name, patient name.
+//                                //TODO: Appointment bookedAppointment = DB.getAppointmentID();
 //
-//                            // 2c. Hand off to classifier: what type of message was it?
-//                            Classification C = Classifier.Classify( *)
-//                            if (C instanceof CONFIRM) {
+//                                // 2c. Hand off to classifier: what type of message was it?
+//                                Classification C = Classifier.Classify( *)
+//                                if (C instanceof CONFIRM) {
 //
-//                                // TODO: Confirm Appt in database
+//                                    // TODO: Confirm Appt in database
 //
-//                                //Send Email
-//                                OutQ.put(new ConfirmationMessage(patientResponse.getEmail(), true, "", ));
-//                                // 2d. update database with any new developments.
-//                                // 2e. Send another email based on this as required.
+//                                    //Send Email
+//                                    OutQ.put(new ConfirmationMessage(patientResponse.getEmail(), true, "", ));
+//                                    // 2d. update database with any new developments.
+//                                    // 2e. Send another email based on this as required.
 //
-//                            } else if (C instanceof CANCEL) {
+//                                } else if (C instanceof CANCEL) {
 //
-//                                //Cancel Appt in database
+//                                    //Cancel Appt in database
 //
-//                                //Send Email
+//                                    //Send Email
 //
 //
-//                            } else if (C instanceof RESCHEDULE) {
+//                                } else if (C instanceof RESCHEDULE) {
 //
-//                                // RESCHEDULE **** complicated
+//                                    // RESCHEDULE **** complicated
 //
-//                                //Add this appointment to list of those that cannot be attended in DB
+//                                    //Add this appointment to list of those that cannot be attended in DB
 //
-//                                //Poll database for available appointments in given time slots
+//                                    //Poll database for available appointments in given time slots
 //
-//                                // Suggest one. Set it as being attended in database
+//                                    // Suggest one. Set it as being attended in database
 //
-//                                // Send SuggestedAppt email to patient to suggest the new time.
-//                            } else if (C instanceof OTHER) {
+//                                    // Send SuggestedAppt email to patient to suggest the new time.
+//                                } else if (C instanceof OTHER) {
 //
-//                                // OTHER
+//                                    // OTHER
 //
-//                                // 2d. update database with any new developments.
-//                                // 2e. Send another email based on this as required.
+//                                    // 2d. update database with any new developments.
+//                                    // 2e. Send another email based on this as required.
 //
-//                            } else if (C instanceof AUTOMATED_RESPONSE){
+//                                } else if (C instanceof AUTOMATED_RESPONSE) {
 //
+//                                } else { // a new classification that is unsupported.
+//
+//                                }
+//                                // AUTOMATED_RESPONSE
+//
+//                            } else {//invalid patientID...
+//                                OutQ.put(new InvalidEmailMessage(PatientResponse.getEmail()));
 //                            }
-//                            else{ // a new classification that is unsupported.
-//
-//                            }
-//                            // AUTOMATED_RESPONSE
-//
-//                        } else {//invalid patientID...
-//                            OutQ.put(new InvalidEmailMessage(PatientResponse.getEmail()));
 //                        }
-
+//                        DB.closeConnection();
+                    }
                 }
-            }
-
-        };
+            };
         Major.start();
 
         // If the DBMS port is a thread in this, put it here. If it is a system with (another) producer consumer queue, check it between every handle of an incoming, and at the end of all of these.
