@@ -124,6 +124,7 @@ public class DBInterface {
    * @return the patient ID associated with the email address
    */
   public String getPatientID(String emailID) {
+    // Do for phone number too in extended
     return null;
   }
 
@@ -138,5 +139,44 @@ public class DBInterface {
     return false;
   }
 
+  public Appointment getApp(int appointmentID) {
+    ResultSet rs = database.execute(String.format(Queries.GET_APP_FROM_ID, appointmentID));
+    List<Appointment> appointmentList = new ArrayList<>();
+    try {
+      while (rs.next()) {
+        Appointment app = new Appointment();
+        app.setAppID(rs.getInt("app_id"));
+        app.setDatetime(rs.getString("timeslot"));
+        app.setDoctorName(rs.getString("doctor_name"));
+        app.setPatientEmail(rs.getString("patient_email"));
+        app.setPatientName(rs.getString("name"));
+        appointmentList.add(app);
+      }
+      if (appointmentList.size() == 1) {
+        return appointmentList.get(0);
+      } else {
+        return null;
+      }
+    }
+    catch (SQLException e) {
+      System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
+    }
+    return null;
+  }
+
+  public String getPatientName(String patientEmail) {
+    ResultSet rs = database.execute(String.format(Queries.GET_NAME, patientEmail));
+    String name = null;
+    try {
+      name = rs.getString("name");
+    } catch (SQLException e) {
+      System.out.println("Excaption in reading name from ResultSet: " + e.getMessage());
+    }
+    return name;
+  }
+
+  public boolean addLog(String sender, String receiver, String subject, String body) {
+    return false;
+  }
 
 }

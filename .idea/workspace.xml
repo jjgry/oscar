@@ -94,6 +94,12 @@
         <option value="$PROJECT_DIR$/src/DBInterface.java" />
         <option value="$PROJECT_DIR$/src/Queries.java" />
         <option value="$PROJECT_DIR$/src/DBConnectionTrial.java" />
+        <option value="$PROJECT_DIR$/src/oscar/Appointment.java" />
+        <option value="$PROJECT_DIR$/src/oscar/Timeslot.java" />
+        <option value="$PROJECT_DIR$/src/oscar/DBConnection.java" />
+        <option value="$PROJECT_DIR$/src/oscar/DBConnectionTrial.java" />
+        <option value="$PROJECT_DIR$/src/oscar/DBInterface.java" />
+        <option value="$PROJECT_DIR$/src/oscar/Queries.java" />
       </list>
     </option>
   </component>
@@ -119,6 +125,11 @@
             <path>
               <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
               <item name="oscar" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql-connector-java-8.0.19" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -128,7 +139,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580994294609" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581426693915" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql-connector.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -147,10 +158,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DBConnectionTrial">
+  <component name="RunManager" selected="Application.DBConnectionTrial (1)">
     <configuration name="DBConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DBConnection" />
       <module name="oscar" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DBConnectionTrial (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="oscar.DBConnectionTrial" />
+      <module name="oscar" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oscar.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,9 +194,11 @@
       <item itemvalue="Application.DBConnection" />
       <item itemvalue="Application.DBConnectionTrial" />
       <item itemvalue="JAR Application.mysql-connector.jar" />
+      <item itemvalue="Application.DBConnectionTrial (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DBConnectionTrial (1)" />
         <item itemvalue="Application.DBConnectionTrial" />
         <item itemvalue="Application.DBConnection" />
         <item itemvalue="JAR Application.mysql-connector.jar" />

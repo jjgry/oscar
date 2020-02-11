@@ -14,5 +14,11 @@ public class Queries {
             "\tavailable = 1\n" +
             "where timeslot_id = ( SELECT timeslot_id from SurgeryAssistant.Appointments where app_id = %s) ;";
 
+    public static final String GET_APP_FROM_ID = "SELECT app_id, name, patient_email, doctor_name, timeslot from SurgeryAssistant.Appointments\n" +
+        "LEFT JOIN SurgeryAssistant.Patients on patient_email=email_id\n" +
+        "LEFT JOIN SurgeryAssistant.Doctors on doctor=doctor_id\n" +
+        "LEFT JOIN SurgeryAssistant.Timeslots on SurgeryAssistant.Appointments.timeslot_id=SurgeryAssistant.Timeslots.timeslot_id\n" +
+        "WHERE app_id = %s";
 
+    public static final String GET_NAME = "SELECT name from SurgeryAssitant.Patients WHERE email_id = %s";
 }
