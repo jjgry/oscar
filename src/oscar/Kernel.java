@@ -1,6 +1,8 @@
 package oscar;
 
 import java.lang.String;
+import java.time.LocalDateTime;
+import java.time.*;
 
 public class Kernel {
     /*
@@ -48,60 +50,94 @@ public class Kernel {
 
         //TODO: Initialise the DBMS port thread, if necessary
 
-        //TODO: Create a thread
+        //TODO: Create a thread, the major loop, named Major.
+        Thread Major = new Thread() {
+            @Override
+            public void run() {
 
-        //Main Loop:
-//        while (true) {
-//            // TODO: 1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
-//            // __________ = DB.remindersToSendToday();
+
+                //Main Loop:
+                LocalDateTime NextNewApptCheck = LocalDateTime.now();
+
+                while (true) {
+                    // TODO: 1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
+//                    if (LocalDateTime.now().IsAfter(NextNewApptCheck)) {
+//                        NextNewApptCheck = LocalDateTime.now().plusHours(1);
 //
-//            // TODO: 1a. Send any emails that are now shown as required by the database state.
 //
-//            //foreach(    ^^^^___________        ){
-//            // IntroMessage nextIntro = new IntroMessage(*);
-//            // OutQ.put(nextIntro);
-//            //}
+//                        List<Appointment> newAppts = DB.remindersToSendToday();
 //
-//            // TODO: 2. Deal with received emails one at a time until the queue is empty:
-//            if (InQ.NumWaiting() > 0) {
-//                IncomingMessage PatientResponse = InQ.take();
+//                        // TODO: 1a. Send any emails that are now shown as required by the database state.
 //
-//                // 2a. Is the received email valid? check it's a patient on the database.
-//                int PatientID = DB.getPatientsID(PatientRepsonse.getEmail());
-//                if (PatientID > 0) {
-//                    // 2b. Fetch information on the history of this conversation, ie last response type, appointment time, doctor name, patient name.
-//
-//                    // 2c. Hand off to classifier: what type of message was it?
-//                    Classification C = Classifier.Classify(*)
-//                    switch(C.getType()){
-//                      //CONFIRM
-//                       case CONFIRM:
-//                           break;
-//                    // CANCEL
-//                        case CANCEL:
-//                            break;
-//                    // RESCHEDULE **** complicated
-//                        case RESCHEDULE:
-//                            break;
-//                    // OTHER
-//                         case OTHER:
-//                             break;
-//                    // AUTOMATED_RESPONSE
-//                         case AUTOMATED_RESPONSE:
-//                                break;
+//                        foreach(Appointment A :newAppts){
+//                            //IntroMessage nextIntro = new IntroMessage(*);
+//                            OutQ.put(nextIntro);
 //                        }
+//                    }
+//
+//                    // TODO: 2. Deal with received emails one at a time until the queue is empty:
+//                    if (InQ.NumWaiting() > 0) {
+//                        IncomingMessage PatientResponse = InQ.take();
+//
+//                        // 2a. Is the received email valid? check it's a patient on the database.
+//                        int PatientID = DB.getPatientsID(PatientResponse.getEmail());
+//                        if (PatientID > 0) {//if a valid email....
+//                            // 2b. Fetch information on the history of this conversation, ie last response type, appointment time, doctor name, patient name.
+//                            //TODO: Appointment bookedAppointment = DB.getAppointmentID();
+//
+//                            // 2c. Hand off to classifier: what type of message was it?
+//                            Classification C = Classifier.Classify( *)
+//                            if (C instanceof CONFIRM) {
+//
+//                                // TODO: Confirm Appt in database
+//
+//                                //Send Email
+//                                OutQ.put(new ConfirmationMessage(patientResponse.getEmail(), true, "", ));
+//                                // 2d. update database with any new developments.
+//                                // 2e. Send another email based on this as required.
+//
+//                            } else if (C instanceof CANCEL) {
+//
+//                                //Cancel Appt in database
+//
+//                                //Send Email
 //
 //
-//                    // 2d. update database with any new developments.
-//                    // 2e. Send another email based on this as required.
+//                            } else if (C instanceof RESCHEDULE) {
 //
-//                } else {
-//                    // Invalid email. Send response to this system saying we can't accept this address.
-//                    InvalidAddressMessage resp = new InvalidAddressMessage();
-//                    OutQ.put(resp);
-//                }
-//            }
-//        }
+//                                // RESCHEDULE **** complicated
+//
+//                                //Add this appointment to list of those that cannot be attended in DB
+//
+//                                //Poll database for available appointments in given time slots
+//
+//                                // Suggest one. Set it as being attended in database
+//
+//                                // Send SuggestedAppt email to patient to suggest the new time.
+//                            } else if (C instanceof OTHER) {
+//
+//                                // OTHER
+//
+//                                // 2d. update database with any new developments.
+//                                // 2e. Send another email based on this as required.
+//
+//                            } else if (C instanceof AUTOMATED_RESPONSE){
+//
+//                            }
+//                            else{ // a new classification that is unsupported.
+//
+//                            }
+//                            // AUTOMATED_RESPONSE
+//
+//                        } else {//invalid patientID...
+//                            OutQ.put(new InvalidEmailMessage(PatientResponse.getEmail()));
+//                        }
+
+                }
+            }
+
+        };
+        Major.start();
 
         // If the DBMS port is a thread in this, put it here. If it is a system with (another) producer consumer queue, check it between every handle of an incoming, and at the end of all of these.
     }
