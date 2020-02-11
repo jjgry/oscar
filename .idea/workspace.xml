@@ -78,6 +78,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DBConnectionTrial (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="oscar.DBConnectionTrial" />
+      <module name="oscar" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oscar.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DBConnectionTrial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DBConnectionTrial" />
       <module name="oscar" />
@@ -105,6 +118,7 @@
     <list>
       <item itemvalue="Application.DBConnection" />
       <item itemvalue="Application.DBConnectionTrial" />
+      <item itemvalue="Application.DBConnectionTrial (1)" />
       <item itemvalue="JAR Application.mysql-connector.jar" />
       <item itemvalue="Application.EmailReceiver" />
     </list>

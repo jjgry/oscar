@@ -38,20 +38,45 @@ public class DBInterface {
    * @return a representation of the email addresses and appointment information.
    */
   public List<Appointment> remindersToSendToday() {
-    ResultSet rs = database.execute(Queries.GET_APP_TO_REMIND);
+    ResultSet rs1 = database.execute(Queries.GET_APP_TO_REMIND_1_DAY);
+    ResultSet rs2 = database.execute(Queries.GET_APP_TO_REMIND_7_DAY);
     List<Appointment> appointmentList = new ArrayList<>();
+    List<Integer> conv_id = new ArrayList<>();
     try {
-      while (rs.next()) {
+      while (rs1.next()) {
         Appointment app = new Appointment();
-        app.setAppID(rs.getInt("app_id"));
-        app.setDatetime(rs.getString("timeslot"));
-        app.setDoctorName(rs.getString("doctor_name"));
-        app.setPatientEmail(rs.getString("patient_email"));
-        app.setPatientName(rs.getString("name"));
+
+        conv_id.add(rs1.getInt("conversation_state_id"));
+        app.setAppID(rs1.getInt("app_id"));
+        app.setDatetime(rs1.getString("timeslot"));
+        app.setDoctorName(rs1.getString("doctor_name"));
+        app.setPatientEmail(rs1.getString("patient_email"));
+        app.setPatientName(rs1.getString("name"));
         appointmentList.add(app);
+      }
+      for(Integer i : conv_id)
+      {
+        database.executeUpdate(String.format(Queries.MARK_REMINDED, 1, i));
+      }
+      conv_id = new ArrayList<>();
+      while(rs2.next()) {
+        Appointment app = new Appointment();
+
+        conv_id.add(rs2.getInt("conversation_state_id"));
+        app.setAppID(rs2.getInt("app_id"));
+        app.setDatetime(rs2.getString("timeslot"));
+        app.setDoctorName(rs2.getString("doctor_name"));
+        app.setPatientEmail(rs2.getString("patient_email"));
+        app.setPatientName(rs2.getString("name"));
+        appointmentList.add(app);
+      }
+      for(Integer i : conv_id)
+      {
+        database.executeUpdate(String.format(Queries.MARK_REMINDED, 7, i));
       }
       return appointmentList;
     }
+
     catch (SQLException e) {
       System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
     }
@@ -105,7 +130,9 @@ public class DBInterface {
    * @return true if the update was successful
    */
   public boolean rejectTime(int appointmentID) {
+
     return database.executeUpdate(String.format(Queries.REJECT_APP, appointmentID));
+
   }
 
   /**
@@ -126,6 +153,7 @@ public class DBInterface {
    * @return the patient ID associated with the email address
    */
   public String getPatientID(String emailID) {
+    // Do for phone number too in extended
     return null;
   }
 
@@ -139,5 +167,66 @@ public class DBInterface {
     return false;
   }
 
+  /**
+   * @param appointmentID the appointment ID
+   * @return an Appointment object containing details of the appointment
+   */
+  public Appointment getApp(int appointmentID) {
+    ResultSet rs = database.execute(String.format(Queries.GET_APP_FROM_ID, appointmentID));
+    List<Appointment> appointmentList = new ArrayList<>();
+    try {
+      while (rs.next()) {
+        Appointment app = new Appointment();
+        app.setAppID(rs.getInt("app_id"));
+        app.setDatetime(rs.getString("timeslot"));
+        app.setDoctorName(rs.getString("doctor_name"));
+        app.setPatientEmail(rs.getString("patient_email"));
+        app.setPatientName(rs.getString("name"));
+        appointmentList.add(app);
+      }
+      if (appointmentList.size() == 1) {
+        return appointmentList.get(0);
+      } else {
+        return null;
+      }
+    }
+    catch (SQLException e) {
+      System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
+    }
+    return null;
+  }
+
+  /**
+   * @param patientEmail the patient's email address
+   * @return the name of the patient
+   */
+  public String getPatientName(String patientEmail) {
+    ResultSet rs = database.execute(String.format(Queries.GET_NAME, patientEmail));
+    String name = null;
+    try {
+      name = rs.getString("name");
+    } catch (SQLException e) {
+      System.out.println("Exception in reading name from ResultSet: " + e.getMessage());
+    }
+    return name;
+  }
+
+  /**
+   * @param patientEmail the patient's email address
+   * @param messageBody the content of the message
+   * @return whether the log has been added successfully
+   */
+  public boolean addLog(String patientEmail, String messageBody) {
+    return false;
+  }
+
+  /**
+   * Remove logs which are more than 6 months old
+   *
+   * @return whether old logs have been successfully removed
+   */
+  public boolean removeOldLogs() {
+    return false;
+  }
 
 }
