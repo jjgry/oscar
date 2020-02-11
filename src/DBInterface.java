@@ -195,17 +195,9 @@ public class DBInterface {
     return null;
   }
 
-<<<<<<< HEAD
+
   public String getPatientName(int patientID) {
     ResultSet rs = database.execute(String.format(Queries.GET_NAME, patientID));
-=======
-  /**
-   * @param patientEmail the patient's email address
-   * @return the name of the patient
-   */
-  public String getPatientName(String patientEmail) {
-    ResultSet rs = database.execute(String.format(Queries.GET_NAME, patientEmail));
->>>>>>> database
     String name = null;
     try {
       name = rs.getString("patient_name");
