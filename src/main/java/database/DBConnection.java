@@ -1,4 +1,4 @@
-package oscar;
+package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Stores login information for the database and on command,
- * establishes a connection and executes a query
+ * Stores login information for the database and on command, establishes a connection and executes a
+ * query
  */
 class DBConnection {
 
@@ -22,15 +22,14 @@ class DBConnection {
    * @param username username to login to the database
    * @param password password for the database
    */
-  DBConnection(String ip, String username, String password) {
+  DBConnection(String ip, String username, String password) throws DBInitializationException {
     USERNAME = username;
     PASSWORD = password;
     CONNECTION = "jdbc:mysql://" + ip + "?characterEncoding=utf8";
-
     try {
       Class.forName("com.mysql.jdbc.Driver");
-    } catch (Exception e) {
-      System.err.println(e.getMessage());
+    } catch (ClassNotFoundException e) {
+      throw new DBInitializationException(e.getMessage());
     }
   }
 
@@ -70,8 +69,9 @@ class DBConnection {
   ResultSet execute(String query) {
     ResultSet rs = null;
     try {
-      Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-      rs =  stmt.executeQuery(query);
+      Statement stmt = con
+          .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+      rs = stmt.executeQuery(query);
     } catch (SQLException e) {
       System.err.println("Error executing query: " + e.getMessage());
     }
@@ -85,7 +85,8 @@ class DBConnection {
   boolean executeUpdate(String query) {
     boolean success = false;
     try {
-      Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+      Statement stmt = con
+          .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
       success = stmt.execute(query);
     } catch (SQLException e) {
       System.err.println("Error executing query: " + e.getMessage());
