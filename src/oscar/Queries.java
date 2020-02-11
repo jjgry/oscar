@@ -1,3 +1,5 @@
+package oscar;
+
 public class Queries {
 
     public static final String GET_APP_TO_REMIND = "select app_id, name, patient_email, doctor_name, timeslot from SurgeryAssistant.Appointments\n" +

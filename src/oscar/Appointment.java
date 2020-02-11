@@ -1,3 +1,5 @@
+package oscar;
+
 public class Appointment {
   private int appID;
   private String patientEmail;
