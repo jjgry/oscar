@@ -1,5 +1,6 @@
 package database;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -24,12 +25,21 @@ class DBConnectionTrial {
       db = new DBInterface("127.0.0.1", username, password);
     } catch (DBInitializationException e) {
       e.printStackTrace();
+      db = null;
     }
 
     // open a connection and run a basic command
     if (db != null) {
       db.openConnection();
-      db.getApp(1);
+
+      Appointment app = db.getApp(1);
+      System.out.println(app.getPatientName());
+
+//      List<Appointment> apps = db.remindersToSendToday();
+//      for(Appointment a : apps) {
+//        System.out.println(a.getPatientName());
+//      }
+
       db.closeConnection();
     }
   }
