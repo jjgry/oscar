@@ -2,6 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailReceiver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailQuickstart.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailQuickstart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Appointment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBConnectionTrial.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Kernel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/oscar/Kernel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Queries.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/SegmentQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/oscar/SegmentQueue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Timeslot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/oscarGroupId.oscarArtifactId.main.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,14 +105,31 @@
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581456213608" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Kernel">
     <configuration name="DBConnectionTrial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="database.DBConnectionTrial" />
-      <module name="oscarGroupId.oscarArtifactId.main" />
+      <module name="oscarArtifactId.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Kernel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="oscar.Kernel" />
+      <module name="oscarArtifactId.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oscar.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,8 +184,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.DBConnectionTrial" />
+      <item itemvalue="Application.Kernel" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Kernel" />
         <item itemvalue="Application.DBConnectionTrial" />
       </list>
     </recent_temporary>
@@ -172,13 +218,14 @@
       <option name="presentableId" value="Default" />
       <updated>1580817970838</updated>
     </task>
-    <task id="LOCAL-00001" summary="the grand merger">
-      <created>1581426966134</created>
+    <task id="LOCAL-00001" summary="edits of imports to kernel.java">
+      <created>1581592126288</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1581426966134</updated>
+      <updated>1581592126288</updated>
     </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,12 +249,45 @@
       <path value="$PROJECT_DIR$/oscar_gradle" />
     </ignored-roots>
     <MESSAGE value="the grand merger" />
-    <option name="LAST_COMMIT_MESSAGE" value="the grand merger" />
+    <MESSAGE value="edits of imports to kernel.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="edits of imports to kernel.java" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="761" y="472" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581592090211">
+    <state x="653" y="248" width="671" height="609" key="#DBConnectionTrial" timestamp="1581594322889">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="761" y="472" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1581592090211" />
+    <state x="653" y="248" width="671" height="609" key="#DBConnectionTrial/67.27.1853.1053@67.27.1853.1053" timestamp="1581594322889" />
+    <state x="462" y="149" width="1053" height="807" key="CommitChangelistDialog2" timestamp="1581592125531">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="462" y="149" width="1053" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1581592125531" />
+    <state width="1807" height="230" key="GridCell.Tab.0.bottom" timestamp="1581595956281">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="230" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1581595956281" />
+    <state width="1807" height="230" key="GridCell.Tab.0.center" timestamp="1581595956277">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="230" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1581595956277" />
+    <state width="1807" height="230" key="GridCell.Tab.0.left" timestamp="1581595956277">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="230" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1581595956277" />
+    <state width="1807" height="230" key="GridCell.Tab.0.right" timestamp="1581595956280">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="230" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1581595956280" />
+    <state x="482" y="187" width="1024" height="845" key="SettingsEditor" timestamp="1581594534543">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="482" y="187" width="1024" height="845" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1581594534543" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581592128902">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1581592128902" />
+    <state x="761" y="472" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581596097652">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="761" y="472" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1581596097652" />
   </component>
 </project>
