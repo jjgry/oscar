@@ -135,18 +135,6 @@ public class DBInterface {
   }
 
   /**
-   * After a patient has booked an appointment with the surgery, this is how it is added
-   *
-   * @param time time of the appointment
-   * @param doctor doctor the appointment is with
-   * @param patientID patient who's appointment it is
-   * @return true if update was successful
-   */
-  public boolean addNewAppointment(String time, String doctor, String patientID) {
-    return false;
-  }
-
-  /**
    * Allows kernel to confirm a patient has an appointment with the given ID
    *
    * @param patientEmail the identifier used for the patient
@@ -200,20 +188,6 @@ public class DBInterface {
     return null;
   }
 
-  /**
-   * @param patientID the patient's email address
-   * @return the name of the patient
-   */
-  public String getPatientName(String patientID) {
-    ResultSet rs = database.execute(String.format(Queries.GET_NAME, patientID));
-    String name = null;
-    try {
-      name = rs.getString("patient_name");
-    } catch (SQLException e) {
-      System.out.println("Exception in reading name from ResultSet: " + e.getMessage());
-    }
-    return name;
-  }
 
   /**
    * @param patientEmail the patient's email address
