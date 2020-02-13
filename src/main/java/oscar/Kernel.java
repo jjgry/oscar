@@ -1,21 +1,8 @@
 package oscar;
 
-import database.Appointment;
-import database.DBInitializationException;
-import database.DBInterface;
-
 import java.lang.String;
 import java.time.LocalDateTime;
-import  java.lang.Thread;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-
-import static java.util.concurrent.TimeUnit.*;
-
-
-
+import java.time.*;
 
 public class Kernel {
     /*
@@ -39,46 +26,20 @@ public class Kernel {
     /
     */
 
-    DBInterface DB;
-    SegmentQueue<OutgoingMessage> OutQ;
-    SegmentQueue<IncomingMessage> InQ;
-
-    private final ScheduledExecutorService scheduler =
-            Executors.newScheduledThreadPool(1);
-
-    public Kernel() {
+    public static void main(String[] args) {
         //SETUP
         //Initialise the queues for the Receiver -> Kernel and the Kernel -> Sender
 
-         OutQ = new SegmentQueue<>();
-         InQ = new SegmentQueue<>();
+        SegmentQueue<OutgoingMessage> OutQ = new SegmentQueue<>();
+        SegmentQueue<IncomingMessage> InQ = new SegmentQueue<>();
 
-        // TODO: Establish the Interface to the database. REMOVE credentials from hardcoding.
+        // TODO: Establish the Interface to the database.
 
         //DBInterface DB = new DBInterface();
 
-        String username;
-        String password;
-
-        // get login credentials
-
-        //System.out.print("Username: ");
-        username = "jjag3";
-        //System.out.print("Password: ");
-        password = "JixOondEta";
-
-        // initialize database interface
-        DB = null;
-        try {
-            DB= new DBInterface("127.0.0.1:9876", username, password);
-        } catch (DBInitializationException e) {
-            e.printStackTrace();
-            DB = null;
-        }
-
         //TODO:Initialise the Sender
 
-        //EmailSender Sender = new EmailSender.getSender(OutQ);
+        //Sender Sender = new Sender(OutQ);
 
         //TODO: Initialise the Receiver
 
@@ -89,8 +50,7 @@ public class Kernel {
 
         //TODO: Initialise the DBMS port thread, if necessary
 
-
-        // Create a thread, the major loop, named Major.
+        //TODO: Create a thread, the major loop, named Major.
         Thread Major = new Thread() {
             @Override
             public void run() {
@@ -98,12 +58,22 @@ public class Kernel {
 
                 //Main Loop:
                 LocalDateTime NextNewApptCheck = LocalDateTime.now();
-                // TODO: 1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
-                SendNewReminders();//SEE BELOW. This makes a system that should send the new reminders found on the database on demand, every 10 minutes.
 
                 while (true) {
-
-
+//                    // TODO: 1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
+//                    if (LocalDateTime.now().IsAfter(NextNewApptCheck)) {
+//                        NextNewApptCheck = LocalDateTime.now().plusHours(1);
+//
+//                        DB.openConnection();
+//                        List<Appointment> newAppts = DB.remindersToSendToday();
+//                        DB.closeConnection();
+//                        // TODO: 1a. Send any emails that are now shown as required by the database state.
+//
+//                        foreach(Appointment A :newAppts){
+//                            //IntroMessage nextIntro = new IntroMessage(*);
+//                            OutQ.put(nextIntro);
+//                        }
+//                    }
 //
 //                    // TODO: 2. Deal with received emails one at a time until the queue is empty;
 //
@@ -172,34 +142,5 @@ public class Kernel {
         Major.start();
 
         // If the DBMS port is a thread in this, put it here. If it is a system with (another) producer consumer queue, check it between every handle of an incoming, and at the end of all of these.
-    }
-
-
-    public void SendNewReminders() {
-        final Runnable reminderBatchSender = new Runnable() {
-            public void run() {
-
-                System.out.println("beep" +LocalDateTime.now());
-//                        DB.openConnection();
-//                        List<Appointment> newAppts = DB.remindersToSendToday();
-//                        DB.closeConnection();
-//                        // TODO: 1a. Send any emails that are now shown as required by the database state.
-//
-//                        for(Appointment A :newAppts){
-//                            IntroMessage nextIntro = new IntroMessage(A.getPatientEmail(),true,"",A.getDoctorName());
-//                            OutQ.put(nextIntro);
-//                        }
-//                    }
-
-            }
-        };
-        final ScheduledFuture<?> BatchHandle =
-                //Schedule the check for every 1 minute.
-                scheduler.scheduleAtFixedRate(reminderBatchSender, 0, 1, MINUTES);
-    }
-
-
-    public static void main (String[] args){
-        new Kernel();
     }
 }

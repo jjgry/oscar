@@ -1,28 +1,20 @@
 package database;
 
-import java.util.List;
-import java.util.Scanner;
-
 /**
  * Simple class for testing accessing the database.
  */
 class DBConnectionTrial {
 
   public static void main(String[] args) {
-    String username;
-    String password;
+    connectionTesting();
+  }
 
-    // get login credentials
-    Scanner scanner = new Scanner(System.in);
-    System.out.print("Username: ");
-    username = scanner.nextLine();
-    System.out.print("Password: ");
-    password = scanner.nextLine();
+  public static void connectionTesting() {
 
     // initialize database interface
-    DBInterface db = null;
+    DBInterface db;
     try {
-      db = new DBInterface("127.0.0.1:9876", username, password);
+      db = new DBInterface();
     } catch (DBInitializationException e) {
       e.printStackTrace();
       db = null;
@@ -34,11 +26,6 @@ class DBConnectionTrial {
 
       Appointment app = db.getApp(1);
       System.out.println(app.getPatientName());
-
-//      List<Appointment> apps = db.remindersToSendToday();
-//      for(Appointment a : apps) {
-//        System.out.println(a.getPatientName());
-//      }
 
       db.closeConnection();
     }
