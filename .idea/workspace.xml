@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/oscar/EmailFormatter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/oscar/EmailFormatter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/oscar/Kernel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/oscar/Kernel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/oscar/SurgeryAssistant.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/oscar/SurgeryAssistant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EmailFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmailFormatter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SurgeryAssistant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SurgeryAssistant.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,7 +24,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DBConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-412">
+            <state relative-caret-position="51">
               <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -37,17 +36,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DBInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
+            <state relative-caret-position="1258">
               <caret line="74" column="52" selection-start-line="74" selection-start-column="52" selection-end-line="74" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EmailFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SurgeryAssistant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="123" selection-start-line="123" selection-end-line="123" />
+            <state relative-caret-position="110">
+              <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,10 +64,46 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/tokenize/TokenizerME.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/sentdetect/SentenceDetectorME.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="28" column="42" lean-forward="true" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/doccat/DocumentCategorizerME.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1258">
+              <caret line="95" selection-start-line="95" selection-end-line="95" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/doccat/DocumentSampleStream.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/training-data.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-301">
-              <caret line="116" column="109" lean-forward="true" selection-start-line="116" selection-start-column="109" selection-end-line="116" selection-end-column="109" />
+            <state relative-caret-position="504">
+              <caret line="210" column="16" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -98,6 +133,11 @@
       <find>System.out</find>
       <find>questionAnswer</find>
       <find>get</find>
+      <find>detect</find>
+      <find>assistant</find>
+      <find>Assistant</find>
+      <find>StandardCharsets</find>
+      <find>Assis</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,24 +155,23 @@
         <option value="$PROJECT_DIR$/src/ThreadQueue.java" />
         <option value="$PROJECT_DIR$/data/training-data.txt" />
         <option value="$PROJECT_DIR$/src/training-data.txt" />
-        <option value="$PROJECT_DIR$/lib/training-data.txt" />
-        <option value="$PROJECT_DIR$/src/SurgeryAssistant.java" />
         <option value="$PROJECT_DIR$/src/EmailFormatter.java" />
+        <option value="$PROJECT_DIR$/src/SurgeryAssistant.java" />
+        <option value="$PROJECT_DIR$/lib/training-data.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="1943" />
-    <option name="height" value="1043" />
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="1944" />
+    <option name="height" value="1044" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -148,6 +187,35 @@
             <path>
               <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
               <item name="oscar" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="opennlp-tools-1.8.0.jar" type="ab9368bb:PsiFileNode" />
+            </path>
+            <path>
+              <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="opennlp-tools-1.8.0.jar" type="ab9368bb:PsiFileNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="opennlp-tools-1.8.0.jar" type="ab9368bb:PsiFileNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="sentdetect" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="opennlp-tools-1.8.0.jar" type="ab9368bb:PsiFileNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -155,10 +223,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581420780820" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581426590683" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -275,25 +344,32 @@
       <option name="project" value="LOCAL" />
       <updated>1581350567503</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updating training data">
+      <created>1581420956295</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1581420956295</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="simpleUML" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14898786" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23319837" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.106571935" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -304,7 +380,6 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3285968" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
-      <window_info anchor="right" id="Codota" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -314,6 +389,7 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="DB Browser" order="8" weight="0.32986337" />
+      <window_info anchor="right" id="Codota" order="9" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -323,39 +399,62 @@
     <MESSAGE value="adding data folder" />
     <MESSAGE value="adding lib directory with .bins and training data" />
     <MESSAGE value="adding lib with bins and training data" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding lib with bins and training data" />
+    <MESSAGE value="updating training data" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating training data" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="db://66e319c0-02d0-41db-b411-f012c4244db8/consoles/Connection" />
-    <entry file="file://$PROJECT_DIR$/src/DocumentCategorizer.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apache-opennlp-1.9.2/bin/brat-annotation-service">
+    <entry file="file://$PROJECT_DIR$/src/DocumentCategorizer.txt" />
+    <entry file="file://$PROJECT_DIR$/apache-opennlp-1.9.2/bin/brat-annotation-service" />
+    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.9.2.jar!/opennlp/tools/util/MarkableFileInputStreamFactory.class" />
+    <entry file="file://$PROJECT_DIR$/data/training-data.txt" />
+    <entry file="file://$PROJECT_DIR$/src/ThreadQueue.java" />
+    <entry file="file://$PROJECT_DIR$/lib/en-lemmatizer.bin">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.9.2.jar!/opennlp/tools/util/MarkableFileInputStreamFactory.class">
+    <entry file="file://$PROJECT_DIR$/src/DBConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="51">
+          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/training-data.txt">
+    <entry file="file://$PROJECT_DIR$/src/DBInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="149" column="99" selection-start-line="149" selection-start-column="99" selection-end-line="149" selection-end-column="99" />
+        <state relative-caret-position="1258">
+          <caret line="74" column="52" selection-start-line="74" selection-start-column="52" selection-end-line="74" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ThreadQueue.java">
+    <entry file="file://$PROJECT_DIR$/src/EmailFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="70" column="21" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/tokenize/TokenizerME.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/doccat/DocumentCategorizerME.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/doccat/DocumentSampleStream.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>
@@ -366,44 +465,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/training-data.txt">
+    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/sentdetect/SentenceDetectorME.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-301">
-          <caret line="116" column="109" lean-forward="true" selection-start-line="116" selection-start-column="109" selection-end-line="116" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DBInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="74" column="52" selection-start-line="74" selection-start-column="52" selection-end-line="74" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DBConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-412">
-          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="28" column="42" lean-forward="true" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SurgeryAssistant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="123" selection-start-line="123" selection-end-line="123" />
+        <state relative-caret-position="110">
+          <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EmailFormatter.java">
+    <entry file="file://$PROJECT_DIR$/lib/training-data.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        <state relative-caret-position="504">
+          <caret line="210" column="16" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
         </state>
       </provider>
     </entry>

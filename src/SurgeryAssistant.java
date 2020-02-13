@@ -59,10 +59,6 @@ public class SurgeryAssistant {
 
             // Get predefined answer from given category & add to answer.
             answer = answer + " " + questionAnswer.get(category);
-
-            // Print answer back to user. If conversation is marked as complete, then end
-            // loop & program.
-            System.out.println("##### Assistant: " + answer);
         }
     }
 
@@ -110,6 +106,7 @@ public class SurgeryAssistant {
     /**
      * Detect category using given token using the categorizer feature of Apache OpenNLP.
      */
+
     private static String detectCategory(DoccatModel model, String[] finalTokens) {
 
         // Initialize document categorizer tool
@@ -118,10 +115,7 @@ public class SurgeryAssistant {
         // Get best possible category.
         double[] probabilitiesOfOutcomes = myCategorizer.categorize(finalTokens);
         String category = myCategorizer.getBestCategory(probabilitiesOfOutcomes);
-
-        //print probabilities associates with category
-
-
+      System.out.println(myCategorizer.getAllResults(probabilitiesOfOutcomes));
         System.out.println("Category: " + category);
 
         return category;
