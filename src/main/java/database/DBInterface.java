@@ -190,12 +190,13 @@ public class DBInterface {
 
 
   /**
-   * @param patientEmail the patient's email address
+   * @param app_id the appointment id related to the email
    * @param messageBody the content of the message
-   * @return whether the log has been added successfully
    */
-  public boolean addLog(String patientEmail, String messageBody) {
-    return false;
+  public void addLog(int app_id, String messageBody) {
+
+    database.executeUpdate(String.format((Queries.ADD_LOG), app_id, messageBody));
+
   }
 
   /**
