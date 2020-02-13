@@ -86,9 +86,9 @@ public class DBInterface {
 
   /**
    * @param doctorID the doctor we want appointments for
-   * @param startDatetime look for dates after
-   * @param endDatetime look for dates before
-   * @return a representation the available appointments for the patient
+   * @param startDatetime look for timeslots after
+   * @param endDatetime look for timeslots before
+   * @return a representation the available timeslots for the patient
    */
   public List<Timeslot> getAppointments(int doctorID, String startDatetime, String endDatetime) {
     ResultSet rs = database
@@ -125,7 +125,7 @@ public class DBInterface {
   }
 
   /**
-   * Update the DB to reject the appointment time
+   * Update the DB to reject the appointment time 
    *
    * @param appointmentID the appointment to be rejected
    * @return true if the update was successful
