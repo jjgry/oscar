@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50b665e9-c2dd-4d06-bbc4-d3ad830e0878" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/IncorrectArgument.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/UnidentifiedEmailFormat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/deprecated_GmailQuickstart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/deprecated_GmailSender.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/DELETEMEClass.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oscar/EmailMessageType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oscar/MessageToPatient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/IncomingEmailMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/FailedToSendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/FailedToSendEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/MailingError.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/ConfirmationMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/IncomingMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/IntroMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/InvalidEmailMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/InvalidPhoneNumberMessage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/OutgoingMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/OutgoingEmailMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/ReminderMessage.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,6 +85,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -117,7 +127,7 @@
       <module name="oscarArtifactId.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MailingServices.*" />
+          <option name="PATTERN" value="oscar.EmailMessages.ConfirmationMessage" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,7 +140,7 @@
       <module name="oscarArtifactId.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MailingServices.*" />
+          <option name="PATTERN" value="oscar.EmailMessages.ConfirmationMessage" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,7 +153,7 @@
       <module name="oscarArtifactId.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MailingServices.*" />
+          <option name="PATTERN" value="oscar.EmailMessages.ConfirmationMessage" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -249,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581592604271</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed order of classes in MailingServices package">
+      <created>1581593776852</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1581593776852</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,6 +302,7 @@
     </ignored-roots>
     <MESSAGE value="the grand merger" />
     <MESSAGE value="Implemented support for reading different email formats" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented support for reading different email formats" />
+    <MESSAGE value="Fixed order of classes in MailingServices package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed order of classes in MailingServices package" />
   </component>
 </project>

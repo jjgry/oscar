@@ -3,6 +3,7 @@ package MailingServices;
 import org.apache.commons.mail.util.MimeMessageParser;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -11,12 +12,35 @@ public class EmailReceiver {
   //TODO move to env variables
   private static final String applicationEmailAddress = "nhs.appointment.reminder@gmail.com";
 
-  public EmailReceiver() {}
+  private static EmailReceiver singletonReceiver;
+  private EmailReceiver() {}
 
-  public static List<EmailMessage> getUnreadEmails() {
+  public static EmailReceiver getEmailReceiver(){
+    if(null == singletonReceiver){
+      singletonReceiver = new EmailReceiver();
+    }
+    return singletonReceiver;
+  }
+
+  //TODO integrate using a queue
+
+//    Thread Major = new Thread() {
+//      @Override
+//      public void run() {
+//        //Main Loop:
+//        LocalDateTime NextNewApptCheck = LocalDateTime.now();
+//
+//        while (true) {
+//        }
+//      }
+//    };
+//    Major.start();
+
+
+  public static List<IncomingEmailMessage> getUnreadEmails() {
     Folder folder = null;
     Store store = null;
-    List<EmailMessage> emailMessages = new LinkedList<>();
+    List<IncomingEmailMessage> emailMessages = new LinkedList<>();
     try {
       Properties properties = System.getProperties();
       properties.setProperty("mail.store.protocol", "imaps");
@@ -38,7 +62,7 @@ public class EmailReceiver {
       System.out.println("Number of unread messages in INBOX: " + folder.getUnreadMessageCount());
 
       for (Message message : messages) {
-        EmailMessage emailMessage = parseEmail(message);
+        IncomingEmailMessage emailMessage = parseEmail(message);
         if (null != emailMessage) emailMessages.add(emailMessage);
       }
     } catch (NoSuchProviderException e) {
@@ -57,7 +81,7 @@ public class EmailReceiver {
     return emailMessages;
   }
 
-  private static EmailMessage parseEmail(Message message) throws MessagingException {
+  private static IncomingEmailMessage parseEmail(Message message) throws MessagingException {
     System.out.println("---------MESSAGE-----------");
     // TODO UNDO if (message.isSet(Flags.Flag.SEEN)) return null
 
@@ -70,7 +94,7 @@ public class EmailReceiver {
     }
     MimeMessage mimeMessage = (MimeMessage) message;
 
-    EmailMessage emailMessage;
+    IncomingEmailMessage emailMessage;
     try {
       MimeMessageParser parser = new MimeMessageParser(mimeMessage).parse();
 
@@ -105,7 +129,7 @@ public class EmailReceiver {
       System.out.println("PLAIN TEXT: " + messageContents);
 
       emailMessage =
-          new EmailMessage(senderEmailAddress, receiverEmailAddress, subject, messageContents);
+          new IncomingEmailMessage(senderEmailAddress, receiverEmailAddress, subject, messageContents);
     } catch (Exception e) {
       e.printStackTrace();
       return null;

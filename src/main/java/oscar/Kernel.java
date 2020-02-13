@@ -1,8 +1,10 @@
 package oscar;
 
+import MailingServices.OutgoingEmailMessage;
+import MailingServices.IncomingEmailMessage;
+
 import java.lang.String;
 import java.time.LocalDateTime;
-import java.time.*;
 
 public class Kernel {
     /*
@@ -31,8 +33,8 @@ public class Kernel {
         //SETUP
         //Initialise the queues for the Receiver -> Kernel and the Kernel -> Sender
 
-        SegmentQueue<OutgoingMessage> OutQ = new SegmentQueue<>();
-        SegmentQueue<IncomingMessage> InQ = new SegmentQueue<>();
+        SegmentQueue<OutgoingEmailMessage> OutQ = new SegmentQueue<>();
+        SegmentQueue<IncomingEmailMessage> InQ = new SegmentQueue<>();
 
         // TODO: Establish the Interface to the database.
 

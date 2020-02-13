@@ -1,6 +1,6 @@
 package MailingServices;
 
-public class FailedToSendEmail extends MailingError {
+public class FailedToSendEmail extends Exception {
     public FailedToSendEmail(String errorMessage) {
         super(errorMessage);
     }
