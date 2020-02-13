@@ -149,11 +149,27 @@ public class DBInterface {
   /**
    * Allows kernel to confirm a patient has an appointment with the given ID
    *
+   * @param patientEmail the identifier used for the patient
    * @param appointmentID the identifier used for thr appointment
    * @return true if said patient has the given appointment
    */
-  public boolean confirmAppointmentExists(String patientID, String appointmentID) {
-    return false;
+  public boolean confirmAppointmentExists(String patientEmail, int appointmentID) {
+    ResultSet rs = database.execute(String.format(Queries.CONFIRM_APP_FOR_PATIENT, patientEmail, appointmentID));
+    try
+    {
+      rs.next();
+      int app_id = rs.getInt("app_id");
+      return appointmentID == app_id;
+
+    }
+    catch (SQLException e)
+    {
+
+      System.out.println("Error iterating over ResultSet");
+      return false;
+
+    }
+
   }
 
   /**
