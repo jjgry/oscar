@@ -2,13 +2,78 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50b665e9-c2dd-4d06-bbc4-d3ad830e0878" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/MailingServices/MailingError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/NOTICE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/RELEASE-NOTES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9-test-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9-tests.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailReceiver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailQuickstart.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailQuickstart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Appointment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBConnection.class~HEAD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBConnectionTrial.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBInterface.class~HEAD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Kernel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/oscar/Kernel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Queries.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/SegmentQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/oscar/SegmentQueue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Timeslot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/oscarGroupId.oscarArtifactId.main.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailReceiver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/FailedToSendEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/FailedToSendEmail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/IncorrectArgument.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/IncorrectArgument.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/UnidentifiedEmailFormat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/UnidentifiedEmailFormat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/deprecated_GmailQuickstart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/deprecated_GmailQuickstart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/deprecated_GmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/deprecated_GmailSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/SegmentQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/SegmentQueue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/FailedToSendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/FailedToSendEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/IncorrectArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/IncorrectArgument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/UnidentifiedEmailFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/UnidentifiedEmailFormat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -61,74 +126,6 @@
       </state>
     </system>
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/Appointment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/Queries.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-374">
-              <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/DBInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="162" column="21" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4851#4852#0" expanded="true" />
-                <element signature="e#5178#5179#0" expanded="true" />
-                <element signature="e#6887#6888#0" expanded="true" />
-                <element signature="e#7073#7074#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/DBInitializationException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="16" selection-start-column="16" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -139,66 +136,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/database/DBInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/Queries.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java" />
-      </list>
-    </option>
-  </component>
+  <component name="ProjectId" id="1XhaGvCCnFEJPWT1twqBpYTdi0p" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581456213608" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.29089218" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Simonas\Documents\Cambridge 19-20\Courses\Group Project\oscar\src\main\resources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -212,19 +165,68 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="DBConnectionTrial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="database.DBConnectionTrial" />
-      <module name="oscarGroupId.oscarArtifactId.main" />
+  <component name="RunManager" selected="Application.EmailSender">
+    <configuration name="EmailReceiver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MailingServices.EmailReceiver" />
+      <module name="oscarArtifactId.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="database.*" />
+          <option name="PATTERN" value="MailingServices.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="EmailSender" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MailingServices.EmailSender" />
+      <module name="oscarArtifactId.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MailingServices.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="deprecated_GmailQuickstart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MailingServices.deprecated_GmailQuickstart" />
+      <module name="oscarArtifactId.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MailingServices.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="oscar [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="commons-lang3-3.9.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9.jar" />
+      <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
       <module name="oscarGroupId.oscarArtifactId.test" />
@@ -275,7 +277,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DBConnectionTrial" />
+        <item itemvalue="Application.EmailSender" />
+        <item itemvalue="Application.EmailReceiver" />
+        <item itemvalue="Gradle.oscar [dependencies]" />
+        <item itemvalue="JAR Application.commons-lang3-3.9.jar" />
+        <item itemvalue="Application.deprecated_GmailQuickstart" />
       </list>
     </recent_temporary>
   </component>
@@ -284,7 +290,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="" />
+      <changelist id="50b665e9-c2dd-4d06-bbc4-d3ad830e0878" name="Default Changelist" comment="" />
       <created>1580817970838</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -299,44 +305,18 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1549" height="877" extended-state="6" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19648667" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="DB Browser" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2777778" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="DB Execution Console" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="CheckStyle" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32954547" />
-      <window_info anchor="bottom" id="Build" order="11" weight="0.32954547" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Floobits" order="13" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.32954547" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" weight="0.18022121" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-    </layout>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -358,61 +338,5 @@
     </ignored-roots>
     <MESSAGE value="the grand merger" />
     <option name="LAST_COMMIT_MESSAGE" value="the grand merger" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/oscar.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/DBInitializationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/Queries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/DBInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="162" column="21" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4851#4852#0" expanded="true" />
-            <element signature="e#5178#5179#0" expanded="true" />
-            <element signature="e#6887#6888#0" expanded="true" />
-            <element signature="e#7073#7074#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

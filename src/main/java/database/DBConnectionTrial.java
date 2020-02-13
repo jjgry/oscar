@@ -22,7 +22,7 @@ class DBConnectionTrial {
     // initialize database interface
     DBInterface db = null;
     try {
-      db = new DBInterface("127.0.0.1", username, password);
+      db = new DBInterface("127.0.0.1:9876", username, password);
     } catch (DBInitializationException e) {
       e.printStackTrace();
       db = null;

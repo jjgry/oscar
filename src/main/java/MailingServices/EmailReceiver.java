@@ -1,7 +1,6 @@
 package MailingServices;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.CharStreams;
+import org.apache.commons.mail.util.MimeMessageParser;
 
 import java.io.*;
 import java.util.*;
@@ -9,123 +8,117 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 public class EmailReceiver {
+  //TODO move to env variables
+  private static final String applicationEmailAddress = "nhs.appointment.reminder@gmail.com";
 
-    public EmailReceiver() {}
+  public EmailReceiver() {}
 
-    public static List<EmailMessage> getUnreadEmails() throws MessagingException, IOException {
-        Folder folder = null;
-        Store store = null;
-        List<EmailMessage> emailMessages;
-        try {
-            Properties properties = System.getProperties();
-            properties.setProperty("mail.store.protocol", "imaps");
-            properties.setProperty("mail.imaps.port", "993");
-            properties.setProperty("mail.imaps.connectiontimeout", "5000");
-            properties.setProperty("mail.imaps.timeout", "5000");
+  public static List<EmailMessage> getUnreadEmails() {
+    Folder folder = null;
+    Store store = null;
+    List<EmailMessage> emailMessages = new LinkedList<>();
+    try {
+      Properties properties = System.getProperties();
+      properties.setProperty("mail.store.protocol", "imaps");
+      properties.setProperty("mail.imaps.port", "993");
+      properties.setProperty("mail.imaps.connectiontimeout", "5000");
+      properties.setProperty("mail.imaps.timeout", "5000");
 
-            Session session = Session.getDefaultInstance(properties, null);
-            store = session.getStore("imaps");
+      Session session = Session.getDefaultInstance(properties, null);
+      store = session.getStore("imaps");
 
-            //TODO move password and email to environment variables
-            store.connect("imap.gmail.com","nhs.appointment.reminder@gmail.com", "Team0scarIsBest");
+      // TODO move password and email to environment variables
+      store.connect("imap.gmail.com", "nhs.appointment.reminder@gmail.com", "Team0scarIsBest");
 
-            folder = store.getFolder("INBOX");
-            folder.open(Folder.READ_WRITE);
-            Message messages[] = folder.getMessages();
+      folder = store.getFolder("INBOX");
+      folder.open(Folder.READ_WRITE);
+      Message messages[] = folder.getMessages();
 
-            System.out.println("Number of messages in INBOX: " + folder.getMessageCount());
-            System.out.println("Number of unread messages in INBOX: " + folder.getUnreadMessageCount());
+      System.out.println("Number of messages in INBOX: " + folder.getMessageCount());
+      System.out.println("Number of unread messages in INBOX: " + folder.getUnreadMessageCount());
 
-            emailMessages = parseEmails(messages);
-        }
-        finally {
-            if (folder != null) { folder.close(true); }
-            if (store != null) { store.close(); }
-        }
-
-        return emailMessages;
+      for (Message message : messages) {
+        EmailMessage emailMessage = parseEmail(message);
+        if (null != emailMessage) emailMessages.add(emailMessage);
+      }
+    } catch (NoSuchProviderException e) {
+      e.printStackTrace();
+    } catch (MessagingException e) {
+      e.printStackTrace();
     }
 
-    private static List<EmailMessage> parseEmails( Message[] messages) throws IOException, MessagingException {
-        List<EmailMessage> emailMessages = new LinkedList<>();
-        //TODO parsing
+    try {
+      if (null != folder) folder.close(true);
+      if (store != null) store.close();
+    } catch (MessagingException e) {
+      e.printStackTrace();
+    }
 
-        for (Message message : messages) {
-            System.out.println("---------MESSAGE-----------");
+    return emailMessages;
+  }
 
-            //TODO UNDO if (msg.isSet(Flags.Flag.SEEN)) continue;
+  private static EmailMessage parseEmail(Message message) throws MessagingException {
+    System.out.println("---------MESSAGE-----------");
+    // TODO UNDO if (message.isSet(Flags.Flag.SEEN)) return null
 
-            String sendersEmailAddress = "unknownAddress";
-            String receiversEmailAddress = "unknownAddress";
+    // Read only unseen emails
+    message.setFlag(Flags.Flag.SEEN, true);
 
-            if (message.getFrom().length > 0) {
-                sendersEmailAddress = message.getFrom()[0].toString();
-                System.out.println("FROM:" + sendersEmailAddress);
-            }
+    if (!(message instanceof MimeMessage)) {
+      System.err.println("Unidentified Email Format: " + message.getClass().toString());
+      return null;
+    }
+    MimeMessage mimeMessage = (MimeMessage) message;
 
-            if (message.getAllRecipients().length > 0){
-                receiversEmailAddress = message.getAllRecipients()[0].toString();
-                System.out.println("TO:" + receiversEmailAddress);
-            }
+    EmailMessage emailMessage;
+    try {
+      MimeMessageParser parser = new MimeMessageParser(mimeMessage).parse();
 
-            String subject = message.getSubject();
-            System.out.println("SUBJECT: " + subject);
+      Address senderAddress = mimeMessage.getSender();
+      if (null == senderAddress) {
+        System.err.println("Suspicious email with no or multiple recipient email addresses.");
+        return null;
+      }
+      String senderEmailAddress = parser.getFrom();
+      System.out.println("FROM: " + senderEmailAddress);
 
-            String messageContents = "";
-            Object content = message.getContent();
-
-            InputStream inputStream = null;
-            try {
-                if (content instanceof Multipart) {
-                    Multipart multi = ((Multipart)content);
-                    int parts = multi.getCount();
-                    for (int j=0; j < parts; ++j) {
-                        MimeBodyPart part = (MimeBodyPart)multi.getBodyPart(j);
-                        if (part.getContent() instanceof Multipart) {
-                            // part-within-a-part, do some recursion...
-
-                            System.out.println("NEED TO RECURSE");
-                            //saveParts(part.getContent(), filename);
-                        }
-                        else {
-                            String extension = "";
-                            if (part.isMimeType("text/html")) {
-                                extension = "html";
-                            }
-                            else if (part.isMimeType("text/plain")) {
-                                extension = "txt";
-                            }
-                            else {
-                                //  Try to get the name of the attachment
-                                extension = part.getDataHandler().getName();
-                            }
-
-                            System.out.println("EXTENSION: " + extension);
-                            inputStream = part.getInputStream();
-
-                            messageContents = CharStreams.toString(new InputStreamReader(
-                                    inputStream, Charsets.UTF_8));
-                            System.out.println("TEXT:"  + messageContents);
-                        }
-                    }
-                } else {
-                    System.out.println("Unidentified Email type");
-                }
-            }
-            finally {
-                if (inputStream != null) { inputStream.close(); }
-            }
-
-
-            EmailMessage emailMessage = new EmailMessage(sendersEmailAddress, receiversEmailAddress, subject, messageContents);
-            message.setFlag(Flags.Flag.SEEN,true);
+      String receiverEmailAddress = "unknownAddress";
+      Address[] allRecipients = mimeMessage.getAllRecipients();
+      for (Address recipient : allRecipients) {
+        if (recipient.toString().contains(applicationEmailAddress)) {
+          receiverEmailAddress = applicationEmailAddress;
         }
+      }
+      if (receiverEmailAddress.equals("unknownAddress")) {
+        System.err.println(
+            "Unidentified receiver email address. We shouldn't have received this email.");
+        return null;
+      }
+      System.out.println("TO: " + receiverEmailAddress);
 
-        //TODO return emails
-        return emailMessages;
+      String subject = parser.getSubject();
+      System.out.println("SUBJECT: " + subject);
+
+      // Ignore emails which don't have textual representation
+      if (!parser.hasPlainContent()) return null;
+      String messageContents = readPlainContent(mimeMessage);
+      System.out.println("PLAIN TEXT: " + messageContents);
+
+      emailMessage =
+          new EmailMessage(senderEmailAddress, receiverEmailAddress, subject, messageContents);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
     }
 
-    public static void main(String args[]) throws Exception {
-        EmailReceiver.getUnreadEmails();
-    }
+    return emailMessage;
+  }
+
+  private static String readPlainContent(MimeMessage message) throws Exception {
+    return new MimeMessageParser(message).parse().getPlainContent();
+  }
+
+  public static void main(String args[]) {
+    EmailReceiver.getUnreadEmails();
+  }
 }

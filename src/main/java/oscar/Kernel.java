@@ -27,6 +27,7 @@ public class Kernel {
     */
 
     public static void main(String[] args) {
+        System.out.println("Working");
         //SETUP
         //Initialise the queues for the Receiver -> Kernel and the Kernel -> Sender
 

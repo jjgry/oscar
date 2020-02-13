@@ -22,9 +22,11 @@ public class EmailSender {
             "Surgery contact number: phone number\n" +
             "Address: location address"; //TODO include location address and phone number
 
-    private EmailSender(SegmentQueue<OutgoingMessage> messagesToSend){
+    //TODO make use of queue
+    public EmailSender(SegmentQueue<OutgoingMessage> messagesToSend){
         this.messagesToSend = messagesToSend;
     }
+    public EmailSender() {}
 
     //TODO: make use of a queue
     public static EmailSender getSender(SegmentQueue<OutgoingMessage> messagesToSend){
@@ -168,15 +170,15 @@ public class EmailSender {
     }
 
     public static void main(String[] args) {
-//        EmailSender sender = new EmailSender("nhs.appointment.reminder@gmail.com");
-//        try {
-//            sender.sendInitialReminderEmail(
-//                    "sm2354@cam.ac.uk",
-//                    "Simon",
-//                    "Mr. John",
-//                    "27-02-2020",
-//                    "11:00 AM");
-//
+        EmailSender sender = new EmailSender();
+        try {
+            sender.sendInitialReminderEmail(
+                    "sm2354@cam.ac.uk",
+                    "Simon",
+                    "Mr. John",
+                    "27-02-2020",
+                    "11:00 AM");
+
 //            sender.sendCancelationEmail(
 //                    "sm2354@cam.ac.uk",
 //                    "Simon",
@@ -196,10 +198,12 @@ public class EmailSender {
 //                    "11:00 AM");
 //
 //            sender.sendUnexpectedSenderEmail("sm2354@cam.ac.uk");
-//
-//        } catch (FailedToSendEmail failedToSendEmail) {
-//            failedToSendEmail.printStackTrace();
-//        }
+
+            System.out.println("Successfully sent emails");
+        } catch (FailedToSendEmail failedToSendEmail) {
+            System.out.println("Failed to send");
+            failedToSendEmail.printStackTrace();
+        }
     }
 }
 
