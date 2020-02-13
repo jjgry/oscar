@@ -5,29 +5,35 @@ package database;
  */
 class DBConnectionTrial {
 
-  public static void main(String[] args) {
-    connectionTesting();
+  private DBInterface DB;
+
+  private DBConnectionTrial() throws DBInitializationException {
+    DB = new DBInterface();
   }
 
-  public static void connectionTesting() {
-
+  public static void main(String[] args) {
     // initialize database interface
-    DBInterface db;
+    DBConnectionTrial dbTrial;
     try {
-      db = new DBInterface();
+      dbTrial = new DBConnectionTrial();
     } catch (DBInitializationException e) {
-      e.printStackTrace();
-      db = null;
+      return;
     }
 
-    // open a connection and run a basic command
-    if (db != null) {
-      db.openConnection();
+//    dbTrial.connectionTesting();
+    dbTrial.progressMeetingDemo();
+  }
 
-      Appointment app = db.getApp(1);
-      System.out.println(app.getPatientName());
+  private void connectionTesting() {
+    DB.openConnection();
 
-      db.closeConnection();
-    }
+    Appointment app = DB.getApp(1);
+    System.out.println(app.getPatientName());
+
+    DB.closeConnection();
+  }
+
+  private void progressMeetingDemo() {
+//    DB.addNewAppointment("2020/02/16 12:00:00", "Dr E Jackson", "12");
   }
 }

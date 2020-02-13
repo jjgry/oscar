@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50b665e9-c2dd-4d06-bbc4-d3ad830e0878" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/oscarGroupId.oscarArtifactId.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/jcraft/jsch/PortWatcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/jcraft/jsch/PortWatcher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/PortForwardingL$MyUserInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/PortForwardingL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/StreamForwarder$MyUserInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/StreamForwarder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/DBInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/DBInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/PortForwardingL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/StreamForwarder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -87,12 +79,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-              <folding>
-                <element signature="e#147#148#0" expanded="true" />
-                <element signature="e#176#177#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="629">
+              <caret line="37" column="3" lean-forward="true" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -100,8 +88,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/Queries.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+            <state relative-caret-position="532">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/oscar/Kernel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="69" column="37" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3062#6703#0" expanded="true" />
+                <element signature="e#6702#6703#0" expanded="true" />
+                <element signature="e#7956#7957#0" expanded="true" />
+                <element signature="e#7984#7985#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,8 +113,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/DBInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2786">
-              <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+            <state relative-caret-position="2127">
+              <caret line="196" selection-start-line="196" selection-end-line="196" />
+              <folding>
+                <element signature="e#2224#2225#0" expanded="true" />
+                <element signature="e#2269#2270#0" expanded="true" />
+                <element signature="e#2412#2413#0" expanded="true" />
+                <element signature="e#2457#2458#0" expanded="true" />
+                <element signature="e#8113#8114#0" expanded="true" />
+                <element signature="e#8139#8140#0" expanded="true" />
+                <element signature="e#7249#7250#0" expanded="true" />
+                <element signature="e#7271#7272#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,8 +132,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="784">
-              <caret line="145" column="26" lean-forward="true" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
+            <state relative-caret-position="2195">
+              <caret line="145" column="26" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,7 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/database/Queries.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/database/DBInitializationException.java" />
@@ -157,9 +173,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jcraft/jsch/Util.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/PortForwardingL.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jcraft/jsch/PortWatcher.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/DBInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/UpdateMySqlDatabase.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/DBConnection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/Queries.java" />
+        <option value="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/DBInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java" />
       </list>
     </option>
@@ -213,6 +231,14 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="oscar" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -220,7 +246,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581601917926" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581604002266" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -520,17 +546,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/StreamForwarder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/StreamForwarder.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jcraft/jsch/JSch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
@@ -570,62 +586,67 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DBConnectionTrial.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/PortForwardingL.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/PortForwardingL.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/UpdateMySqlDatabase.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/Appointment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-542">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/UpdateMySqlDatabase.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/DBInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="41" column="44" lean-forward="true" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+        <state relative-caret-position="2127">
+          <caret line="196" selection-start-line="196" selection-end-line="196" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2224#2225#0" expanded="true" />
+            <element signature="e#2269#2270#0" expanded="true" />
+            <element signature="e#2412#2413#0" expanded="true" />
+            <element signature="e#2457#2458#0" expanded="true" />
+            <element signature="e#8113#8114#0" expanded="true" />
+            <element signature="e#8139#8140#0" expanded="true" />
+            <element signature="e#7249#7250#0" expanded="true" />
+            <element signature="e#7271#7272#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="145" column="26" lean-forward="true" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/DBInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2786">
-          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        <state relative-caret-position="2195">
+          <caret line="145" column="26" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/Queries.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+        <state relative-caret-position="532">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/Appointment.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/oscar/Kernel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="293">
+          <caret line="69" column="37" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3062#6703#0" expanded="true" />
+            <element signature="e#6702#6703#0" expanded="true" />
+            <element signature="e#7956#7957#0" expanded="true" />
+            <element signature="e#7984#7985#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#147#148#0" expanded="true" />
-            <element signature="e#176#177#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="629">
+          <caret line="37" column="3" lean-forward="true" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
         </state>
       </provider>
     </entry>
