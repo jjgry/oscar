@@ -179,7 +179,7 @@ public class Kernel {
         final Runnable reminderBatchSender = new Runnable() {
             public void run() {
 
-                System.out.println("beep"+LocalDateTime.now());
+                System.out.println("beep" +LocalDateTime.now());
 //                        DB.openConnection();
 //                        List<Appointment> newAppts = DB.remindersToSendToday();
 //                        DB.closeConnection();
@@ -196,9 +196,6 @@ public class Kernel {
         final ScheduledFuture<?> BatchHandle =
                 //Schedule the check for every 1 minute.
                 scheduler.scheduleAtFixedRate(reminderBatchSender, 0, 1, MINUTES);
-        scheduler.schedule(new Runnable() {
-            public void run() { BatchHandle.cancel(true); }
-        }, 60 * 60, SECONDS);
     }
 
 
