@@ -180,6 +180,7 @@ public class DBInterface {
       }
     } catch (SQLException e) {
       System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
+      e.printStackTrace();
     }
     return null;
   }

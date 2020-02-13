@@ -40,7 +40,8 @@ class DBConnection {
     try {
       con = DriverManager.getConnection(CONNECTION, USERNAME, PASSWORD);
     } catch (SQLException e) {
-      System.err.println("Error opening connection: " + e.getMessage());
+      System.err.println("Error opening connection:");
+      e.printStackTrace();
       return false;
     }
     return true;
@@ -50,16 +51,18 @@ class DBConnection {
    * @return whether terminating the connection has been successful
    */
   boolean endConnection() {
-    if (con != null) {
-      try {
-        con.close();
-      } catch (SQLException e) {
-        System.err.println("Error closing connection: " + e.getMessage());
-        return false;
-      }
-      return true;
+    if (con == null) {
+      return false;
     }
-    return false;
+
+    try {
+      con.close();
+    } catch (SQLException e) {
+      System.err.println("Error closing connection: ");
+      e.printStackTrace();
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -73,7 +76,8 @@ class DBConnection {
           .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
       rs = stmt.executeQuery(query);
     } catch (SQLException e) {
-      System.err.println("Error executing query: " + e.getMessage());
+      System.err.println("Error executing query: ");
+      e.printStackTrace();
     }
     return rs;
   }
@@ -89,7 +93,8 @@ class DBConnection {
           .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
       success = stmt.execute(query);
     } catch (SQLException e) {
-      System.err.println("Error executing query: " + e.getMessage());
+      System.err.println("Error executing query: ");
+      e.printStackTrace();
       return false;
     }
     return !success;

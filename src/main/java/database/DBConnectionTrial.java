@@ -9,6 +9,10 @@ import java.util.Scanner;
 class DBConnectionTrial {
 
   public static void main(String[] args) {
+    connectionTesting();
+  }
+
+  public static void connectionTesting() {
     String username;
     String password;
 
