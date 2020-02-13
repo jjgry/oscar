@@ -12,16 +12,30 @@ public class DBInterface {
 
   private DBConnection database;
 
+  /**
+   * Default constructor. Usernames and passwords will be retrieved automatically from the user
+   *
+   * @throws DBInitializationException if there is an issue with establishing port forwarding or
+   * importing relevant classes
+   */
+  public DBInterface() throws DBInitializationException {
+    database = new DBConnection();
+  }
 
   /**
-   * @param ip address of the database server
-   * @param username for the database
-   * @param password for the database
-   * @throws DBInitializationException if there is an issue importing relevant files that will
-   * prevent the database from working
+   * To be used when the login credentials are already used, else use the constructor with no
+   * arguments.
+   *
+   * @param db_username the username for the database
+   * @param db_password the password for the databse
+   * @param ssh_username the CRSID of the user attempting to connect to the remote host
+   * @param ssh_password the password of the remote host user
+   * @throws DBInitializationException if there is an issue with establishing port forwarding or
+   * importing relevant classes
    */
-  public DBInterface(String ip, String username, String password) throws DBInitializationException {
-    database = new DBConnection(ip, username, password);
+  public DBInterface(String db_username, String db_password, String ssh_username,
+      String ssh_password) throws DBInitializationException {
+    database = new DBConnection(db_username, db_password, ssh_username, ssh_password);
   }
 
   /**
