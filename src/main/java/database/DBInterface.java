@@ -86,9 +86,9 @@ public class DBInterface {
 
   /**
    * @param doctorID the doctor we want appointments for
-   * @param startDatetime look for timeslots after
-   * @param endDatetime look for timeslots before
-   * @return a representation the available timeslots for the patient
+   * @param startDatetime look for dates after
+   * @param endDatetime look for dates before
+   * @return a representation the available appointments for the patient
    */
   public List<Timeslot> getAppointments(int doctorID, String startDatetime, String endDatetime) {
     ResultSet rs = database
@@ -125,7 +125,7 @@ public class DBInterface {
   }
 
   /**
-   * Update the DB to reject the appointment time 
+   * Update the DB to reject the appointment time
    *
    * @param appointmentID the appointment to be rejected
    * @return true if the update was successful
@@ -135,29 +135,25 @@ public class DBInterface {
   }
 
   /**
+   * After a patient has booked an appointment with the surgery, this is how it is added
+   *
+   * @param time time of the appointment
+   * @param doctor doctor the appointment is with
+   * @param patientID patient who's appointment it is
+   * @return true if update was successful
+   */
+  public boolean addNewAppointment(String time, String doctor, String patientID) {
+    return false;
+  }
+
+  /**
    * Allows kernel to confirm a patient has an appointment with the given ID
    *
-   * @param patientEmail the identifier used for the patient
    * @param appointmentID the identifier used for thr appointment
    * @return true if said patient has the given appointment
    */
-  public boolean confirmAppointmentExists(String patientEmail, int appointmentID) {
-    ResultSet rs = database.execute(String.format(Queries.CONFIRM_APP_FOR_PATIENT, patientEmail, appointmentID));
-    try
-    {
-      rs.next();
-      int app_id = rs.getInt("app_id");
-      return appointmentID == app_id;
-
-    }
-    catch (SQLException e)
-    {
-
-      System.out.println("Error iterating over ResultSet");
-      return false;
-
-    }
-
+  public boolean confirmAppointmentExists(String patientID, String appointmentID) {
+    return false;
   }
 
   /**
@@ -188,6 +184,20 @@ public class DBInterface {
     return null;
   }
 
+  /**
+   * @param patientID the patient's email address
+   * @return the name of the patient
+   */
+  public String getPatientName(String patientID) {
+    ResultSet rs = database.execute(String.format(Queries.GET_NAME, patientID));
+    String name = null;
+    try {
+      name = rs.getString("patient_name");
+    } catch (SQLException e) {
+      System.out.println("Exception in reading name from ResultSet: " + e.getMessage());
+    }
+    return name;
+  }
 
   /**
    * @param patientEmail the patient's email address
