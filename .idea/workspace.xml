@@ -2,67 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50b665e9-c2dd-4d06-bbc4-d3ad830e0878" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/MailingServices/MailingError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/CONTRIBUTING.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/NOTICE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/RELEASE-NOTES.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9-sources.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9-test-sources.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9-tests.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/commons-lang3-3.9/commons-lang3-3.9.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailReceiver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/EmailSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailQuickstart.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailQuickstart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MailingServices/deprecated_GmailSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Appointment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBConnection.class~HEAD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBConnectionTrial.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/DBInterface.class~HEAD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Kernel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/oscar/Kernel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Queries.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/SegmentQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/oscar/SegmentQueue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/oscar/Timeslot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/oscarGroupId.oscarArtifactId.main.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailReceiver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/FailedToSendEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/FailedToSendEmail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/IncorrectArgument.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/IncorrectArgument.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/UnidentifiedEmailFormat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/UnidentifiedEmailFormat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/deprecated_GmailQuickstart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/deprecated_GmailQuickstart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MailingServices/deprecated_GmailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/deprecated_GmailSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/SegmentQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/SegmentQueue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/FailedToSendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/FailedToSendEmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/IncorrectArgument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/IncorrectArgument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/UnidentifiedEmailFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/UnidentifiedEmailFormat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/IncorrectArgument.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/UnidentifiedEmailFormat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/deprecated_GmailQuickstart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/deprecated_GmailSender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/DELETEMEClass.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -296,13 +242,14 @@
       <option name="presentableId" value="Default" />
       <updated>1580817970838</updated>
     </task>
-    <task id="LOCAL-00001" summary="the grand merger">
-      <created>1581426966134</created>
+    <task id="LOCAL-00001" summary="Implemented support for reading different email formats">
+      <created>1581592604271</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1581426966134</updated>
+      <updated>1581592604271</updated>
     </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -337,6 +284,7 @@
       <path value="$PROJECT_DIR$/oscar_gradle" />
     </ignored-roots>
     <MESSAGE value="the grand merger" />
-    <option name="LAST_COMMIT_MESSAGE" value="the grand merger" />
+    <MESSAGE value="Implemented support for reading different email formats" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented support for reading different email formats" />
   </component>
 </project>

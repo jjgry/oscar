@@ -6,7 +6,7 @@ public class EmailMessage {
     private String subject;
     private String message;
 
-    public EmailMessage( String sender, String receiver, String subject, String message ){
+    public EmailMessage(String sender, String receiver, String subject, String message){
         this.sender = sender;
         this.receiver = receiver;
         this.subject = subject;

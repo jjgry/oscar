@@ -52,7 +52,7 @@ public class Kernel {
         //TODO: Initialise the DBMS port thread, if necessary
 
         //TODO: Create a thread, the major loop, named Major.
-        Thread Major = new Thread() {
+                Thread Major = new Thread() {
             @Override
             public void run() {
 
