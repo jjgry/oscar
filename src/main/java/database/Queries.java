@@ -38,4 +38,5 @@ class Queries {
             "WHERE patient_email = \"%1$s\" AND app_id = %2$s;";
 
   static final String GET_NAME = "SELECT patient_name from `jjag3/SurgeryAssistant`.`Patients` WHERE patient_id = %s";
+  static final String ADD_LOG = "INSERT INTO `jjag3/SurgeryAssistant`.`Logs` VALUES(%1$s, \"%2$s\")";
 }
