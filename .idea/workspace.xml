@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/opennlp-tools-1.8.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/training-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/training-data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/oscarGroupId.oscarArtifactId.main.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/database/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/Queries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/database/UpdateMySqlDatabase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EmailClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EmailDateExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="C:\Users\milam\Desktop\IB\GroupProject\oscar\.idea\shelf/" />
@@ -15,85 +27,72 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DBInterface.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="74" column="52" selection-start-line="74" selection-start-column="52" selection-end-line="74" selection-end-column="52" />
+            <state relative-caret-position="85">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/database/Queries.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/EmailDateExtractor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="13" column="22" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/EmailClassifier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/tokenize/TokenizerME.class">
+        <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/sentdetect/SentenceDetectorME.class">
+        <entry file="file://$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="86">
+              <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnection.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/doccat/DocumentCategorizerME.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="95" selection-start-line="95" selection-end-line="95" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/main/resources/credentials.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/doccat/DocumentSampleStream.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/training-data.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3570">
-              <caret line="210" column="16" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Kernel.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/database/Appointment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
@@ -147,6 +146,8 @@
         <option value="$PROJECT_DIR$/src/EmailClassifier.java" />
         <option value="$PROJECT_DIR$/src/EmailDateExtractorTest.java" />
         <option value="$PROJECT_DIR$/src/EmailDateExtractor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" />
+        <option value="$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java" />
       </list>
     </option>
   </component>
@@ -161,24 +162,60 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oscar" type="462c0819:PsiDirectoryNode" />
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oscar" type="462c0819:PsiDirectoryNode" />
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="oscar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oscar" type="462c0819:PsiDirectoryNode" />
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="classifier" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="MailingServices" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -191,12 +228,12 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581850428661" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581865087729" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/opennlp-tools-1.8.0.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -206,12 +243,21 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\milam\Desktop\IB\GroupProject\oscar\src\main\resources" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\milam\Desktop\IB\GroupProject\oscar" />
+      <recent name="C:\Users\milam\Desktop\IB\GroupProject\oscar\src\main\java\classifier" />
+      <recent name="C:\Users\milam\Desktop\IB\GroupProject\oscar\src\main" />
+      <recent name="C:\Users\milam\Desktop\IB\GroupProject\oscar\src\main\resources" />
       <recent name="C:\Users\milam\Desktop\IB\GroupProject\oscar\lib" />
-      <recent name="C:\Users\jjgray\Documents\compsci\group-project\oscar\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -226,7 +272,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.EmailDateExtractor">
+  <component name="RunManager" selected="Application.EmailClassifier">
     <configuration name="DBConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DBConnection" />
       <module name="oscar" />
@@ -235,15 +281,15 @@
       </method>
     </configuration>
     <configuration name="EmailClassifier" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="EmailClassifier" />
-      <module name="oscar" />
+      <option name="MAIN_CLASS_NAME" value="classifier.EmailClassifier" />
+      <module name="oscarGroupId.oscarArtifactId.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="EmailDateExtractor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="EmailDateExtractor" />
-      <module name="oscar" />
+      <option name="MAIN_CLASS_NAME" value="classifier.EmailDateExtractor" />
+      <module name="oscarGroupId.oscarArtifactId.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -255,13 +301,13 @@
     <list>
       <item itemvalue="Application.DBConnection" />
       <item itemvalue="Application.EmailClassifier" />
-      <item itemvalue="JAR Application.mysql-connector.jar" />
       <item itemvalue="Application.EmailDateExtractor" />
+      <item itemvalue="JAR Application.mysql-connector.jar" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.EmailDateExtractor" />
         <item itemvalue="Application.EmailClassifier" />
+        <item itemvalue="Application.EmailDateExtractor" />
         <item itemvalue="Application.DBConnection" />
         <item itemvalue="JAR Application.mysql-connector.jar" />
       </list>
@@ -354,7 +400,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23724696" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21538462" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -364,7 +410,7 @@
       <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -376,6 +422,7 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3285968" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
+      <window_info anchor="right" id="Gradle" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -411,30 +458,10 @@
     <entry file="file://$PROJECT_DIR$/lib/en-lemmatizer.bin">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DBConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DBInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="52" selection-start-line="74" selection-start-column="52" selection-end-line="74" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/tokenize/TokenizerME.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DBConnection.java" />
+    <entry file="file://$PROJECT_DIR$/src/DBInterface.java" />
+    <entry file="file://$PROJECT_DIR$/src/EmailDateExtractorTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/Kernel.java" />
     <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/sentdetect/SentenceDetectorME.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -449,13 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/doccat/DocumentSampleStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/training-data.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3570">
@@ -463,34 +483,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EmailDateExtractorTest.java">
+    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/tokenize/TokenizerME.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+        <state relative-caret-position="102">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EmailClassifier.java">
+    <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/opennlp/tools/doccat/DocumentSampleStream.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Kernel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/Appointment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EmailDateExtractor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/credentials.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="22" />
+        <state relative-caret-position="85">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/Queries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -549,7 +607,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>oscar</last-edited>
+          <last-edited>oscarGroupId.oscarArtifactId</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -573,6 +631,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Gradle: com.fasterxml.jackson.core:jackson-annotations:2.10.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

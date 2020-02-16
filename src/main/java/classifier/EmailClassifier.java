@@ -1,3 +1,5 @@
+package classifier;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -124,7 +126,7 @@ public class EmailClassifier {
 
             String[] sentences = myCategorizer.sentDetect(data);
             System.out.println("Sentence Detection: " + Arrays.stream(sentences).collect(Collectors
-                    .joining(" | ")));
+                .joining(" | ")));
 
             return sentences;
         }
