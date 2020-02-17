@@ -44,14 +44,14 @@ public class Kernel {
     SegmentQueue<IncomingMessage> InQ;
 
     private final ScheduledExecutorService scheduler =
-            Executors.newScheduledThreadPool(1);
+        Executors.newScheduledThreadPool(1);
 
     public Kernel() {
         //SETUP
         //Initialise the queues for the Receiver -> Kernel and the Kernel -> Sender
 
-         OutQ = new SegmentQueue<>();
-         InQ = new SegmentQueue<>();
+        OutQ = new SegmentQueue<>();
+        InQ = new SegmentQueue<>();
 
         // TODO: Establish the Interface to the database. REMOVE credentials from hardcoding.
 
@@ -63,14 +63,15 @@ public class Kernel {
         // get login credentials
 
         //System.out.print("Username: ");
-        username = "jjag3";
+//        username = "jjag3";
         //System.out.print("Password: ");
-        password = "JixOondEta";
+//        password = "JixOondEta";
 
         // initialize database interface
         DB = null;
         try {
-            DB= new DBInterface("127.0.0.1:9876", username, password);
+//            DB= new DBInterface("127.0.0.1:9876", username, password);
+            DB= new DBInterface();
         } catch (DBInitializationException e) {
             e.printStackTrace();
             DB = null;
@@ -166,9 +167,9 @@ public class Kernel {
 //                            }
 //                        }
 //                        DB.closeConnection();
-                    }
                 }
-            };
+            }
+        };
         Major.start();
 
         // If the DBMS port is a thread in this, put it here. If it is a system with (another) producer consumer queue, check it between every handle of an incoming, and at the end of all of these.
@@ -194,8 +195,8 @@ public class Kernel {
             }
         };
         final ScheduledFuture<?> BatchHandle =
-                //Schedule the check for every 1 minute.
-                scheduler.scheduleAtFixedRate(reminderBatchSender, 0, 1, MINUTES);
+            //Schedule the check for every 1 minute.
+            scheduler.scheduleAtFixedRate(reminderBatchSender, 0, 1, MINUTES);
     }
 
 
