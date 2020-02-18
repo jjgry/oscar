@@ -1,5 +1,7 @@
 package oscar;
 
+import MailingServices.IncomingEmailMessage;
+import MailingServices.OutgoingEmailMessage;
 import database.Appointment;
 import database.DBInitializationException;
 import database.DBInterface;
@@ -40,8 +42,8 @@ public class Kernel {
     */
 
     DBInterface DB;
-    SegmentQueue<OutgoingMessage> OutQ;
-    SegmentQueue<IncomingMessage> InQ;
+    SegmentQueue<OutgoingEmailMessage> OutQ;
+    SegmentQueue<IncomingEmailMessage> InQ;
 
     private final ScheduledExecutorService scheduler =
         Executors.newScheduledThreadPool(1);
