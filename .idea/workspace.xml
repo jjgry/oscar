@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/opennlp-tools-1.8.0.jar" afterDir="false" />
+    <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="merged classifier to master.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/training-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/training-data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/oscarGroupId.oscarArtifactId.main.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBConnectionTrial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/DBInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/Queries.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/database/Queries.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/database/UpdateMySqlDatabase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Kernel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EmailClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EmailDateExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/oscar/Classification.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/oscar/Classification.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/AUTOMATED_RESPONSE.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/CANCEL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/CONFIRM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Classification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Classification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/OTHER.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/RESCHEDULE.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="C:\Users\milam\Desktop\IB\GroupProject\oscar\.idea\shelf/" />
@@ -26,41 +23,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/Queries.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="170">
+              <caret line="10" column="33" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#206#207#0" expanded="true" />
+                <element signature="e#252#253#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/oscar/DELETEMEClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/oscar/Classification.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+              <folding>
+                <element signature="e#107#108#0" expanded="true" />
+                <element signature="e#132#133#0" expanded="true" />
+                <element signature="e#164#165#0" expanded="true" />
+                <element signature="e#186#187#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/oscar/Kernel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="551">
+              <caret line="124" column="2" lean-forward="true" selection-start-line="124" selection-start-column="2" selection-end-line="124" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -68,20 +73,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+            <state relative-caret-position="317">
+              <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -122,6 +118,7 @@
       <find>Assistant</find>
       <find>StandardCharsets</find>
       <find>Assis</find>
+      <find>DoccatModel</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,8 +143,10 @@
         <option value="$PROJECT_DIR$/src/EmailClassifier.java" />
         <option value="$PROJECT_DIR$/src/EmailDateExtractorTest.java" />
         <option value="$PROJECT_DIR$/src/EmailDateExtractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" />
+        <option value="$PROJECT_DIR$/src/main/java/oscar/RESCHEDULE.java" />
         <option value="$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" />
+        <option value="$PROJECT_DIR$/src/main/java/oscar/Classification.java" />
       </list>
     </option>
   </component>
@@ -163,7 +162,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -215,12 +213,21 @@
               <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="oscar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -228,7 +235,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581865087729" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582027239712" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -394,13 +401,21 @@
       <option name="project" value="LOCAL" />
       <updated>1581850154247</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="merged classifier to master.">
+      <created>1581865141246</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1581865141246</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21538462" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2672065" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -409,8 +424,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -422,7 +437,6 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3285968" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
-      <window_info anchor="right" id="Gradle" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -433,6 +447,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="DB Browser" order="8" weight="0.32986337" />
       <window_info anchor="right" id="Codota" order="9" />
+      <window_info anchor="right" id="Gradle" order="10" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -445,7 +460,8 @@
     <MESSAGE value="updating training data" />
     <MESSAGE value="updating training data and printing probabilities" />
     <MESSAGE value="rename classes, refactor structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename classes, refactor structure" />
+    <MESSAGE value="merged classifier to master." />
+    <option name="LAST_COMMIT_MESSAGE" value="merged classifier to master." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -497,16 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/Appointment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/credentials.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnectionTrial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -521,6 +527,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/DBConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -528,29 +541,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MailingServices/EmailReceiver.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/credentials.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/Appointment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/oscar/DELETEMEClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/oscar/CANCEL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/oscar/AUTOMATED_RESPONSE.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="56" lean-forward="true" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/oscar/Kernel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="124" column="2" lean-forward="true" selection-start-line="124" selection-start-column="2" selection-end-line="124" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/oscar/RESCHEDULE.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+        <state relative-caret-position="317">
+          <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/oscar/Classification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#107#108#0" expanded="true" />
+            <element signature="e#132#133#0" expanded="true" />
+            <element signature="e#164#165#0" expanded="true" />
+            <element signature="e#186#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="170">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#252#253#0" expanded="true" />
           </folding>
         </state>
       </provider>

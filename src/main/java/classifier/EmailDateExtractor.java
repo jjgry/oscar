@@ -5,6 +5,13 @@ import java.util.Scanner;
 
 public class EmailDateExtractor {
 
+  /**
+   * Returns suggested slots
+   **/
+  public static String[] getDates(String emailText) {
+    return findSuggestedSlots(emailText);
+  }
+
   public static void main(String[] args) throws IOException {
 
     // Take chat inputs from console (user) in a loop.
@@ -180,3 +187,5 @@ public class EmailDateExtractor {
     return hour;
   }
 }
+
+
