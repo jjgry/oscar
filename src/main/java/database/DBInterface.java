@@ -194,6 +194,7 @@ public class DBInterface {
     }
     return null;
   }
+
   /**
    * @param emailID the email address of the patient
    * @return the list of patients associated with the email address
@@ -215,21 +216,18 @@ public class DBInterface {
       else
         return null;
     }
-
-    catch (SQLException s)
-    {
+    catch (SQLException s) {
       System.out.println("Exception iterating over ResultSet");
     }
     return null;
   }
 
   /**
-   * @param patientEmail the patient's email address
+   * @param app_id the appointment id associated with the email
    * @param messageBody the content of the message
-   * @return whether the log has been added successfully
    */
-  public boolean addLog(String patientEmail, String messageBody) {
-    return false;
+  public void addLog(int app_id, String messageBody) {
+    database.executeUpdate(String.format((Queries.ADD_LOG), app_id, messageBody));
   }
 
   /**

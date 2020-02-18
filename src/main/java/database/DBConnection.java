@@ -5,6 +5,7 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -126,9 +127,12 @@ class DBConnection {
   ResultSet execute(String query) {
     ResultSet rs = null;
     try {
-      Statement stmt = con
-          .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-      rs = stmt.executeQuery(query);
+//      Statement stmt = con
+//          .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+//      rs = stmt.executeQuery(query);
+
+      PreparedStatement stmt = con.prepareStatement(query);
+      rs = stmt.executeQuery();
     } catch (SQLException e) {
       System.err.println("Error executing query: ");
       e.printStackTrace();
@@ -143,9 +147,12 @@ class DBConnection {
   boolean executeUpdate(String query) {
     boolean success;
     try {
-      Statement stmt = con
-          .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-      success = stmt.execute(query);
+      //Statement stmt = con
+      //    .createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+      //success = stmt.execute(query);
+
+      PreparedStatement stmt = con.prepareStatement(query);
+      success = stmt.execute();
     } catch (SQLException e) {
       System.err.println("Error executing query: ");
       e.printStackTrace();

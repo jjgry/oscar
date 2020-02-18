@@ -20,8 +20,8 @@ class DBConnectionTrial {
       return;
     }
 
-//    dbTrial.connectionTesting();
-    dbTrial.progressMeetingDemo();
+    dbTrial.connectionTesting();
+//    dbTrial.progressMeetingDemo();
   }
 
   private void connectionTesting() {
