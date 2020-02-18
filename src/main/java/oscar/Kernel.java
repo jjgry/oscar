@@ -46,7 +46,7 @@ public class Kernel {
     private final ScheduledExecutorService scheduler =
         Executors.newScheduledThreadPool(1);
 
-    public Kernel() {
+    public Kernel() throws DBInitializationException {
         //SETUP
         //Initialise the queues for the Receiver -> Kernel and the Kernel -> Sender
 
@@ -55,27 +55,26 @@ public class Kernel {
 
         // TODO: Establish the Interface to the database. REMOVE credentials from hardcoding.
 
-        //DBInterface DB = new DBInterface();
-
-        String username;
-        String password;
-
-        // get login credentials
-
-        //System.out.print("Username: ");
-//        username = "jjag3";
-        //System.out.print("Password: ");
-//        password = "JixOondEta";
-
-        // initialize database interface
-        DB = null;
-        try {
-//            DB= new DBInterface("127.0.0.1:9876", username, password);
-            DB= new DBInterface();
-        } catch (DBInitializationException e) {
-            e.printStackTrace();
-            DB = null;
+        DBInterface DB;
+        try{
+            DB = new DBInterface();
+        } catch(DBInitializationException e){
+            //try again 3 times. If connection is impossible, end program in error.
+            try {
+                DB = new DBInterface();
+            }
+            catch (DBInitializationException e1){
+                try {
+                    DB = new DBInterface();
+                }
+                catch(DBInitializationException e2){
+                    e.printStackTrace();
+                    throw new DBInitializationException("After trying 3 times, no connection can be established.");
+                }
+            }
         }
+
+
 
         //TODO:Initialise the Sender
 
@@ -200,7 +199,7 @@ public class Kernel {
     }
 
 
-    public static void main (String[] args){
+    public static void main (String[] args) throws DBInitializationException {
         new Kernel();
     }
 }
