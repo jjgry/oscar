@@ -194,6 +194,34 @@ public class DBInterface {
     }
     return null;
   }
+  /**
+   * @param emailID the email address of the patient
+   * @return the list of patients associated with the email address
+   */
+  public List<Patient> getPatients(String emailID) {
+    ResultSet rs = database.execute(String.format(Queries.GET_PATIENTS, emailID));
+    List<Patient> patients = new ArrayList<>();
+    try {
+      while (rs.next()) {
+        Patient p = new Patient();
+        p.setEmail(emailID);
+        p.setName(rs.getString("patient_name"));
+        p.setPatient_id(rs.getInt("patient_id"));
+        patients.add(p);
+
+      }
+      if(patients.size() > 0)
+        return patients;
+      else
+        return null;
+    }
+
+    catch (SQLException s)
+    {
+      System.out.println("Exception iterating over ResultSet");
+    }
+    return null;
+  }
 
   /**
    * @param patientEmail the patient's email address
