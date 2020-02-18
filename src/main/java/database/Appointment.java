@@ -7,6 +7,8 @@ public class Appointment {
   private String patientName;
   private String doctorName;
   private String datetime;
+  private int doctorID;
+
 
   public void setPatientEmail(String e) {
     patientEmail = e;
@@ -28,6 +30,9 @@ public class Appointment {
     datetime = d;
   }
 
+  public void setDoctorID(int id) {
+    doctorID = id;
+  }
   public int getAppID() {
     return appID;
   }
@@ -38,6 +43,10 @@ public class Appointment {
 
   public String getDoctorName() {
     return doctorName;
+  }
+
+  public int getDoctorID() {
+    return doctorID;
   }
 
   public String getPatientEmail() {

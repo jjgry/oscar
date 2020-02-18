@@ -182,6 +182,8 @@ public class DBInterface {
         app.setDoctorName(rs.getString("doctor_name"));
         app.setPatientEmail(rs.getString("patient_email"));
         app.setPatientName(rs.getString("patient_name"));
+        app.setDoctorID(rs.getInt("doctor_id"));
+
         appointmentList.add(app);
       }
       if (appointmentList.size() == 1) {
@@ -223,6 +225,7 @@ public class DBInterface {
   }
 
   public boolean blockTimeSlot(int timeslotID, int appID) {
+    database.executeUpdate(String.format(Queries.BLOCK_TIMESLOT, timeslotID, appID));
     return true;
   }
 
