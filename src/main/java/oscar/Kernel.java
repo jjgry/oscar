@@ -161,19 +161,19 @@ public class Kernel {
 
                                         //Database
                                         String[] availableDates = C.getDates();
-//                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[0], availableDates[1]));
-//                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(),availableDates[2],availableDates[3]));
-//                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(),availableDates[4],availableDates[5]));
+                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[0], availableDates[1]));
+                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[2], availableDates[3]));
+                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[4], availableDates[5]));
 
                                         if (all_available_timeslots.size() < 1) {
                                             // TODO: Send email asking for new timeslots (the ones we were given do not work).
 
                                         } else {// we have a collection of >= 1 to choose from.
-                                            //Suggest one. Set it as being attended in database
-
+                                            //TODO: select one to suggest based on a sensible criteria. Set it as being attended in database
+                                            int selectedTimeslotID = all_available_timeslots.getFirst().getID();
                                             //cancel last.
                                             finalDB.rejectTime(appointmentID);
-//                                            finalDB.blockTimeslot(appointmentID, selectedTimeslotID);
+                                            finalDB.blockTimeSlot(appointmentID, selectedTimeslotID);
                                             // block selected new appointment
 
                                             // TODO:  Send SuggestedAppt email to patient to suggest the new time.
