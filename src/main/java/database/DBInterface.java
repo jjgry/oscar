@@ -132,7 +132,7 @@ public class DBInterface {
    * @param appointmentID the appointment to be confirmed
    * @return true if the update was successful
    */
-  public boolean confirmNewTime(String appointmentID) {
+  public boolean confirmNewTime(int appointmentID) {
     // nothing changes in the database so do nothing
     return true;
   }
@@ -220,6 +220,10 @@ public class DBInterface {
       System.out.println("Exception iterating over ResultSet");
     }
     return null;
+  }
+
+  public boolean confirmTimeSlot(int timeslotID, int appID) {
+    return true;
   }
 
   /**
