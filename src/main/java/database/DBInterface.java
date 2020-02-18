@@ -222,7 +222,7 @@ public class DBInterface {
     return null;
   }
 
-  public boolean confirmTimeSlot(int timeslotID, int appID) {
+  public boolean blockTimeSlot(int timeslotID, int appID) {
     return true;
   }
 
