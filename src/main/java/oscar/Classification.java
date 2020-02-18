@@ -20,6 +20,15 @@ public class Classification {
   }
 
   private classes decision;
+
+  /**
+   * an array of 6 strings, each having the format: YYYY/MM/DD hh:mm:ss The 1st, 3rd and
+   * 5th strings represent the start times of the three proposed slots and the 2nd, 4th and 6th
+   * strings represent the corresponding end times (note that the 1st string and the 2nd one are
+   * associated with the first slot, and so on).
+   * <p>
+   * If the patient suggests less than 3 slots, the corresponding strings are empty.
+   */
   private String[] dates;
 
   Classification(String emailText) throws IOException {

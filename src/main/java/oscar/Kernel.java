@@ -1,14 +1,21 @@
 package oscar;
 
+import MailingServices.EmailReceiver;
+import MailingServices.EmailSender;
 import MailingServices.IncomingEmailMessage;
 import MailingServices.OutgoingEmailMessage;
+import classifier.EmailClassifier;
 import database.Appointment;
 import database.DBInitializationException;
 import database.DBInterface;
+import database.Timeslot;
 
+import java.io.IOError;
+import java.io.IOException;
 import java.lang.String;
 import java.time.LocalDateTime;
-import  java.lang.Thread;
+import java.lang.Thread;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -55,7 +62,7 @@ public class Kernel {
         OutQ = new SegmentQueue<>();
         InQ = new SegmentQueue<>();
 
-        // TODO: Establish the Interface to the database. REMOVE credentials from hardcoding.
+        //  Establish the Interface to the database. REMOVE credentials from hardcoding.
 
         DBInterface DB;
         try{
@@ -77,14 +84,13 @@ public class Kernel {
         }
 
 
+        //Initialise the Sender
 
-        //TODO:Initialise the Sender
-
-        //EmailSender Sender = new EmailSender.getSender(OutQ);
+        EmailSender Sender = new EmailSender(OutQ);
 
         //TODO: Initialise the Receiver
 
-        //Receiver Rec = new Receiver(InQ);
+        //EmailReceiver Rec = new EmailReceiver(InQ);
 
         //TODO: Initialise the training system of the classifier, if necessary
 
@@ -93,81 +99,110 @@ public class Kernel {
 
 
         // Create a thread, the major loop, named Major.
+        DBInterface finalDB = DB;
         Thread Major = new Thread() {
             @Override
             public void run() {
 
-
                 //Main Loop:
                 LocalDateTime NextNewApptCheck = LocalDateTime.now();
                 // TODO: 1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
-                SendNewReminders();//SEE BELOW. This makes a system that should send the new reminders found on the database on demand, every 10 minutes.
+                SendNewReminders(5);//SEE BELOW. This makes a system that should send the new reminders found on the database on demand, every 10 minutes.
+
 
                 while (true) {
 
 
-//
-//                    // TODO: 2. Deal with received emails one at a time until the queue is empty;
-//
-//                    if (InQ.NumWaiting() > 0) {
-//                        DB.openConnection();
-//                        while (InQ.NumWaiting() > 0) {
-//                            IncomingMessage PatientResponse = InQ.take();
-//
-//                            // 2a. Is the received email valid? check it's a patient on the database.
-//                            int PatientID = DB.getPatientsID(PatientResponse.getEmail());
-//                            if (PatientID > 0) {//if a valid email....
-//                                // 2b. Fetch information on the history of this conversation, ie last response type, appointment time, doctor name, patient name.
-//                                //TODO: Appointment bookedAppointment = DB.getAppointmentID();
-//
-//                                // 2c. Hand off to classifier: what type of message was it?
-//                                Classification C = Classifier.Classify( *)
-//                                if (C instanceof CONFIRM) {
-//
-//                                    // TODO: Confirm Appt in database
-//
-//                                    //Send Email
-//                                    OutQ.put(new ConfirmationMessage(patientResponse.getEmail(), true, "", ));
-//                                    // 2d. update database with any new developments.
-//                                    // 2e. Send another email based on this as required.
-//
-//                                } else if (C instanceof CANCEL) {
-//
-//                                    //Cancel Appt in database
-//
-//                                    //Send Email
-//
-//
-//                                } else if (C instanceof RESCHEDULE) {
-//
-//                                    // RESCHEDULE **** complicated
-//
-//                                    //Add this appointment to list of those that cannot be attended in DB
-//
-//                                    //Poll database for available appointments in given time slots
-//
-//                                    // Suggest one. Set it as being attended in database
-//
-//                                    // Send SuggestedAppt email to patient to suggest the new time.
-//                                } else if (C instanceof OTHER) {
-//
-//                                    // OTHER
-//
-//                                    // 2d. update database with any new developments.
-//                                    // 2e. Send another email based on this as required.
-//
-//                                } else if (C instanceof AUTOMATED_RESPONSE) {
-//
-//                                } else { // a new classification that is unsupported.
-//
-//                                }
-//                                // AUTOMATED_RESPONSE
-//
-//                            } else {//invalid patientID...
-//                                OutQ.put(new InvalidEmailMessage(PatientResponse.getEmail()));
-//                            }
-//                        }
-//                        DB.closeConnection();
+                    // TODO: 2. Deal with received emails one at a time until the queue is empty;
+
+                    if (InQ.NumWaiting() > 0) {
+                        finalDB.openConnection();
+                        while (InQ.NumWaiting() > 0) {
+                            IncomingEmailMessage PatientResponse = InQ.take();
+                            //TODO: Appointment ID should be given by receiver system, not always be -1 in line below
+                            int appointmentID = -1;
+                            // 2a. Is the received email valid? check it's a patient on the database.
+
+                            if (finalDB.confirmAppointmentExists(PatientResponse.getSenderEmailAddress(), appointmentID)) {//if a valid email....
+                                // 2b. Fetch information on the history of this conversation, ie last response type, appointment time, doctor name, patient name.
+                                Appointment bookedAppointment = finalDB.getApp(appointmentID);
+                                // 2c. Hand off to classifier: what type of message was it?
+
+                                //String C = EmailClassifier.getCategory(PatientResponse.getMessage());
+                                Classification C = null;
+                                try {
+                                    C = new Classification(PatientResponse.getMessage());
+                                } catch (IOException e) {
+                                    //TODO: Handle this error properly. Why is it thrown?
+
+                                }
+                                switch (C.getDecision()) {
+                                    case CONFIRM:
+                                        //  Confirm Appt in database
+                                        finalDB.confirmNewTime(appointmentID);
+                                        // TODO: Send Confirm Email
+                                        //OutQ.put(new ConfirmationMessage(patientResponse.getEmail(), true, "", ));
+                                        break;
+                                    case CANCEL:
+                                        //Cancel Appt in database
+                                        finalDB.rejectTime(appointmentID);
+                                        //TODO: Send cancel Email
+
+                                        break;
+                                    case RESCHEDULE:
+                                        // RESCHEDULE **** complicated
+
+                                        //Add this appointment to list of those that cannot be attended in DB
+                                        // ^^^ decided as redundant given the current timestamp system
+                                        //Poll database for available appointments in given time slots
+                                        LinkedList<Timeslot> all_available_timeslots = new LinkedList<Timeslot>();
+
+                                        //for each given timeslot....
+
+                                        //Database
+                                        String[] availableDates = C.getDates();
+//                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[0], availableDates[1]));
+//                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(),availableDates[2],availableDates[3]));
+//                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(),availableDates[4],availableDates[5]));
+
+                                        if (all_available_timeslots.size() < 1) {
+                                            // TODO: Send email asking for new timeslots (the ones we were given do not work).
+
+                                        } else {// we have a collection of >= 1 to choose from.
+                                            //Suggest one. Set it as being attended in database
+
+                                            //cancel last.
+                                            finalDB.rejectTime(appointmentID);
+//                                            finalDB.blockTimeslot(appointmentID, selectedTimeslotID);
+                                            // block selected new appointment
+
+                                            // TODO:  Send SuggestedAppt email to patient to suggest the new time.
+
+                                        }
+                                        break;
+                                    case OTHER:
+                                        //TODO: ensure that all templates have contact information in every email, so that OTHER does not need to send additional info and
+                                        //TODO: can be safely discarded.
+
+                                        //No action taken on these emails.
+
+                                        // 2d. update database with any new developments.
+                                        // 2e. Send another email based on this as required.
+                                        break;
+                                    default:
+                                        //TODO:
+                                        break;
+
+                                }
+
+                            } else {//invalid patientID...
+
+                                // TODO: Send invalidEmailAddress  Email.
+                                //OutQ.put(new InvalidEmailMessage(PatientResponse.getEmail()));
+                            }
+                        }
+                        finalDB.closeConnection();
+                    }
                 }
             }
         };
@@ -177,27 +212,27 @@ public class Kernel {
     }
 
 
-    public void SendNewReminders() {
+    public void SendNewReminders(int xMinutes) {
         final Runnable reminderBatchSender = new Runnable() {
             public void run() {
 
-                System.out.println("beep" +LocalDateTime.now());
-//                        DB.openConnection();
-//                        List<Appointment> newAppts = DB.remindersToSendToday();
-//                        DB.closeConnection();
-//                        // TODO: 1a. Send any emails that are now shown as required by the database state.
-//
-//                        for(Appointment A :newAppts){
-//                            IntroMessage nextIntro = new IntroMessage(A.getPatientEmail(),true,"",A.getDoctorName());
-//                            OutQ.put(nextIntro);
-//                        }
-//                    }
+                System.out.println("beep, at " + LocalDateTime.now());
+                DB.openConnection();
+                List<Appointment> newAppts = DB.remindersToSendToday();
+                DB.closeConnection();
 
+                for (Appointment A : newAppts) {
+                    // TODO: 1a. Send any initial reminder emails that are now shown as required by the database state.
+//                  // IntroMessage nextIntro = new IntroMessage(A.getPatientEmail(),true,"",A.getDoctorName());
+//                   //         OutQ.put(nextIntro);
+                }
             }
+
+
         };
         final ScheduledFuture<?> BatchHandle =
-            //Schedule the check for every 1 minute.
-            scheduler.scheduleAtFixedRate(reminderBatchSender, 0, 1, MINUTES);
+                //Schedule the check for every 1 minute.
+                scheduler.scheduleAtFixedRate(reminderBatchSender, 0, xMinutes, MINUTES);
     }
 
 
