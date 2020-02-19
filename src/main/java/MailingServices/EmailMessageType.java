@@ -1,4 +1,4 @@
-package oscar;
+package MailingServices;
 
 public enum EmailMessageType {
     InitialReminderMessage,

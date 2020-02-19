@@ -85,8 +85,7 @@ public class Kernel {
 
 
         //Initialise the Sender
-
-        EmailSender Sender = new EmailSender(OutQ);
+        EmailSender Sender = EmailSender.getSender(OutQ);
 
         //TODO: Initialise the Receiver
 

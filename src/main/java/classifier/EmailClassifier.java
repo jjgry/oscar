@@ -1,5 +1,17 @@
 package classifier;
 
+import opennlp.tools.doccat.*;
+import opennlp.tools.lemmatizer.LemmatizerME;
+import opennlp.tools.lemmatizer.LemmatizerModel;
+import opennlp.tools.postag.POSModel;
+import opennlp.tools.postag.POSTaggerME;
+import opennlp.tools.sentdetect.SentenceDetectorME;
+import opennlp.tools.sentdetect.SentenceModel;
+import opennlp.tools.tokenize.TokenizerME;
+import opennlp.tools.tokenize.TokenizerModel;
+import opennlp.tools.util.*;
+import opennlp.tools.util.model.ModelUtil;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,28 +21,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import opennlp.tools.doccat.BagOfWordsFeatureGenerator;
-import opennlp.tools.doccat.DoccatFactory;
-import opennlp.tools.doccat.DoccatModel;
-import opennlp.tools.doccat.DocumentCategorizerME;
-import opennlp.tools.doccat.DocumentSample;
-import opennlp.tools.doccat.DocumentSampleStream;
-import opennlp.tools.doccat.FeatureGenerator;
-import opennlp.tools.lemmatizer.LemmatizerME;
-import opennlp.tools.lemmatizer.LemmatizerModel;
-import opennlp.tools.postag.POSModel;
-import opennlp.tools.postag.POSTaggerME;
-import opennlp.tools.sentdetect.SentenceDetectorME;
-import opennlp.tools.sentdetect.SentenceModel;
-import opennlp.tools.tokenize.TokenizerME;
-import opennlp.tools.tokenize.TokenizerModel;
-import opennlp.tools.util.InputStreamFactory;
-import opennlp.tools.util.MarkableFileInputStreamFactory;
-import opennlp.tools.util.ObjectStream;
-import opennlp.tools.util.PlainTextByLineStream;
-import opennlp.tools.util.TrainingParameters;
-import opennlp.tools.util.model.ModelUtil;
-
 /**
  * Ethical GP surgery assistant for automated email replies. It uses different features of Apache
  * OpenNLP for understanding whether the patient is confirming, canceling or rescheduling the
@@ -39,7 +29,7 @@ import opennlp.tools.util.model.ModelUtil;
  */
 public class EmailClassifier {
 
-  private static DoccatModel model;
+    private static DoccatModel model;
 
   static {
     try {
