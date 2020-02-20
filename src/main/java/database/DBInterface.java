@@ -198,6 +198,32 @@ public class DBInterface {
   }
 
   /**
+   * @param appointmentID the appointment ID
+   * @return a Patient object of the patient associated with the appointment
+   */
+  public Patient getPatient(int appointmentID) {
+    ResultSet rs = database.execute(String.format(Queries.GET_PATIENT, appointmentID));
+    List<Patient> patientList = new ArrayList<>();
+    try {
+      while (rs.next()) {
+        Patient p = new Patient();
+        p.setEmail(rs.getString(""));
+        p.setName(rs.getString("patient_name"));
+        p.setPatient_id(rs.getInt("patient_id"));
+        patientList.add(p);
+      }
+      if (patientList.size() == 1) {
+        return patientList.get(0);
+      } else {
+        return null;
+      }
+    } catch (SQLException e) {
+      System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
+    }
+    return null;
+  }
+
+  /**
    * @param emailID the email address of the patient
    * @return the list of patients associated with the email address
    */
@@ -213,12 +239,12 @@ public class DBInterface {
         patients.add(p);
 
       }
-      if(patients.size() > 0)
+      if (patients.size() > 0) {
         return patients;
-      else
+      } else {
         return null;
-    }
-    catch (SQLException s) {
+      }
+    } catch (SQLException s) {
       System.out.println("Exception iterating over ResultSet");
     }
     return null;
