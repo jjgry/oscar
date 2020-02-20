@@ -41,8 +41,12 @@ class Queries {
 
   static final String ADD_LOG = "INSERT INTO `jjag3/SurgeryAssistant`.`Logs` VALUES(%1$s, \"%2$s\")";
 
-  public static final String GET_PATIENTS = "SELECT patient_id, patient_name from `jjag3/SurgeryAssistant`.`Patients`\n" +
+  static final String GET_PATIENT = "SELECT `jjag3/SurgeryAssistant`.`Appointments`.patient_id, patient_name, patient_email from `jjag3/SurgeryAssistant`.`Appointments` "
+      + "LEFT JOIN `jjag3/SurgeryAssistant`.`Patients` on `jjag3/SurgeryAssistant`.`Patients`.patient_id= `jjag3/SurgeryAssistant`.`Appointments`.patient_id WHERE app_id = 1";
+
+  static final String GET_PATIENTS = "SELECT patient_id, patient_name from `jjag3/SurgeryAssistant`.`Patients`\n" +
       "WHERE patient_email = \"%s\";";
+
   static final String BLOCK_TIMESLOT = "UPDATE `jjag3/SurgeryAssistant`.`Appointments`\n" +
           "SET timeslot_id = %1$s\n" +
           "WHERE app_id = %2$s";
