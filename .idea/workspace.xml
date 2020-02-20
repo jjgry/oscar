@@ -1,88 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="">
+    <list default="true" id="39093f5d-1e15-4a35-b8cb-3965ad82ad0c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailMessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailMessageType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/IncomingEmailMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/IncomingEmailMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
-  </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="oscarArtifactId" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="oscarArtifactId" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="oscarArtifactId" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="oscarArtifactId" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="main" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="oscarArtifactId" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="test" type="396b929e:GradleViewContributor$SourceSetNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="oscarArtifactId" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="test" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectId" id="1XyuuORUYyJpqj6LUjQ7aqboEG6" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -90,52 +30,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582027332783" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
-    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/opennlp-tools-1.8.0.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\milam\Desktop\IB\GroupProject\oscar\src\main\resources" />
-      <recent name="C:\Users\milam\Desktop\IB\GroupProject\oscar\lib" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.EmailSender">
-    <configuration name="EmailClassifier" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="classifier.EmailClassifier" />
-      <module name="oscarGroupId.oscarArtifactId.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EmailDateExtractor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="classifier.EmailDateExtractor" />
-      <module name="oscarGroupId.oscarArtifactId.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="EmailReceiver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="GMAIL_ACCOUNT_EMAIL_ADDRESS" value="nhs.appointment.reminder@gmail.com" />
@@ -154,57 +55,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmailSender" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <envs>
-        <env name="GMAIL_ACCOUNT_EMAIL_ADDRESS" value="nhs.appointment.reminder@gmail.com" />
-        <env name="GMAIL_ACCOUNT_PASSWORD" value="OscarGradleBanana512" />
-        <env name="SENDGRID_API_KEY" value="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" />
-      </envs>
-      <option name="MAIN_CLASS_NAME" value="MailingServices.EmailSender" />
-      <module name="oscarArtifactId.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MailingServices.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="oscar [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="dependencies" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Application.EmailClassifier" />
-      <item itemvalue="Application.EmailDateExtractor" />
-      <item itemvalue="Application.EmailReceiver" />
-      <item itemvalue="Application.EmailSender" />
-      <item itemvalue="Gradle.oscar [dependencies]" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.EmailSender" />
         <item itemvalue="Application.EmailReceiver" />
-        <item itemvalue="Gradle.oscar [dependencies]" />
-        <item itemvalue="Application.EmailClassifier" />
-        <item itemvalue="Application.EmailDateExtractor" />
       </list>
     </recent_temporary>
   </component>
@@ -220,251 +73,80 @@
       </list>
     </option>
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="45e7aa1c-1c73-4017-9ce8-df78193f600e" name="Default Changelist" comment="" />
-      <created>1580817970838</created>
+      <changelist id="39093f5d-1e15-4a35-b8cb-3965ad82ad0c" name="Default Changelist" comment="" />
+      <created>1582197023848</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1580817970838</updated>
+      <updated>1582197023848</updated>
     </task>
-    <task id="LOCAL-00001" summary="Connecting to DB unsuccessfully">
-      <created>1580820307957</created>
+    <task id="LOCAL-00001" summary="Integrated with Email Sender.">
+      <created>1582201234987</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1580820307957</updated>
+      <updated>1582201234987</updated>
     </task>
-    <task id="LOCAL-00002" summary="testing commit for branch classifier">
-      <created>1580910902703</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1580910902703</updated>
-    </task>
-    <task id="LOCAL-00003" summary="new class email formatter">
-      <created>1580991234302</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1580991234302</updated>
-    </task>
-    <task id="LOCAL-00004" summary="new class email formatter">
-      <created>1580992506405</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1580992506405</updated>
-    </task>
-    <task id="LOCAL-00005" summary="adding data folder">
-      <created>1580992671789</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1580992671789</updated>
-    </task>
-    <task id="LOCAL-00006" summary="adding lib directory with .bins and training data">
-      <created>1581252040276</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1581252040276</updated>
-    </task>
-    <task id="LOCAL-00007" summary="adding lib with bins and training data">
-      <created>1581350567502</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1581350567503</updated>
-    </task>
-    <task id="LOCAL-00008" summary="updating training data">
-      <created>1581420956295</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1581420956295</updated>
-    </task>
-    <task id="LOCAL-00009" summary="updating training data and printing probabilities">
-      <created>1581598260466</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1581598260466</updated>
-    </task>
-    <task id="LOCAL-00010" summary="rename classes, refactor structure">
-      <created>1581850154247</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1581850154247</updated>
-    </task>
-    <task id="LOCAL-00011" summary="merged classifier to master.">
-      <created>1581865141246</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1581865141246</updated>
-    </task>
-    <task id="LOCAL-00012" summary="merged classifier to master.">
-      <created>1582031464917</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1582031464917</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Sender and receiver can use a shared queue to communicate with Kernel&#10;&#10;You will need to set env variables. &#10;Write to Simon">
-      <created>1582133945902</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1582133945902</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Fixed security issue and implemented pooling receiver">
-      <created>1582196825245</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1582196825245</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Connecting to DB unsuccessfully" />
-    <MESSAGE value="testing commit for branch classifier" />
-    <MESSAGE value="new class email formatter" />
-    <MESSAGE value="adding data folder" />
-    <MESSAGE value="adding lib directory with .bins and training data" />
-    <MESSAGE value="adding lib with bins and training data" />
-    <MESSAGE value="updating training data" />
-    <MESSAGE value="updating training data and printing probabilities" />
-    <MESSAGE value="rename classes, refactor structure" />
-    <MESSAGE value="merged classifier to master." />
-    <MESSAGE value="Sender and receiver can use a shared queue to communicate with Kernel&#10;&#10;You will need to set env variables. &#10;Write to Simon" />
-    <MESSAGE value="Fixed security issue and implemented pooling receiver" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed security issue and implemented pooling receiver" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Integrated with Email Sender." />
+    <option name="LAST_COMMIT_MESSAGE" value="Integrated with Email Sender." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582197477481">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1582197477481" />
-    <state x="438" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582131336273">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="438" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1582131336273" />
-    <state x="270" y="0" width="1060" height="807" key="CommitChangelistDialog2" timestamp="1582196824245">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1582196824245" />
-    <state x="458" y="149" width="1060" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1582031463417" />
-    <state x="395" y="56" key="DetectedRootsChooserDialog" timestamp="1582131097775">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="395" y="56" key="DetectedRootsChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1582131097775" />
-    <state x="376" y="102" key="EnvironmentVariablesDialog" timestamp="1582131001241">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="376" y="102" key="EnvironmentVariablesDialog/0.0.1280.680@0.0.1280.680" timestamp="1582131001241" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1582197096323">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1582197096323" />
-    <state width="1237" height="175" key="GridCell.Tab.0.bottom" timestamp="1582134008235">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582134008235" />
-    <state width="1237" height="175" key="GridCell.Tab.0.center" timestamp="1582134008235">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1582134008235" />
-    <state width="1237" height="175" key="GridCell.Tab.0.left" timestamp="1582134008235">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1582134008235" />
-    <state width="1237" height="175" key="GridCell.Tab.0.right" timestamp="1582134008235">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1582134008235" />
-    <state x="247" y="116" width="1482" height="872" key="MergeDialog" timestamp="1582029251992">
+    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582197404661">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="247" y="116" width="1482" height="872" key="MergeDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582029251992" />
-    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1582196809978">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582197404661" />
+    <state x="458" y="149" width="1060" height="807" key="CommitChangelistDialog2" timestamp="1582202329038">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1582196809978" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1582197107439">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="458" y="149" width="1060" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1582202329038" />
+    <state x="771" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1582197093228">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1582197107439" />
-    <state x="360" y="169" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582196841466">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="771" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1582197093228" />
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1582199066502">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="360" y="169" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1582196841466" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1582031467603" />
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1582196670735">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1582199066502" />
+    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1582199066502">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1582196670735" />
-    <state x="479" y="287" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582199807632">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1582199066502" />
+    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1582199066502">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="479" y="287" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1582199807632" />
-    <state x="761" y="472" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1582029904808" />
-  </component>
-  <component name="simpleUML.UMLToolWindowPlugin">
-    <General>
-      <option name="birdViewUpdateDelay" value="2000" />
-      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
-    </General>
-    <Classdiagram>
-      <option name="diagramTitleFont" value="SansSerif,1,12" />
-      <option name="diagramFont" value="SansSerif,0,10" />
-      <option name="defaultFieldsExpanded" value="false" />
-      <option name="defaultContructorsExpanded" value="false" />
-      <option name="defaultMethodsExpanded" value="false" />
-      <option name="showParameters" value="true" />
-      <option name="showTooltip" value="true" />
-      <option name="showReturnValues" value="true" />
-      <option name="longModifier" value="true" />
-      <option name="implementsBehaviour" value="1" />
-      <option name="extendsBehaviour" value="1" />
-      <option name="compartmentBehaviour" value="1" />
-      <option name="interfaceBackgroundColor" value="-6494306" />
-      <option name="abstractClassBackgroundColor" value="-1580132" />
-      <option name="classBackgroundColor" value="-6508057" />
-      <option name="diagramBackgroundColor" value="-1" />
-      <option name="useAntialiasedConnectors" value="true" />
-      <option name="quickSourceLinkColor" value="-16776961" />
-      <option name="quickDiagramLinkColor" value="-8454144" />
-      <option name="drawDecorations" value="false" />
-      <option name="hideFieldList" value="" />
-      <option name="showFieldList" value="" />
-      <option name="hideConstructorList" value="" />
-      <option name="showConstructorList" value="" />
-      <option name="hideMethodList" value="" />
-      <option name="showMethodList" value="" />
-      <option name="minimumFigureSize" value="0,0" />
-    </Classdiagram>
-    <Dependencydiagram>
-      <option name="diagramTitleFont" value="SansSerif,1,12" />
-      <option name="diagramFont" value="SansSerif,0,10" />
-      <option name="diagramBackgroundColor" value="-1" />
-      <option name="useAntialiasedConnectors" value="true" />
-      <option name="packageNameCompressionLevel" value="0" />
-    </Dependencydiagram>
-    <Packagediagram>
-      <option name="diagramTitleFont" value="SansSerif,0,12" />
-      <option name="diagramFont" value="SansSerif,0,10" />
-      <option name="packageBackgroundColor" value="-4144960" />
-      <option name="diagramBackgroundColor" value="-1" />
-      <option name="useAntialiasedConnectors" value="true" />
-      <option name="packageNameCompressionLevel" value="2" />
-    </Packagediagram>
+    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1582199066502" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1582199066502">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1582199066502" />
+    <state x="242" y="116" width="1482" height="872" key="MergeDialog" timestamp="1582202424627">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="242" y="116" width="1482" height="872" key="MergeDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582202424627" />
+    <state x="698" y="270" width="580" height="564" key="MultipleFileMergeDialog" timestamp="1582202424631">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="698" y="270" width="580" height="564" key="MultipleFileMergeDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582202424631" />
+    <state x="476" y="130" width="1024" height="845" key="SettingsEditor" timestamp="1582197105564">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="476" y="130" width="1024" height="845" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1582197105564" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582202331249">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1582202331249" />
+    <state x="761" y="472" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582202283691">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="761" y="472" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1582202283691" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1582201934469">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1582201934469" />
   </component>
 </project>

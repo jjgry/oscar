@@ -7,14 +7,9 @@ public class IncomingEmailMessage {
     private String message;
     private String appointmentID;
 
-    public IncomingEmailMessage(
-            String senderEmailAddress,
-            String receiverEmailAddress,
-            String subject,
-            String message,
-            String appointmentID ) {
-
-    public IncomingEmailMessage(String senderEmailAddress, String receiverEmailAddress, String subject, String message, String appointmentID){
+    public IncomingEmailMessage(String senderEmailAddress, String receiverEmailAddress,
+            String subject, String message, String appointmentID )
+    {
         this.senderEmailAddress = senderEmailAddress;
         this.receiverEmailAddress = receiverEmailAddress;
         this.subject = subject;
