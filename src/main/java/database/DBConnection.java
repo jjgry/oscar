@@ -3,13 +3,20 @@ package database;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
+import java.awt.EventQueue;
+import java.awt.Window;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import sun.rmi.runtime.Log;
 
 /**
  * Retrieves and stores login information for the database and on command establishes a connection
@@ -21,6 +28,7 @@ class DBConnection {
   private static String RHOST = "localhost";
   private static int RPORT = 3306;
 
+  private boolean fetchedLoginDetails;
   private String CONNECTION;
   private String SSH_USERNAME;
   private String SSH_PASSWORD;
@@ -29,33 +37,34 @@ class DBConnection {
   private Connection con;
 
   /**
-   * Constructor which will fetch it's own paramaters
+   * Constructor which will fetch it's own parameters
    */
   DBConnection() throws DBInitializationException {
     // get ssh login credentials
-    Scanner scanner = new Scanner(System.in);
-    System.out.print("crsid: ");
-    SSH_USERNAME = scanner.nextLine();
-    System.out.print("srcf password: ");
-    SSH_PASSWORD = scanner.nextLine();
-    System.out.print("database username: ");
-    DB_USERNAME = scanner.nextLine();
-    System.out.print("database password: ");
-    DB_PASSWORD = scanner.nextLine();
+
+    LoginFrame frame = new LoginFrame(this);
+    frame.setTitle("Login Form");
+    frame.setVisible(true);
+    frame.setBounds(10, 10, 370, 500);
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setResizable(false);
+
+    DB_USERNAME = frame.dbUsername;
+    DB_PASSWORD = frame.dbPassword;
+    SSH_USERNAME = frame.sshUsername;
+    SSH_PASSWORD = frame.sshPassword;
 
     CONNECTION = "jdbc:mysql://127.0.0.1:" + LPORT + "?characterEncoding=utf8";
     try {
       Class.forName("com.mysql.jdbc.Driver");
-      startPortForwarding();
-      System.out.println("Connection established successfully");
-    } catch (ClassNotFoundException | JSchException e) {
+    } catch (ClassNotFoundException e) {
       throw new DBInitializationException(e.getMessage());
     }
   }
 
   /**
    * @param db_username the username for the database
-   * @param db_password the password for the databse
+   * @param db_password the password for the database
    * @param ssh_username the CRSID of the user attempting to connect to the remote host
    * @param ssh_password the password of the remote host user
    * @throws DBInitializationException if there is an issue with establishing port forwarding or
@@ -77,7 +86,10 @@ class DBConnection {
     }
   }
 
-  private void startPortForwarding() throws JSchException {
+  /**
+   * @throws JSchException if there is an error in setting up port forwarding
+   */
+  void startPortForwarding() throws JSchException {
     int ssh_port = 22;
     String hostname = "shell.srcf.net";
     JSch jsch = new JSch();
@@ -88,11 +100,29 @@ class DBConnection {
     session.setPortForwardingL(LPORT, RHOST, RPORT);
   }
 
+  void setLoginDetails(String dbUsername, String dbPassword, String sshUsername, String sshPassword) {
+    DB_USERNAME = dbUsername;
+    DB_PASSWORD = dbPassword;
+    SSH_USERNAME = sshUsername;
+    SSH_PASSWORD = sshPassword;
+    fetchedLoginDetails = true;
+  }
+
   /**
    * @return whether a new connection has been created successfully
    */
   boolean newConnection() {
+    while(!fetchedLoginDetails)
+    {
+      try {
+        Thread.sleep(5000);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
     try {
+      System.out.println(DB_USERNAME);
+      System.out.println(DB_PASSWORD);
       con = DriverManager.getConnection(CONNECTION, DB_USERNAME, DB_PASSWORD);
     } catch (SQLException e) {
       System.err.println("Error opening connection:");
