@@ -26,7 +26,7 @@ public class EmailSender {
             "This is an automated email assistant system helping you remember and confirm/reschedule/cancel your GP appointment. This email system can't provide you with medical advice and should not be used in case of an emergency. Please DON'T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please find attached the following contact information:\n" +
             "\n" +
             "Surgery contact number: phone number\n" +
-            "Address: location address"; //TODO include location address and phone number
+            "Address: location address"; //TODO include location address and phone number of the hospital
 
     private EmailSender( SegmentQueue<OutgoingEmailMessage> messagesToSend ) {
         //TODO how to deal with this behaviour?
@@ -60,7 +60,6 @@ public class EmailSender {
                         String appointmentTime = emailToSend.getAppointmentTime();
 
                         try {
-                            //TODO check if all scenarios are implemented
                             switch (type) {
                                 case InitialReminderMessage:
                                     sendInitialReminderEmail(
@@ -70,11 +69,16 @@ public class EmailSender {
                                             appointmentDate,
                                             appointmentTime);
                                     break;
-                                case ConfirmationMessage:
-                                    //TODO ???
+                                case CancellationMessage:
+                                    sendCancelationEmail(
+                                            patientEmailAddress,
+                                            patientName,
+                                            doctorName,
+                                            appointmentDate,
+                                            appointmentTime);
                                     break;
                                 case AskToPickAnotherTimeSlotMessage:
-                                    //TODO ?? Need to pass info about time slots
+                                    sendEmailAskingToPickAnotherTimeSlots(patientEmailAddress, patientName);
                                     break;
                                 case NewAppointmentDetailsMessage:
                                     sendNewAppointmentDetailsEmail(
@@ -87,8 +91,8 @@ public class EmailSender {
                                 case InvalidEmailMessage:
                                     sendUnexpectedSenderEmail(patientEmailAddress);
                                     break;
-                                case ResponseWasUnclassifiedMessage:
-                                    sendResponseWasUnclassifiedEmail(
+                                case ConfirmationMessage:
+                                    sendConfirmationEmail(
                                             patientEmailAddress,
                                             patientName,
                                             doctorName,
@@ -102,7 +106,6 @@ public class EmailSender {
                             System.err.println("We couldn't send email to " + patientEmailAddress);
                             failedToSendEmail.printStackTrace();
                         }
-
                     }
                 }
             };
@@ -187,25 +190,6 @@ public class EmailSender {
                         + "Otherwise, this email system can't help you and we advise you to contact the GP surgery with the contact information below. \n");
     }
 
-    public static void sendResponseWasUnclassifiedEmail(
-            String patientEmailAddress,
-            String patientName,
-            String doctorName,
-            String appointmentDate,
-            String appointmentTime ) throws FailedToSendEmail {
-        sendEmail(
-                applicationEmailAddress,
-                patientEmailAddress,
-                "We couldn't process your response",
-                "Dear " + patientName + ",\n"
-                        + "We were unable to understand your decision regarding your appointment."
-                        + "Your appointment with " + doctorName + " on " + appointmentDate + " at " + appointmentTime + " remains unchanged. \n"
-                        + "\n"
-                        + "If you have any questions, use the contact details below to get in touch with us.\n"
-                        + "\n"
-                        + "Thank you and have a nice day!\n");
-    }
-
     public static void sendCancelationEmail(
             String patientEmailAddress,
             String patientName,
@@ -224,6 +208,25 @@ public class EmailSender {
                         + "If you have any questions, use the contact details below to get in touch with us.\n"
                         + "\n"
                         + "Thank you and have a nice day!\n");
+    }
+
+    public static void sendConfirmationEmail(
+            String patientEmailAddress,
+            String patientName,
+            String doctorName,
+            String appointmentDate,
+            String appointmentTime ) throws FailedToSendEmail {
+        sendEmail(
+                applicationEmailAddress,
+                patientEmailAddress,
+                "Confirmation email\n",
+                "Dear " + patientName + ",\n" +
+                        "\n" +
+                        "You have secured your place for an appointment with " + doctorName + " on " + appointmentDate + " at " + appointmentTime + ". \n" +
+                        "\n" +
+                        "If you have any questions, use the contact details below to get in touch with us.\n" +
+                        "\n" +
+                        "Thank you and have a nice day!\n");
     }
 
     public static void sendEmailAskingToPickAnotherTimeSlots(
