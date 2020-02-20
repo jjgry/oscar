@@ -97,7 +97,7 @@ public class Kernel {
 
                 while (true) {
 
-                    // TODO: 2. Deal with received emails one at a time until the queue is empty;
+                    // 2. Deal with received emails one at a time until the queue is empty;
 
                     if (InQ.NumWaiting() > 0) {
                         finalDB.openConnection();
@@ -174,8 +174,6 @@ public class Kernel {
                                         }
                                         break;
                                     case OTHER:
-                                        //TODO: ensure that all templates have contact information in every email, so that OTHER does not need to send additional info and
-                                        //TODO: can be safely discarded.
                                         //No action taken on these emails.
                                         break;
                                     default:
@@ -202,7 +200,7 @@ public class Kernel {
         // If the DBMS port is a thread in this, put it here. If it is a system with (another) producer consumer queue, check it between every handle of an incoming, and at the end of all of these.
     }
 
-
+    //TODO:
     public void SendNewReminders( int xMinutes ) {
         final Runnable reminderBatchSender = new Runnable() {
             public void run() {
@@ -210,7 +208,7 @@ public class Kernel {
                 System.out.println("beep, at " + LocalDateTime.now());
                 DB.openConnection();
                 List<Appointment> newAppts = DB.remindersToSendToday();
-
+                System.out.println("Found "+newAppts.size()+" new appointments to remind about in poll.");
 
                 for (Appointment A : newAppts) {
                     //  1a. Send any initial reminder emails that are now shown as required by the database state.
@@ -219,12 +217,10 @@ public class Kernel {
                 }
                 DB.closeConnection();
             }
-
-
         };
         final ScheduledFuture<?> BatchHandle =
                 //Schedule the check for every x minutes.
-                scheduler.scheduleAtFixedRate(reminderBatchSender, 0, xMinutes, MINUTES);
+                scheduler.scheduleAtFixedRate(reminderBatchSender, xMinutes, 0, SECONDS);
     }
 
 
