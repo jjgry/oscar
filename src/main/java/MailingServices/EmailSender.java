@@ -58,6 +58,7 @@ public class EmailSender {
                         String doctorName = emailToSend.getDoctorName();
                         String appointmentDate = emailToSend.getAppointmentDate();
                         String appointmentTime = emailToSend.getAppointmentTime();
+                        String appointmentID = emailToSend.getAppointmentID();
 
                         try {
                             switch (type) {
@@ -67,7 +68,9 @@ public class EmailSender {
                                             patientName,
                                             doctorName,
                                             appointmentDate,
-                                            appointmentTime);
+                                            appointmentTime,
+                                            appointmentID
+                                            );
                                     break;
                                 case CancellationMessage:
                                     sendCancelationEmail(
@@ -75,10 +78,14 @@ public class EmailSender {
                                             patientName,
                                             doctorName,
                                             appointmentDate,
-                                            appointmentTime);
+                                            appointmentTime,
+                                            appointmentID);
                                     break;
                                 case AskToPickAnotherTimeSlotMessage:
-                                    sendEmailAskingToPickAnotherTimeSlots(patientEmailAddress, patientName);
+                                    sendEmailAskingToPickAnotherTimeSlots(
+                                            patientEmailAddress,
+                                            patientName,
+                                            appointmentID);
                                     break;
                                 case NewAppointmentDetailsMessage:
                                     sendNewAppointmentDetailsEmail(
@@ -86,7 +93,8 @@ public class EmailSender {
                                             patientName,
                                             doctorName,
                                             appointmentDate,
-                                            appointmentTime);
+                                            appointmentTime,
+                                            appointmentID);
                                     break;
                                 case InvalidEmailMessage:
                                     sendUnexpectedSenderEmail(patientEmailAddress);
@@ -97,7 +105,8 @@ public class EmailSender {
                                             patientName,
                                             doctorName,
                                             appointmentDate,
-                                            appointmentTime);
+                                            appointmentTime,
+                                            appointmentID);
                                     break;
                                 default:
                                     System.err.println("Unimplemented email type");
@@ -156,8 +165,9 @@ public class EmailSender {
             String patientName,
             String doctorName,
             String appointmentDate,
-            String appointmentTime ) throws FailedToSendEmail {
-        sendEmail(applicationEmailAddress, patientEmailAddress, "GP Appointment Reminder",
+            String appointmentTime,
+            String appointmentID) throws FailedToSendEmail {
+        sendEmail(applicationEmailAddress, patientEmailAddress, "[" + appointmentID + "] GP Appointment Reminder",
                 "Dear " + patientName + ",\n" +
                         "\n" +
                         "You have an appointment with " + doctorName + " on " + appointmentDate + " at " + appointmentTime + ". \n" +
@@ -201,11 +211,12 @@ public class EmailSender {
             String patientName,
             String doctorName,
             String appointmentDate,
-            String appointmentTime ) throws FailedToSendEmail {
+            String appointmentTime,
+            String appointmentID) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "Your appointment was cancelled\n",
+                "[" + appointmentID + "]Your appointment was cancelled\n",
                 "Dear "
                         + patientName
                         + ",\n"
@@ -222,11 +233,12 @@ public class EmailSender {
             String patientName,
             String doctorName,
             String appointmentDate,
-            String appointmentTime ) throws FailedToSendEmail {
+            String appointmentTime,
+            String appointmentID) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "Confirmation email\n",
+                "[" + appointmentID + "] Confirmation email\n",
                 "Dear " + patientName + ",\n" +
                         "\n" +
                         "You have secured your place for an appointment with " + doctorName + " on " + appointmentDate + " at " + appointmentTime + ". \n" +
@@ -239,11 +251,12 @@ public class EmailSender {
 
     public static void sendEmailAskingToPickAnotherTimeSlots(
             String patientEmailAddress,
-            String patientName ) throws FailedToSendEmail {
+            String patientName,
+            String appointmentID) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "Pick another time for appointment",
+                "[" + appointmentID + "]Pick another time for appointment",
                 "Dear "
                         + patientName
                         + ",\n"
@@ -267,11 +280,12 @@ public class EmailSender {
             String patientName,
             String doctorName,
             String appointmentDate,
-            String appointmentTime ) throws FailedToSendEmail {
+            String appointmentTime,
+            String appointmentID) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "Your appointment was cancelled\n",
+                "["+ appointmentID + "]Your appointment was cancelled\n",
                 "Dear "
                         + patientName
                         + ",\n"
@@ -292,7 +306,8 @@ public class EmailSender {
                 "Dr. John",
                 "27-02-2021",
                 "11:00 AM",
-                InitialReminderMessage);
+                InitialReminderMessage,
+                "101-123-501");
         OutQ.put(emailToSimon);
     }
 }

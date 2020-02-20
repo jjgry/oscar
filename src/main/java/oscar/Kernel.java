@@ -18,8 +18,6 @@ import java.util.concurrent.ScheduledFuture;
 import static java.util.concurrent.TimeUnit.*;
 
 
-
-
 public class Kernel {
     /*
     / (FROM FUNCTIONAL SPEC) Functions of the Kernel:
@@ -47,9 +45,9 @@ public class Kernel {
     SegmentQueue<IncomingEmailMessage> InQ;
 
     private final ScheduledExecutorService scheduler =
-        Executors.newScheduledThreadPool(1);
+            Executors.newScheduledThreadPool(1);
 
-    public Kernel() throws DBInitializationException,ClassificationTypeException {
+    public Kernel() throws DBInitializationException, ClassificationTypeException {
         //SETUP
         //Initialise the queues for the Receiver -> Kernel and the Kernel -> Sender
 
@@ -59,18 +57,16 @@ public class Kernel {
         //  Establish the Interface to the database. REMOVE credentials from hardcoding.
 
         DBInterface DB;
-        try{
+        try {
             DB = new DBInterface();
-        } catch(DBInitializationException e){
+        } catch (DBInitializationException e) {
             //try again 3 times. If connection is impossible, end program in error.
             try {
                 DB = new DBInterface();
-            }
-            catch (DBInitializationException e1){
+            } catch (DBInitializationException e1) {
                 try {
                     DB = new DBInterface();
-                }
-                catch(DBInitializationException e2){
+                } catch (DBInitializationException e2) {
                     e.printStackTrace();
                     throw new DBInitializationException("After trying 3 times, no connection can be established.");
                 }
@@ -165,7 +161,8 @@ public class Kernel {
                                             //  Send email asking for new timeslots (the ones we were given do not work).
                                             OutQ.put(new OutgoingEmailMessage(p.getEmail(), p.getName(),
                                                     bookedAppointment.getDoctorName(), "", "",
-                                                    EmailMessageType.AskToPickAnotherTimeSlotMessage));//We have empty strings given as time info as we have no time info!
+                                                    EmailMessageType.AskToPickAnotherTimeSlotMessage,
+                                                    "NO APPOINTMENT ID YET"));//We have empty strings given as time info as we have no time info!
 
                                         } else {// we have a collection of >= 1 to choose from.
                                             //TODO: select one to suggest based on a more sensible criteria.
@@ -193,8 +190,10 @@ public class Kernel {
 
                             } else {//invalid patientID...
                                 //  Send invalidEmailAddress  Email.
-                                OutQ.put(new OutgoingEmailMessage("", "", "",
-                                        "", "", EmailMessageType.InvalidEmailMessage));
+                                OutQ.put(new OutgoingEmailMessage(
+                                        "", "", "",
+                                        "", "",
+                                        EmailMessageType.InvalidEmailMessage, "NO APPOINTMENT ID YET"));
                             }
                         }
                         finalDB.closeConnection();
@@ -208,7 +207,7 @@ public class Kernel {
     }
 
 
-    public void SendNewReminders(int xMinutes) {
+    public void SendNewReminders( int xMinutes ) {
         final Runnable reminderBatchSender = new Runnable() {
             public void run() {
 
@@ -219,8 +218,8 @@ public class Kernel {
 
                 for (Appointment A : newAppts) {
                     //  1a. Send any initial reminder emails that are now shown as required by the database state.
-                            Patient p = DB.getPatient(A.getAppID());
-                            OutQ.put(new OutgoingEmailMessage(p,A,EmailMessageType.InitialReminderMessage));
+                    Patient p = DB.getPatient(A.getAppID());
+                    OutQ.put(new OutgoingEmailMessage(p, A, EmailMessageType.InitialReminderMessage));
                 }
                 DB.closeConnection();
             }
@@ -233,7 +232,7 @@ public class Kernel {
     }
 
 
-    public static void main (String[] args) throws DBInitializationException, ClassificationTypeException {
+    public static void main( String[] args ) throws DBInitializationException, ClassificationTypeException {
         new Kernel();
     }
 }
