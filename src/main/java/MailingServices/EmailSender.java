@@ -23,7 +23,7 @@ public class EmailSender {
     private SegmentQueue<OutgoingEmailMessage> messagesToSend;
 
     private static final String footer = "\n" + "-----------------------------------------------------" + "\n" +
-            "This is an automated email assistant system helping you remember and confirm/reschedule/cancel your GP appointment. This email system can't provide you with medical advice and should not be used in case of an emergency. Please DON'T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please find attached the following contact information:\n" +
+            "Oscar is an automated email assistant system helping you remember and confirm/reschedule/cancel your GP appointment. This email system can't provide you with medical advice and should not be used in case of an emergency. Please DON'T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please find attached the following contact information:\n" +
             "\n" +
             "Surgery contact number: phone number\n" +
             "Address: location address"; //TODO include location address and phone number of the hospital
@@ -173,7 +173,8 @@ public class EmailSender {
                         "\n" +
                         "If you have any questions, use the contact details below to get in touch with us.\n" +
                         "\n" +
-                        "Thank you and have a nice day!\n");
+                        "Thank you and have a nice day!\n"+
+                        "Oscar\n");
     }
 
     public static void sendUnexpectedSenderEmail( String patientEmailAddress ) throws FailedToSendEmail {
@@ -186,8 +187,13 @@ public class EmailSender {
                         + "Please ensure:\n"
                         + "You've received an email reminder for your appointment from us. \n"
                         + "You are emailing us from the email account you have registered with our GP surgery.\n"
+                        + "You have kept the appointment ID number in the header of the email (we need it for our record-keeping!)\n"
                         + "\n"
-                        + "Otherwise, this email system can't help you and we advise you to contact the GP surgery with the contact information below. \n");
+                        + "Otherwise, for privacy and security reasons this email system cannot process your messages,\n"
+                        + "and we advise you to contact the GP surgery with the contact information below. \n"
+                        + "\n"
+                        + "Many thanks,\n"
+                        + "Oscar\n");
     }
 
     public static void sendCancelationEmail(
@@ -207,7 +213,8 @@ public class EmailSender {
                         + "\n"
                         + "If you have any questions, use the contact details below to get in touch with us.\n"
                         + "\n"
-                        + "Thank you and have a nice day!\n");
+                        + "Thank you and have a nice day!\n"
+                        + "Oscar\n");
     }
 
     public static void sendConfirmationEmail(
@@ -226,7 +233,8 @@ public class EmailSender {
                         "\n" +
                         "If you have any questions, use the contact details below to get in touch with us.\n" +
                         "\n" +
-                        "Thank you and have a nice day!\n");
+                        "Thank you and have a nice day!\n" +
+                        "Oscar\n");
     }
 
     public static void sendEmailAskingToPickAnotherTimeSlots(
@@ -250,7 +258,8 @@ public class EmailSender {
                         + "\n"
                         + "If you have any questions, use the contact details below to get in touch with us.\n"
                         + "\n"
-                        + "Thank you and have a nice day!\n");
+                        + "Thank you and have a nice day!\n"
+                        + "Oscar\n");
     }
 
     public static void sendNewAppointmentDetailsEmail(
@@ -270,7 +279,8 @@ public class EmailSender {
                         + "\n"
                         + "If you have any questions, use the contact details below to get in touch with us.\n"
                         + "\n"
-                        + "Thank you and have a nice day!\n");
+                        + "Thank you and have a nice day!\n"
+                        + "Oscar \n");
     }
 
     public static void main( String[] args ) {

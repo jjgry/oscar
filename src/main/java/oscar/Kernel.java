@@ -81,12 +81,9 @@ public class Kernel {
         //Initialise the Sender
         EmailSender Sender = EmailSender.getSender(OutQ);
 
-        //TODO: Initialise the Receiver
+        // Initialise the Receiver
 
         EmailReceiver Rec = EmailReceiver.getEmailReceiver(InQ);
-
-        //TODO: Initialise the training system of the classifier, if necessary
-
 
         //TODO: Initialise the DBMS port thread, if necessary
 
@@ -99,7 +96,7 @@ public class Kernel {
 
                 //Main Loop:
                 LocalDateTime NextNewApptCheck = LocalDateTime.now();
-                // TODO: 1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
+                //  1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
                 SendNewReminders(5);//SEE BELOW. This makes a system that should send the new reminders found on the database on demand, every 10 minutes.
 
 
@@ -113,6 +110,12 @@ public class Kernel {
                             IncomingEmailMessage PatientResponse = InQ.take();
                             //TODO: Appointment ID should be given by receiver system, not always be -1 in line below
                             int appointmentID = -1;
+                            try {
+                                appointmentID = Integer.parseInt(PatientResponse.getAppointmentID());
+                            }
+                            catch(Exception e){//catching parsing exception
+                                //no action, leave the apptID invalid at -1.
+                            }
                             // 2a. Is the received email valid? check it's a patient on the database.
 
                             if (finalDB.confirmAppointmentExists(PatientResponse.getSenderEmailAddress(), appointmentID)) {//if a valid email....
