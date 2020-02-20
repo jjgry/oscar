@@ -230,7 +230,7 @@ public class Kernel {
 
         };
         final ScheduledFuture<?> BatchHandle =
-                //Schedule the check for every 1 minute.
+                //Schedule the check for every x minutes.
                 scheduler.scheduleAtFixedRate(reminderBatchSender, 0, xMinutes, MINUTES);
     }
 
