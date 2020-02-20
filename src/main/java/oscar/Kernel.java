@@ -37,7 +37,6 @@ public class Kernel {
     /
     /      If an email address provided by the receiver is not recognised, inform the kernel to send a response to the
     /      email informing them to use the registered email address.
-    /
     */
 
     DBInterface DB;
@@ -147,16 +146,13 @@ public class Kernel {
                                         //Add this appointment to list of those that cannot be attended in DB
                                         // ^^^ decided as redundant given the current timestamp system
                                         //Poll database for available appointments in given time slots
-                                        LinkedList<Timeslot> all_available_timeslots = new LinkedList<Timeslot>();
-
-                                        //for each given timeslot....
-
-                                        //Database
+                                        LinkedList<Timeslot> all_available_timeslots = new LinkedList<>();
                                         String[] availableDates = C.getDates();
                                         all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[0], availableDates[1]));
                                         all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[2], availableDates[3]));
                                         all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[4], availableDates[5]));
 
+                                        //for each given timeslot....
                                         if (all_available_timeslots.size() < 1) {
                                             //  Send email asking for new timeslots (the ones we were given do not work).
                                             OutQ.put(new OutgoingEmailMessage(p.getEmail(), p.getName(),
