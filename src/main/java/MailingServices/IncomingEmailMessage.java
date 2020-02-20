@@ -6,7 +6,8 @@ public class IncomingEmailMessage {
     private String subject;
     private String message;
 
-    public IncomingEmailMessage(String senderEmailAddress, String receiverEmailAddress, String subject, String message){
+
+    public IncomingEmailMessage(String senderEmailAddress, String receiverEmailAddress, String subject, String message, String emailID){
         this.senderEmailAddress = senderEmailAddress;
         this.receiverEmailAddress = receiverEmailAddress;
         this.subject = subject;

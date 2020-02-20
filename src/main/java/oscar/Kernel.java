@@ -1,14 +1,8 @@
 package oscar;
 
-import MailingServices.EmailReceiver;
-import MailingServices.EmailSender;
-import MailingServices.IncomingEmailMessage;
-import MailingServices.OutgoingEmailMessage;
+import MailingServices.*;
 import classifier.EmailClassifier;
-import database.Appointment;
-import database.DBInitializationException;
-import database.DBInterface;
-import database.Timeslot;
+import database.*;
 
 import java.io.IOError;
 import java.io.IOException;
@@ -55,7 +49,7 @@ public class Kernel {
     private final ScheduledExecutorService scheduler =
         Executors.newScheduledThreadPool(1);
 
-    public Kernel() throws DBInitializationException {
+    public Kernel() throws DBInitializationException,ClassificationTypeException {
         //SETUP
         //Initialise the queues for the Receiver -> Kernel and the Kernel -> Sender
 
@@ -89,7 +83,7 @@ public class Kernel {
 
         //TODO: Initialise the Receiver
 
-        //EmailReceiver Rec = new EmailReceiver(InQ);
+        EmailReceiver Rec = EmailReceiver.getEmailReceiver(InQ);
 
         //TODO: Initialise the training system of the classifier, if necessary
 
@@ -111,7 +105,6 @@ public class Kernel {
 
                 while (true) {
 
-
                     // TODO: 2. Deal with received emails one at a time until the queue is empty;
 
                     if (InQ.NumWaiting() > 0) {
@@ -125,6 +118,7 @@ public class Kernel {
                             if (finalDB.confirmAppointmentExists(PatientResponse.getSenderEmailAddress(), appointmentID)) {//if a valid email....
                                 // 2b. Fetch information on the history of this conversation, ie last response type, appointment time, doctor name, patient name.
                                 Appointment bookedAppointment = finalDB.getApp(appointmentID);
+                                Patient p = finalDB.getPatient(appointmentID);
                                 // 2c. Hand off to classifier: what type of message was it?
 
                                 //String C = EmailClassifier.getCategory(PatientResponse.getMessage());
@@ -135,17 +129,17 @@ public class Kernel {
                                     //TODO: Handle this error properly. Why is it thrown?
 
                                 }
+                                assert (p.getEmail() == PatientResponse.getSenderEmailAddress());// these really should be the same and if not our system is not designed correctly.
                                 switch (C.getDecision()) {
                                     case CONFIRM:
                                         //  Confirm Appt in database
                                         finalDB.confirmNewTime(appointmentID);
-                                        // TODO: Send Confirm Email
-                                        //OutQ.put(new ConfirmationMessage(patientResponse.getEmail(), true, "", ));
+                                        OutQ.put(new OutgoingEmailMessage(p, bookedAppointment, EmailMessageType.ConfirmationMessage));
                                         break;
                                     case CANCEL:
                                         //Cancel Appt in database
                                         finalDB.rejectTime(appointmentID);
-                                        //TODO: Send cancel Email
+                                        OutQ.put(new OutgoingEmailMessage(p, bookedAppointment, EmailMessageType.CancellationMessage));
 
                                         break;
                                     case RESCHEDULE:
@@ -165,39 +159,39 @@ public class Kernel {
                                         all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[4], availableDates[5]));
 
                                         if (all_available_timeslots.size() < 1) {
-                                            // TODO: Send email asking for new timeslots (the ones we were given do not work).
+                                            //  Send email asking for new timeslots (the ones we were given do not work).
+                                            OutQ.put(new OutgoingEmailMessage(p.getEmail(), p.getName(),
+                                                    bookedAppointment.getDoctorName(), "", "",
+                                                    EmailMessageType.AskToPickAnotherTimeSlotMessage));//We have empty strings given as time info as we have no time info!
 
                                         } else {// we have a collection of >= 1 to choose from.
-                                            //TODO: select one to suggest based on a sensible criteria. Set it as being attended in database
+                                            //TODO: select one to suggest based on a more sensible criteria.
                                             int selectedTimeslotID = all_available_timeslots.getFirst().getID();
                                             //cancel last.
                                             finalDB.rejectTime(appointmentID);
-                                            finalDB.blockTimeSlot(appointmentID, selectedTimeslotID);
                                             // block selected new appointment
-
-                                            // TODO:  Send SuggestedAppt email to patient to suggest the new time.
+                                            finalDB.blockTimeSlot(appointmentID, selectedTimeslotID);
+                                            // Send SuggestedAppt email to patient to suggest the new time.
+                                            OutQ.put(new OutgoingEmailMessage(p, bookedAppointment,
+                                                    EmailMessageType.NewAppointmentDetailsMessage));
 
                                         }
                                         break;
                                     case OTHER:
                                         //TODO: ensure that all templates have contact information in every email, so that OTHER does not need to send additional info and
                                         //TODO: can be safely discarded.
-
                                         //No action taken on these emails.
-
-                                        // 2d. update database with any new developments.
-                                        // 2e. Send another email based on this as required.
                                         break;
                                     default:
-                                        //TODO:
+                                        System.out.println("This new classification type should not exist.");
                                         break;
 
                                 }
 
                             } else {//invalid patientID...
-
-                                // TODO: Send invalidEmailAddress  Email.
-                                //OutQ.put(new InvalidEmailMessage(PatientResponse.getEmail()));
+                                //  Send invalidEmailAddress  Email.
+                                OutQ.put(new OutgoingEmailMessage("", "", "",
+                                        "", "", EmailMessageType.InvalidEmailMessage));
                             }
                         }
                         finalDB.closeConnection();
@@ -218,13 +212,14 @@ public class Kernel {
                 System.out.println("beep, at " + LocalDateTime.now());
                 DB.openConnection();
                 List<Appointment> newAppts = DB.remindersToSendToday();
-                DB.closeConnection();
+
 
                 for (Appointment A : newAppts) {
-                    // TODO: 1a. Send any initial reminder emails that are now shown as required by the database state.
-//                  // IntroMessage nextIntro = new IntroMessage(A.getPatientEmail(),true,"",A.getDoctorName());
-//                   //         OutQ.put(nextIntro);
+                    //  1a. Send any initial reminder emails that are now shown as required by the database state.
+                            Patient p = DB.getPatient(A.getAppID());
+                            OutQ.put(new OutgoingEmailMessage(p,A,EmailMessageType.InitialReminderMessage));
                 }
+                DB.closeConnection();
             }
 
 
@@ -235,7 +230,7 @@ public class Kernel {
     }
 
 
-    public static void main (String[] args) throws DBInitializationException {
+    public static void main (String[] args) throws DBInitializationException, ClassificationTypeException {
         new Kernel();
     }
 }
