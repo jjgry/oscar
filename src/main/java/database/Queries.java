@@ -50,4 +50,14 @@ class Queries {
   static final String BLOCK_TIMESLOT = "UPDATE `jjag3/SurgeryAssistant`.`Appointments`\n" +
           "SET timeslot_id = %1$s\n" +
           "WHERE app_id = %2$s";
+
+  static final String REMOVE_TIMESLOTS = "DELETE FROM `jjag3/SurgeryAssistant`.`Timeslots` WHERE (timeslot  < DATE_ADD(CURDATE(), INTERVAL -1 MONTH))\n";
+
+  static final String REMOVE_CONVERSATION_STATES = "DELETE FROM `jjag3/SurgeryAssistant`.`Conversation State`\n"
+      + "WHERE conversation_state_id NOT IN (SELECT a.conversation_state_id\n"
+      + "FROM `jjag3/SurgeryAssistant`.`Appointments` a)\n";
+
+  static final String REMOVE_LOGS = "DELETE FROM `jjag3/SurgeryAssistant`.`Logs`\n"
+      + "WHERE app_id NOT IN (SELECT a.app_id\n"
+      + "FROM `jjag3/SurgeryAssistant`.`Appointments` a)\n";
 }

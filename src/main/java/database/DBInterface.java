@@ -264,12 +264,19 @@ public class DBInterface {
   }
 
   /**
-   * Remove logs which are more than 6 months old
-   *
-   * @return whether old logs have been successfully removed
+   * Remove appointments, logs, and timeslots which are more than 1 month old
    */
-  public boolean removeOldLogs() {
-    return false;
+  public void removeOldData() {
+    // remove timeslots (cascade delete will remove associated appointments)
+    database.execute(Queries.REMOVE_TIMESLOTS);
+
+    // remove conversation states with app_id not in appointments
+    database.executeUpdate(Queries.REMOVE_CONVERSATION_STATES);
+
+    // remove logs with app_id not in appointments
+    database.executeUpdate(Queries.REMOVE_LOGS);
+
+    // keep doctors and patients in system
   }
 
 }
