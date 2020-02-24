@@ -150,6 +150,10 @@ class DBConnection {
     return true;
   }
 
+  public Connection getCon() {
+    return con;
+  }
+
   /**
    * @param query an SQL query to be executed on the database
    * @return a ResultSet object containing return table of the SQL query
@@ -170,6 +174,19 @@ class DBConnection {
     return rs;
   }
 
+  ResultSet execute(PreparedStatement ps) {
+    ResultSet rs = null;
+    try {
+
+      rs = ps.executeQuery();
+    } catch (SQLException e) {
+      System.err.println("Error executing query: ");
+      e.printStackTrace();
+    }
+    return rs;
+  }
+
+
   /**
    * @param query an SQL query to be executed on the database
    * @return whether the query has been successful
@@ -183,6 +200,19 @@ class DBConnection {
 
       PreparedStatement stmt = con.prepareStatement(query);
       success = stmt.execute();
+    } catch (SQLException e) {
+      System.err.println("Error executing query: ");
+      e.printStackTrace();
+      return false;
+    }
+    return !success;
+  }
+
+  boolean executeUpdate(PreparedStatement ps) {
+    boolean success;
+    try {
+
+      success = ps.execute();
     } catch (SQLException e) {
       System.err.println("Error executing query: ");
       e.printStackTrace();

@@ -23,7 +23,7 @@ public class EmailSender {
     private SegmentQueue<OutgoingEmailMessage> messagesToSend;
 
     private static final String footer = "\n" + "-----------------------------------------------------" + "\n" +
-            "This is an automated email assistant system helping you remember and confirm/reschedule/cancel your GP appointment. This email system can't provide you with medical advice and should not be used in case of an emergency. Please DON'T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please find attached the following contact information:\n" +
+            "Oscar is an automated email assistant system helping you remember and confirm/reschedule/cancel your GP appointment. This email system can't provide you with medical advice and should not be used in case of an emergency. Please DON'T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please find attached the following contact information:\n" +
             "\n" +
             "Surgery contact number: phone number\n" +
             "Address: location address"; //TODO include location address and phone number of the hospital
@@ -58,6 +58,7 @@ public class EmailSender {
                         String doctorName = emailToSend.getDoctorName();
                         String appointmentDate = emailToSend.getAppointmentDate();
                         String appointmentTime = emailToSend.getAppointmentTime();
+                        String appointmentID = emailToSend.getAppointmentID();
 
                         try {
                             switch (type) {
@@ -67,7 +68,9 @@ public class EmailSender {
                                             patientName,
                                             doctorName,
                                             appointmentDate,
-                                            appointmentTime);
+                                            appointmentTime,
+                                            appointmentID
+                                            );
                                     break;
                                 case CancellationMessage:
                                     sendCancelationEmail(
@@ -75,10 +78,14 @@ public class EmailSender {
                                             patientName,
                                             doctorName,
                                             appointmentDate,
-                                            appointmentTime);
+                                            appointmentTime,
+                                            appointmentID);
                                     break;
                                 case AskToPickAnotherTimeSlotMessage:
-                                    sendEmailAskingToPickAnotherTimeSlots(patientEmailAddress, patientName);
+                                    sendEmailAskingToPickAnotherTimeSlots(
+                                            patientEmailAddress,
+                                            patientName,
+                                            appointmentID);
                                     break;
                                 case NewAppointmentDetailsMessage:
                                     sendNewAppointmentDetailsEmail(
@@ -86,7 +93,8 @@ public class EmailSender {
                                             patientName,
                                             doctorName,
                                             appointmentDate,
-                                            appointmentTime);
+                                            appointmentTime,
+                                            appointmentID);
                                     break;
                                 case InvalidEmailMessage:
                                     sendUnexpectedSenderEmail(patientEmailAddress);
@@ -97,7 +105,8 @@ public class EmailSender {
                                             patientName,
                                             doctorName,
                                             appointmentDate,
-                                            appointmentTime);
+                                            appointmentTime,
+                                            appointmentID);
                                     break;
                                 default:
                                     System.err.println("Unimplemented email type");
@@ -156,8 +165,9 @@ public class EmailSender {
             String patientName,
             String doctorName,
             String appointmentDate,
-            String appointmentTime ) throws FailedToSendEmail {
-        sendEmail(applicationEmailAddress, patientEmailAddress, "GP Appointment Reminder",
+            String appointmentTime,
+            String appointmentID) throws FailedToSendEmail {
+        sendEmail(applicationEmailAddress, patientEmailAddress, "[" + appointmentID + "] GP Appointment Reminder",
                 "Dear " + patientName + ",\n" +
                         "\n" +
                         "You have an appointment with " + doctorName + " on " + appointmentDate + " at " + appointmentTime + ". \n" +
@@ -173,7 +183,8 @@ public class EmailSender {
                         "\n" +
                         "If you have any questions, use the contact details below to get in touch with us.\n" +
                         "\n" +
-                        "Thank you and have a nice day!\n");
+                        "Thank you and have a nice day!\n"+
+                        "Oscar\n");
     }
 
     public static void sendUnexpectedSenderEmail( String patientEmailAddress ) throws FailedToSendEmail {
@@ -186,8 +197,13 @@ public class EmailSender {
                         + "Please ensure:\n"
                         + "You've received an email reminder for your appointment from us. \n"
                         + "You are emailing us from the email account you have registered with our GP surgery.\n"
+                        + "You have kept the appointment ID number in the header of the email (we need it for our record-keeping!)\n"
                         + "\n"
-                        + "Otherwise, this email system can't help you and we advise you to contact the GP surgery with the contact information below. \n");
+                        + "Otherwise, for privacy and security reasons this email system cannot process your messages,\n"
+                        + "and we advise you to contact the GP surgery with the contact information below. \n"
+                        + "\n"
+                        + "Many thanks,\n"
+                        + "Oscar\n");
     }
 
     public static void sendCancelationEmail(
@@ -195,11 +211,12 @@ public class EmailSender {
             String patientName,
             String doctorName,
             String appointmentDate,
-            String appointmentTime ) throws FailedToSendEmail {
+            String appointmentTime,
+            String appointmentID) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "Your appointment was cancelled\n",
+                "[" + appointmentID + "]Your appointment was cancelled\n",
                 "Dear "
                         + patientName
                         + ",\n"
@@ -207,7 +224,8 @@ public class EmailSender {
                         + "\n"
                         + "If you have any questions, use the contact details below to get in touch with us.\n"
                         + "\n"
-                        + "Thank you and have a nice day!\n");
+                        + "Thank you and have a nice day!\n"
+                        + "Oscar\n");
     }
 
     public static void sendConfirmationEmail(
@@ -215,27 +233,30 @@ public class EmailSender {
             String patientName,
             String doctorName,
             String appointmentDate,
-            String appointmentTime ) throws FailedToSendEmail {
+            String appointmentTime,
+            String appointmentID) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "Confirmation email\n",
+                "[" + appointmentID + "] Confirmation email\n",
                 "Dear " + patientName + ",\n" +
                         "\n" +
                         "You have secured your place for an appointment with " + doctorName + " on " + appointmentDate + " at " + appointmentTime + ". \n" +
                         "\n" +
                         "If you have any questions, use the contact details below to get in touch with us.\n" +
                         "\n" +
-                        "Thank you and have a nice day!\n");
+                        "Thank you and have a nice day!\n" +
+                        "Oscar\n");
     }
 
     public static void sendEmailAskingToPickAnotherTimeSlots(
             String patientEmailAddress,
-            String patientName ) throws FailedToSendEmail {
+            String patientName,
+            String appointmentID) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "Pick another time for appointment",
+                "[" + appointmentID + "]Pick another time for appointment",
                 "Dear "
                         + patientName
                         + ",\n"
@@ -250,7 +271,8 @@ public class EmailSender {
                         + "\n"
                         + "If you have any questions, use the contact details below to get in touch with us.\n"
                         + "\n"
-                        + "Thank you and have a nice day!\n");
+                        + "Thank you and have a nice day!\n"
+                        + "Oscar\n");
     }
 
     public static void sendNewAppointmentDetailsEmail(
@@ -258,11 +280,12 @@ public class EmailSender {
             String patientName,
             String doctorName,
             String appointmentDate,
-            String appointmentTime ) throws FailedToSendEmail {
+            String appointmentTime,
+            String appointmentID) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "Your appointment was cancelled\n",
+                "["+ appointmentID + "]Your appointment was cancelled\n",
                 "Dear "
                         + patientName
                         + ",\n"
@@ -270,7 +293,8 @@ public class EmailSender {
                         + "\n"
                         + "If you have any questions, use the contact details below to get in touch with us.\n"
                         + "\n"
-                        + "Thank you and have a nice day!\n");
+                        + "Thank you and have a nice day!\n"
+                        + "Oscar \n");
     }
 
     public static void main( String[] args ) {
@@ -282,7 +306,8 @@ public class EmailSender {
                 "Dr. John",
                 "27-02-2021",
                 "11:00 AM",
-                InitialReminderMessage);
+                InitialReminderMessage,
+                "101-123-501");
         OutQ.put(emailToSimon);
     }
 }

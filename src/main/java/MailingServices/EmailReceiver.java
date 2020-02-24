@@ -10,6 +10,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
+//TODO add mechanism to retrieve Appointment ID
+//TODO deal with the case when it is impossible to retrieve appointment ID
+
 public class EmailReceiver {
     private static final String applicationEmailAddress = System.getenv("GMAIL_ACCOUNT_EMAIL_ADDRESS");
     private static final String applicationGmailPassword = System.getenv("GMAIL_ACCOUNT_PASSWORD");
@@ -137,7 +140,12 @@ public class EmailReceiver {
             System.out.println("PLAIN TEXT: " + messageContents);
 
             emailMessage =
-                    new IncomingEmailMessage(senderEmailAddress, receiverEmailAddress, subject, messageContents);
+                    new IncomingEmailMessage(
+                            senderEmailAddress,
+                            receiverEmailAddress,
+                            subject,
+                            messageContents,
+                            "UNIDENTIFIED YET");
         } catch (Exception e) {
             e.printStackTrace();
             return null;
