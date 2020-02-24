@@ -93,6 +93,13 @@ public class Kernel {
         // Create a thread, the major loop, named Major.
         DBInterface finalDB = DB;
 
+
+        //TODO: Send initial email not on database - remove when system works
+        OutQ.put(new OutgoingEmailMessage("sm2354@cam.ac.uk","","","",EmailMessageType.InitialReminderMessage,"-1"));
+
+
+
+
         //  1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
         Thread DBPoll = new Thread(){
             @Override
@@ -125,7 +132,7 @@ public class Kernel {
                         finalDB.openConnection();
                         while (InQ.NumWaiting() > 0) {
                             IncomingEmailMessage PatientResponse = InQ.take();
-                            System.out.println("\n===\nKernel<major>: Patient email response taken from Rec.");
+                            System.out.println("\n\nKernel<major>: Patient email response taken from Rec.");
                             //TODO: Appointment ID should be given by receiver system, not always be -1 in line below
                             int appointmentID = -1;
                             try {
@@ -136,14 +143,17 @@ public class Kernel {
                             }
                             // 2a. Is the received email valid? check it's a patient on the database.
                             System.out.println("    Appointment ID: "+appointmentID);
-                            if (finalDB.confirmAppointmentExists(PatientResponse.getSenderEmailAddress(), appointmentID)) {//if a valid email....
+                            System.out.println("    Sender Email: "+PatientResponse.getSenderEmailAddress());
+                            if (finalDB.confirmAppointmentExists(PatientResponse.getSenderEmailAddress(), appointmentID))
+                            {
+                                //if a valid email....
+
                                 // 2b. Fetch information on the history of this conversation, ie last response type, appointment time, doctor name, patient name.
                                 System.out.println("    <Appointment Exists>");
                                 Appointment bookedAppointment = finalDB.getApp(appointmentID);
                                 Patient p = finalDB.getPatient(appointmentID);
                                 // 2c. Hand off to classifier: what type of message was it?
 
-                                //String C = EmailClassifier.getCategory(PatientResponse.getMessage());
                                 Classification C = null;
                                 try {
                                     C = new Classification(PatientResponse.getMessage());
@@ -219,7 +229,8 @@ public class Kernel {
 
                                 }
 
-                            } else {//invalid patientID...
+                            }
+                            else {//invalid patientID...
                                 System.out.println("    <Appointment Does Not Exist>");
                                 //  Send invalidEmailAddress  Email.
                                 OutQ.put(new OutgoingEmailMessage(
@@ -235,9 +246,11 @@ public class Kernel {
                     }
                     else{
                         System.out.println("Kernel<major>: no new received emails");
+                        System.out.println("Kernel<major>: inQ length"+ InQ.NumWaiting());
+                        System.out.println(("Kernel<major>: outQ length "+OutQ.NumWaiting()));
                     }
                     try {
-                        SECONDS.sleep(10);
+                       MINUTES.sleep(1);
                     } catch (InterruptedException e) {
                         //ignore
                     }
@@ -260,9 +273,18 @@ public class Kernel {
                     for (Appointment A : newAppts) {
                         //  1a. Send any initial reminder emails that are now shown as required by the database state.
                         if (A != null) {
+                            System.out.println("Kernel<pollDB>: Appointment ID: "+A.getAppID());
                             Patient p = DB.getPatient(A.getAppID());
-                            OutQ.put(new OutgoingEmailMessage(p, A, EmailMessageType.InitialReminderMessage));
-                            System.out.println("Kernel<pollDB>: Sent initial reminder message about appointment " + A.getAppID());
+                            if(Sender_ON){
+                                OutQ.put(new OutgoingEmailMessage(p, A, EmailMessageType.InitialReminderMessage));
+                                System.out.println("Kernel<pollDB>: Sent initial reminder message about appointment " + A.getAppID());
+                                //TODO: tell database email was sent
+                            }
+                            else{
+                                System.out.println("Kernel<pollDB>: no sender, so email unsent.");
+                            }
+
+
                         }
                         else{
                             System.err.println("Kernel<pollDB>: appointment given by database is a NULL pointer***");

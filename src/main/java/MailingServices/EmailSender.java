@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static MailingServices.EmailMessageType.InitialReminderMessage;
+import static java.util.concurrent.TimeUnit.MINUTES;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class EmailSender {
     private static final String apiKey = System.getenv("SENDGRID_API_KEY");
@@ -49,6 +51,16 @@ public class EmailSender {
                 @Override
                 public void run() {
                     while (true) {
+
+                        try {
+                            SECONDS.sleep(10);
+                        } catch (InterruptedException e) {
+                            //ignore
+                        }
+                        System.out.println("Sender: Working...."+messagesToSend.NumWaiting());
+
+
+
                         if (0 == messagesToSend.NumWaiting()) continue;
 
                         System.out.println("Sender: NEED TO SEND " + messagesToSend.NumWaiting() + " EMAILS!");
