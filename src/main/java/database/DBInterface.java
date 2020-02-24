@@ -312,6 +312,7 @@ public class DBInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
   /**
    * Remove appointments, logs, and timeslots which are more than 1 month old
@@ -328,14 +329,4 @@ public class DBInterface {
 
     // keep doctors and patients in system
   }
-
-    /**
-     * Remove logs which are more than 6 months old
-     *
-     * @return whether old logs have been successfully removed
-     */
-    public boolean removeOldLogs() {
-        return false;
-    }
-
 }
