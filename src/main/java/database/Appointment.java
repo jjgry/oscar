@@ -33,6 +33,7 @@ public class Appointment {
   public void setDoctorID(int id) {
     doctorID = id;
   }
+
   public int getAppID() {
     return appID;
   }

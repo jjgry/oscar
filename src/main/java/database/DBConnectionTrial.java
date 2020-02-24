@@ -1,5 +1,7 @@
 package database;
 
+import javax.swing.JFrame;
+
 /**
  * Simple class for testing accessing the database.
  */
@@ -19,7 +21,7 @@ class DBConnectionTrial {
     } catch (DBInitializationException e) {
       return;
     }
-
+    System.out.println("success");
     dbTrial.connectionTesting();
 //    dbTrial.progressMeetingDemo();
   }
@@ -36,4 +38,6 @@ class DBConnectionTrial {
   private void progressMeetingDemo() {
 //    DB.addNewAppointment("2020/02/16 12:00:00", "Dr E Jackson", "12");
   }
+
+
 }
