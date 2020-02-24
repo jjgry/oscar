@@ -316,7 +316,7 @@ public class EmailSender {
         SegmentQueue OutQ = new SegmentQueue<>();
         EmailSender sender = EmailSender.getEmailSender(OutQ);
         OutgoingEmailMessage emailToSimon = new OutgoingEmailMessage(
-                "nhs.appointment.reminder@gmail.com",
+                "jjofthegray@gmail.com",
                 "Mr. Simon",
                 "Dr. John",
                 "27-02-2021",
