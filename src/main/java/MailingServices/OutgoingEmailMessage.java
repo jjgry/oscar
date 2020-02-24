@@ -31,13 +31,14 @@ public class OutgoingEmailMessage {
     }
 
     //TODO: this constructor will take a combined datetime and separate them out.
-    public OutgoingEmailMessage( String patientEmailAddress, String patientName, String doctorName, String appointmentDateTime, EmailMessageType messageType ) {
+    public OutgoingEmailMessage( String patientEmailAddress, String patientName, String doctorName, String appointmentDateTime, EmailMessageType messageType, String appointmentID ) {
         this.patientEmailAddress = patientEmailAddress;
         this.patientName = patientName;
         this.doctorName = doctorName;
         this.appointmentDate = appointmentDateTime;//TODO
         this.appointmentTime = appointmentDateTime;//TODO
         this.messageType = messageType;
+        this.appointmentID = appointmentID;
     }
 
     public OutgoingEmailMessage( Patient p, Appointment a, EmailMessageType messageType ) {
