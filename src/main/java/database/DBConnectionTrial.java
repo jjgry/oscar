@@ -30,7 +30,7 @@ class DBConnectionTrial {
     DB.openConnection();
 
     Appointment app = DB.getApp(1);
-    System.out.println(app.getPatientName());
+    System.out.println(DB.getPatient(1));
 
     DB.closeConnection();
   }
