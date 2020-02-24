@@ -25,10 +25,10 @@ public class EmailReceiver {
     private EmailReceiver( SegmentQueue<IncomingEmailMessage> receivedEmails ) throws FailedToInstantiateComponent {
         if (null == applicationEmailAddress) {
             System.err.println(
-                    "Can't receive emails because Receiver doesn't know application email address. Try checking system variables");
+                    "Receiver: Can't receive emails because Receiver doesn't know application email address. Try checking system variables");
             throw new FailedToInstantiateComponent("EmailReceiver couldn't be instantiated because applicationEmailAddress is null");
         }
-        System.out.println("EMAIL RECEIVER WILL GET EMAILS FROM: " + applicationEmailAddress);
+        System.out.println("Receiver: EMAIL RECEIVER WILL GET EMAILS FROM: " + applicationEmailAddress);
         this.receivedEmails = receivedEmails;
     }
 
@@ -47,7 +47,7 @@ public class EmailReceiver {
 
                             if (null == emails) break;
 
-                            System.out.println("RECEIVED " + emails.size() + " EMAILS!");
+                            System.out.println("Receiver: RECEIVED " + emails.size() + " EMAILS!");
                             for (IncomingEmailMessage email : emails) {
                                 receivedEmails.put(email);
                             }
@@ -60,7 +60,7 @@ public class EmailReceiver {
                         }
                     } catch (AuthenticationFailedException e) {
                         //TODO how to deal with AuthenticationFailedException
-                        System.err.println("Couldn't connect to email so stop receiving");
+                        System.err.println("Receiver: Couldn't connect to email so stop receiving");
                     } catch (MessagingException e) {
                         e.printStackTrace();
                     }
@@ -88,8 +88,8 @@ public class EmailReceiver {
         folder.open(Folder.READ_WRITE);
         Message messages[] = folder.getMessages();
 
-        System.out.println("Number of messages in INBOX: " + folder.getMessageCount());
-        System.out.println("Number of unread messages in INBOX: " + folder.getUnreadMessageCount());
+        System.out.println("Receiver: Number of messages in INBOX: " + folder.getMessageCount());
+        System.out.println("Receiver: Number of unread messages in INBOX: " + folder.getUnreadMessageCount());
 
         for (Message message : messages) {
             IncomingEmailMessage emailMessage = parseEmail(message);
@@ -109,12 +109,12 @@ public class EmailReceiver {
     private static IncomingEmailMessage parseEmail( Message message ) throws MessagingException {
         if (message.isSet(Flags.Flag.SEEN)) return null; //TODO delete seen emails after a week
 
-        System.out.println("---------NEW MESSAGE RECEIVED-----------");
+        System.out.println("Receiver: NEW MESSAGE RECEIVED!");
         // Read only unseen emails
         message.setFlag(Flags.Flag.SEEN, true);
 
         if (!(message instanceof MimeMessage)) {
-            System.err.println("Unidentified Email Format: " + message.getClass().toString());
+            System.err.println("Receiver: Unidentified Email Format: " + message.getClass().toString());
             return null;
         }
         MimeMessage mimeMessage = (MimeMessage) message;
@@ -125,11 +125,11 @@ public class EmailReceiver {
 
             Address senderAddress = mimeMessage.getSender();
             if (null == senderAddress) {
-                System.err.println("Suspicious email with no or multiple recipient email addresses.");
+                System.err.println("Receiver: Suspicious email with no or multiple recipient email addresses.");
                 return null;
             }
             String senderEmailAddress = parser.getFrom();
-            System.out.println("FROM: " + senderEmailAddress);
+            System.out.println("Receiver: FROM: " + senderEmailAddress);
 
             String receiverEmailAddress = "unknownAddress";
             Address[] allRecipients = mimeMessage.getAllRecipients();
@@ -140,22 +140,22 @@ public class EmailReceiver {
             }
             if (receiverEmailAddress.equals("unknownAddress")) {
                 System.err.println(
-                        "Unidentified receiver email address. We shouldn't have received this email.");
+                        "Receiver: Unidentified receiver email address. We shouldn't have received this email.");
                 return null;
             }
-            System.out.println("TO: " + receiverEmailAddress);
+            System.out.println("Receiver: TO: " + receiverEmailAddress);
 
             String subject = parser.getSubject();
-            System.out.println("SUBJECT: " + subject);
+            System.out.println("Receiver: SUBJECT: " + subject);
 
             //TODO improve security
             String appointmentId = StringUtils.substringBetween(subject, "[", "]");
-            System.out.println("APPOINTMENT ID: " + appointmentId);
+            System.out.println("Receiver: APPOINTMENT ID: " + appointmentId);
 
             // Ignore emails which don't have textual representation
             if (!parser.hasPlainContent()) return null;
             String messageContents = readPlainContent(mimeMessage);
-            System.out.println("PLAIN TEXT: " + messageContents);
+            System.out.println("Receiver: PLAIN TEXT: " + messageContents);
 
             emailMessage =
                     new IncomingEmailMessage(

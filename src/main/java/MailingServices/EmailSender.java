@@ -32,10 +32,10 @@ public class EmailSender {
         //TODO how to deal with this behaviour?
         if (null == applicationEmailAddress) {
             System.err.println(
-                    "Can't send emails because Sender doesn't know application email address. Try checking system variables");
+                    "Sender: Can't send emails because Sender doesn't know application email address. Try checking system variables");
             throw new FailedToInstantiateComponent("EmailSender couldn't be instantiated because applicationEmailAddress is null");
         }
-        System.out.println("EMAIL SENDER WILL SEND EMAILS FROM: " + applicationEmailAddress);
+        System.out.println("Sender: EMAIL SENDER WILL SEND EMAILS FROM: " + applicationEmailAddress);
         this.messagesToSend = messagesToSend;
     }
 
@@ -51,7 +51,7 @@ public class EmailSender {
                     while (true) {
                         if (0 == messagesToSend.NumWaiting()) continue;
 
-                        System.out.println("NEED TO SEND " + messagesToSend.NumWaiting() + " EMAILS!");
+                        System.out.println("Sender: NEED TO SEND " + messagesToSend.NumWaiting() + " EMAILS!");
                         OutgoingEmailMessage emailToSend = messagesToSend.take();
                         if (null == emailToSend) continue;
 
@@ -112,10 +112,10 @@ public class EmailSender {
                                             appointmentID);
                                     break;
                                 default:
-                                    System.err.println("Unimplemented email type");
+                                    System.err.println("Sender: Unimplemented email type");
                             }
                         } catch (FailedToSendEmail failedToSendEmail) {
-                            System.err.println("We couldn't send email to " + patientEmailAddress);
+                            System.err.println("Sender: We couldn't send email to " + patientEmailAddress);
                             failedToSendEmail.printStackTrace();
                         }
                     }
@@ -151,7 +151,7 @@ public class EmailSender {
                                 " .BODY:" + response.getBody() +
                                 " .HEADERS: " + response.getHeaders());
             }
-            System.out.println("Sent email to: " + receiverEmailAddress);
+            System.out.println("Sender: Sent email to: " + receiverEmailAddress);
         } catch (IOException ex) {
             throw new FailedToSendEmail(ex.getMessage());
         }
