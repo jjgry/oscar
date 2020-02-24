@@ -27,11 +27,11 @@ class Queries {
       "\tavailable = 1\n" +
           "where timeslot_id = ( SELECT timeslot_id from `jjag3/SurgeryAssistant`.`Appointments` where app_id = ?) ;";
 
-  static final String GET_APP_FROM_ID = "SELECT app_id, patient_name, patient_email, doctor_id, doctor_name, timeslot from `jjag3/SurgeryAssistant`.`Appointments`\n" +
-      "LEFT JOIN `jjag3/SurgeryAssistant`.`Patients` on `jjag3/SurgeryAssistant`.`Patients`.patient_id= `jjag3/SurgeryAssistant`.`Appointments`.patient_id\n" +
-      "LEFT JOIN `jjag3/SurgeryAssistant`.`Doctors` on doctor=doctor_id\n" +
-      "LEFT JOIN `jjag3/SurgeryAssistant`.`Timeslots` on `jjag3/SurgeryAssistant`.`Appointments`.timeslot_id=`jjag3/SurgeryAssistant`.`Timeslots`.timeslot_id\n" +
-          "WHERE app_id = ?";
+  static final String GET_APP_FROM_ID = "SELECT app_id, patient_name, patient_email, `jjag3/SurgeryAssistant`.`Appointments`.doctor, doctor_name, timeslot from `jjag3/SurgeryAssistant`.`Appointments`\n" +
+          "LEFT JOIN `jjag3/SurgeryAssistant`.`Patients` on `jjag3/SurgeryAssistant`.`Patients`.patient_id= `jjag3/SurgeryAssistant`.`Appointments`.patient_id\n" +
+          "LEFT JOIN `jjag3/SurgeryAssistant`.`Doctors` on doctor=doctor_id\n" +
+          "LEFT JOIN `jjag3/SurgeryAssistant`.`Timeslots` on `jjag3/SurgeryAssistant`.`Appointments`.timeslot_id=`jjag3/SurgeryAssistant`.`Timeslots`.timeslot_id\n" +
+          "          WHERE app_id = ?";
 
   static final String CONFIRM_APP_FOR_PATIENT = "SELECT app_id  from `jjag3/SurgeryAssistant`.`Appointments` \n" +
       "LEFT JOIN `jjag3/SurgeryAssistant`.`Patients` on `jjag3/SurgeryAssistant`.`Appointments`.patient_id = `jjag3/SurgeryAssistant`.`Patients`.patient_id\n" +
@@ -44,7 +44,7 @@ class Queries {
   public static final String GET_PATIENTS = "SELECT patient_id, patient_name from `jjag3/SurgeryAssistant`.`Patients`\n" +
           "WHERE patient_email = \"?\";";
   static final String GET_PATIENT = "SELECT `jjag3/SurgeryAssistant`.`Appointments`.patient_id, patient_name, patient_email from `jjag3/SurgeryAssistant`.`Appointments` "
-      + "LEFT JOIN `jjag3/SurgeryAssistant`.`Patients` on `jjag3/SurgeryAssistant`.`Patients`.patient_id= `jjag3/SurgeryAssistant`.`Appointments`.patient_id WHERE app_id = 1";
+          + "LEFT JOIN `jjag3/SurgeryAssistant`.`Patients` on `jjag3/SurgeryAssistant`.`Patients`.patient_id= `jjag3/SurgeryAssistant`.`Appointments`.patient_id WHERE app_id = ?";
 
 
   static final String BLOCK_TIMESLOT = "UPDATE `jjag3/SurgeryAssistant`.`Appointments`\n" +

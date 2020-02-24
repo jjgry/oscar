@@ -208,7 +208,7 @@ public class DBInterface {
                 app.setDoctorName(rs.getString("doctor_name"));
                 app.setPatientEmail(rs.getString("patient_email"));
                 app.setPatientName(rs.getString("patient_name"));
-                app.setDoctorID(rs.getInt("doctor_id"));
+                app.setDoctorID(rs.getInt("doctor"));
 
                 appointmentList.add(app);
             }
@@ -237,7 +237,7 @@ public class DBInterface {
             List<Patient> patientList = new ArrayList<>();
             while (rs.next()) {
                 Patient p = new Patient();
-                p.setEmail(rs.getString(""));
+                p.setEmail(rs.getString("patient_email"));
                 p.setName(rs.getString("patient_name"));
                 p.setPatient_id(rs.getInt("patient_id"));
                 patientList.add(p);
