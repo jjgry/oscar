@@ -1,19 +1,16 @@
 package MailingServices;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.mail.util.MimeMessageParser;
 import oscar.SegmentQueue;
 
 import javax.mail.*;
 import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
-//TODO add mechanism to retrieve Appointment ID
-//TODO deal with the case when it is impossible to retrieve appointment ID
 
 public class EmailReceiver {
     private static final String applicationEmailAddress = System.getenv("GMAIL_ACCOUNT_EMAIL_ADDRESS");
@@ -107,7 +104,15 @@ public class EmailReceiver {
     }
 
     private static IncomingEmailMessage parseEmail( Message message ) throws MessagingException {
-        if (message.isSet(Flags.Flag.SEEN)) return null; //TODO delete seen emails after a week
+        if (message.isSet(Flags.Flag.SEEN)){
+            //TODO delete seen emails after a week
+//            Date today = new Date();
+//            System.out.println("TODAY: " + today);
+//            System.out.println("EMAIL RECEIVED: " + message.getSentDate());
+//            System.out.println("DIFFERENCE between days: " + today.compareTo(message.getSentDate()));
+
+            return null;
+        }
 
         System.out.println("Receiver: NEW MESSAGE RECEIVED!");
         // Read only unseen emails
@@ -149,7 +154,8 @@ public class EmailReceiver {
             System.out.println("Receiver: SUBJECT: " + subject);
 
             //TODO improve security
-            String appointmentId = StringUtils.substringBetween(subject, "[", "]");
+            //String appointmentId = StringUtils.substringBetween(subject, "[", "]");
+            String appointmentId = "EMPTY APPOINTMENT ID";
             System.out.println("Receiver: APPOINTMENT ID: " + appointmentId);
 
             // Ignore emails which don't have textual representation
