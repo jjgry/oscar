@@ -220,6 +220,7 @@ public class Kernel {
 
                 System.out.println("Kernel: beep, at " + LocalDateTime.now());
                 DB.openConnection();
+                System.out.println("Kernel: DB Connection established");
                 List<Appointment> newAppts = DB.remindersToSendToday();
                 System.out.println("Kernel: Found "+newAppts.size()+" new appointments to remind about in latest DB poll.");
 
@@ -230,11 +231,12 @@ public class Kernel {
                     System.out.println("Kernel: Sent initial reminder message about appointment "+A.getAppID());
                 }
                 DB.closeConnection();
+                System.out.println("Kernel: DB Connection ended");
             }
         };//TODO: this should be minutes, not seconds.
         final ScheduledFuture<?> BatchHandle =
                 //Schedule the check for every x minutes.
-                scheduler.scheduleAtFixedRate(reminderBatchSender, xMinutes, 0, SECONDS);
+                scheduler.scheduleAtFixedRate(reminderBatchSender,0, xMinutes, MINUTES);
     }
 
 
