@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import static java.util.concurrent.TimeUnit.*;
 
@@ -42,9 +43,7 @@ public class Kernel {
     DBInterface DB;
     SegmentQueue<OutgoingEmailMessage> OutQ;
     SegmentQueue<IncomingEmailMessage> InQ;
-
-    private final ScheduledExecutorService scheduler =
-            Executors.newScheduledThreadPool(1);
+    boolean Sender_ON = false;
 
     public Kernel() throws DBInitializationException, ClassificationTypeException {
         //SETUP
@@ -54,14 +53,16 @@ public class Kernel {
         InQ = new SegmentQueue<>();
 
         //  Establish the Interface to the database. REMOVE credentials from hardcoding.
-        DBInterface DB;
+
         try {
             DB = new DBInterface();
         } catch (DBInitializationException e) {
             //try again 3 times. If connection is impossible, end program in error.
+            System.out.println("Failure 1 in attempting DB connection");
             try {
                 DB = new DBInterface();
             } catch (DBInitializationException e1) {
+                System.out.println("Failure 2 in attempting DB connection");
                 try {
                     DB = new DBInterface();
                 } catch (DBInitializationException e2) {
@@ -71,14 +72,19 @@ public class Kernel {
             }
         }
 
+        if(DB == null){
+            System.out.println("Why is it null?");
+        }
 
         //Initialise the Sender
         try {
             EmailSender Sender = EmailSender.getEmailSender(OutQ);
+            Sender_ON = true;
             EmailReceiver Rec = EmailReceiver.getEmailReceiver(InQ);
         } catch (FailedToInstantiateComponent failedToInstantiateComponent) {
             //TODO agree how to handle this case
             failedToInstantiateComponent.printStackTrace();
+            Sender_ON = false;
         }
 
         //TODO: Initialise the DBMS port thread, if necessary
@@ -86,22 +92,40 @@ public class Kernel {
         System.out.println("Kernel: Receiver and Sender initialised.");
         // Create a thread, the major loop, named Major.
         DBInterface finalDB = DB;
+
+        //  1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
+        Thread DBPoll = new Thread(){
+            @Override
+            public void run() {
+                while (true) {
+                    SendNewReminders();
+                    try {//TODO: Every 5 minutes when implemented, not 1
+                        MINUTES.sleep(1);
+                    } catch (InterruptedException e) {
+                        //ignore the exception.
+                    }
+                }
+            }
+
+        };
+
+        DBPoll.start();
+        System.out.println("Kernel: Database polling system set up.");
+
         Thread Major = new Thread() {
             @Override
             public void run() {
                 //Main Loop:
-                LocalDateTime NextNewApptCheck = LocalDateTime.now();
-                //  1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
-                SendNewReminders(5);//SEE BELOW. This makes a system that should send the new reminders found on the database on demand, every 10 minutes.
-                System.out.println("Kernel: Database polling system set up.");
-                while (true) {
 
+                while (true) {
                     // 2. Deal with received emails one at a time until the queue is empty;
                     if (InQ.NumWaiting() > 0) {
+                        System.out.println("Kernel<major>: email received, handling....");
+                        System.out.println("Kernel<major>: opening DB connection");
                         finalDB.openConnection();
                         while (InQ.NumWaiting() > 0) {
                             IncomingEmailMessage PatientResponse = InQ.take();
-                            System.out.println("\n===\nKernel: Patient email response taken from Rec.");
+                            System.out.println("\n===\nKernel<major>: Patient email response taken from Rec.");
                             //TODO: Appointment ID should be given by receiver system, not always be -1 in line below
                             int appointmentID = -1;
                             try {
@@ -132,17 +156,17 @@ public class Kernel {
                                 switch (C.getDecision()) {
                                     case CONFIRM:
                                         //  Confirm Appt in database
-                                        System.out.println("Kernel: message classified as CONFIRM");
+                                        System.out.println("Kernel<major>: message classified as CONFIRM");
                                         finalDB.confirmNewTime(appointmentID);
                                         OutQ.put(new OutgoingEmailMessage(p, bookedAppointment, EmailMessageType.ConfirmationMessage));
-                                        System.out.println("Kernel: email sent to show confirmation; DBMS informed of confirmation.");
+                                        System.out.println("Kernel<major>: email sent to show confirmation; DBMS informed of confirmation.");
                                         break;
                                     case CANCEL:
                                         //Cancel Appt in database
-                                        System.out.println("Kernel: message classified as CANCEL");
+                                        System.out.println("Kernel<major>: message classified as CANCEL");
                                         finalDB.rejectTime(appointmentID);
                                         OutQ.put(new OutgoingEmailMessage(p, bookedAppointment, EmailMessageType.CancellationMessage));
-                                        System.out.println("Kernel: cancellation message sent; slot cancelled on database.");
+                                        System.out.println("Kernel<major>: cancellation message sent; slot cancelled on database.");
 
                                         break;
                                     case RESCHEDULE:
@@ -151,7 +175,7 @@ public class Kernel {
                                         //Add this appointment to list of those that cannot be attended in DB
                                         // ^^^ decided as redundant given the current timestamp system
                                         //Poll database for available appointments in given time slots
-                                        System.out.println("Kernel: message classified as RESCHEDULE");
+                                        System.out.println("Kernel<major>: message classified as RESCHEDULE");
                                         LinkedList<Timeslot> all_available_timeslots = new LinkedList<>();
                                         String[] availableDates = C.getDates();
                                         all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[0], availableDates[1]));
@@ -182,12 +206,12 @@ public class Kernel {
                                             // Send SuggestedAppt email to patient to suggest the new time.
                                             OutQ.put(new OutgoingEmailMessage(p, bookedAppointment,
                                                     EmailMessageType.NewAppointmentDetailsMessage));
-                                            System.out.println("Kernel: Times updated in databsase; new appt details email sent.");
+                                            System.out.println("Kernel<major>: Times updated in database; new appt details email sent.");
                                         }
                                         break;
                                     case OTHER:
                                         //No action taken on these emails.
-                                        System.out.println("Kernel: message classified as OTHER");
+                                        System.out.println("Kernel<major>: message classified as OTHER");
                                         break;
                                     default:
                                         System.out.println("This new classification type should not exist.");
@@ -203,10 +227,19 @@ public class Kernel {
                                         "", "",
                                         EmailMessageType.InvalidEmailMessage, "NO APPOINTMENT EXISTS"));
                                 System.out.println(
-                                        "Kernel: message sent to unknown user to inform them we cannot take their emails.");
+                                        "Kernel<major>: message sent to unknown user to inform them we cannot take their emails.");
                             }
                         }
                         finalDB.closeConnection();
+                        System.out.println("Kernel<major>: closing connection on main thread.");
+                    }
+                    else{
+                        System.out.println("Kernel<major>: no new received emails");
+                    }
+                    try {
+                        SECONDS.sleep(10);
+                    } catch (InterruptedException e) {
+                        //ignore
                     }
                 }
             }
@@ -216,30 +249,31 @@ public class Kernel {
         // If the DBMS port is a thread in this, put it here. If it is a system with (another) producer consumer queue, check it between every handle of an incoming, and at the end of all of these.
     }
 
-    //TODO: Simonas suggested a better system for this
-    public void SendNewReminders( int xMinutes ) {
-        final Runnable reminderBatchSender = new Runnable() {
-            public void run() {
+    public void SendNewReminders() {
+                if(DB!= null) {
+                    System.out.println("Kernel<pollDB>: beep, at " + LocalDateTime.now());
+                    DB.openConnection();
+                    System.out.println("Kernel<pollDB>: DB Connection established");
+                    List<Appointment> newAppts = DB.remindersToSendToday();
+                    System.out.println("Kernel<pollDB>: Found " + newAppts.size() + " new appointments to remind about in latest DB poll.");
 
-                System.out.println("Kernel: beep, at " + LocalDateTime.now());
-                DB.openConnection();
-                System.out.println("Kernel: DB Connection established");
-                List<Appointment> newAppts = DB.remindersToSendToday();
-                System.out.println("Kernel: Found "+newAppts.size()+" new appointments to remind about in latest DB poll.");
+                    for (Appointment A : newAppts) {
+                        //  1a. Send any initial reminder emails that are now shown as required by the database state.
+                        if (A != null) {
+                            Patient p = DB.getPatient(A.getAppID());
+                            OutQ.put(new OutgoingEmailMessage(p, A, EmailMessageType.InitialReminderMessage));
+                            System.out.println("Kernel<pollDB>: Sent initial reminder message about appointment " + A.getAppID());
+                        }
+                        else{
+                            System.err.println("Kernel<pollDB>: appointment given by database is a NULL pointer***");
+                        }
+                    }
+                    DB.closeConnection();
+                    System.out.println("Kernel<pollDB>: DB Connection ended");
 
-                for (Appointment A : newAppts) {
-                    //  1a. Send any initial reminder emails that are now shown as required by the database state.
-                    Patient p = DB.getPatient(A.getAppID());
-                    OutQ.put(new OutgoingEmailMessage(p, A, EmailMessageType.InitialReminderMessage));
-                    System.out.println("Kernel: Sent initial reminder message about appointment "+A.getAppID());
+                }else{
+                    System.out.println("Kernel<pollDB>: Database pointer is null.");
                 }
-                DB.closeConnection();
-                System.out.println("Kernel: DB Connection ended");
-            }
-        };//TODO: this should be minutes, not seconds.
-        final ScheduledFuture<?> BatchHandle =
-                //Schedule the check for every x minutes.
-                scheduler.scheduleAtFixedRate(reminderBatchSender,0, xMinutes, MINUTES);
     }
 
 
