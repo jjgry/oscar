@@ -153,13 +153,22 @@ public class EmailReceiver {
             String subject = parser.getSubject();
             System.out.println("Receiver: SUBJECT: " + subject);
 
+            int startIndex = subject.indexOf('[');
+            int endIndex = subject.indexOf(']');
+            if(startIndex > endIndex) {
+                System.err.println("Receiver: malformed appointment ID.");
+                return null;
+            }
+
             //TODO improve security
-            //String appointmentId = StringUtils.substringBetween(subject, "[", "]");
-            String appointmentId = "EMPTY APPOINTMENT ID";
+            String appointmentId = subject.substring(startIndex+1, endIndex);
             System.out.println("Receiver: APPOINTMENT ID: " + appointmentId);
 
             // Ignore emails which don't have textual representation
-            if (!parser.hasPlainContent()) return null;
+            if (!parser.hasPlainContent()) {
+                System.err.println("Receiver: email doesn't have text in it so ignore this email.");
+                return null;
+            }
             String messageContents = readPlainContent(mimeMessage);
             System.out.println("Receiver: PLAIN TEXT: " + messageContents);
 
