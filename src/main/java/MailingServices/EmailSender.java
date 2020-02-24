@@ -310,7 +310,7 @@ public class EmailSender {
                 "27-02-2021",
                 "11:00 AM",
                 InitialReminderMessage,
-                "101-123-501");
+                "101123501");
         OutQ.put(emailToSimon);
     }
 }

@@ -1,5 +1,6 @@
 package MailingServices;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.mail.util.MimeMessageParser;
 import oscar.SegmentQueue;
 
@@ -147,7 +148,9 @@ public class EmailReceiver {
             String subject = parser.getSubject();
             System.out.println("SUBJECT: " + subject);
 
-            //TODO: EXTRACT APPOINTMENT ID FROM SUBJECT
+            //TODO improve security
+            String appointmentId = StringUtils.substringBetween(subject, "[", "]");
+            System.out.println("APPOINTMENT ID: " + appointmentId);
 
             // Ignore emails which don't have textual representation
             if (!parser.hasPlainContent()) return null;
@@ -160,7 +163,7 @@ public class EmailReceiver {
                             receiverEmailAddress,
                             subject,
                             messageContents,
-                            "UNIDENTIFIED YET");
+                            appointmentId);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
