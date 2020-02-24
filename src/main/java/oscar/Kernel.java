@@ -73,10 +73,13 @@ public class Kernel {
 
 
         //Initialise the Sender
-        EmailSender Sender = EmailSender.getSender(OutQ);
-
-        // Initialise the Receiver
-        EmailReceiver Rec = EmailReceiver.getEmailReceiver(InQ);
+        try {
+            EmailSender Sender = EmailSender.getEmailSender(OutQ);
+            EmailReceiver Rec = EmailReceiver.getEmailReceiver(InQ);
+        } catch (FailedToInstantiateComponent failedToInstantiateComponent) {
+            //TODO agree how to handle this case
+            failedToInstantiateComponent.printStackTrace();
+        }
 
         //TODO: Initialise the DBMS port thread, if necessary
 
