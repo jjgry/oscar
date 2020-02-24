@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 //TODO add mechanism to retrieve Appointment ID
 //TODO deal with the case when it is impossible to retrieve appointment ID
@@ -16,17 +17,23 @@ import java.util.Properties;
 public class EmailReceiver {
     private static final String applicationEmailAddress = System.getenv("GMAIL_ACCOUNT_EMAIL_ADDRESS");
     private static final String applicationGmailPassword = System.getenv("GMAIL_ACCOUNT_PASSWORD");
+    private static final int secondsToWaitBetweenEmails = 30;
     private static EmailReceiver singletonReceiver;
     private SegmentQueue<IncomingEmailMessage> receivedEmails;
 
-    private EmailReceiver( SegmentQueue<IncomingEmailMessage> receivedEmails ) {
+    private EmailReceiver( SegmentQueue<IncomingEmailMessage> receivedEmails ) throws FailedToInstantiateComponent {
+        if (null == applicationEmailAddress) {
+            System.err.println(
+                    "Can't receive emails because Receiver doesn't know application email address. Try checking system variables");
+            throw new FailedToInstantiateComponent("EmailReceiver couldn't be instantiated because applicationEmailAddress is null");
+        }
         System.out.println("EMAIL RECEIVER WILL GET EMAILS FROM: " + applicationEmailAddress);
         this.receivedEmails = receivedEmails;
     }
 
     //This is an indempotent function
     //Only a singleton Receiver will be created
-    public static EmailReceiver getEmailReceiver( SegmentQueue<IncomingEmailMessage> receivedEmails ) {
+    public static EmailReceiver getEmailReceiver( SegmentQueue<IncomingEmailMessage> receivedEmails ) throws FailedToInstantiateComponent {
         if (null == singletonReceiver) {
             singletonReceiver = new EmailReceiver(receivedEmails);
 
@@ -42,6 +49,12 @@ public class EmailReceiver {
                             System.out.println("RECEIVED " + emails.size() + " EMAILS!");
                             for (IncomingEmailMessage email : emails) {
                                 receivedEmails.put(email);
+                            }
+
+                            try {
+                                TimeUnit.SECONDS.sleep(secondsToWaitBetweenEmails);
+                            } catch (InterruptedException ie) {
+                                Thread.currentThread().interrupt();
                             }
                         }
                     } catch (AuthenticationFailedException e) {
@@ -84,7 +97,7 @@ public class EmailReceiver {
 
         try {
             if (null != folder) folder.close(true);
-            if (store != null) store.close();
+            if (null != store) store.close();
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -134,6 +147,8 @@ public class EmailReceiver {
             String subject = parser.getSubject();
             System.out.println("SUBJECT: " + subject);
 
+            //TODO: EXTRACT APPOINTMENT ID FROM SUBJECT
+
             // Ignore emails which don't have textual representation
             if (!parser.hasPlainContent()) return null;
             String messageContents = readPlainContent(mimeMessage);
@@ -160,6 +175,10 @@ public class EmailReceiver {
 
     public static void main( String args[] ) {
         SegmentQueue<IncomingEmailMessage> InQ = new SegmentQueue<>();
-        EmailReceiver receiver = EmailReceiver.getEmailReceiver(InQ);
+        try {
+            EmailReceiver receiver = EmailReceiver.getEmailReceiver(InQ);
+        } catch (FailedToInstantiateComponent failedToInstantiateComponent) {
+            failedToInstantiateComponent.printStackTrace();
+        }
     }
 }

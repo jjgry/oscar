@@ -28,17 +28,20 @@ public class EmailSender {
             "Surgery contact number: phone number\n" +
             "Address: location address"; //TODO include location address and phone number of the hospital
 
-    private EmailSender( SegmentQueue<OutgoingEmailMessage> messagesToSend ) {
+    private EmailSender( SegmentQueue<OutgoingEmailMessage> messagesToSend ) throws FailedToInstantiateComponent {
         //TODO how to deal with this behaviour?
-        if (null == applicationEmailAddress) System.err.println(
-                "Can't send emails because Sender doesn't know application email address. Try checking system variables");
+        if (null == applicationEmailAddress) {
+            System.err.println(
+                    "Can't send emails because Sender doesn't know application email address. Try checking system variables");
+            throw new FailedToInstantiateComponent("EmailSender couldn't be instantiated because applicationEmailAddress is null");
+        }
         System.out.println("EMAIL SENDER WILL SEND EMAILS FROM: " + applicationEmailAddress);
         this.messagesToSend = messagesToSend;
     }
 
     //This is an indempotent function
     //Only a singleton Sender will be created
-    public static EmailSender getSender( SegmentQueue<OutgoingEmailMessage> messagesToSend ) {
+    public static EmailSender getEmailSender( SegmentQueue<OutgoingEmailMessage> messagesToSend ) throws FailedToInstantiateComponent {
         if (null == uniqueSender) {
             uniqueSender = new EmailSender(messagesToSend);
 
@@ -297,11 +300,11 @@ public class EmailSender {
                         + "Oscar \n");
     }
 
-    public static void main( String[] args ) {
+    public static void main( String[] args ) throws FailedToInstantiateComponent {
         SegmentQueue OutQ = new SegmentQueue<>();
-        EmailSender sender = EmailSender.getSender(OutQ);
+        EmailSender sender = EmailSender.getEmailSender(OutQ);
         OutgoingEmailMessage emailToSimon = new OutgoingEmailMessage(
-                "sm2354@cam.ac.uk",
+                "nhs.appointment.reminder@gmail.com",
                 "Mr. Simon",
                 "Dr. John",
                 "27-02-2021",
