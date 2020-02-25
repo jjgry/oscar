@@ -22,6 +22,7 @@ public class EmailSender {
     private static final String apiKey = System.getenv("SENDGRID_API_KEY");
     private static final String applicationEmailAddress = System.getenv("GMAIL_ACCOUNT_EMAIL_ADDRESS");
     private static final int secondsToWaitBetweenEmails = 10;
+    private static final int secondsToWaitBetweenCheckingQueue = 10;
     private static EmailSender uniqueSender;
     private SegmentQueue<OutgoingEmailMessage> messagesToSend;
 
@@ -52,15 +53,12 @@ public class EmailSender {
                 @Override
                 public void run() {
                     while (true) {
-
-                        try {
-                            SECONDS.sleep(10);
-                        } catch (InterruptedException e) {
-                            //ignore
-                        }
                         System.out.println("Sender: Working...." + messagesToSend.NumWaiting());
-
-
+                        try {
+                            TimeUnit.SECONDS.sleep(secondsToWaitBetweenCheckingQueue);
+                        } catch (InterruptedException ie) {
+                            Thread.currentThread().interrupt();
+                        }
                         if (0 == messagesToSend.NumWaiting()) continue;
 
                         System.out.println("Sender: NEED TO SEND " + messagesToSend.NumWaiting() + " EMAILS!");
@@ -133,13 +131,14 @@ public class EmailSender {
                     }
                 }
             };
+            System.out.println("Sender started");
             SenderThread.setDaemon(true);
             SenderThread.start();
         }
         return uniqueSender;
     }
 
-    private static void sendEmailWithSendgrid(
+    private static void sendEmailWithSendgrid (
             String senderEmailAddress,
             String receiverEmailAddress,
             String subject,
@@ -147,7 +146,6 @@ public class EmailSender {
         Email sendersEmail = new Email(senderEmailAddress);
         Email receiversEmail = new Email(receiverEmailAddress);
         Content content = new Content("text/plain", messageText + footer);
-
 
         System.out.println("Sender: SENDING EMAIL TO "+ receiverEmailAddress+": \n"+messageText);
 
@@ -179,8 +177,8 @@ public class EmailSender {
             String subject,
             String messageText ) throws FailedToSendEmail {
         try {
-            GmailSender sender = GmailSender.getGmailSender();
-            sender.sendMessage(receiverEmailAddress,
+            GmailSender gmailSender = GmailSender.getGmailSender();
+            gmailSender.sendMessage(receiverEmailAddress,
                     senderEmailAddress,
                     subject,
                     messageText);
@@ -196,7 +194,11 @@ public class EmailSender {
             String receiverEmailAddress,
             String subject,
             String messageText ) throws FailedToSendEmail {
+
+        //Pick one of the implementations
         sendEmailWithGmail(senderEmailAddress, receiverEmailAddress, subject, messageText);
+        //sendEmailWithSendgrid(senderEmailAddress,receiverEmailAddress,subject, messageText);
+
         try {
             TimeUnit.SECONDS.sleep(secondsToWaitBetweenEmails);
         } catch (InterruptedException ie) {
@@ -341,7 +343,7 @@ public class EmailSender {
                         + "Oscar \n");
     }
 
-    public static void main( String[] args ) throws FailedToInstantiateComponent {
+    public static void main( String[] args ) throws FailedToInstantiateComponent  {
         SegmentQueue OutQ = new SegmentQueue<>();
         EmailSender sender = EmailSender.getEmailSender(OutQ);
         OutgoingEmailMessage emailToSimon = new OutgoingEmailMessage(
@@ -353,6 +355,13 @@ public class EmailSender {
                 InitialReminderMessage,
                 "101123501");
         OutQ.put(emailToSimon);
+
+        System.out.println("Main method will sleep to allow sender to send email");
+        try {
+            TimeUnit.SECONDS.sleep(40);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
 
