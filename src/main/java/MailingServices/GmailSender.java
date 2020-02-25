@@ -50,6 +50,7 @@ public class GmailSender {
 
 
     private GmailSender() throws GeneralSecurityException, IOException {
+        System.out.println("Messages will be sent using Gmail API");
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         service = new Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
