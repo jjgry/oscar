@@ -15,6 +15,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import opennlp.tools.doccat.DoccatModel;
 
 import static java.util.concurrent.TimeUnit.*;
 
@@ -44,6 +45,17 @@ public class Kernel {
     SegmentQueue<OutgoingEmailMessage> OutQ;
     SegmentQueue<IncomingEmailMessage> InQ;
     boolean Sender_ON = false;
+
+    DoccatModel model;
+
+    {
+        try {
+            model = EmailClassifier.trainCategorizerModel();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public Kernel() throws DBInitializationException, ClassificationTypeException {
         //SETUP
@@ -148,7 +160,7 @@ public class Kernel {
 
                                 Classification C = null;
                                 try {
-                                    C = new Classification(PatientResponse.getMessage());
+                                    C = new Classification(PatientResponse.getMessage(), model);
                                 } catch (IOException e) {
                                     //TODO: Handle this error properly. Why is it thrown?
 

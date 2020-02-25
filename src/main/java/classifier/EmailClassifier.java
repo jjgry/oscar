@@ -29,29 +29,18 @@ import java.util.stream.Collectors;
  */
 public class EmailClassifier {
 
-    private static DoccatModel model;
-
-  static {
-    try {
-      model = trainCategorizerModel();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-
   /**
    * Returns email category.
    */
-  public static String getCategory(String emailText) throws IOException {
-    return assignCategoryToEmail(emailText);
+  public static String getCategory(String emailText, DoccatModel model) throws IOException {
+    return assignCategoryToEmail(emailText, model);
   }
 
 
   public static void main(String[] args) throws IOException {
 
     // Train categorizer model to the training data we created.
-    //DoccatModel model = trainCategorizerModel();
+    DoccatModel model = trainCategorizerModel();
 
     // Take chat inputs from console (user) in a loop.
     Scanner scanner = new Scanner(System.in);
@@ -62,14 +51,14 @@ public class EmailClassifier {
       String emailText = scanner.nextLine();
 
       // Find the category of the email.
-      String category = assignCategoryToEmail(emailText);
+      String category = assignCategoryToEmail(emailText, model);
     }
   }
 
   /**
    * Train categorizer model as per the category sample training data we created.
    */
-  private static DoccatModel trainCategorizerModel() throws IOException {
+  public static DoccatModel trainCategorizerModel() throws IOException {
     // training-data.txt is a custom training data with categories as per our chat requirements.
     InputStreamFactory inputStreamFactory = new MarkableFileInputStreamFactory(new File(
         "lib/training-data.txt"));
@@ -92,7 +81,8 @@ public class EmailClassifier {
    * Assign to the text of an email one of the categories: CONFIRM, CANCEL, RESCHEDULE, AUTOMATED,
    * OTHER.
    */
-  private static String assignCategoryToEmail(String emailText) throws IOException {
+  private static String assignCategoryToEmail(String emailText, DoccatModel model)
+      throws IOException {
 
     // Separate words from each sentence using tokenizer.
     String[] tokens = tokenizeSentence(emailText);
@@ -104,7 +94,7 @@ public class EmailClassifier {
     String[] lemmas = lemmatizeTokens(tokens, posTags);
 
     // Determine BEST category using lemmatized tokens used a mode that we trained at start.
-    String category = detectCategory(lemmas);
+    String category = detectCategory(lemmas, model);
 
     return category;
   }
@@ -112,7 +102,7 @@ public class EmailClassifier {
   /**
    * Detect category using given token using the categorizer feature of Apache OpenNLP.
    */
-  private static String detectCategory(String[] finalTokens) {
+  private static String detectCategory(String[] finalTokens, DoccatModel model) {
 
     // Initialize document categorizer tool
     DocumentCategorizerME myCategorizer = new DocumentCategorizerME(model);

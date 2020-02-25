@@ -1,6 +1,7 @@
 package oscar;
 
 import java.io.IOException;
+import opennlp.tools.doccat.DoccatModel;
 
 public class Classification {
 
@@ -31,8 +32,8 @@ public class Classification {
    */
   private String[] dates;
 
-  Classification(String emailText) throws IOException {
-    String category = classifier.EmailClassifier.getCategory(emailText);
+  Classification(String emailText, DoccatModel model) throws IOException {
+    String category = classifier.EmailClassifier.getCategory(emailText, model);
     if (category == "Cancel") {
       decision = classes.CANCEL;
     } else if (category == "Confirm") {
