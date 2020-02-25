@@ -78,7 +78,7 @@ public class EmailClassifier {
   }
 
   /**
-   * Assign to the text of an email one of the categories: CONFIRM, CANCEL, RESCHEDULE, AUTOMATED,
+   * Assign to the text of an email one of the categories: CONFIRM, CANCEL, RESCHEDULE,
    * OTHER.
    */
   private static String assignCategoryToEmail(String emailText, DoccatModel model)
