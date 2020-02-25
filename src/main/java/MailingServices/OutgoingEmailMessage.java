@@ -30,23 +30,38 @@ public class OutgoingEmailMessage {
         this.appointmentID = appointmentID;
     }
 
-    //TODO: this constructor will take a combined datetime and separate them out.
-    public OutgoingEmailMessage( String patientEmailAddress, String patientName, String doctorName, String appointmentDateTime, EmailMessageType messageType, String appointmentID ) {
+    // this constructor will take a combined datetime and separate them out.
+    public OutgoingEmailMessage(String patientEmailAddress, String patientName, String doctorName, String appointmentDateTime, EmailMessageType messageType, String appointmentID) {
         this.patientEmailAddress = patientEmailAddress;
         this.patientName = patientName;
         this.doctorName = doctorName;
-        this.appointmentDate = appointmentDateTime;//TODO
-        this.appointmentTime = appointmentDateTime;//TODO
+        String[] datetimesplit = appointmentDateTime.split(" ");
+        if (datetimesplit.length >= 2) {
+            this.appointmentDate = datetimesplit[0];
+            this.appointmentTime = datetimesplit[1];
+            System.out.println("Sender<DateFormatting>: split string \"" + appointmentDateTime + "\" into \"" + this.appointmentDate + "\" and \"" + this.appointmentTime + "\"");
+        } else {
+            this.appointmentDate = appointmentDateTime;
+            this.appointmentTime = appointmentDateTime;
+        }
         this.messageType = messageType;
         this.appointmentID = appointmentID;
     }
 
-    public OutgoingEmailMessage( Patient p, Appointment a, EmailMessageType messageType ) {
+    public OutgoingEmailMessage(Patient p, Appointment a, EmailMessageType messageType) {
         this.patientEmailAddress = p.getEmail();
         this.patientName = p.getName();
         this.doctorName = a.getDoctorName();
-        this.appointmentDate = a.getDatetime();//TODO
-        this.appointmentTime = a.getDatetime();//TODO
+        String[] datetimesplit = a.getDatetime().split(" ");
+        if (datetimesplit.length >= 2) {
+            this.appointmentDate = datetimesplit[0];
+            this.appointmentTime = datetimesplit[1];
+            System.out.println("Sender<DateFormatting>: split string \"" + a.getDatetime() + "\" into \"" + this.appointmentDate + "\" and \"" + this.appointmentTime + "\"");
+        } else {
+            this.appointmentDate = a.getDatetime();
+            this.appointmentTime = a.getDatetime();
+        }
+
         this.appointmentID = Integer.toString(a.getAppID());
         this.messageType = messageType;
     }

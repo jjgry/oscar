@@ -35,7 +35,7 @@ public class EmailReceiver {
         if (null == singletonReceiver) {
             singletonReceiver = new EmailReceiver(receivedEmails);
 
-            Thread Major = new Thread() {
+            Thread RecThread = new Thread() {
                 @Override
                 public void run() {
                     try {
@@ -63,7 +63,8 @@ public class EmailReceiver {
                     }
                 }
             };
-            Major.start();
+            RecThread.setDaemon(true);
+            RecThread.start();
         }
         return singletonReceiver;
     }
