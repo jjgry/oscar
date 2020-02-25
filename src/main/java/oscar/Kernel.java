@@ -100,6 +100,10 @@ public class Kernel {
             }
         }
 
+        if(DB == null){
+            System.out.println("Why is it null?");
+        }
+
         //Initialise the Sender
         try {
             EmailSender Sender = EmailSender.getEmailSender(OutQ);
@@ -132,6 +136,7 @@ public class Kernel {
             }
 
         };
+
 
 
         Thread Major = new Thread() {
@@ -174,9 +179,8 @@ public class Kernel {
                                     //TODO: Handle this error properly. Why is it thrown?
 
                                 }
-                                assert (p.getEmail().equals( PatientResponse.getSenderEmailAddress()));// these really should be the same and if not our system is not designed correctly.
+                                assert (p.getEmail() == PatientResponse.getSenderEmailAddress());// these really should be the same and if not our system is not designed correctly.
                                 assert (bookedAppointment.getAppID() == appointmentID);
-                                assert (C != null);
                                 switch (C.getDecision()) {
                                     case CONFIRM:
                                         //  Confirm Appt in database
@@ -317,7 +321,6 @@ public class Kernel {
             System.out.println("Kernel<pollDB>: Database pointer is null.");
         }
     }
-
     //TODO: Simonas needs to implement calling this.
     public static void Confirm_Intro_Email_Sent(Appointment A) {
         Kernel k = Kernel.getInstance();
