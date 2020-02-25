@@ -9,6 +9,7 @@ import oscar.SegmentQueue;
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -57,8 +58,7 @@ public class EmailSender {
                         } catch (InterruptedException e) {
                             //ignore
                         }
-                        System.out.println("Sender: Working...."+messagesToSend.NumWaiting());
-
+                        System.out.println("Sender: Working...." + messagesToSend.NumWaiting());
 
 
                         if (0 == messagesToSend.NumWaiting()) continue;
@@ -85,7 +85,7 @@ public class EmailSender {
                                             appointmentDate,
                                             appointmentTime,
                                             appointmentID
-                                            );
+                                    );
                                     break;
                                 case CancellationMessage:
                                     sendCancelationEmail(
@@ -139,7 +139,7 @@ public class EmailSender {
         return uniqueSender;
     }
 
-    private static void sendEmail(
+    private static void sendEmailWithSendgrid(
             String senderEmailAddress,
             String receiverEmailAddress,
             String subject,
@@ -171,7 +171,32 @@ public class EmailSender {
         } catch (IOException ex) {
             throw new FailedToSendEmail(ex.getMessage());
         }
+    }
 
+    private static void sendEmailWithGmail(
+            String senderEmailAddress,
+            String receiverEmailAddress,
+            String subject,
+            String messageText ) throws FailedToSendEmail {
+        try {
+            GmailSender sender = GmailSender.getGmailSender();
+            sender.sendMessage(receiverEmailAddress,
+                    senderEmailAddress,
+                    subject,
+                    messageText);
+        } catch (GeneralSecurityException e) {
+            throw new FailedToSendEmail(e.getMessage());
+        } catch (IOException e) {
+            throw new FailedToSendEmail(e.getMessage());
+        }
+    }
+
+    private static void sendEmail(
+            String senderEmailAddress,
+            String receiverEmailAddress,
+            String subject,
+            String messageText ) throws FailedToSendEmail {
+        sendEmailWithGmail(senderEmailAddress, receiverEmailAddress, subject, messageText);
         try {
             TimeUnit.SECONDS.sleep(secondsToWaitBetweenEmails);
         } catch (InterruptedException ie) {
@@ -185,7 +210,7 @@ public class EmailSender {
             String doctorName,
             String appointmentDate,
             String appointmentTime,
-            String appointmentID) throws FailedToSendEmail {
+            String appointmentID ) throws FailedToSendEmail {
         sendEmail(applicationEmailAddress, patientEmailAddress, "[" + appointmentID + "] GP Appointment Reminder",
                 "Dear " + patientName + ",\n" +
                         "\n" +
@@ -202,7 +227,7 @@ public class EmailSender {
                         "\n" +
                         "If you have any questions, use the contact details below to get in touch with us.\n" +
                         "\n" +
-                        "Thank you and have a nice day!\n"+
+                        "Thank you and have a nice day!\n" +
                         "Oscar\n");
     }
 
@@ -231,7 +256,7 @@ public class EmailSender {
             String doctorName,
             String appointmentDate,
             String appointmentTime,
-            String appointmentID) throws FailedToSendEmail {
+            String appointmentID ) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
@@ -253,7 +278,7 @@ public class EmailSender {
             String doctorName,
             String appointmentDate,
             String appointmentTime,
-            String appointmentID) throws FailedToSendEmail {
+            String appointmentID ) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
@@ -271,7 +296,7 @@ public class EmailSender {
     public static void sendEmailAskingToPickAnotherTimeSlots(
             String patientEmailAddress,
             String patientName,
-            String appointmentID) throws FailedToSendEmail {
+            String appointmentID ) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
@@ -300,11 +325,11 @@ public class EmailSender {
             String doctorName,
             String appointmentDate,
             String appointmentTime,
-            String appointmentID) throws FailedToSendEmail {
+            String appointmentID ) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "["+ appointmentID + "]Your appointment was cancelled\n",
+                "[" + appointmentID + "]Your appointment was cancelled\n",
                 "Dear "
                         + patientName
                         + ",\n"
@@ -320,7 +345,7 @@ public class EmailSender {
         SegmentQueue OutQ = new SegmentQueue<>();
         EmailSender sender = EmailSender.getEmailSender(OutQ);
         OutgoingEmailMessage emailToSimon = new OutgoingEmailMessage(
-                "jjofthegray@gmail.com",
+                "mulevicius.simonas@gmail.com",
                 "Mr. Simon",
                 "Dr. John",
                 "27-02-2021",
