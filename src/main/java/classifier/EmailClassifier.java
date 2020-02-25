@@ -142,6 +142,7 @@ public class EmailClassifier {
     return categories[bestIndex];
   }
 
+  //TODO:decide what to do for this one
   /**
    * Break data into sentences using the sentence detection feature of Apache OpenNLP.
    */
@@ -163,6 +164,20 @@ public class EmailClassifier {
    */
   private static String[] tokenizeSentence(String sentence) throws IOException {
     try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-token.bin")) {
+      // Add spaces before and after dashes.
+      int dash = sentence.indexOf("-");
+      while (dash != -1) {
+        sentence = sentence.substring(0, dash - 1) + " - " + sentence.substring(dash + 1);
+        dash = sentence.indexOf("-", dash + 3);
+      }
+
+      // Transform "cannot" into "ca n't"
+      int cannot = sentence.indexOf("cannot");
+      while (cannot != -1) {
+        sentence = sentence.substring(0, Math.max(cannot - 1, 0)) + "ca n't" + sentence
+            .substring(cannot + 6);
+        cannot = sentence.indexOf("cannot", cannot + 6);
+      }
 
       // Initialize tokenizer tool
       TokenizerME myCategorizer = new TokenizerME(new TokenizerModel(modelIn));
@@ -208,5 +223,4 @@ public class EmailClassifier {
       return lemmaTokens;
     }
   }
-
 }

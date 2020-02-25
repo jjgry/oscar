@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9151a5be-6178-4ef2-966b-c853e3e7ff66" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/training-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/training-data.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,8 +25,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3123">
-              <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+            <state relative-caret-position="450">
+              <caret line="189" column="3" selection-start-line="189" selection-start-column="3" selection-end-line="189" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/training-data.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="42" lean-forward="true" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -69,7 +81,6 @@
     <findStrings>
       <find>training</find>
       <find>training-da</find>
-      <find>System.out</find>
       <find>questionAnswer</find>
       <find>get</find>
       <find>detect</find>
@@ -78,6 +89,9 @@
       <find>StandardCharsets</find>
       <find>Assis</find>
       <find>DoccatModel</find>
+      <find>lemma</find>
+      <find>tokens</find>
+      <find>System.out</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -96,7 +110,6 @@
         <option value="$PROJECT_DIR$/data/training-data.txt" />
         <option value="$PROJECT_DIR$/src/training-data.txt" />
         <option value="$PROJECT_DIR$/src/EmailFormatter.java" />
-        <option value="$PROJECT_DIR$/lib/training-data.txt" />
         <option value="$PROJECT_DIR$/src/SurgeryAssistant.java" />
         <option value="$PROJECT_DIR$/src/DateExtractor.java" />
         <option value="$PROJECT_DIR$/src/EmailClassifier.java" />
@@ -104,8 +117,9 @@
         <option value="$PROJECT_DIR$/src/EmailDateExtractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/oscar/RESCHEDULE.java" />
         <option value="$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" />
         <option value="$PROJECT_DIR$/src/main/java/oscar/Classification.java" />
+        <option value="$PROJECT_DIR$/lib/training-data.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" />
       </list>
     </option>
   </component>
@@ -135,6 +149,11 @@
               <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
               <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oscar" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="oscarArtifactId" type="b2602c69:ProjectViewProjectNode" />
@@ -205,7 +224,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582624475273" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582633436970" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -378,14 +397,21 @@
       <option name="project" value="LOCAL" />
       <updated>1581865141246</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="if category probabilities are equal, the assigned category is &quot;Other&quot;">
+      <created>1582624559128</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1582624559128</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2672065" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18299595" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -396,7 +422,7 @@
       <window_info anchor="bottom" id="Build" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3285968" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -480,7 +506,8 @@
     <MESSAGE value="updating training data and printing probabilities" />
     <MESSAGE value="rename classes, refactor structure" />
     <MESSAGE value="merged classifier to master." />
-    <option name="LAST_COMMIT_MESSAGE" value="merged classifier to master." />
+    <MESSAGE value="if category probabilities are equal, the assigned category is &quot;Other&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="if category probabilities are equal, the assigned category is &quot;Other&quot;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -494,9 +521,6 @@
     <entry file="jar://$PROJECT_DIR$/lib/opennlp-tools-1.9.2.jar!/opennlp/tools/util/MarkableFileInputStreamFactory.class" />
     <entry file="file://$PROJECT_DIR$/data/training-data.txt" />
     <entry file="file://$PROJECT_DIR$/src/ThreadQueue.java" />
-    <entry file="file://$PROJECT_DIR$/lib/en-lemmatizer.bin">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DBConnection.java" />
     <entry file="file://$PROJECT_DIR$/src/DBInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/EmailDateExtractorTest.java" />
@@ -512,13 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1258">
           <caret line="95" selection-start-line="95" selection-end-line="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/training-data.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3570">
-          <caret line="210" column="16" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -618,10 +635,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/en-lemmatizer.bin">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/training-data.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="42" lean-forward="true" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3123">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+        <state relative-caret-position="450">
+          <caret line="189" column="3" selection-start-line="189" selection-start-column="3" selection-end-line="189" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
