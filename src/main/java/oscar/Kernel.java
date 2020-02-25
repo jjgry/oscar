@@ -125,7 +125,7 @@ public class Kernel {
                         while (InQ.NumWaiting() > 0) {
                             IncomingEmailMessage PatientResponse = InQ.take();
                             System.out.println("\n\nKernel<major>: Patient email response taken from Rec.");
-                            //TODO: Appointment ID should be given by receiver system, not always be -1 in line below
+                            //Work out which appointment ID this email is about from the header
                             int appointmentID = -1;
                             try {
                                 appointmentID = Integer.parseInt(PatientResponse.getAppointmentID());

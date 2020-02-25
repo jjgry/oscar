@@ -38,5 +38,4 @@ public class Timeslot {
     return ID;
   }
 
-  ;
 }
