@@ -119,11 +119,27 @@ public class EmailClassifier {
 
     // Get best possible category.
     double[] probabilitiesOfOutcomes = myCategorizer.categorize(finalTokens);
-    String category = myCategorizer.getBestCategory(probabilitiesOfOutcomes);
+    String category = getBestCategory(probabilitiesOfOutcomes);
     System.out.println(myCategorizer.getAllResults(probabilitiesOfOutcomes));
     System.out.println("Category: " + category);
 
     return category;
+  }
+
+
+  private static String getBestCategory(double[] probabilitiesOfOutcomes) {
+    String[] categories = {"Cancel", "Confirm", "Other", "Reschedule"};
+    int bestIndex = 0;
+    if ((probabilitiesOfOutcomes[0] == probabilitiesOfOutcomes[1]) && (probabilitiesOfOutcomes[2]
+        == probabilitiesOfOutcomes[0])) {
+      return "Other";
+    }
+    for (int i = 1; i < 4; i++) {
+      if (probabilitiesOfOutcomes[i] > probabilitiesOfOutcomes[bestIndex]) {
+        bestIndex = i;
+      }
+    }
+    return categories[bestIndex];
   }
 
   /**
