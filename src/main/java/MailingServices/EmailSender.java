@@ -47,7 +47,7 @@ public class EmailSender {
         if (null == uniqueSender) {
             uniqueSender = new EmailSender(messagesToSend);
 
-            Thread Major = new Thread() {
+            Thread SenderThread = new Thread() {
                 @Override
                 public void run() {
                     while (true) {
@@ -133,7 +133,8 @@ public class EmailSender {
                     }
                 }
             };
-            Major.start();
+            SenderThread.setDaemon(true);
+            SenderThread.start();
         }
         return uniqueSender;
     }
@@ -146,6 +147,9 @@ public class EmailSender {
         Email sendersEmail = new Email(senderEmailAddress);
         Email receiversEmail = new Email(receiverEmailAddress);
         Content content = new Content("text/plain", messageText + footer);
+
+
+        System.out.println("Sender: SENDING EMAIL TO "+ receiverEmailAddress+": \n"+messageText);
 
         Mail mail = new Mail(sendersEmail, subject, receiversEmail, content);
 
