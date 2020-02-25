@@ -4,8 +4,6 @@
     <list default="true" id="9151a5be-6178-4ef2-966b-c853e3e7ff66" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Classification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Classification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="C:\Users\milam\Desktop\IB\GroupProject\oscar\.idea\shelf/" />
@@ -23,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1573">
-              <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+            <state relative-caret-position="315">
+              <caret line="156" column="9" selection-start-line="156" selection-start-column="9" selection-end-line="156" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/oscar/Kernel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="150" column="94" selection-start-line="150" selection-start-column="94" selection-end-line="150" selection-end-column="94" />
+            <state relative-caret-position="99">
+              <caret line="160" column="46" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -94,6 +92,8 @@
       <find>tokens</find>
       <find>System.out</find>
       <find>detect</find>
+      <find>classification</find>
+      <find>Classification</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -121,8 +121,8 @@
         <option value="$PROJECT_DIR$/src/main/java/classifier/EmailDateExtractor.java" />
         <option value="$PROJECT_DIR$/lib/training-data.txt" />
         <option value="$PROJECT_DIR$/src/main/java/oscar/Classification.java" />
-        <option value="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" />
         <option value="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java" />
       </list>
     </option>
   </component>
@@ -227,7 +227,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582634357630" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582634406354" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -414,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582633523344</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="refactored interface between classifier and kernel so model is built only once">
+      <created>1582634461429</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1582634461429</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -432,7 +439,7 @@
       <window_info anchor="bottom" id="Build" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -442,7 +449,7 @@
       <window_info anchor="bottom" id="Floobits" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.3285968" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3285968" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -518,7 +525,8 @@
     <MESSAGE value="merged classifier to master." />
     <MESSAGE value="if category probabilities are equal, the assigned category is &quot;Other&quot;" />
     <MESSAGE value="data cleaning to improve accuracy of classifier: &quot; - &quot;, &quot;cannot&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="data cleaning to improve accuracy of classifier: &quot; - &quot;, &quot;cannot&quot;" />
+    <MESSAGE value="refactored interface between classifier and kernel so model is built only once" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored interface between classifier and kernel so model is built only once" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -650,8 +658,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/classifier/EmailClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1573">
-          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+        <state relative-caret-position="315">
+          <caret line="156" column="9" selection-start-line="156" selection-start-column="9" selection-end-line="156" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -660,8 +668,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/oscar/Kernel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="150" column="94" selection-start-line="150" selection-start-column="94" selection-end-line="150" selection-end-column="94" />
+        <state relative-caret-position="99">
+          <caret line="160" column="46" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="46" />
         </state>
       </provider>
     </entry>
