@@ -155,7 +155,7 @@ public class EmailClassifier {
   private static String[] tokenizeSentence(String sentence) throws IOException {
     try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-token.bin")) {
       //Makes text into one line
-      sentence = sentence.replace("\r", "");
+      sentence = sentence.replace("\r", "").replace("\n", "");
       //Add space around dash and replace cannot with can't
       sentence = sentence.replace("-", " - ").replace("cannot", "ca n't");
 
