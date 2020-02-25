@@ -2,12 +2,19 @@ package database;
 
 public class Appointment {
 
+  enum ReminderType {
+    OneDay,
+    SevenDay
+  }
+
   private int appID;
   private String patientEmail;
   private String patientName;
   private String doctorName;
   private String datetime;
   private int doctorID;
+  private int conversationStateID;
+  private ReminderType reminderType;
 
 
   public void setPatientEmail(String e) {
@@ -34,6 +41,14 @@ public class Appointment {
     doctorID = id;
   }
 
+  public void setConversationStateID(int conversationStateID) {
+    this.conversationStateID = conversationStateID;
+  }
+
+  public void setReminderType(ReminderType reminderType) {
+    this.reminderType = reminderType;
+  }
+
   public int getAppID() {
     return appID;
   }
@@ -56,5 +71,13 @@ public class Appointment {
 
   public String getPatientName() {
     return patientName;
+  }
+
+  public int getConversationStateID() {
+    return conversationStateID;
+  }
+
+  public ReminderType getReminderType() {
+    return reminderType;
   }
 }

@@ -1,5 +1,6 @@
 package database;
 
+import database.Appointment.ReminderType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,48 +56,62 @@ public class DBInterface {
     }
 
     /**
-     * @return a representation of the email addresses and appointment information.
+     * @return a list of appointments for which reminders have to be sent
      */
     public List<Appointment> remindersToSendToday() {
         ResultSet rs1 = database.execute(Queries.GET_APP_TO_REMIND_1_DAY);
         ResultSet rs2 = database.execute(Queries.GET_APP_TO_REMIND_7_DAY);
         List<Appointment> appointmentList = new ArrayList<>();
-        List<Integer> conv_id = new ArrayList<>();
         try {
             while (rs1.next()) {
                 Appointment app = new Appointment();
 
-                conv_id.add(rs1.getInt("conversation_state_id"));
+                app.setConversationStateID(rs1.getInt("conversation_state_id"));
                 app.setAppID(rs1.getInt("app_id"));
                 app.setDatetime(rs1.getString("timeslot"));
                 app.setDoctorName(rs1.getString("doctor_name"));
                 app.setPatientEmail(rs1.getString("patient_email"));
                 app.setPatientName(rs1.getString("patient_name"));
+                app.setReminderType(ReminderType.OneDay);
                 appointmentList.add(app);
             }
-            for (Integer i : conv_id) {
-                database.executeUpdate(String.format(Queries.MARK_REMINDED, 1, i));
-            }
-            conv_id = new ArrayList<>();
             while (rs2.next()) {
                 Appointment app = new Appointment();
 
-                conv_id.add(rs2.getInt("conversation_state_id"));
+                app.setConversationStateID(rs2.getInt("conversation_state_id"));
                 app.setAppID(rs2.getInt("app_id"));
                 app.setDatetime(rs2.getString("timeslot"));
                 app.setDoctorName(rs2.getString("doctor_name"));
                 app.setPatientEmail(rs2.getString("patient_email"));
                 app.setPatientName(rs2.getString("patient_name"));
+                app.setReminderType(ReminderType.SevenDay);
                 appointmentList.add(app);
-            }
-            for (Integer i : conv_id) {
-                database.executeUpdate(String.format(Queries.MARK_REMINDED, 7, i));
             }
             return appointmentList;
         } catch (SQLException e) {
             System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
         }
         return null;
+    }
+
+    /**
+     * @param appointmentList a list of appointments for which reminders have been sent
+     */
+    public void RemindersSent(List<Appointment> appointmentList) {
+        for (Appointment appointment : appointmentList) {
+            switch (appointment.getReminderType()) {
+                case OneDay:
+                    database.executeUpdate(
+                        String.format(Queries.MARK_REMINDED, 1, appointment.getConversationStateID()));
+                    break;
+                case SevenDay:
+                    database.executeUpdate(
+                        String.format(Queries.MARK_REMINDED, 7, appointment.getConversationStateID()));
+                default:
+                    // this should never happen
+                    System.err.println("DBInterface.RemindersSent: Appointment has no ReminderType");
+            }
+        }
     }
 
     /**
