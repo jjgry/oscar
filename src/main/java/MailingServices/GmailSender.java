@@ -168,24 +168,19 @@ public class GmailSender {
         return message;
     }
 
-
     public void sendMessage( String to,
                              String from,
                              String subject,
-                             String bodyText ) throws GeneralSecurityException, IOException {
+                             String bodyText ) throws GeneralSecurityException, IOException, MessagingException {
         GmailSender sender = GmailSender.getGmailSender();
-        try {
-            MimeMessage mimeMessage = sender.createEmail(to,
-                    from,
-                    subject,
-                    bodyText);
-            Message sentMessage = sender.sendMessage(service, "me", mimeMessage);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+        MimeMessage mimeMessage = sender.createEmail(to,
+                from,
+                subject,
+                bodyText);
+        Message sentMessage = sender.sendMessage(service, "me", mimeMessage);
     }
 
-    public static void main( String... args ) throws IOException, GeneralSecurityException {
+    public static void main( String... args ) throws IOException, GeneralSecurityException, MessagingException {
         GmailSender sender = GmailSender.getGmailSender();
         sender.sendMessage("mulevicius.simonas@gmail.com",
                 "nhs.appointment.reminder@gmail.com",

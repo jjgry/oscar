@@ -4,6 +4,7 @@ import com.sendgrid.*;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
+import oscar.Kernel;
 import oscar.SegmentQueue;
 
 import javax.mail.AuthenticationFailedException;
@@ -86,6 +87,7 @@ public class EmailSender {
                         String appointmentTime = emailToSend.getAppointmentTime();
                         String appointmentID = emailToSend.getAppointmentID();
 
+                        boolean successfullyDelivered = false;
                         try {
                             switch (type) {
                                 case InitialReminderMessage:
@@ -97,6 +99,7 @@ public class EmailSender {
                                             appointmentTime,
                                             appointmentID
                                     );
+                                    successfullyDelivered = true;
                                     break;
                                 case CancellationMessage:
                                     sendCancelationEmail(
@@ -106,12 +109,14 @@ public class EmailSender {
                                             appointmentDate,
                                             appointmentTime,
                                             appointmentID);
+                                    successfullyDelivered = true;
                                     break;
                                 case AskToPickAnotherTimeSlotMessage:
                                     sendEmailAskingToPickAnotherTimeSlots(
                                             patientEmailAddress,
                                             patientName,
                                             appointmentID);
+                                    successfullyDelivered = true;
                                     break;
                                 case NewAppointmentDetailsMessage:
                                     sendNewAppointmentDetailsEmail(
@@ -121,9 +126,11 @@ public class EmailSender {
                                             appointmentDate,
                                             appointmentTime,
                                             appointmentID);
+                                    successfullyDelivered = true;
                                     break;
                                 case InvalidEmailMessage:
                                     sendUnexpectedSenderEmail(patientEmailAddress);
+                                    successfullyDelivered = true;
                                     break;
                                 case ConfirmationMessage:
                                     sendConfirmationEmail(
@@ -133,14 +140,19 @@ public class EmailSender {
                                             appointmentDate,
                                             appointmentTime,
                                             appointmentID);
+                                    successfullyDelivered = true;
                                     break;
                                 default:
                                     System.err.println("Sender: Unimplemented email type");
                             }
                         } catch (FailedToSendEmail failedToSendEmail) {
                             System.err.println("Sender: We couldn't send email to " + patientEmailAddress);
+
+                            successfullyDelivered = false;
                             failedToSendEmail.printStackTrace();
                         }
+
+                        if(successfullyDelivered) Kernel.Confirm_Intro_Email_Sent(appointmentID);
                     }
                 }
             };
@@ -205,9 +217,7 @@ public class EmailSender {
                     senderEmailAddress,
                     subject,
                     messageText);
-        } catch (GeneralSecurityException e) {
-            throw new FailedToSendEmail(e.getMessage());
-        } catch (IOException e) {
+        } catch (GeneralSecurityException | IOException | MessagingException e) {
             throw new FailedToSendEmail(e.getMessage());
         }
     }

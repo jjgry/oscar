@@ -331,11 +331,6 @@ public class Kernel {
     }
 
 
-    public static void Confirm_Intro_Email_Sent(Appointment A) {
-        Kernel k = Kernel.getInstance();
-        k.CIES(A);
-    }
-
     private void CIES(Appointment A) {
         if (PendingEmailOutbox.remove(A)) {
             LinkedList<Appointment> ConfirmedSent = new LinkedList<>();
