@@ -39,11 +39,11 @@ public class Kernel {
     /      email informing them to use the registered email address.
     */
 
-    DBInterface DB;
-    SegmentQueue<OutgoingEmailMessage> OutQ;
-    SegmentQueue<IncomingEmailMessage> InQ;
-    boolean Sender_ON = false;
-    LinkedList<Appointment> PendingEmailOutbox;
+    private DBInterface DB;
+    private SegmentQueue<OutgoingEmailMessage> OutQ;
+    private SegmentQueue<IncomingEmailMessage> InQ;
+    private boolean Sender_ON;
+    private LinkedList<Appointment> PendingEmailOutbox;
 
 
     DoccatModel model;
@@ -55,6 +55,7 @@ public class Kernel {
             e.printStackTrace();
         }
     }
+
     // static variable single_instance of type Singleton
     private static Kernel single_instance = null;
 
@@ -68,20 +69,20 @@ public class Kernel {
         return single_instance;
     }
 
-    private Kernel()  {
+    private Kernel() {
         //SETUP
         //Initialise the queues for the Receiver -> Kernel and the Kernel -> Sender
 
         OutQ = new SegmentQueue<>();
         InQ = new SegmentQueue<>();
         PendingEmailOutbox = new LinkedList<>();
+        Sender_ON = false;
     }
 
 
-    public void run() throws DBInitializationException {
+    private void run() throws DBInitializationException {
 
         //  Establish the Interface to the database. REMOVE credentials from hardcoding.
-
         try {
             DB = new DBInterface();
         } catch (DBInitializationException e) {
@@ -100,7 +101,7 @@ public class Kernel {
             }
         }
 
-        if(DB == null){
+        if (DB == null) {
             System.out.println("Why is it null?");
         }
 
@@ -122,7 +123,7 @@ public class Kernel {
         DBInterface finalDB = DB;
 
         //  1. Poll periodically for any new emails to send - so track last time checked. Check every 5 mins.
-        Thread DBPoll = new Thread(){
+        Thread DBPoll = new Thread() {
             @Override
             public void run() {
                 while (true) {
@@ -136,7 +137,6 @@ public class Kernel {
             }
 
         };
-
 
 
         Thread Major = new Thread() {
@@ -287,7 +287,7 @@ public class Kernel {
         // If the DBMS port is a thread in this, put it here. If it is a system with (another) producer consumer queue, check it between every handle of an incoming, and at the end of all of these.
     }
 
-    public void SendNewReminders() {
+    private void SendNewReminders() {
         if (DB != null) {
             System.out.println("Kernel<pollDB>: beep, at " + LocalDateTime.now());
             DB.openConnection();
@@ -321,14 +321,22 @@ public class Kernel {
             System.out.println("Kernel<pollDB>: Database pointer is null.");
         }
     }
-    //TODO: Simonas needs to implement calling this.
+
+
+    //TODO: New implementation for Simonas
+    public static void Confirm_Intro_Email_Sent(String AppointmentID) {
+        Kernel k = Kernel.getInstance();
+        k.CIES(AppointmentID);
+
+    }
+
+
     public static void Confirm_Intro_Email_Sent(Appointment A) {
         Kernel k = Kernel.getInstance();
         k.CIES(A);
     }
 
     private void CIES(Appointment A) {
-
         if (PendingEmailOutbox.remove(A)) {
             LinkedList<Appointment> ConfirmedSent = new LinkedList<>();
             ConfirmedSent.add(A);
@@ -341,8 +349,24 @@ public class Kernel {
         }
     }
 
+    private void CIES(String AppointmentID) {
+        Appointment A = null;
+        for (Appointment Appt : PendingEmailOutbox) {
+            try {
+                if (Appt.getAppID() == Integer.parseInt(AppointmentID)) {
+                    A = Appt;
+                }
+            } catch (Exception e) {//from parsing invalid string, ie not a number
+                System.err.println("Kernel: Failed to parse appointment ID given by Sender to confirm email sent.");
+            }
+        }
+        if (A != null) {
+            CIES(A);
+        }
+    }
 
-    public static void main(String[] args) throws DBInitializationException{
+
+    public static void main(String[] args) throws DBInitializationException {
         Kernel k = Kernel.getInstance();
         k.run();
     }
