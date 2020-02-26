@@ -29,17 +29,18 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * Examples were taken from Google email API:
+ * Class which sends emails using Gmail API
+ * <p>
+ * Examples were taken from:
  * https://developers.google.com/gmail/api/guides/sending?authuser=5
  * https://developers.google.com/gmail/api/quickstart/java?authuser=5
  */
 public class GmailSender {
-    private static final String APPLICATION_NAME = "Gmail API Java Quickstart";
+    private static final String APPLICATION_NAME = "Gmail mail sending API";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
 
     /**
-     * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
     private static final List<String> SCOPES = Collections.singletonList(GmailScopes.MAIL_GOOGLE_COM);
@@ -47,7 +48,6 @@ public class GmailSender {
 
     private static GmailSender sender;
     private static Gmail service;
-
 
     private GmailSender() throws GeneralSecurityException, IOException {
         System.out.println("Messages will be sent using Gmail API");
@@ -188,44 +188,8 @@ public class GmailSender {
     public static void main( String... args ) throws IOException, GeneralSecurityException {
         GmailSender sender = GmailSender.getGmailSender();
         sender.sendMessage("mulevicius.simonas@gmail.com",
-                    "nhs.appointment.reminder@gmail.com",
-                    "Subject",
-                    "bodyText");
-
-//        // Build a new authorized API client service.
-//        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-//        Gmail service = new Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-//                .setApplicationName(APPLICATION_NAME)
-//                .build();
-//
-//        // Print the labels in the user's account.
-//        String user = "me";
-//        ListLabelsResponse listResponse = service.users().labels().list(user).execute();
-//        List<Label> labels = listResponse.getLabels();
-//        if (labels.isEmpty()) {
-//            System.out.println("No labels found.");
-//        } else {
-//            System.out.println("Labels:");
-//            for (Label label : labels) {
-//                System.out.printf("- %s\n", label.getName());
-//            }
-//        }
-//
-//        //Send test email
-//        GmailSender sender = new GmailSender();
-//        try {
-//            MimeMessage mimeMessage = sender.createEmail("mulevicius.simonas@gmail.com",
-//                    "nhs.appointment.reminder@gmail.com",
-//                    "Subject",
-//                    "bodyText");
-//            Message message = sender.createMessageWithEmail(mimeMessage);
-//
-//
-//            Message responseMessage = sender.sendMessage(service, "me", mimeMessage);
-//
-//
-//        } catch (MessagingException e) {
-//            e.printStackTrace();
-//        }
+                "nhs.appointment.reminder@gmail.com",
+                "Subject",
+                "bodyText");
     }
 }
