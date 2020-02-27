@@ -31,7 +31,7 @@ public class EmailSender {
     private SegmentQueue<OutgoingEmailMessage> messagesToSend;
 
     private static final String footer = "\n" + "_______________________________" + "\n" +
-            "Oscar is an automated email assistant system helping you remember and confirm/reschedule/cancel your GP appointment. This email system can't provide you with medical advice and should not be used in case of an emergency. Please DON'T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please find attached the following contact information:\n" +
+            "Oscar is an automated email assistant system helping you remember and manage your GP appointment. This email system can't provide you with medical advice and should not be used in case of an emergency. Please DON'T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please find attached the following contact information:\n" +
             "\n" +
             "Surgery contact number: phone number\n" +
             "Address: location address"; //TODO include location address and phone number of the hospital
@@ -256,14 +256,14 @@ public class EmailSender {
                         "\n" +
                         "Please reply to this email stating whether you would like to confirm, cancel or reschedule your appointment. \n" +
                         "\n" +
-                        "In case you want a new appointment, please provide 3 one hour slots over the next 14 days when you are available, in the following format: DD-MM-YYYY, from hh:mm AM/PM to hh:mm AM/PM.\n" +
+                        "In case you want a new appointment, please provide 3 one hour slots when you are available in the next few weeks in the following format: DD-MM-YYYY, from hh:mm AM/PM to hh:mm AM/PM.\n" +
                         "\n" +
-                        "Example:\n" +
+                        "For example:\n" +
                         "22-02-2019 from 11:00 AM to 12:00 PM\n" +
                         "22-02-2019 from 03:00 PM to 04:00 PM\n" +
                         "25-02-2019 from 03:00 PM to 04:00 PM\n" +
                         "\n" +
-                        "If you have any questions, use the contact details below to get in touch with us.\n" +
+                        "If you have any questions, use the contact details below to get in touch with my human supervisor.\n" +
                         "\n" +
                         "Thank you and have a nice day!\n" +
                         "Oscar\n");
