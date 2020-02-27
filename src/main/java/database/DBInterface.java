@@ -89,7 +89,7 @@ public class DBInterface {
             }
             return appointmentList;
         } catch (SQLException e) {
-            System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
@@ -109,7 +109,7 @@ public class DBInterface {
                         String.format(Queries.MARK_REMINDED, 7, appointment.getConversationStateID()));
                 default:
                     // this should never happen
-                    System.err.println("DBInterface.RemindersSent: Appointment has no ReminderType");
+                    System.err.println("DBInterface: Appointment has no ReminderType");
             }
         }
     }
@@ -144,7 +144,7 @@ public class DBInterface {
             }
             return appointmentList;
         } catch (SQLException e) {
-            System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
@@ -173,7 +173,7 @@ public class DBInterface {
             ps.setInt(1, appointmentID);
             return database.executeUpdate(ps);
         } catch (SQLException e) {
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
         }
         return false;
     }
@@ -199,7 +199,7 @@ public class DBInterface {
             return appointmentID == app_id;
 
         } catch (SQLException e) {
-            System.out.println("Error iterating over ResultSet");
+            e.printStackTrace();
             return false;
         }
     }
@@ -233,7 +233,7 @@ public class DBInterface {
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
@@ -263,7 +263,7 @@ public class DBInterface {
                 return null;
             }
         } catch (SQLException e) {
-            System.out.println("Exception in iterating over ResultSet: " + e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
@@ -293,8 +293,8 @@ public class DBInterface {
             } else {
                 return null;
             }
-        } catch (SQLException s) {
-            System.out.println("Exception iterating over ResultSet");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
