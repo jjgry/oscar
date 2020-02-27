@@ -107,6 +107,7 @@ public class DBInterface {
                 case SevenDay:
                     database.executeUpdate(
                         String.format(Queries.MARK_REMINDED, 7, appointment.getConversationStateID()));
+                    break;
                 default:
                     // this should never happen
                     System.err.println("DBInterface: Appointment has no ReminderType");
