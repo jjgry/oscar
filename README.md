@@ -10,7 +10,7 @@ We have attempted to reduce this wastage with Oscar, a natural language email as
 
 Oscar stores all appointment data and emails in two remote databases, one managed by us and one managed by Gmail. Every 30 seconds Oscar's `EmailReceiver` polls the Gmail Server to see if there are any new emails.
 
-If there are new emails, `EmailSender` parses the email and passes it Oscar's `Kernel`. `Kernel` then checks with our remote database whether this is an appointment we recognise. If it is, the email is sent to Oscar's `EmailClassifier`.
+If there are new emails, `EmailReceiver` parses the email and passes it Oscar's `Kernel`. `Kernel` then checks with our remote database whether this is an appointment we recognise. If it is, the email is sent to Oscar's `EmailClassifier`.
 
 The `EmailClassifier` uses the [OpenNLP](https://opennlp.apache.org/) Max Entropy classifier to understand whether the patient is confirming attendance, cancelling, rescheduling, or whether it is another type of response Oscar is not designed to handle.
 
@@ -33,4 +33,5 @@ A special thanks to our project client [Dovetailed](https://dovetailed.io) who h
 * [JCraft](http://www.jcraft.com/jsch/) `jsch` and `jzlib` libraries for establishing SSH port forwarding to the database.
 * [OpenNLP](https://opennlp.apache.org/) tools for parsing and classifying text.
 * [SRCF](https://srcf.net), [phpMyAdmin](https://www.phpmyadmin.net/), [MySQL](https://www.mysql.com/) as our primary DBMS software.
-* [SendGrid](https://sendgrid.com/) for providing an API to send and receive emails.
+* [SendGrid](https://sendgrid.com/) for providing an API to send emails.
+* [Gmail](https://developers.google.com/gmail/api) for providing an API to send and receive emaails.
