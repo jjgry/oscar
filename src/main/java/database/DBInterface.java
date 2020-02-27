@@ -307,6 +307,9 @@ public class DBInterface {
             ps.setInt(1, timeslotID);
             ps.setInt(2, appID);
             database.executeUpdate(ps);
+            PreparedStatement ps2 =  c.prepareStatement(Queries.SET_UNAVAILABLE);
+            ps2.setInt(1,timeslotID);
+            database.executeUpdate(ps2);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

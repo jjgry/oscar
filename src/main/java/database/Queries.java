@@ -60,8 +60,13 @@ class Queries {
 
   static final String BLOCK_TIMESLOT =
       "UPDATE `jjag3/SurgeryAssistant`.`Appointments`\n" +
-      "SET timeslot_id = %1$s\n" +
-      "WHERE app_id = %2$s";
+      "SET timeslot_id = ?\n" +
+      "WHERE app_id = ?";
+
+  static final String SET_UNAVAILABLE =
+          "UPDATE `jjag3/SurgeryAssistant`.`Timeslots`\n" +
+          "SET available = 0\n" +
+          "WHERE timeslot_id = ?";
 
   static final String REMOVE_TIMESLOTS =
       "DELETE FROM `jjag3/SurgeryAssistant`.`Timeslots` WHERE (timeslot  < DATE_ADD(CURDATE(), INTERVAL -1 MONTH))\n";
