@@ -382,15 +382,16 @@ public class EmailSender {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "[" + appointmentID + "]Your appointment was cancelled\n",
+                "[" + appointmentID + "]Your appointment can be rescheduled\n",
                 "Dear "
                         + patientName
                         + ",\n"
-                        + "Your appointment with " + doctorName + " on " + appointmentDate + " at " + appointmentTime + " has been cancelled. \n"
+                        + "Your appointment can be rescheduled to "+ appointmentTime + " on "+ appointmentDate + "with your previous Doctor, " + doctorName +"."
+                        + "Would this be acceptable?"
                         + "\n"
                         + "If you have any questions, use the contact details below to get in touch with us.\n"
                         + "\n"
-                        + "Thank you and have a nice day!\n"
+                        + "Many thanks,\n"
                         + "Oscar \n");
     }
 

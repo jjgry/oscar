@@ -219,8 +219,11 @@ public class Kernel {
                                             finalDB.rejectTime(appointmentID);
                                             // block selected new appointment
                                             finalDB.blockTimeSlot(selectedTimeslotID, appointmentID);
+                                            bookedAppointment = finalDB.getApp(appointmentID);
                                             // Send SuggestedAppt email to patient to suggest the new time.
-                                            OutQ.put(new OutgoingEmailMessage(p, bookedAppointment,
+                                            System.out.println("Kernel: new Appointment for the ID:");
+
+                                            OutQ.put(new OutgoingEmailMessage(p, finalDB.getApp(appointmentID),
                                                     EmailMessageType.NewAppointmentDetailsMessage));
                                             System.out.println("Kernel<major>: Times updated in database; new appt details email sent.");
                                         }
