@@ -101,10 +101,6 @@ public class Kernel {
             }
         }
 
-        if (DB == null) {
-            System.out.println("Why is it null?");
-        }
-
         //Initialise the Sender
         try {
             EmailSender Sender = EmailSender.getEmailSender(OutQ);
@@ -179,7 +175,7 @@ public class Kernel {
                                     //TODO: Handle this error properly. Why is it thrown?
 
                                 }
-                                assert (p.getEmail() == PatientResponse.getSenderEmailAddress());// these really should be the same and if not our system is not designed correctly.
+                                assert (p.getEmail().equals(PatientResponse.getSenderEmailAddress()));// these really should be the same and if not our system is not designed correctly.
                                 assert (bookedAppointment.getAppID() == appointmentID);
                                 switch (C.getDecision()) {
                                     case CONFIRM:
@@ -201,17 +197,9 @@ public class Kernel {
                                         // RESCHEDULE
                                         //Poll database for available appointments in given time slots
                                         System.out.println("Kernel<major>: message classified as RESCHEDULE");
-                                        LinkedList<Timeslot> all_available_timeslots = new LinkedList<>();
                                         String[] availableDates = C.getDates();
-                                        System.out.println("Patient-suggested times:");
-                                        System.out.println("    " + availableDates[0] + " to " + availableDates[1]);
-                                        System.out.println("    " + availableDates[2] + " to " + availableDates[3]);
-                                        System.out.println("    " + availableDates[4] + " to " + availableDates[5]);
-                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[0], availableDates[1]));
-                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[2], availableDates[3]));
-                                        all_available_timeslots.addAll(finalDB.getAppointments(bookedAppointment.getDoctorID(), availableDates[4], availableDates[5]));
                                         //TODO: Ends of the timeslot are not implemented in the database, so should be targeted if posssible
-
+                                        List<Timeslot> all_available_timeslots = pollForAvailableSlots(finalDB,bookedAppointment.getDoctorID(),availableDates);
                                         System.out.println("DB--> Available timeslots:");
                                         for (Timeslot T : all_available_timeslots) {
                                             System.out.println("      starting at: " + T.getStartTime());
@@ -226,7 +214,7 @@ public class Kernel {
                                                     Integer.toString(appointmentID)));//We have empty strings given as time info as we have no time info!
 
                                         } else {// we have a collection of >= 1 to choose from.
-                                            int selectedTimeslotID = all_available_timeslots.getFirst().getID();
+                                            int selectedTimeslotID = all_available_timeslots.get(0).getID();
                                             //cancel last one.
                                             finalDB.rejectTime(appointmentID);
                                             // block selected new appointment
@@ -286,6 +274,26 @@ public class Kernel {
         }
         // If the DBMS port is a thread in this, put it here. If it is a system with (another) producer consumer queue, check it between every handle of an incoming, and at the end of all of these.
     }
+    private static List<Timeslot> pollForAvailableSlots(DBInterface connectedDB,int DoctorID, String[] GivenSlots ){
+        LinkedList<Timeslot> all_available_timeslots = new LinkedList<>();
+
+        System.out.println("Patient-suggested times:");
+        System.out.println("    " + GivenSlots[0] + " to " + GivenSlots[1]);
+        System.out.println("    " + GivenSlots[2] + " to " + GivenSlots[3]);
+        System.out.println("    " + GivenSlots[4] + " to " + GivenSlots[5]);
+        if(!GivenSlots[0].equals("") && !GivenSlots[1].equals("")){
+            all_available_timeslots.addAll(connectedDB.getAppointments(DoctorID, GivenSlots[0], GivenSlots[1]));
+        }
+        if(!GivenSlots[2].equals("") && !GivenSlots[3].equals("")){
+            all_available_timeslots.addAll(connectedDB.getAppointments(DoctorID, GivenSlots[2], GivenSlots[3]));
+        }
+        if(!GivenSlots[4].equals("") && !GivenSlots[5].equals("")){
+            all_available_timeslots.addAll(connectedDB.getAppointments(DoctorID, GivenSlots[4], GivenSlots[5]));
+        }
+        return all_available_timeslots;
+    }
+
+
 
     private void SendNewReminders() {
         if (DB != null) {
