@@ -21,6 +21,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+
 /**
  * Ethical GP surgery assistant for automated email replies. It uses different features of Apache
  * OpenNLP for understanding whether the patient is confirming, canceling or rescheduling the
@@ -154,6 +155,9 @@ public class EmailClassifier {
    */
   private static String[] tokenizeSentence(String sentence) throws IOException {
     try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-token.bin")) {
+      //drops response after
+      int index = sentence.indexOf("-----------");
+      sentence = sentence.substring(0, index);
       //Makes text into one line
       sentence = sentence.replace("\r", "").replace("\n", "");
       //Add space around dash and replace cannot with can't
