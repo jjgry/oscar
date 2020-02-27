@@ -129,7 +129,7 @@ public class Kernel {
                 while (true) {
                     SendNewReminders();
                     try {//TODO: Every 5 minutes when implemented, not 1
-                        MINUTES.sleep(1);
+                        SECONDS.sleep(10);
                     } catch (InterruptedException e) {
                         //ignore the exception.
                     }
@@ -266,7 +266,7 @@ public class Kernel {
                         System.out.println(("Kernel<major>: outQ length: " + OutQ.NumWaiting()));
                     }
                     try {
-                        MINUTES.sleep(1);
+                        SECONDS.sleep(15);
                     } catch (InterruptedException e) {
                         //ignore
                     }

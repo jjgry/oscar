@@ -151,15 +151,29 @@ public class EmailClassifier {
   }
 
   /**
+    Remove old message contents from new message
+ */
+  private static String removeContentsOfLastEmail(String unparsedEmail){
+    int indexUnderScores = unparsedEmail.indexOf("_______");
+    int indexDashes = unparsedEmail.indexOf("-------");
+    int index = Math.max(indexUnderScores, indexDashes);
+
+    if (index != -1) {
+      unparsedEmail = unparsedEmail.substring(0, index);
+    }
+
+    return unparsedEmail;
+  }
+
+  /**
    * Break sentence into words & punctuation marks using the tokenizer feature of Apache OpenNLP.
    */
   private static String[] tokenizeSentence(String sentence) throws IOException {
     try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-token.bin")) {
+
       //drops response after
-      int index = sentence.indexOf("-----------");
-      if (index != -1) {
-        sentence = sentence.substring(0, index;
-      }
+      sentence = removeContentsOfLastEmail(sentence);
+
       //Makes text into one line
       sentence = sentence.replace("\r", "").replace("\n", "");
       //Add space around dash and replace cannot with can't
