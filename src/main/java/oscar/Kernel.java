@@ -323,11 +323,9 @@ public class Kernel {
     }
 
 
-    //TODO: New implementation for Simonas
     public static void Confirm_Intro_Email_Sent(String AppointmentID) {
         Kernel k = Kernel.getInstance();
         k.CIES(AppointmentID);
-
     }
 
 

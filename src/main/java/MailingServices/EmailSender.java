@@ -30,7 +30,7 @@ public class EmailSender {
     private static EmailSender uniqueSender;
     private SegmentQueue<OutgoingEmailMessage> messagesToSend;
 
-    private static final String footer = "\n" + "-----------------------------------------------------" + "\n" +
+    private static final String footer = "\n" + "_______________________________" + "\n" +
             "Oscar is an automated email assistant system helping you remember and confirm/reschedule/cancel your GP appointment. This email system can't provide you with medical advice and should not be used in case of an emergency. Please DON'T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please find attached the following contact information:\n" +
             "\n" +
             "Surgery contact number: phone number\n" +
@@ -173,7 +173,7 @@ public class EmailSender {
             String messageText ) throws FailedToSendEmail {
         Email sendersEmail = new Email(senderEmailAddress);
         Email receiversEmail = new Email(receiverEmailAddress);
-        Content content = new Content("text/plain", messageText + footer);
+        Content content = new Content("text/plain", messageText);
 
         System.out.println("Sender: SENDING EMAIL TO "+ receiverEmailAddress+": \n"+messageText);
 
@@ -229,7 +229,7 @@ public class EmailSender {
             String messageText ) throws FailedToSendEmail {
 
         //Pick one of the implementations
-        sendEmailWithGmail(senderEmailAddress, receiverEmailAddress, subject, messageText);
+        sendEmailWithGmail(senderEmailAddress, receiverEmailAddress, subject, messageText+footer);
         //sendEmailWithSendgrid(senderEmailAddress,receiverEmailAddress,subject, messageText);
 
         try {
@@ -401,7 +401,7 @@ public class EmailSender {
         SegmentQueue OutQ = new SegmentQueue<>();
         EmailSender sender = EmailSender.getEmailSender(OutQ);
         OutgoingEmailMessage emailToSimon = new OutgoingEmailMessage(
-                "justas356@gmail.com",
+                "mulevicius.simonas@gmail.com",
                 "Mr. Justas",
                 "Dr. Joanna Rimmer",
                 "27-02-2021",
