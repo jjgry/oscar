@@ -137,6 +137,7 @@ public class DBInterface {
 
                 String startime = rs.getString("timeslot");
                 startime = startime.substring(0, startime.length() - 2);
+                app.setID(rs.getInt("timeslot_id"));
                 app.setStartTime(startime);
                 app.setDoctorID(rs.getInt("doctor_id"));
                 app.setLocation(rs.getString("location"));
@@ -307,6 +308,9 @@ public class DBInterface {
             ps.setInt(1, timeslotID);
             ps.setInt(2, appID);
             database.executeUpdate(ps);
+            PreparedStatement ps2 =  c.prepareStatement(Queries.SET_UNAVAILABLE);
+            ps2.setInt(1,timeslotID);
+            database.executeUpdate(ps2);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
