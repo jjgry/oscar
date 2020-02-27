@@ -20,6 +20,28 @@ public class Classification {
     OTHER
   }
 
+  /**
+   Remove old message contents from new message
+   */
+  private static String removeContentsOfLastEmail(String unparsedEmail){
+    int indexUnderScores = unparsedEmail.indexOf("_______");
+    int indexDashes = unparsedEmail.indexOf("-------");
+    int indexSmaller = unparsedEmail.indexOf("<");
+    int indexLarger = unparsedEmail.indexOf(">");
+    int index = Math.max(Math.max(Math.max(indexUnderScores, indexDashes), indexLarger),indexSmaller);
+
+    if (index != -1) {
+      unparsedEmail = unparsedEmail.substring(0, index);
+    }
+
+    return unparsedEmail;
+  }
+
+  private static String removeNewLines(String unparsedEmail) {
+    unparsedEmail = unparsedEmail.replace("\r", " ").replace("\n", " ");
+    return unparsedEmail;
+  }
+
   private classes decision;
 
   /**
@@ -33,6 +55,10 @@ public class Classification {
   private String[] dates;
 
   Classification(String emailText, DoccatModel model) throws IOException {
+    //make email into correct format
+    emailText = removeContentsOfLastEmail(emailText);
+    emailText = removeNewLines(emailText);
+
     String category = classifier.EmailClassifier.getCategory(emailText, model);
     if (category == "Cancel") {
       decision = classes.CANCEL;

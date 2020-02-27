@@ -19,7 +19,7 @@ public class EmailDateExtractor {
     while (true) {
 
       // Get chat input from user.
-      System.out.println("##### You:");
+      System.out.println("Input:");
       String emailText = scanner.nextLine();
 
       // Look for slots suggested by the patient (these are needed if the email's category is RESCHEDULE)

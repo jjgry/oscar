@@ -1,17 +1,5 @@
 package classifier;
 
-import opennlp.tools.doccat.*;
-import opennlp.tools.lemmatizer.LemmatizerME;
-import opennlp.tools.lemmatizer.LemmatizerModel;
-import opennlp.tools.postag.POSModel;
-import opennlp.tools.postag.POSTaggerME;
-import opennlp.tools.sentdetect.SentenceDetectorME;
-import opennlp.tools.sentdetect.SentenceModel;
-import opennlp.tools.tokenize.TokenizerME;
-import opennlp.tools.tokenize.TokenizerModel;
-import opennlp.tools.util.*;
-import opennlp.tools.util.model.ModelUtil;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,6 +8,29 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import opennlp.tools.doccat.BagOfWordsFeatureGenerator;
+import opennlp.tools.doccat.DoccatFactory;
+import opennlp.tools.doccat.DoccatModel;
+import opennlp.tools.doccat.DocumentCategorizerME;
+import opennlp.tools.doccat.DocumentSample;
+import opennlp.tools.doccat.DocumentSampleStream;
+import opennlp.tools.doccat.FeatureGenerator;
+import opennlp.tools.lemmatizer.LemmatizerME;
+import opennlp.tools.lemmatizer.LemmatizerModel;
+import opennlp.tools.postag.POSModel;
+import opennlp.tools.postag.POSTaggerME;
+import opennlp.tools.sentdetect.SentenceDetectorME;
+import opennlp.tools.sentdetect.SentenceModel;
+import opennlp.tools.tokenize.TokenizerME;
+import opennlp.tools.tokenize.TokenizerModel;
+import opennlp.tools.util.InputStreamFactory;
+import opennlp.tools.util.MarkableFileInputStreamFactory;
+import opennlp.tools.util.ObjectStream;
+import opennlp.tools.util.PlainTextByLineStream;
+import opennlp.tools.util.TrainingParameters;
+import opennlp.tools.util.model.ModelUtil;
+
 
 
 /**
@@ -48,7 +59,7 @@ public class EmailClassifier {
     while (true) {
 
       // Get chat input from user.
-      System.out.println("##### You:");
+      System.out.println("Input:");
       String emailText = scanner.nextLine();
 
       // Find the category of the email.
@@ -79,8 +90,7 @@ public class EmailClassifier {
   }
 
   /**
-   * Assign to the text of an email one of the categories: CONFIRM, CANCEL, RESCHEDULE,
-   * OTHER.
+   * Assign to the text of an email one of the categories: CONFIRM, CANCEL, RESCHEDULE, OTHER.
    */
   private static String assignCategoryToEmail(String emailText, DoccatModel model)
       throws IOException {
@@ -133,49 +143,12 @@ public class EmailClassifier {
     return categories[bestIndex];
   }
 
-  //TODO:decide what to do for this one
-  /**
-   * Break data into sentences using the sentence detection feature of Apache OpenNLP.
-   */
-  private static String[] breakSentences(String data) throws IOException {
-    try (InputStream modelIn = new FileInputStream("model" + File.separator + "en-sent.bin")) {
-
-      SentenceDetectorME myCategorizer = new SentenceDetectorME(new SentenceModel(modelIn));
-
-      String[] sentences = myCategorizer.sentDetect(data);
-      System.out.println("Sentence Detection: " + Arrays.stream(sentences).collect(Collectors
-          .joining(" | ")));
-
-      return sentences;
-    }
-  }
-
-  /**
-    Remove old message contents from new message
- */
-  private static String removeContentsOfLastEmail(String unparsedEmail){
-    int indexUnderScores = unparsedEmail.indexOf("_______");
-    int indexDashes = unparsedEmail.indexOf("-------");
-    int index = Math.max(indexUnderScores, indexDashes);
-
-    if (index != -1) {
-      unparsedEmail = unparsedEmail.substring(0, index);
-    }
-
-    return unparsedEmail;
-  }
-
   /**
    * Break sentence into words & punctuation marks using the tokenizer feature of Apache OpenNLP.
    */
   private static String[] tokenizeSentence(String sentence) throws IOException {
     try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-token.bin")) {
 
-      //drops response after
-      sentence = removeContentsOfLastEmail(sentence);
-
-      //Makes text into one line
-      sentence = sentence.replace("\r", "").replace("\n", "");
       //Add space around dash and replace cannot with can't
       sentence = sentence.replace("-", " - ").replace("cannot", "ca n't");
 
