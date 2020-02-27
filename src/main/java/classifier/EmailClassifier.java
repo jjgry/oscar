@@ -157,7 +157,9 @@ public class EmailClassifier {
     try (InputStream modelIn = new FileInputStream("lib" + File.separator + "en-token.bin")) {
       //drops response after
       int index = sentence.indexOf("-----------");
-      sentence = sentence.substring(0, index);
+      if (index != -1) {
+        sentence = sentence.substring(0, index;
+      }
       //Makes text into one line
       sentence = sentence.replace("\r", "").replace("\n", "");
       //Add space around dash and replace cannot with can't
