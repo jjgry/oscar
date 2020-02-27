@@ -160,85 +160,99 @@ public class Kernel {
                             System.out.println("    Appointment ID: " + appointmentID);
                             System.out.println("    Sender Email: " + PatientResponse.getSenderEmailAddress());
                             if (finalDB.confirmAppointmentExists(PatientResponse.getSenderEmailAddress(), appointmentID)) {
-                                //if a valid email....
+                                //if a valid appointment....
+                                // now check the sending email address is correct
+
 
                                 // 2b. Fetch information on the history of this conversation, ie last response type, appointment time, doctor name, patient name.
                                 System.out.println("    <Appointment Exists>");
                                 Appointment bookedAppointment = finalDB.getApp(appointmentID);
                                 Patient p = finalDB.getPatient(appointmentID);
-                                // 2c. Hand off to classifier: what type of message was it?
+                                if (p.getEmail().equals(PatientResponse.getSenderEmailAddress())) {
 
-                                Classification C = null;
-                                try {
-                                    C = new Classification(PatientResponse.getMessage(), model);
-                                } catch (IOException e) {
-                                    //TODO: Handle this error properly. Why is it thrown?
 
-                                }
-                                assert (p.getEmail().equals(PatientResponse.getSenderEmailAddress()));// these really should be the same and if not our system is not designed correctly.
-                                assert (bookedAppointment.getAppID() == appointmentID);
-                                switch (C.getDecision()) {
-                                    case CONFIRM:
-                                        //  Confirm Appt in database
-                                        System.out.println("Kernel<major>: message classified as CONFIRM");
-                                        finalDB.confirmNewTime(appointmentID);
-                                        OutQ.put(new OutgoingEmailMessage(p, bookedAppointment, EmailMessageType.ConfirmationMessage));
-                                        System.out.println("Kernel<major>: email sent to show confirmation; DBMS informed of confirmation.");
-                                        break;
-                                    case CANCEL:
-                                        //Cancel Appt in database
-                                        System.out.println("Kernel<major>: message classified as CANCEL");
-                                        finalDB.rejectTime(appointmentID);
-                                        OutQ.put(new OutgoingEmailMessage(p, bookedAppointment, EmailMessageType.CancellationMessage));
-                                        System.out.println("Kernel<major>: cancellation message sent; slot cancelled on database.");
+                                    // 2c. Hand off to classifier: what type of message was it?
+                                    Classification C = null;
+                                    try {
+                                        C = new Classification(PatientResponse.getMessage(), model);
+                                    } catch (IOException e) {
+                                        //TODO: Handle this error properly. Why is it thrown?
 
-                                        break;
-                                    case RESCHEDULE:
-                                        // RESCHEDULE
-                                        //Poll database for available appointments in given time slots
-                                        System.out.println("Kernel<major>: message classified as RESCHEDULE");
-                                        String[] availableDates = C.getDates();
-                                        //TODO: Ends of the timeslot are not implemented in the database, so should be targeted if posssible
-                                        List<Timeslot> all_available_timeslots = pollForAvailableSlots(finalDB,bookedAppointment.getDoctorID(),availableDates);
-                                        System.out.println("DB--> Available timeslots:");
-                                        for (Timeslot T : all_available_timeslots) {
-                                            System.out.println("      starting at: " + T.getStartTime());
-                                        }
+                                    }
 
-                                        if (all_available_timeslots.size() < 1) {
-                                            System.out.println("      <no available timeslots>");
-                                            //  Send email asking for new timeslots (the ones we were given do not work).
-                                            OutQ.put(new OutgoingEmailMessage(p.getEmail(), p.getName(),
-                                                    bookedAppointment.getDoctorName(), "", "",
-                                                    EmailMessageType.AskToPickAnotherTimeSlotMessage,
-                                                    Integer.toString(appointmentID)));//We have empty strings given as time info as we have no time info!
-
-                                        } else {// we have a collection of >= 1 to choose from.
-                                            int selectedTimeslotID = all_available_timeslots.get(0).getID();
-                                            //cancel last one.
+                                    assert (bookedAppointment.getAppID() == appointmentID);
+                                    switch (C.getDecision()) {
+                                        case CONFIRM:
+                                            //  Confirm Appt in database
+                                            System.out.println("Kernel<major>: message classified as CONFIRM");
+                                            finalDB.confirmNewTime(appointmentID);
+                                            OutQ.put(new OutgoingEmailMessage(p, bookedAppointment, EmailMessageType.ConfirmationMessage));
+                                            System.out.println("Kernel<major>: email sent to show confirmation; DBMS informed of confirmation.");
+                                            break;
+                                        case CANCEL:
+                                            //Cancel Appt in database
+                                            System.out.println("Kernel<major>: message classified as CANCEL");
                                             finalDB.rejectTime(appointmentID);
-                                            // block selected new appointment
-                                            finalDB.blockTimeSlot(selectedTimeslotID, appointmentID);
-                                            bookedAppointment = finalDB.getApp(appointmentID);
-                                            // Send SuggestedAppt email to patient to suggest the new time.
-                                            System.out.println("Kernel: new Appointment for the ID:");
+                                            OutQ.put(new OutgoingEmailMessage(p, bookedAppointment, EmailMessageType.CancellationMessage));
+                                            System.out.println("Kernel<major>: cancellation message sent; slot cancelled on database.");
 
-                                            OutQ.put(new OutgoingEmailMessage(p, finalDB.getApp(appointmentID),
-                                                    EmailMessageType.NewAppointmentDetailsMessage));
-                                            System.out.println("Kernel<major>: Times updated in database; new appt details email sent.");
-                                        }
-                                        break;
-                                    case OTHER:
-                                        //No action taken on these emails.
-                                        System.out.println("Kernel<major>: message classified as OTHER");
-                                        break;
-                                    default:
-                                        System.out.println("This new classification type should not exist.");
-                                        break;
+                                            break;
+                                        case RESCHEDULE:
+                                            // RESCHEDULE
+                                            //Poll database for available appointments in given time slots
+                                            System.out.println("Kernel<major>: message classified as RESCHEDULE");
+                                            String[] availableDates = C.getDates();
+                                            //TODO: Ends of the timeslot are not implemented in the database, so should be targeted if posssible
+                                            List<Timeslot> all_available_timeslots = pollForAvailableSlots(finalDB, bookedAppointment.getDoctorID(), availableDates);
+                                            System.out.println("DB--> Available timeslots:");
+                                            for (Timeslot T : all_available_timeslots) {
+                                                System.out.println("      starting at: " + T.getStartTime());
+                                            }
 
+                                            if (all_available_timeslots.size() < 1) {
+                                                System.out.println("      <no available timeslots>");
+                                                //  Send email asking for new timeslots (the ones we were given do not work).
+                                                OutQ.put(new OutgoingEmailMessage(p.getEmail(), p.getName(),
+                                                        bookedAppointment.getDoctorName(), "", "",
+                                                        EmailMessageType.AskToPickAnotherTimeSlotMessage,
+                                                        Integer.toString(appointmentID)));//We have empty strings given as time info as we have no time info!
+
+                                            } else {// we have a collection of >= 1 to choose from.
+                                                int selectedTimeslotID = all_available_timeslots.get(0).getID();
+                                                //cancel last one.
+                                                finalDB.rejectTime(appointmentID);
+                                                // block selected new appointment
+                                                finalDB.blockTimeSlot(selectedTimeslotID, appointmentID);
+                                                bookedAppointment = finalDB.getApp(appointmentID);
+                                                // Send SuggestedAppt email to patient to suggest the new time.
+                                                System.out.println("Kernel: new Appointment for the ID:");
+
+                                                OutQ.put(new OutgoingEmailMessage(p, finalDB.getApp(appointmentID),
+                                                        EmailMessageType.NewAppointmentDetailsMessage));
+                                                System.out.println("Kernel<major>: Times updated in database; new appt details email sent.");
+                                            }
+                                            break;
+                                        case OTHER:
+                                            //No action taken on these emails.
+                                            System.out.println("Kernel<major>: message classified as OTHER");
+                                            break;
+                                        default:
+                                            System.out.println("This new classification type should not exist.");
+                                            break;
+
+                                    }
+
+                                } else {//appointment ID does not match patient listed email address - Malicious attack?
+                                    System.out.println("    <Possible Phishing - apptID does not match patient email>");
+                                    //  Send invalidEmailAddress  Email.
+                                    OutQ.put(new OutgoingEmailMessage(
+                                            PatientResponse.getSenderEmailAddress(), "", "",
+                                            "", "",
+                                            EmailMessageType.InvalidEmailMessage, "-/-"));
+                                    System.out.println(
+                                            "Kernel<major>: message sent to unknown user to inform them we cannot take their emails.");
                                 }
-
-                            } else {//invalid patientID...
+                            } else {//invalid appointmentID...
                                 System.out.println("    <Appointment Does Not Exist>");
                                 //  Send invalidEmailAddress  Email.
                                 OutQ.put(new OutgoingEmailMessage(
@@ -248,9 +262,9 @@ public class Kernel {
                                 System.out.println(
                                         "Kernel<major>: message sent to unknown user to inform them we cannot take their emails.");
                             }
+                            finalDB.closeConnection();
+                            System.out.println("Kernel<major>: closing connection on main thread.");
                         }
-                        finalDB.closeConnection();
-                        System.out.println("Kernel<major>: closing connection on main thread.");
                     } else {
                         System.out.println("Kernel<major>: no new received emails");
                         System.out.println("Kernel<major>: inQ length: " + InQ.NumWaiting());
@@ -261,6 +275,7 @@ public class Kernel {
                     } catch (InterruptedException e) {
                         //ignore
                     }
+
                 }
             }
         };
