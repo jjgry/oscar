@@ -218,7 +218,7 @@ public class Kernel {
                                             //cancel last one.
                                             finalDB.rejectTime(appointmentID);
                                             // block selected new appointment
-                                            finalDB.blockTimeSlot(appointmentID, selectedTimeslotID);
+                                            finalDB.blockTimeSlot(selectedTimeslotID, appointmentID);
                                             // Send SuggestedAppt email to patient to suggest the new time.
                                             OutQ.put(new OutgoingEmailMessage(p, bookedAppointment,
                                                     EmailMessageType.NewAppointmentDetailsMessage));
