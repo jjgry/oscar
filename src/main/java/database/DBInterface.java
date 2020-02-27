@@ -137,6 +137,7 @@ public class DBInterface {
 
                 String startime = rs.getString("timeslot");
                 startime = startime.substring(0, startime.length() - 2);
+                app.setID(rs.getInt("timeslot_id"));
                 app.setStartTime(startime);
                 app.setDoctorID(rs.getInt("doctor_id"));
                 app.setLocation(rs.getString("location"));

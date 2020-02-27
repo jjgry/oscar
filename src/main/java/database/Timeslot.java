@@ -2,13 +2,14 @@ package database;
 
 public class Timeslot {
 
-
-  //TODO: implement ID
   private int ID;
   private int doctorID;
   private String startTime;
   private String location;
 
+  public void setID(int ID) {
+    this.ID = ID;
+  }
 
   public void setDoctorID(int doctorID) {
     this.doctorID = doctorID;
