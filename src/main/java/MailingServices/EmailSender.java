@@ -332,7 +332,7 @@ public class EmailSender {
                 "[" + appointmentID + "] Confirmation email\n",
                 "Dear " + patientName + ",\n" +
                         "\n" +
-                        "You have secured your place for an appointment with " + doctorName + " on " + appointmentDate + " at " + appointmentTime + ". \n" +
+                        "You have confirmed your place for an appointment with " + doctorName + " on " + appointmentDate + " at " + appointmentTime + ". \n" +
                         "\n" +
                         "If you have any questions, use the contact details below to get in touch with my human supervisor.\n" +
                         "\n" +
