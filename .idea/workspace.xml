@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c20c1b4-2746-4f7e-8be7-c72b91e9550b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailReceiver.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/MailingServices/EmailSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="8c20c1b4-2746-4f7e-8be7-c72b91e9550b" name="Default Changelist" comment="Proper handling of 'new time given' email">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MailingServices/EmailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oscar/Kernel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,6 +162,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -263,7 +269,21 @@
       <option name="project" value="LOCAL" />
       <updated>1582727424290</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="input sanitation for date timestamps">
+      <created>1582806499517</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1582806499517</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Proper handling of 'new time given' email">
+      <created>1582808126614</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1582808126614</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -296,7 +316,9 @@
     <MESSAGE value="Implemented code example of Gmail sender." />
     <MESSAGE value="Added comments and removed Gmail credentials for security" />
     <MESSAGE value="Implemented email delivery confirmation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented email delivery confirmation" />
+    <MESSAGE value="input sanitation for date timestamps" />
+    <MESSAGE value="Proper handling of 'new time given' email" />
+    <option name="LAST_COMMIT_MESSAGE" value="Proper handling of 'new time given' email" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1582204261129">
@@ -307,10 +329,15 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1582801037468" />
-    <state x="159" y="30" width="944" height="641" key="CommitChangelistDialog2" timestamp="1582727423368">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="834" y="444" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582806364252">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="834" y="444" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582806364252" />
+    <state x="297" y="73" width="1060" height="807" key="CommitChangelistDialog2" timestamp="1582808126409">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="159" y="30" width="944" height="641" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1582727423368" />
+    <state x="297" y="73" width="1060" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1582808126409" />
     <state x="376" y="102" key="EnvironmentVariablesDialog" timestamp="1582553361823">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -351,30 +378,34 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1582637762438" />
-    <state x="121" y="51" width="1131" height="579" key="MergeDialog" timestamp="1582548584641">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="242" y="106" width="1131" height="579" key="MergeDialog" timestamp="1582808079481">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="121" y="51" width="1131" height="579" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1582548584641" />
-    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1582659722632">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="242" y="106" key="MergeDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582808079481" />
+    <state x="579" y="115" width="580" height="564" key="MultipleFileMergeDialog" timestamp="1582808079491">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1582659722632" />
+    <state x="579" y="115" width="580" height="564" key="MultipleFileMergeDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582808079491" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1582629916899">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1582629916899" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1582727426662">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="404" y="142" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582808128895">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1582727426662" />
+    <state x="404" y="142" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1582808128895" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1582800940734">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1582800940734" />
-    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582802970296">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="718" y="427" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582808025061">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1582802970296" />
+    <state x="718" y="427" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1582808025061" />
     <state x="348" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1582201102091">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
