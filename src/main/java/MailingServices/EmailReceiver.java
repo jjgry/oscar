@@ -5,20 +5,25 @@ import oscar.SegmentQueue;
 
 import javax.mail.*;
 import javax.mail.internet.MimeMessage;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This class is responsible for sending emails to patients
+ */
 public class EmailReceiver {
     private static final String applicationEmailAddress = System.getenv("GMAIL_ACCOUNT_EMAIL_ADDRESS");
     private static final String applicationGmailPassword = System.getenv("GMAIL_ACCOUNT_PASSWORD");
-    private static final int secondsToWaitBetweenEmails = 30;
+    private static final int secondsToWaitBetweenEmails = 1;
     private static EmailReceiver singletonReceiver;
     private SegmentQueue<IncomingEmailMessage> receivedEmails;
 
+    /**
+     * @param receivedEmails
+     * @throws FailedToInstantiateComponent
+     */
     private EmailReceiver( SegmentQueue<IncomingEmailMessage> receivedEmails ) throws FailedToInstantiateComponent {
         if (null == applicationEmailAddress) {
             System.err.println(
@@ -29,9 +34,12 @@ public class EmailReceiver {
         this.receivedEmails = receivedEmails;
     }
 
-    //This is an indempotent function
-    //Only a singleton Receiver will be created
-    public static EmailReceiver getEmailReceiver( SegmentQueue<IncomingEmailMessage> receivedEmails ) throws FailedToInstantiateComponent {
+    /**
+     * This is an indempotent function
+     * Only a singleton Receiver will be created
+     */
+    public static EmailReceiver getEmailReceiver( SegmentQueue<IncomingEmailMessage> receivedEmails )
+            throws FailedToInstantiateComponent {
         if (null == singletonReceiver) {
             singletonReceiver = new EmailReceiver(receivedEmails);
 
@@ -69,6 +77,12 @@ public class EmailReceiver {
         return singletonReceiver;
     }
 
+    /**
+     * Pool this function regularly to check if there are new unseen emails in the inbox
+     *
+     * @return a list of emails from inbox and mark them SEEN
+     * @throws MessagingException if there are problems with API
+     */
     public static List<IncomingEmailMessage> getUnreadEmails() throws MessagingException {
         List<IncomingEmailMessage> emailMessages = new LinkedList<>();
         Properties properties = System.getProperties();
@@ -105,7 +119,8 @@ public class EmailReceiver {
     }
 
     private static IncomingEmailMessage parseEmail( Message message ) throws MessagingException {
-        if (message.isSet(Flags.Flag.SEEN)){
+        // Read only unseen emails
+        if (message.isSet(Flags.Flag.SEEN)) {
             //TODO delete seen emails after a week
 //            Date today = new Date();
 //            System.out.println("TODAY: " + today);
@@ -116,7 +131,6 @@ public class EmailReceiver {
         }
 
         System.out.println("Receiver: NEW MESSAGE RECEIVED!");
-        // Read only unseen emails
         message.setFlag(Flags.Flag.SEEN, true);
 
         if (!(message instanceof MimeMessage)) {
@@ -156,13 +170,13 @@ public class EmailReceiver {
 
             int startIndex = subject.indexOf('[');
             int endIndex = subject.indexOf(']');
-            if(startIndex > endIndex) {
+            if (startIndex >= endIndex) {
                 System.err.println("Receiver: malformed appointment ID.");
                 return null;
             }
 
             //TODO improve security
-            String appointmentId = subject.substring(startIndex+1, endIndex);
+            String appointmentId = subject.substring(startIndex + 1, endIndex);
             System.out.println("Receiver: APPOINTMENT ID: " + appointmentId);
 
             // Ignore emails which don't have textual representation
@@ -192,12 +206,22 @@ public class EmailReceiver {
         return new MimeMessageParser(message).parse().getPlainContent();
     }
 
+    /**
+     * Example how to use EmailReceiver
+     */
     public static void main( String args[] ) {
         SegmentQueue<IncomingEmailMessage> InQ = new SegmentQueue<>();
         try {
             EmailReceiver receiver = EmailReceiver.getEmailReceiver(InQ);
         } catch (FailedToInstantiateComponent failedToInstantiateComponent) {
             failedToInstantiateComponent.printStackTrace();
+        }
+
+        System.out.println("Main thread will sleep to allow receiver to receive some emails");
+        try {
+            TimeUnit.SECONDS.sleep(60);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
         }
     }
 }

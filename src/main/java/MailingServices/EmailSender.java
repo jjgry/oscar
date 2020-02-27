@@ -4,6 +4,7 @@ import com.sendgrid.*;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
+import oscar.Kernel;
 import oscar.SegmentQueue;
 
 import javax.mail.AuthenticationFailedException;
@@ -18,10 +19,14 @@ import static MailingServices.EmailMessageType.InitialReminderMessage;
 import static java.util.concurrent.TimeUnit.MINUTES;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+/**
+ *  This class is responsible for receiving emails from patients
+ */
 public class EmailSender {
     private static final String apiKey = System.getenv("SENDGRID_API_KEY");
     private static final String applicationEmailAddress = System.getenv("GMAIL_ACCOUNT_EMAIL_ADDRESS");
     private static final int secondsToWaitBetweenEmails = 10;
+    private static final int secondsToWaitBetweenCheckingQueue = 10;
     private static EmailSender uniqueSender;
     private SegmentQueue<OutgoingEmailMessage> messagesToSend;
 
@@ -31,6 +36,10 @@ public class EmailSender {
             "Surgery contact number: phone number\n" +
             "Address: location address"; //TODO include location address and phone number of the hospital
 
+    /**
+     * @param messagesToSend is a thread-safe queue from which message are taken to be sent
+     * @throws FailedToInstantiateComponent if there is any instantiation error
+     */
     private EmailSender( SegmentQueue<OutgoingEmailMessage> messagesToSend ) throws FailedToInstantiateComponent {
         //TODO how to deal with this behaviour?
         if (null == applicationEmailAddress) {
@@ -42,8 +51,14 @@ public class EmailSender {
         this.messagesToSend = messagesToSend;
     }
 
-    //This is an indempotent function
-    //Only a singleton Sender will be created
+    /**
+     * This is an indempotent function
+     * Only a singleton Sender will be created
+     *
+     * @param messagesToSend is a thread-safe queue from which message are taken to be sent
+     * @return singleton instance of EmailSender
+     * @throws FailedToInstantiateComponent if there is any instantiation error
+     */
     public static EmailSender getEmailSender( SegmentQueue<OutgoingEmailMessage> messagesToSend ) throws FailedToInstantiateComponent {
         if (null == uniqueSender) {
             uniqueSender = new EmailSender(messagesToSend);
@@ -52,15 +67,12 @@ public class EmailSender {
                 @Override
                 public void run() {
                     while (true) {
-
-                        try {
-                            SECONDS.sleep(10);
-                        } catch (InterruptedException e) {
-                            //ignore
-                        }
                         System.out.println("Sender: Working...." + messagesToSend.NumWaiting());
-
-
+                        try {
+                            TimeUnit.SECONDS.sleep(secondsToWaitBetweenCheckingQueue);
+                        } catch (InterruptedException ie) {
+                            Thread.currentThread().interrupt();
+                        }
                         if (0 == messagesToSend.NumWaiting()) continue;
 
                         System.out.println("Sender: NEED TO SEND " + messagesToSend.NumWaiting() + " EMAILS!");
@@ -75,6 +87,7 @@ public class EmailSender {
                         String appointmentTime = emailToSend.getAppointmentTime();
                         String appointmentID = emailToSend.getAppointmentID();
 
+                        boolean successfullyDelivered = false;
                         try {
                             switch (type) {
                                 case InitialReminderMessage:
@@ -86,6 +99,7 @@ public class EmailSender {
                                             appointmentTime,
                                             appointmentID
                                     );
+                                    successfullyDelivered = true;
                                     break;
                                 case CancellationMessage:
                                     sendCancelationEmail(
@@ -95,12 +109,14 @@ public class EmailSender {
                                             appointmentDate,
                                             appointmentTime,
                                             appointmentID);
+                                    successfullyDelivered = true;
                                     break;
                                 case AskToPickAnotherTimeSlotMessage:
                                     sendEmailAskingToPickAnotherTimeSlots(
                                             patientEmailAddress,
                                             patientName,
                                             appointmentID);
+                                    successfullyDelivered = true;
                                     break;
                                 case NewAppointmentDetailsMessage:
                                     sendNewAppointmentDetailsEmail(
@@ -110,9 +126,11 @@ public class EmailSender {
                                             appointmentDate,
                                             appointmentTime,
                                             appointmentID);
+                                    successfullyDelivered = true;
                                     break;
                                 case InvalidEmailMessage:
                                     sendUnexpectedSenderEmail(patientEmailAddress);
+                                    successfullyDelivered = true;
                                     break;
                                 case ConfirmationMessage:
                                     sendConfirmationEmail(
@@ -122,24 +140,33 @@ public class EmailSender {
                                             appointmentDate,
                                             appointmentTime,
                                             appointmentID);
+                                    successfullyDelivered = true;
                                     break;
                                 default:
                                     System.err.println("Sender: Unimplemented email type");
                             }
                         } catch (FailedToSendEmail failedToSendEmail) {
                             System.err.println("Sender: We couldn't send email to " + patientEmailAddress);
+
+                            successfullyDelivered = false;
                             failedToSendEmail.printStackTrace();
                         }
+
+                        if(successfullyDelivered) Kernel.Confirm_Intro_Email_Sent(appointmentID);
                     }
                 }
             };
+            System.out.println("Sender started");
             SenderThread.setDaemon(true);
             SenderThread.start();
         }
         return uniqueSender;
     }
 
-    private static void sendEmailWithSendgrid(
+    /**
+     *  DEPRECATED method because Sendgrid keeps blocking our application
+     */
+    private static void sendEmailWithSendgrid (
             String senderEmailAddress,
             String receiverEmailAddress,
             String subject,
@@ -147,7 +174,6 @@ public class EmailSender {
         Email sendersEmail = new Email(senderEmailAddress);
         Email receiversEmail = new Email(receiverEmailAddress);
         Content content = new Content("text/plain", messageText + footer);
-
 
         System.out.println("Sender: SENDING EMAIL TO "+ receiverEmailAddress+": \n"+messageText);
 
@@ -173,20 +199,25 @@ public class EmailSender {
         }
     }
 
+    /**
+     * @param senderEmailAddress
+     * @param receiverEmailAddress 'nhs.appointment.reminder@gmail.com'
+     * @param subject string of text at the top of email message
+     * @param messageText string of text to be included as the message body
+     * @throws FailedToSendEmail if Gmail API throws an exception
+     */
     private static void sendEmailWithGmail(
             String senderEmailAddress,
             String receiverEmailAddress,
             String subject,
             String messageText ) throws FailedToSendEmail {
         try {
-            GmailSender sender = GmailSender.getGmailSender();
-            sender.sendMessage(receiverEmailAddress,
+            GmailSender gmailSender = GmailSender.getGmailSender();
+            gmailSender.sendMessage(receiverEmailAddress,
                     senderEmailAddress,
                     subject,
                     messageText);
-        } catch (GeneralSecurityException e) {
-            throw new FailedToSendEmail(e.getMessage());
-        } catch (IOException e) {
+        } catch (GeneralSecurityException | IOException | MessagingException e) {
             throw new FailedToSendEmail(e.getMessage());
         }
     }
@@ -196,7 +227,11 @@ public class EmailSender {
             String receiverEmailAddress,
             String subject,
             String messageText ) throws FailedToSendEmail {
+
+        //Pick one of the implementations
         sendEmailWithGmail(senderEmailAddress, receiverEmailAddress, subject, messageText);
+        //sendEmailWithSendgrid(senderEmailAddress,receiverEmailAddress,subject, messageText);
+
         try {
             TimeUnit.SECONDS.sleep(secondsToWaitBetweenEmails);
         } catch (InterruptedException ie) {
@@ -204,6 +239,9 @@ public class EmailSender {
         }
     }
 
+    /**
+     * @throws FailedToSendEmail if sending API throws an exception
+     */
     public static void sendInitialReminderEmail(
             String patientEmailAddress,
             String patientName,
@@ -231,6 +269,9 @@ public class EmailSender {
                         "Oscar\n");
     }
 
+    /**
+     * @throws FailedToSendEmail if sending API throws an exception
+     */
     public static void sendUnexpectedSenderEmail( String patientEmailAddress ) throws FailedToSendEmail {
         sendEmail(
                 applicationEmailAddress,
@@ -250,6 +291,9 @@ public class EmailSender {
                         + "Oscar\n");
     }
 
+    /**
+     * @throws FailedToSendEmail if sending API throws an exception
+     */
     public static void sendCancelationEmail(
             String patientEmailAddress,
             String patientName,
@@ -272,6 +316,9 @@ public class EmailSender {
                         + "Oscar\n");
     }
 
+    /**
+     * @throws FailedToSendEmail if sending API throws an exception
+     */
     public static void sendConfirmationEmail(
             String patientEmailAddress,
             String patientName,
@@ -293,6 +340,9 @@ public class EmailSender {
                         "Oscar\n");
     }
 
+    /**
+     * @throws FailedToSendEmail if sending API throws an exception
+     */
     public static void sendEmailAskingToPickAnotherTimeSlots(
             String patientEmailAddress,
             String patientName,
@@ -319,6 +369,9 @@ public class EmailSender {
                         + "Oscar\n");
     }
 
+    /**
+     * @throws FailedToSendEmail if sending API throws an exception
+     */
     public static void sendNewAppointmentDetailsEmail(
             String patientEmailAddress,
             String patientName,
@@ -341,18 +394,28 @@ public class EmailSender {
                         + "Oscar \n");
     }
 
-    public static void main( String[] args ) throws FailedToInstantiateComponent {
+    /**
+     * Example how to use EmailSender
+     */
+    public static void main( String[] args ) throws FailedToInstantiateComponent  {
         SegmentQueue OutQ = new SegmentQueue<>();
         EmailSender sender = EmailSender.getEmailSender(OutQ);
         OutgoingEmailMessage emailToSimon = new OutgoingEmailMessage(
-                "mulevicius.simonas@gmail.com",
-                "Mr. Simon",
-                "Dr. John",
+                "justas356@gmail.com",
+                "Mr. Justas",
+                "Dr. Joanna Rimmer",
                 "27-02-2021",
                 "11:00 AM",
                 InitialReminderMessage,
-                "101123501");
+                "101123502");
         OutQ.put(emailToSimon);
+
+        System.out.println("Main thread will sleep to allow sender to send email");
+        try {
+            TimeUnit.SECONDS.sleep(40);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
 

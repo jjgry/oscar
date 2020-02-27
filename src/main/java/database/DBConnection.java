@@ -71,7 +71,7 @@ class DBConnection {
     try {
       Class.forName("com.mysql.jdbc.Driver");
       startPortForwarding();
-      System.out.println("Connection established successfully");
+      System.out.println("DBConnection: Port Forwarding established successfully");
     } catch (ClassNotFoundException | JSchException e) {
       throw new DBInitializationException(e.getMessage());
     }
@@ -95,7 +95,7 @@ class DBConnection {
     try {
       con = DriverManager.getConnection(CONNECTION, DB_USERNAME, DB_PASSWORD);
     } catch (SQLException e) {
-      System.err.println("Error opening connection:");
+      System.err.println("DBConnection: Error opening connection");
       e.printStackTrace();
       return false;
     }
@@ -113,7 +113,7 @@ class DBConnection {
     try {
       con.close();
     } catch (SQLException e) {
-      System.err.println("Error closing connection: ");
+      System.err.println("DBConnection: Error closing connection");
       e.printStackTrace();
       return false;
     }
@@ -138,7 +138,7 @@ class DBConnection {
       PreparedStatement stmt = con.prepareStatement(query);
       rs = stmt.executeQuery();
     } catch (SQLException e) {
-      System.err.println("Error executing query: ");
+      System.err.println("DBConnection: Error executing query");
       e.printStackTrace();
     }
     return rs;
@@ -150,7 +150,7 @@ class DBConnection {
 
       rs = ps.executeQuery();
     } catch (SQLException e) {
-      System.err.println("Error executing query: ");
+      System.err.println("DBConnection: Error executing query: ");
       e.printStackTrace();
     }
     return rs;
@@ -171,7 +171,7 @@ class DBConnection {
       PreparedStatement stmt = con.prepareStatement(query);
       success = stmt.execute();
     } catch (SQLException e) {
-      System.err.println("Error executing query: ");
+      System.err.println("DBConnection: Error executing update");
       e.printStackTrace();
       return false;
     }
@@ -184,7 +184,7 @@ class DBConnection {
 
       success = ps.execute();
     } catch (SQLException e) {
-      System.err.println("Error executing query: ");
+      System.err.println("DBConnectionL Error executing update");
       e.printStackTrace();
       return false;
     }

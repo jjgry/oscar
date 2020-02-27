@@ -124,3 +124,6 @@ fabric.properties
 # SENDGRID API KEYS
 sendgrid.env
 "sendgrid.env"
+
+# Gmail credentials
+tokens/StoredCredential
