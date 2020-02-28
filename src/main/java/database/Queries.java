@@ -24,8 +24,8 @@ class Queries {
       "WHERE conversation_state_id = %2$s";
 
   static final String GET_APPS =
-      "SELECT timeslot_id, timeslot, doctor_id, location FROM  `jjag3/SurgeryAssistant`.`Timeslots` \n" +
-      "WHERE (timeslot between ? AND ?) AND (doctor_id = ?);";
+      "SELECT timeslot_id, timeslot, doctor_id, location FROM  `jjag3/SurgeryAssistant`.`Timeslots`\n" +
+      "WHERE (timeslot between ? AND DATE_ADD(?, INTERVAL -10 MINUTE)) AND (doctor_id = ?)";
 
   static final String REJECT_APP =
       "UPDATE `jjag3/SurgeryAssistant`.`Timeslots` \n" +
