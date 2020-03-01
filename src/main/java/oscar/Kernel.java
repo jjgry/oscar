@@ -18,7 +18,7 @@ import opennlp.tools.doccat.DoccatModel;
 import static java.util.concurrent.TimeUnit.*;
 
 
-public class Kernel {
+public class Kernel {//
     /*
     / (FROM FUNCTIONAL SPEC) Functions of the Kernel:
     /
