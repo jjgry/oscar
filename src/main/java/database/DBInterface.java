@@ -196,12 +196,17 @@ public class DBInterface {
             ps.setInt(2, appointmentID);
             ResultSet rs = database
                     .execute(ps);
-            rs.next();
-            int app_id = rs.getInt("app_id");
-            return appointmentID == app_id;
+            if(rs.next()) {
+                int app_id = rs.getInt("app_id");
+                return appointmentID == app_id;
+            }
+            else
+            {
+                return false;
+            }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return false;
         }
     }
