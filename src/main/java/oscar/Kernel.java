@@ -292,7 +292,6 @@ public class Kernel {//
           } catch (InterruptedException e) {
             //ignore
           }
-
         }
       }
     };
@@ -317,7 +316,7 @@ public class Kernel {//
     System.out.println("    " + GivenSlots[0] + " to " + GivenSlots[1]);
     System.out.println("    " + GivenSlots[2] + " to " + GivenSlots[3]);
     System.out.println("    " + GivenSlots[4] + " to " + GivenSlots[5]);
-    if (!GivenSlots[0].equals("") && !GivenSlots[1].equals("")&& GivenSlots[0]!=null && GivenSlots[0]!=null) {
+    if (!GivenSlots[0].equals("") && !GivenSlots[1].equals("")&& GivenSlots[0]!=null && GivenSlots[1]!=null) {
       all_available_timeslots
           .addAll(connectedDB.getAppointments(DoctorID, GivenSlots[0], GivenSlots[1]));
     }
@@ -331,7 +330,6 @@ public class Kernel {//
     }
     return all_available_timeslots;
   }
-
 
   private void SendNewReminders() {
     if (DB != null) {
