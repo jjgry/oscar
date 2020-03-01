@@ -171,6 +171,8 @@ public class Kernel {
                   Appointment bookedAppointment = finalDB.getApp(appointmentID);
                   Patient p = finalDB.getPatient(appointmentID);
                   if (p.getEmail().equals(PatientResponse.getSenderEmailAddress())) {
+                    // 2b.i Add the email  to logging system
+                    finalDB.addLog(appointmentID, PatientResponse.getMessage());
 
                     // 2c. Hand off to classifier: what type of message was it?
                     Classification C = null;
