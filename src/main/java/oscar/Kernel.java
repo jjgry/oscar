@@ -351,7 +351,7 @@ public class Kernel {//
             Patient p = DB.getPatient(A.getAppID());
             //TODO: remove this console print once shown to work:
             System.out.println("Trying to add new email to send queue, pending outbox length: "+PendingEmailOutbox.size());
-            if (Sender_ON && !PendingEmailOutbox.contains(A)) {
+            if (Sender_ON && IsAboutNewAppointment(A)) {
               OutQ.put(
                   new OutgoingEmailMessage(p, A, EmailMessageType.InitialReminderMessage));
               System.out.println(
@@ -375,7 +375,14 @@ public class Kernel {//
       System.out.println("Kernel<pollDB>: Database pointer is null.");
     }
   }
-
+  private  boolean IsAboutNewAppointment(Appointment A){
+    for(Appointment B : PendingEmailOutbox){
+      if(A.getAppID() == B.getAppID()){
+        return false;
+      }
+    }
+    return true;
+  }
 
   public static void Confirm_Intro_Email_Sent(String AppointmentID) {
     Kernel k = Kernel.getInstance();
@@ -385,7 +392,13 @@ public class Kernel {//
 
   private void CIES(Appointment A) {
     System.out.println("Kernel: removed Appointment from pending outbox queue: No."+A.getAppID());
-    if (PendingEmailOutbox.remove(A)) {
+    if (!IsAboutNewAppointment(A)) {
+      for(int I = 0; I< PendingEmailOutbox.size(); I++){ //remove all instances of this appointment in the outbox queue.
+        if(PendingEmailOutbox.get(I).getAppID() == A.getAppID()){
+          PendingEmailOutbox.remove(I);
+          I--;
+        }//else continue
+      }
       LinkedList<Appointment> ConfirmedSent = new LinkedList<>();
       ConfirmedSent.add(A);
       synchronized (Kernel.class) {
