@@ -24,11 +24,21 @@ public class Classification {
    Remove old message contents from new message
    */
   public static String removeContentsOfLastEmail(String unparsedEmail){
+    int messageLength = unparsedEmail.length();
+
     int indexUnderScores = unparsedEmail.indexOf("_______");
+    indexUnderScores = (-1 == indexUnderScores) ? messageLength : indexUnderScores;
+
     int indexDashes = unparsedEmail.indexOf("----------");
+    indexDashes = (-1 == indexDashes) ? messageLength : indexDashes;
+
     int indexSmaller = unparsedEmail.indexOf("<");
+    indexSmaller = (-1 == indexSmaller) ? messageLength : indexSmaller;
+
     int indexLarger = unparsedEmail.indexOf(">");
-    int index = Math.max(Math.max(Math.max(indexUnderScores, indexDashes), indexLarger),indexSmaller);
+    indexLarger = (-1 == indexLarger) ? messageLength : indexLarger;
+
+    int index = Math.min(Math.min(Math.min(indexUnderScores, indexDashes), indexLarger),indexSmaller);
 
     if (index != -1) {
       unparsedEmail = unparsedEmail.substring(0, index);
