@@ -88,6 +88,8 @@ public class MailingTest {
 
 
         String newEmailMessage = Classification.removeContentsOfLastEmail(rawEmailMessageString);
+        System.out.println("Removed email:");
+        System.out.println(newEmailMessage);
         return newEmailMessage.equals("Hi, I will not come.\n" +
                 "Thanks\n" +
                 "\n" +
@@ -95,8 +97,8 @@ public class MailingTest {
     }
 
     public static void main( String[] args ) {
-        System.out.println("TEST EmailSenderAndReceiver_WhenSenderSendsEmail_EmailReceiverGetEmailWithinTwoMinutes RESULT:"
-                + EmailSenderAndReceiver_WhenSenderSendsEmail_EmailReceiverGetEmailWithinTwoMinutes());
+        //System.out.println("TEST EmailSenderAndReceiver_WhenSenderSendsEmail_EmailReceiverGetEmailWithinTwoMinutes RESULT:"
+        //        + EmailSenderAndReceiver_WhenSenderSendsEmail_EmailReceiverGetEmailWithinTwoMinutes());
         System.out.println("TEST ClassificationRemoveContentsOfLastEmail_WhenPatientReplies_ContentsOfOlderMessagesShouldBeRemoved RESULT: "
                 + ClassificationRemoveContentsOfLastEmail_WhenPatientReplies_ContentsOfOlderMessagesShouldBeRemoved());
     }
