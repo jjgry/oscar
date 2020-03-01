@@ -30,7 +30,7 @@ import java.util.Properties;
 
 /**
  * Class which sends emails using Gmail API
- * <p>
+ *
  * Examples were taken from:
  * https://developers.google.com/gmail/api/guides/sending?authuser=5
  * https://developers.google.com/gmail/api/quickstart/java?authuser=5

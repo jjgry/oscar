@@ -5,6 +5,7 @@ import oscar.SegmentQueue;
 
 import javax.mail.*;
 import javax.mail.internet.MimeMessage;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
@@ -52,7 +53,7 @@ public class EmailReceiver {
 
                             if (null == emails) break;
 
-                            System.out.println("Receiver: RECEIVED " + emails.size() + " EMAILS!");
+                            System.out.println("Receiver: RECEIVED " + emails.size() + " EMAILS");
                             for (IncomingEmailMessage email : emails) {
                                 receivedEmails.put(email);
                             }
@@ -64,7 +65,6 @@ public class EmailReceiver {
                             }
                         }
                     } catch (AuthenticationFailedException e) {
-                        //TODO how to deal with AuthenticationFailedException
                         System.err.println("Receiver: Couldn't connect to email so stop receiving");
                     } catch (MessagingException e) {
                         e.printStackTrace();
@@ -84,12 +84,11 @@ public class EmailReceiver {
      * @throws MessagingException if there are problems with API
      */
     public static List<IncomingEmailMessage> getUnreadEmails() throws MessagingException {
-        List<IncomingEmailMessage> emailMessages = new LinkedList<>();
         Properties properties = System.getProperties();
         properties.setProperty("mail.store.protocol", "imaps");
         properties.setProperty("mail.imaps.port", "993");
-        properties.setProperty("mail.imaps.connectiontimeout", "5000");
-        properties.setProperty("mail.imaps.timeout", "5000");
+        properties.setProperty("mail.imaps.connectiontimeout", "100000");
+        properties.setProperty("mail.imaps.timeout", "100000");
 
         Session session = Session.getDefaultInstance(properties, null);
         Store store = session.getStore("imaps");
@@ -103,6 +102,7 @@ public class EmailReceiver {
         System.out.println("Receiver: Number of messages in INBOX: " + folder.getMessageCount());
         System.out.println("Receiver: Number of unread messages in INBOX: " + folder.getUnreadMessageCount());
 
+        List<IncomingEmailMessage> emailMessages = new LinkedList<>();
         for (Message message : messages) {
             IncomingEmailMessage emailMessage = parseEmail(message);
             if (null != emailMessage) emailMessages.add(emailMessage);
@@ -121,11 +121,17 @@ public class EmailReceiver {
     private static IncomingEmailMessage parseEmail( Message message ) throws MessagingException {
         // Read only unseen emails
         if (message.isSet(Flags.Flag.SEEN)) {
-            //TODO delete seen emails after a week
-//            Date today = new Date();
-//            System.out.println("TODAY: " + today);
-//            System.out.println("EMAIL RECEIVED: " + message.getSentDate());
-//            System.out.println("DIFFERENCE between days: " + today.compareTo(message.getSentDate()));
+            Date today = new Date();
+
+            //1 day = 24 (for hours) * 60 (for min) * 60 (for sec) * 1000 (for miliseconds)
+            long daysBetween = (today.getTime() - message.getSentDate().getTime())/86400000;
+
+            if(7 < daysBetween){
+                 System.out.println("Receiver: Found email which is was received " + daysBetween + " days ago." +
+                         "This email will be removed from inbox.");
+
+                message.setFlag(Flags.Flag.DELETED, true);
+            }
 
             return null;
         }
@@ -172,10 +178,16 @@ public class EmailReceiver {
             int endIndex = subject.indexOf(']');
             if (startIndex >= endIndex) {
                 System.err.println("Receiver: malformed appointment ID.");
-                return null;
+                return new IncomingEmailMessage(
+                        senderEmailAddress,
+                        receiverEmailAddress,
+                        subject,
+                        "",
+                        "-1");
+                //Ignore contents of invalid email
+                //Invalid appointmentID is encoded using "-1"
             }
 
-            //TODO improve security
             String appointmentId = subject.substring(startIndex + 1, endIndex);
             System.out.println("Receiver: APPOINTMENT ID: " + appointmentId);
 
@@ -219,7 +231,7 @@ public class EmailReceiver {
 
         System.out.println("Main thread will sleep to allow receiver to receive some emails");
         try {
-            TimeUnit.SECONDS.sleep(60);
+            TimeUnit.MINUTES.sleep(30);
         } catch (InterruptedException ie) {
             Thread.currentThread().interrupt();
         }
