@@ -35,15 +35,7 @@ public class OutgoingEmailMessage {
         this.patientEmailAddress = patientEmailAddress;
         this.patientName = patientName;
         this.doctorName = doctorName;
-        String[] datetimesplit = appointmentDateTime.split(" ");
-        if (datetimesplit.length >= 2) {
-            this.appointmentDate = datetimesplit[0];
-            this.appointmentTime = datetimesplit[1];
-            System.out.println("Sender<DateFormatting>: split string \"" + appointmentDateTime + "\" into \"" + this.appointmentDate + "\" and \"" + this.appointmentTime + "\"");
-        } else {
-            this.appointmentDate = appointmentDateTime;
-            this.appointmentTime = appointmentDateTime;
-        }
+        formatDate(appointmentDateTime);
         this.messageType = messageType;
         this.appointmentID = appointmentID;
     }
@@ -52,16 +44,7 @@ public class OutgoingEmailMessage {
         this.patientEmailAddress = p.getEmail();
         this.patientName = p.getName();
         this.doctorName = a.getDoctorName();
-        String[] datetimesplit = a.getDatetime().split(" ");
-        if (datetimesplit.length >= 2) {
-            this.appointmentDate = datetimesplit[0];
-            this.appointmentTime = datetimesplit[1];
-            System.out.println("Sender<DateFormatting>: split string \"" + a.getDatetime() + "\" into \"" + this.appointmentDate + "\" and \"" + this.appointmentTime + "\"");
-        } else {
-            this.appointmentDate = a.getDatetime();
-            this.appointmentTime = a.getDatetime();
-        }
-
+        formatDate(a.getDatetime());
         this.appointmentID = Integer.toString(a.getAppID());
         this.messageType = messageType;
     }
@@ -93,5 +76,73 @@ public class OutgoingEmailMessage {
 
     public String getAppointmentID() {
         return appointmentID;
+    }
+
+    private void formatDate(String input_DateTime){
+        String[] datetimesplit = input_DateTime.split(" ");
+        if (datetimesplit.length >= 2) {
+            this.appointmentDate = datetimesplit[0];
+            this.appointmentTime = datetimesplit[1];
+            System.out.println("Sender<DateFormatting>: split string \"" + input_DateTime + "\" into \"" + this.appointmentDate + "\" and \"" + this.appointmentTime + "\"");
+
+            //format Date
+            String[] sections = this.appointmentDate.split("-");
+            if(sections.length >= 3) {
+                String year = "20" + sections[2];//TODO: this is a bit hacky
+                String month = sections[1];
+                switch (sections[1]) {
+                    case "01":
+                        month = "January";
+                        break;
+                    case "02":
+                        month = "February";
+                        break;
+                    case "03":
+                        month = "March";
+                        break;
+                    case "04":
+                        month = "April";
+                        break;
+                    case "05":
+                        month = "May";
+                        break;
+                    case "06":
+                        month = "June";
+                        break;
+                    case "07":
+                        month = "July";
+                        break;
+                    case "08":
+                        month = "August";
+                        break;
+                    case "09":
+                        month = "September";
+                        break;
+                    case "10":
+                        month = "October";
+                        break;
+                    case "11":
+                        month = "November";
+                        break;
+                    case "12":
+                        month = "December";
+                }
+                this.appointmentDate = sections[0]+ " "+month+" "+year;
+            }
+            //format Time
+            String[] timeSections = this.appointmentTime.split(".");
+            if(timeSections.length > 1){
+                this.appointmentTime = timeSections[0];//cut anything after a decimal point
+            }
+
+           timeSections = this.appointmentTime.split(":");
+            if(timeSections.length >=3){
+                this.appointmentTime = timeSections[0]+":"+timeSections[1];//cut anything after an initial HH:MM
+            }
+
+        } else {
+            this.appointmentDate = input_DateTime;
+            this.appointmentTime = input_DateTime;
+        }
     }
 }
