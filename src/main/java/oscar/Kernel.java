@@ -351,14 +351,17 @@ public class Kernel {//
             Patient p = DB.getPatient(A.getAppID());
             //TODO: remove this console print once shown to work:
             System.out.println("Trying to add new email to send queue, pending outbox length: "+PendingEmailOutbox.size());
-            if (Sender_ON && IsAboutNewAppointment(A)) {
-              OutQ.put(
-                  new OutgoingEmailMessage(p, A, EmailMessageType.InitialReminderMessage));
-              System.out.println(
-                  "Kernel<pollDB>: Sent initial reminder message about appointment " + A
-                      .getAppID());
-              //sent_Apps.add(A);
-              PendingEmailOutbox.add(A);
+            if (Sender_ON){
+              if(IsAboutNewAppointment(A)) {
+                OutQ.put(
+                        new OutgoingEmailMessage(p, A, EmailMessageType.InitialReminderMessage));
+                System.out.println(
+                        "Kernel<pollDB>: Sent initial reminder message about appointment " + A
+                                .getAppID());
+                //sent_Apps.add(A);
+                PendingEmailOutbox.add(A);
+              }
+              else System.out.println("Email on pending outbox list, not re-sent.");
             } else {
               System.err.println("Kernel<pollDB>: no sender, so email unsent.");
             }
