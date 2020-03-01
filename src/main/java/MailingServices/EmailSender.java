@@ -269,13 +269,13 @@ public class EmailSender {
                         "Please reply to this email stating whether you would like to confirm, cancel or reschedule your appointment. \n" +
                         "\n" +
                         "In case you want a new appointment, " +
-                        "please provide 3 one hour slots when you are available in the next few weeks in the following format: " +
+                        "please provide 3 time slots when you are available in the next few weeks in the following format: " +
                         "DD-MM-YYYY, from hh:mm AM/PM to hh:mm AM/PM.\n" +
                         "\n" +
                         "For example:\n" +
                         "22-02-2019 from 11:00 AM to 12:00 PM\n" +
-                        "22-02-2019 from 03:00 PM to 04:00 PM\n" +
-                        "25-02-2019 from 03:00 PM to 04:00 PM\n" +
+                        "22-02-2019 from 03:00 PM to 05:30 PM\n" +
+                        "25-02-2019 from 01:45 PM to 04:00 PM\n" +
                         "\n" +
                         "If you have any questions, use the contact details below to get in touch with my human supervisor.\n" +
                         "\n" +
