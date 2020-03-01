@@ -221,7 +221,6 @@ public class EmailReceiver {
     /**
      * Example how to use EmailReceiver
      */
-    //TODO DELETE THIS COMMENT
     public static void main( String args[] ) {
         SegmentQueue<IncomingEmailMessage> InQ = new SegmentQueue<>();
         try {
