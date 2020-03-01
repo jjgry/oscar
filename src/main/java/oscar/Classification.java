@@ -1,6 +1,8 @@
 package oscar;
 
 import java.io.IOException;
+
+import MailingServices.InputSanitizer;
 import opennlp.tools.doccat.DoccatModel;
 
 public class Classification {
@@ -23,6 +25,7 @@ public class Classification {
   /**
    Remove old message contents from new message
    */
+  //TODO make private
   public static String removeContentsOfLastEmail(String unparsedEmail){
     int messageLength = unparsedEmail.length();
 
@@ -44,7 +47,7 @@ public class Classification {
       unparsedEmail = unparsedEmail.substring(0, index);
     }
 
-    return unparsedEmail;
+    return InputSanitizer.removeOldEmailContents(unparsedEmail);
   }
 
   private static String removeNewLines(String unparsedEmail) {
