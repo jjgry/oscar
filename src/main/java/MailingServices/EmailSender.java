@@ -30,18 +30,23 @@ public class EmailSender {
     private static EmailSender uniqueSender;
     private SegmentQueue<OutgoingEmailMessage> messagesToSend;
 
-    private static final String footer = "\n" + "_______________________________" + "\n" +
-            "Oscar is an automated email assistant system helping you remember and manage your GP appointment. This email system can't provide you with medical advice and should not be used in case of an emergency. Please DON'T disclose any personal information other than your availability.  If you would like to talk to a human assistant, please find attached the following contact information:\n" +
+    private static final String identificationHeader = "----------\n";
+    private static final String footer =
+            "\n\n\n----------\n" +
+            "Oscar is an automated email assistant system helping you remember and manage your GP appointment. " +
+            "This email system can't provide you with medical advice and should not be used in case of an emergency. " +
+            "Please DON'T disclose any personal information other than your availability.  " +
+            "If you would like to talk to a human assistant, please find attached the following contact information:\n" +
             "\n" +
-            "Surgery contact number: phone number\n" +
-            "Address: location address"; //TODO include location address and phone number of the hospital
+            "Surgery contact number: 01223 697600\n" +
+            "Address: 48-49 Bateman St, Cambridge CB2 1LR\n" +
+            "----------\n" ;
 
     /**
      * @param messagesToSend is a thread-safe queue from which message are taken to be sent
      * @throws FailedToInstantiateComponent if there is any instantiation error
      */
     private EmailSender( SegmentQueue<OutgoingEmailMessage> messagesToSend ) throws FailedToInstantiateComponent {
-        //TODO how to deal with this behaviour?
         if (null == applicationEmailAddress) {
             System.err.println(
                     "Sender: Can't send emails because Sender doesn't know application email address. Try checking system variables");
@@ -67,7 +72,7 @@ public class EmailSender {
                 @Override
                 public void run() {
                     while (true) {
-                        System.out.println("Sender: Working...." + messagesToSend.NumWaiting());
+                        System.out.println("Sender: Need to send: " + messagesToSend.NumWaiting() + " emails.");
                         try {
                             TimeUnit.SECONDS.sleep(secondsToWaitBetweenCheckingQueue);
                         } catch (InterruptedException ie) {
@@ -75,7 +80,6 @@ public class EmailSender {
                         }
                         if (0 == messagesToSend.NumWaiting()) continue;
 
-                        System.out.println("Sender: NEED TO SEND " + messagesToSend.NumWaiting() + " EMAILS!");
                         OutgoingEmailMessage emailToSend = messagesToSend.take();
                         if (null == emailToSend) continue;
 
@@ -165,6 +169,8 @@ public class EmailSender {
 
     /**
      *  DEPRECATED method because Sendgrid keeps blocking our application
+     *
+     *  Problem could be resolved if we were to remove API keys from GitHub
      */
     private static void sendEmailWithSendgrid (
             String senderEmailAddress,
@@ -228,8 +234,14 @@ public class EmailSender {
             String subject,
             String messageText ) throws FailedToSendEmail {
 
-        //Pick one of the implementations
-        sendEmailWithGmail(senderEmailAddress, receiverEmailAddress, subject, messageText+footer);
+        // Pick one of the implementations
+        // 1. Gmail API
+        sendEmailWithGmail(senderEmailAddress,
+                receiverEmailAddress,
+                subject,
+                identificationHeader + messageText + footer);
+
+        // 2. Sendgrid API
         //sendEmailWithSendgrid(senderEmailAddress,receiverEmailAddress,subject, messageText);
 
         try {
@@ -256,7 +268,9 @@ public class EmailSender {
                         "\n" +
                         "Please reply to this email stating whether you would like to confirm, cancel or reschedule your appointment. \n" +
                         "\n" +
-                        "In case you want a new appointment, please provide 3 one hour slots when you are available in the next few weeks in the following format: DD-MM-YYYY, from hh:mm AM/PM to hh:mm AM/PM.\n" +
+                        "In case you want a new appointment, " +
+                        "please provide 3 one hour slots when you are available in the next few weeks in the following format: " +
+                        "DD-MM-YYYY, from hh:mm AM/PM to hh:mm AM/PM.\n" +
                         "\n" +
                         "For example:\n" +
                         "22-02-2019 from 11:00 AM to 12:00 PM\n" +

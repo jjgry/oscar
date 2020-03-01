@@ -23,9 +23,9 @@ public class Classification {
   /**
    Remove old message contents from new message
    */
-  private static String removeContentsOfLastEmail(String unparsedEmail){
+  public static String removeContentsOfLastEmail(String unparsedEmail){
     int indexUnderScores = unparsedEmail.indexOf("_______");
-    int indexDashes = unparsedEmail.indexOf("-------");
+    int indexDashes = unparsedEmail.indexOf("----------");
     int indexSmaller = unparsedEmail.indexOf("<");
     int indexLarger = unparsedEmail.indexOf(">");
     int index = Math.max(Math.max(Math.max(indexUnderScores, indexDashes), indexLarger),indexSmaller);
