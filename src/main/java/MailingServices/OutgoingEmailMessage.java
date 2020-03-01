@@ -88,7 +88,7 @@ public class OutgoingEmailMessage {
             //format Date
             String[] sections = this.appointmentDate.split("-");
             if(sections.length >= 3) {
-                String year = "20" + sections[2];//TODO: this is a bit hacky
+                String year = sections[0];//TODO: this is a bit hacky
                 String month = sections[1];
                 switch (sections[1]) {
                     case "01":
@@ -127,7 +127,7 @@ public class OutgoingEmailMessage {
                     case "12":
                         month = "December";
                 }
-                this.appointmentDate = sections[0]+ " "+month+" "+year;
+                this.appointmentDate = sections[2]+ " "+month+" "+year;
             }
             //format Time
             String[] timeSections = this.appointmentTime.split(".");
