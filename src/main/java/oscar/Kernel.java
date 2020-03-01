@@ -345,11 +345,13 @@ public class Kernel {//
             + " new appointments to remind about in latest DB poll.");
         LinkedList<Appointment> sent_Apps = new LinkedList<>();
         for (Appointment A : newAppts) {
-          //  1a. Send any initial reminder emails that are now shown as required by the database state.
+          //  1a. Send any initial reminder emails that are now shown as required by the database state, and not already on the pending queue.
           if (A != null) {
             System.out.println("Kernel<pollDB>: Appointment ID: " + A.getAppID());
             Patient p = DB.getPatient(A.getAppID());
-            if (Sender_ON) {
+            //TODO: remove this console print once shown to work:
+            System.out.println("Trying to add new email to send queue, pending outbox length: "+PendingEmailOutbox.size());
+            if (Sender_ON && !PendingEmailOutbox.contains(A)) {
               OutQ.put(
                   new OutgoingEmailMessage(p, A, EmailMessageType.InitialReminderMessage));
               System.out.println(
@@ -382,6 +384,7 @@ public class Kernel {//
 
 
   private void CIES(Appointment A) {
+    System.out.println("Kernel: removed Appointment from pending outbox queue: No."+A.getAppID());
     if (PendingEmailOutbox.remove(A)) {
       LinkedList<Appointment> ConfirmedSent = new LinkedList<>();
       ConfirmedSent.add(A);
