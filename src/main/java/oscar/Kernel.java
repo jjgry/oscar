@@ -317,19 +317,17 @@ public class Kernel {//
     System.out.println("    " + GivenSlots[2] + " to " + GivenSlots[3]);
     System.out.println("    " + GivenSlots[4] + " to " + GivenSlots[5]);
 
-    if (!GivenSlots[0].equals("") && !GivenSlots[1].equals("")&& GivenSlots[0]!=null && GivenSlots[1]!=null) {
+    if (GivenSlots[0]!=null && GivenSlots[1]!=null && !GivenSlots[0].equals("") && !GivenSlots[1].equals("")) {
       all_available_timeslots
           .addAll(connectedDB.getAppointments(DoctorID, GivenSlots[0], GivenSlots[1]));
     }
     if(GivenSlots.length >= 4) {
-
-
-      if (!GivenSlots[2].equals("") && !GivenSlots[3].equals("") && GivenSlots[2] != null && GivenSlots[3] != null) {
+      if (GivenSlots[2] != null && GivenSlots[3] != null && !GivenSlots[2].equals("") && !GivenSlots[3].equals("") ) {
         all_available_timeslots
                 .addAll(connectedDB.getAppointments(DoctorID, GivenSlots[2], GivenSlots[3]));
       }
       if (GivenSlots.length >= 6) {
-        if (!GivenSlots[4].equals("") && !GivenSlots[5].equals("") && GivenSlots[4] != null && GivenSlots[5] != null) {
+        if (GivenSlots[4] != null && GivenSlots[5] != null && !GivenSlots[4].equals("") && !GivenSlots[5].equals("")) {
           all_available_timeslots
                   .addAll(connectedDB.getAppointments(DoctorID, GivenSlots[4], GivenSlots[5]));
         }
