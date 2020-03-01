@@ -127,7 +127,7 @@ public class Kernel {//
         while (true) {
           SendNewReminders();
           try {//TODO: Every 5 minutes when implemented, not 1
-            SECONDS.sleep(1);
+            MINUTES.sleep(1);
           } catch (InterruptedException e) {
             //ignore the exception.
           }
