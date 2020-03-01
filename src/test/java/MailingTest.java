@@ -92,8 +92,7 @@ public class MailingTest {
         System.out.println(newEmailMessage);
         return newEmailMessage.equals("Hi, I will not come.\n" +
                 "Thanks\n" +
-                "\n" +
-                "On Sat, 29 Feb 2020 at 23:49, <nhs.appointment.reminder@gmail.com> wrote:\n");
+                "\n");
     }
 
     public static void main( String[] args ) {

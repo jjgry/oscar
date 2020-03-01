@@ -121,9 +121,6 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-# SENDGRID API KEYS
-sendgrid.env
-"sendgrid.env"
-
 # Gmail credentials
 tokens/StoredCredential
+src/main/resources/credentials.json
