@@ -78,7 +78,7 @@ public class OutgoingEmailMessage {
         return appointmentID;
     }
 
-    private void formatDate(String input_DateTime){
+    private void formatDate(String input_DateTime) {
         String[] datetimesplit = input_DateTime.split(" ");
         if (datetimesplit.length >= 2) {
             this.appointmentDate = datetimesplit[0];
@@ -87,7 +87,7 @@ public class OutgoingEmailMessage {
 
             //format Date
             String[] sections = this.appointmentDate.split("-");
-            if(sections.length >= 3) {
+            if (sections.length >= 3) {
                 String year = sections[0];//TODO: this is a bit hacky
                 String month = sections[1];
                 switch (sections[1]) {
@@ -127,17 +127,17 @@ public class OutgoingEmailMessage {
                     case "12":
                         month = "December";
                 }
-                this.appointmentDate = sections[2]+ " "+month+" "+year;
+                this.appointmentDate = sections[2] + " " + month + " " + year;
             }
             //format Time
             String[] timeSections = this.appointmentTime.split(".");
-            if(timeSections.length > 1){
+            if (timeSections.length > 1) {
                 this.appointmentTime = timeSections[0];//cut anything after a decimal point
             }
 
-           timeSections = this.appointmentTime.split(":");
-            if(timeSections.length >=3){
-                this.appointmentTime = timeSections[0]+":"+timeSections[1];//cut anything after an initial HH:MM
+            timeSections = this.appointmentTime.split(":");
+            if (timeSections.length >= 3) {
+                this.appointmentTime = timeSections[0] + ":" + timeSections[1];//cut anything after an initial HH:MM
             }
 
         } else {

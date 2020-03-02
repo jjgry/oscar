@@ -396,14 +396,13 @@ public class EmailSender {
         sendEmail(
                 applicationEmailAddress,
                 patientEmailAddress,
-                "[" + appointmentID + "] Your appointment can be rescheduled\n",
+                "[" + appointmentID + "] This is your new appointment\n",
                 "Dear "
                         + patientName
                         + ",\n"
-                        + "Your appointment can be rescheduled to "+ appointmentTime + " on "+ appointmentDate + ", with your previous Doctor, " + doctorName +"."
-                        + " Would this be acceptable?"
+                        + "Your rescheduled appointment is with "+doctorName+ " on " + appointmentDate + " at "+appointmentTime+"."
                         + "\n"
-                        + "If you have any questions, use the contact details below to get in touch with my human supervisor.\n"
+                        + "If you have any questions, please use the contact details below to get in touch with my human supervisor.\n"
                         + "\n"
                         + "Many thanks,\n"
                         + "Oscar \n");
