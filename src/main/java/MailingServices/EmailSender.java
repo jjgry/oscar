@@ -400,7 +400,7 @@ public class EmailSender {
                 "Dear "
                         + patientName
                         + ",\n"
-                        + "Your rescheduled appointment is with "+doctorName+ " on " + appointmentDate + " at "+appointmentTime+"."
+                        + "Your rescheduled appointment is with "+doctorName+ " on " + appointmentDate + " at "+appointmentTime+".\n"
                         + "\n"
                         + "If you have any questions, please use the contact details below to get in touch with my human supervisor.\n"
                         + "\n"
